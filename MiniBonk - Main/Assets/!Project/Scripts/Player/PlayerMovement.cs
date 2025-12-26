@@ -23,6 +23,10 @@ namespace Minibonk.Player
         [Header("Movement Settings")]
         [SerializeField] private float _walkSpeed = 10f;
         [SerializeField] private float _sprintMultiplier = 1.5f;
+        
+        [Header("Ground Check Settings")]
+        [SerializeField] private float _radius;
+        [SerializeField] private float _distance;
 
         [Header("References")] 
         [SerializeField] private Transform _cameraTransform;
@@ -125,7 +129,7 @@ namespace Minibonk.Player
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720f * Time.deltaTime);
             }
         }
-
+        
         private void HandleBasicMovement(float speed)
         {
             _moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x);
@@ -136,6 +140,13 @@ namespace Minibonk.Player
         {
             HandleBasicMovement(_walkSpeed * _sprintMultiplier);
         }
+
+        private bool HandleGroundDetection()
+        {
+            Physics.SphereCast(transform.position, _radius, Vector3.down, out RaycastHit hit, _distance);
+            return false;
+        }
+        
         #endregion
     }
 }

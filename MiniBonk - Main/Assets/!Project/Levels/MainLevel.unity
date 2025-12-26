@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 1640223067}
   - component: {fileID: 1640223072}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -728,8 +728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0166c30a624643ae8be113cb22662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 10
-  _sprintMultiplier: 1.5
+  _walkSpeed: 8
+  _sprintMultiplier: 1.7
+  _radius: 0
+  _distance: 0
   _cameraTransform: {fileID: 1719831700}
   _rb: {fileID: 1640223072}
   currentMovementState: 5
