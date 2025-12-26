@@ -180,7 +180,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -728,7 +728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0166c30a624643ae8be113cb22662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
+  _walkSpeed: 10
+  _sprintMultiplier: 1.5
   _cameraTransform: {fileID: 1719831700}
   _rb: {fileID: 1640223072}
 --- !u!54 &1640223072
@@ -771,6 +772,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thirdPersonCamera: {fileID: 1719831699}
+  _rb: {fileID: 1640223072}
+  _minFov: 60
+  _maxFov: 80
+  _maxVelocityThreshold: 20
+  _smoothSpeed: 5
 --- !u!1 &1719831695
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +901,7 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0.79, z: 0}
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 0.3, y: 0.3, z: 0.3}
+    PositionDamping: {x: 1, y: 1, z: 1}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -967,7 +973,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
