@@ -35,7 +35,7 @@ namespace Minibonk.Player
         private Vector2 _directionInput;
 
         // Movement Fields
-        private MovementSates _currentMovementState;
+        
 
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
@@ -43,6 +43,8 @@ namespace Minibonk.Player
         private Vector3 _moveDirection;
         
         // Public Fields
+        
+        public MovementSates currentMovementState = MovementSates.Idle;
         
         #endregion
 
@@ -62,8 +64,8 @@ namespace Minibonk.Player
             _inputManager.Player.Move.performed += context => _directionInput = context.ReadValue<Vector2>();
             _inputManager.Player.Move.canceled += context => _directionInput = Vector2.zero;
 
-            _inputManager.Player.Sprint.performed += context => _currentMovementState = MovementSates.Sprinting;
-            _inputManager.Player.Sprint.canceled += context => _currentMovementState = MovementSates.Idle;
+            _inputManager.Player.Sprint.performed += context => currentMovementState = MovementSates.Sprinting;
+            _inputManager.Player.Sprint.canceled += context => currentMovementState = MovementSates.Idle;
         }
 
         private void OnDisable()
@@ -87,7 +89,9 @@ namespace Minibonk.Player
         private void FixedUpdate()
         {
             HandlePlayerDirection();
-            switch (_currentMovementState)
+            
+            // Executes code according the players current actions
+            switch (currentMovementState)
             {
                 case MovementSates.Idle:
                     HandleBasicMovement(_walkSpeed);
@@ -96,11 +100,6 @@ namespace Minibonk.Player
                     HandleSprint();
                     break;
             }
-        }
-
-        private void LateUpdate()
-        {
-            
         }
 
         #endregion

@@ -31,6 +31,8 @@ namespace Minibonk.Player
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+
+            _thirdPersonCamera.Lens.FieldOfView = _minFov;
         }
 
         // Update is called once per frame

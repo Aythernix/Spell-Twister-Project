@@ -732,6 +732,7 @@ MonoBehaviour:
   _sprintMultiplier: 1.5
   _cameraTransform: {fileID: 1719831700}
   _rb: {fileID: 1640223072}
+  currentMovementState: 5
 --- !u!54 &1640223072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -901,7 +902,7 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0.79, z: 0}
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0.6, y: 1, z: 0}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
