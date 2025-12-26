@@ -13,7 +13,9 @@ namespace Minibonk.Player
         [Header("Movement Settings")]
         [SerializeField] private float _moveSpeed = 10f;
 
-        [Header("References")] [SerializeField] private CharacterController _characterController;
+        [Header("References")] 
+        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Rigidbody _rb;
         
         // Private Fields
         
@@ -62,7 +64,8 @@ namespace Minibonk.Player
 
         private void FixedUpdate()
         {
-            _characterController.Move(new Vector3(_directionInput.x * _moveSpeed, 0, _directionInput.y * _moveSpeed));
+            
+            _rb.linearVelocity = new Vector3(_directionInput.x * _moveSpeed, _rb.linearVelocity.y, _directionInput.y * _moveSpeed);
         }
 
         #endregion
