@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Minibonk.Management;
+using RotaryHeart.Lib.PhysicsExtension;
 
 namespace Minibonk.Player
 {
@@ -27,6 +28,7 @@ namespace Minibonk.Player
         [Header("Ground Check Settings")]
         [SerializeField] private float _radius;
         [SerializeField] private float _distance;
+        [SerializeField] private LayerMask _groundLayer;
 
         [Header("References")] 
         [SerializeField] private Transform _cameraTransform;
@@ -87,7 +89,7 @@ namespace Minibonk.Player
         // Update is called once per frame
         void Update()
         {
-            
+            HandleGroundDetection();
         }
 
         private void FixedUpdate()
@@ -143,7 +145,12 @@ namespace Minibonk.Player
 
         private bool HandleGroundDetection()
         {
-            Physics.SphereCast(transform.position, _radius, Vector3.down, out RaycastHit hit, _distance);
+            RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(transform.position, _radius, Vector3.down, out RaycastHit hit, _distance, PreviewCondition.Both, 0.1f, Color.green, Color.red);
+            if (hit.collider != null && hit.collider.gameObject.layer == _groundLayer)
+            {
+                return true;
+            }
+
             return false;
         }
         

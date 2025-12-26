@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 754245953}
   - component: {fileID: 754245952}
   - component: {fileID: 754245955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: World Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,8 +730,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 8
   _sprintMultiplier: 1.7
-  _radius: 0
-  _distance: 0
+  _radius: 5
+  _distance: 5
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _cameraTransform: {fileID: 1719831700}
   _rb: {fileID: 1640223072}
   currentMovementState: 5
