@@ -1,18 +1,28 @@
 using System;
 using UnityEngine;
 using Minibonk.Management;
-using Unity.Mathematics;
 
 namespace Minibonk.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
+        public enum MovementSates
+        {
+            Sprinting,
+            Dashing,
+            Sliding,
+            Jumping,
+            WallJumping,
+            Idle,
+        }
+        
         #region Variables
 
         // Serialized Fields
         
         [Header("Movement Settings")]
-        [SerializeField] private float _moveSpeed = 10f;
+        [SerializeField] private float _walkSpeed = 10f;
+        [SerializeField] private float _sprintMultiplier = 1.5f;
 
         [Header("References")] 
         [SerializeField] private Transform _cameraTransform;
@@ -22,8 +32,15 @@ namespace Minibonk.Player
         
         // Inputs
         private InputManager _inputManager;
-        
         private Vector2 _directionInput;
+
+        // Movement Fields
+        private MovementSates _currentMovementState;
+
+        private Vector3 _cameraForward;
+        private Vector3 _cameraRight;
+
+        private Vector3 _moveDirection;
         
         // Public Fields
         
@@ -44,6 +61,9 @@ namespace Minibonk.Player
             // Assigns the direction input vector to Direction Input
             _inputManager.Player.Move.performed += context => _directionInput = context.ReadValue<Vector2>();
             _inputManager.Player.Move.canceled += context => _directionInput = Vector2.zero;
+
+            _inputManager.Player.Sprint.performed += context => _currentMovementState = MovementSates.Sprinting;
+            _inputManager.Player.Sprint.canceled += context => _currentMovementState = MovementSates.Idle;
         }
 
         private void OnDisable()
@@ -54,18 +74,33 @@ namespace Minibonk.Player
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            
         }
 
         private void FixedUpdate()
         {
-           PlayerWalk();
+            HandlePlayerDirection();
+            switch (_currentMovementState)
+            {
+                case MovementSates.Idle:
+                    HandleBasicMovement(_walkSpeed);
+                    break;
+                case MovementSates.Sprinting:
+                    HandleSprint();
+                    break;
+            }
+        }
+
+        private void LateUpdate()
+        {
+            
         }
 
         #endregion
@@ -73,27 +108,34 @@ namespace Minibonk.Player
         #region Private Methods
 
         // Basic Player Movement
-        private void PlayerWalk()
+        private void HandlePlayerDirection()
         {
             // Get camera forward and right, and ignore tilt
-            Vector3 forward = _cameraTransform.forward;
-            Vector3 right = _cameraTransform.right;
-            forward.y = 0;
-            right.y = 0;
-            forward.Normalize();
-            right.Normalize();
-            
-            Vector3 moveDirection = (forward * _directionInput.y) + (right * _directionInput.x);
-            
-            _rb.linearVelocity = new Vector3(moveDirection.x * _moveSpeed, _rb.linearVelocity.y, moveDirection.z * _moveSpeed);
+            _cameraForward = _cameraTransform.forward;
+            _cameraRight = _cameraTransform.right;
+            _cameraForward.y = 0;
+            _cameraRight.y = 0;
+            _cameraForward.Normalize();
+            _cameraRight.Normalize();
             
             // Rotate the player to match the camera
             // ONLY if the player is moving
-            if (moveDirection.sqrMagnitude > 0.01f)
+            if (_moveDirection.sqrMagnitude > 0.01f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720f * Time.fixedDeltaTime);
+                Quaternion targetRotation = Quaternion.LookRotation(_moveDirection, Vector3.up); 
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720f * Time.deltaTime);
             }
+        }
+
+        private void HandleBasicMovement(float speed)
+        {
+            _moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x);
+            _rb.linearVelocity = new Vector3(_moveDirection.x * speed, _rb.linearVelocity.y, _moveDirection.z * speed);
+        }
+
+        private void HandleSprint()
+        {
+            HandleBasicMovement(_walkSpeed * _sprintMultiplier);
         }
         #endregion
     }

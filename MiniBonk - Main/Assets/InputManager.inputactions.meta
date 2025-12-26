@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: Assets/!Project/Scripts/Management/InputManager.cs
   wrapperClassName: 
-  wrapperCodeNamespace: Core.Management
+  wrapperCodeNamespace: Minibonk.Management
