@@ -62,7 +62,7 @@ namespace Minibonk.Player
 
         private void FixedUpdate()
         {
-            
+            _characterController.Move(new Vector3(_directionInput.x * _moveSpeed, 0, _directionInput.y * _moveSpeed));
         }
 
         #endregion
