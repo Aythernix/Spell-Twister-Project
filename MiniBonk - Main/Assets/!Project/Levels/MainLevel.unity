@@ -730,8 +730,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 8
   _sprintMultiplier: 1.7
-  _radius: 5
-  _distance: 5
+  _jumpForce: 5
+  _jumpBuffer: 0.5
+  _coyoteTime: 0.5
+  _radius: 0.39
+  _distance: 0.7
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
