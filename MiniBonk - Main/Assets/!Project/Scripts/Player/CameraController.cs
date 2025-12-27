@@ -6,8 +6,6 @@ namespace Minibonk.Player
     public class CameraController : MonoBehaviour
     {
         #region Variables
-
-        // Serialized Fields
         [Header("References")] 
         [SerializeField] private CinemachineCamera _thirdPersonCamera;
         [SerializeField] private Rigidbody _rb;
@@ -15,18 +13,15 @@ namespace Minibonk.Player
         [Header("FOV Settings")]
         [SerializeField] private float _minFov = 60f;
         [SerializeField] private float _maxFov = 80f;
-        [SerializeField] private float _maxVelocityThreshold;
-        [SerializeField] private float _smoothSpeed = 5;
+        [SerializeField] private float _maxVelocityThreshold = 15f;
+        [SerializeField] private float _smoothSpeed = 5f;
         
-        // Private Fields
-        
-        // Public Fields
+     
 
         #endregion
 
         #region Unity Methods
         
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             Cursor.visible = false;
@@ -34,24 +29,28 @@ namespace Minibonk.Player
 
             _thirdPersonCamera.Lens.FieldOfView = _minFov;
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
             HandleSpeedFOV();
         }
+
         #endregion
 
         #region Private Methods
 
+        // Adjusts the Camera FOV based on the Rigidbody's current linear velocity
         private void HandleSpeedFOV()
         {
+            // Get horizontal velocity only (ignore falling/jumping)
             Vector3 horizontalVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
-
             float currentSpeed = horizontalVelocity.magnitude;
 
-            float targetFov = Mathf.Lerp(_minFov, _maxFov, currentSpeed / _maxVelocityThreshold);
+            // Calculate target FOV using Lerp
+            float t = currentSpeed / Mathf.Max(_maxVelocityThreshold, 0.01f);
+            float targetFov = Mathf.Lerp(_minFov, _maxFov, t);
 
+            // Smoothly apply the FOV change
             float currentFov = _thirdPersonCamera.Lens.FieldOfView;
             _thirdPersonCamera.Lens.FieldOfView = Mathf.Lerp(currentFov, targetFov, Time.deltaTime * _smoothSpeed);
         }
@@ -59,4 +58,3 @@ namespace Minibonk.Player
         #endregion
     }
 }
-

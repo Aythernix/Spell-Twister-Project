@@ -7,153 +7,161 @@ namespace Minibonk.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public enum MovementSates
-        {
-            Sprinting,
-            Dashing,
-            Sliding,
-            Jumping,
-            WallJumping,
-            Idle,
-        }
+        public enum MovementSates { Sprinting, Dashing, Sliding, Jumping, Idle }
         
         #region Variables
-
-        // Serialized Fields
-        
         [Header("Movement Settings")]
         [SerializeField] private float _walkSpeed = 10f;
         [SerializeField] private float _sprintMultiplier = 1.5f;
+        [SerializeField] private float _jumpForce = 5f;
+        [SerializeField] private float _jumpBuffer = 0.5f;
+        [SerializeField] private float _coyoteTime = 0.5f;
         
         [Header("Ground Check Settings")]
-        [SerializeField] private float _radius;
-        [SerializeField] private float _distance;
+        [SerializeField] private float _radius = 0.5f;
+        [SerializeField] private float _distance = 0.2f;
         [SerializeField] private LayerMask _groundLayer;
 
         [Header("References")] 
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private Rigidbody _rb;
         
-        // Private Fields
-        
-        // Inputs
         private InputManager _inputManager;
         private Vector2 _directionInput;
 
-        // Movement Fields
-        
+        private float _jumpBufferCounter;
+        private float _coyoteTimeCounter;
+       
+
+        // Boolean Flags
+        private bool _isSprintHeld;
 
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
-
         private Vector3 _moveDirection;
         
-        // Public Fields
-        
         public MovementSates currentMovementState = MovementSates.Idle;
-        
         #endregion
 
         #region Unity Methods
-
-        private void Awake()
-        {
-            _inputManager = new InputManager();
-        }
+        private void Awake() => _inputManager = new InputManager();
 
         private void OnEnable()
         {
             _inputManager.Player.Enable();
-
-            // Subscribes to the move event
-            // Assigns the direction input vector to Direction Input
             _inputManager.Player.Move.performed += context => _directionInput = context.ReadValue<Vector2>();
-            _inputManager.Player.Move.canceled += context => _directionInput = Vector2.zero;
+            _inputManager.Player.Move.canceled += _ => _directionInput = Vector2.zero;
 
-            _inputManager.Player.Sprint.performed += context => currentMovementState = MovementSates.Sprinting;
-            _inputManager.Player.Sprint.canceled += context => currentMovementState = MovementSates.Idle;
-        }
+            // Flipped to booleans so they can overlap
+            _inputManager.Player.Sprint.performed += _ => _isSprintHeld = true;
+            _inputManager.Player.Sprint.canceled += _ => _isSprintHeld = false;
 
-        private void OnDisable()
-        {
-            _inputManager.Player.Disable();
-        }
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-            
+            _inputManager.Player.Jump.performed += _ => _jumpBufferCounter = _jumpBuffer;
             
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            HandleGroundDetection();
-        }
+        private void OnDisable() => _inputManager.Player.Disable();
 
         private void FixedUpdate()
         {
-            HandlePlayerDirection();
+            // Update Directions
+            UpdateCameraVectors();
+            bool isGrounded = HandleGroundDetection();
+
+            // State Machine
+            if (!isGrounded)
+            {
+                currentMovementState = MovementSates.Jumping;
+            }
+            else if (_isSprintHeld && _directionInput.sqrMagnitude > 0.01f)
+            {
+                currentMovementState = MovementSates.Sprinting;
+            }
+            else
+            {
+                currentMovementState = MovementSates.Idle;
+            }
             
-            // Executes code according the players current actions
+            HandleJumpCheck(isGrounded);
+
+            // Execute Movement
             switch (currentMovementState)
             {
                 case MovementSates.Idle:
-                    HandleBasicMovement(_walkSpeed);
+                    ApplyVelocity(_walkSpeed);
                     break;
                 case MovementSates.Sprinting:
-                    HandleSprint();
+                    ApplyVelocity(_walkSpeed * _sprintMultiplier);
+                    break;
+                case MovementSates.Jumping:
+                    ApplyVelocity(_walkSpeed); // Allow air control
                     break;
             }
-        }
 
+           
+
+            HandleRotation();
+        }
         #endregion
 
         #region Private Methods
-
-        // Basic Player Movement
-        private void HandlePlayerDirection()
+        private void UpdateCameraVectors()
         {
-            // Get camera forward and right, and ignore tilt
-            _cameraForward = _cameraTransform.forward;
-            _cameraRight = _cameraTransform.right;
-            _cameraForward.y = 0;
-            _cameraRight.y = 0;
-            _cameraForward.Normalize();
-            _cameraRight.Normalize();
-            
-            // Rotate the player to match the camera
-            // ONLY if the player is moving
+            _cameraForward = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
+            _cameraRight = Vector3.ProjectOnPlane(_cameraTransform.right, Vector3.up).normalized;
+        }
+
+        private void HandleRotation()
+        {
             if (_moveDirection.sqrMagnitude > 0.01f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(_moveDirection, Vector3.up); 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720f * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720f * Time.fixedDeltaTime);
             }
         }
         
-        private void HandleBasicMovement(float speed)
+        private void ApplyVelocity(float speed)
         {
             _moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x);
             _rb.linearVelocity = new Vector3(_moveDirection.x * speed, _rb.linearVelocity.y, _moveDirection.z * speed);
         }
 
-        private void HandleSprint()
-        {
-            HandleBasicMovement(_walkSpeed * _sprintMultiplier);
-        }
-
         private bool HandleGroundDetection()
         {
-            RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(transform.position, _radius, Vector3.down, out RaycastHit hit, _distance, PreviewCondition.Both, 0.1f, Color.green, Color.red);
-            if (hit.collider != null && hit.collider.gameObject.layer == _groundLayer)
+            return RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(transform.position, _radius, Vector3.down, out RaycastHit hit, _distance, _groundLayer, PreviewCondition.Both, 0.1f, Color.green, Color.red);
+        }
+
+        private void HandleJumpCheck(bool groundCheck)
+        {
+            
+            _jumpBufferCounter -= Time.fixedDeltaTime;
+                
+
+            if (!groundCheck)
             {
-                return true;
+                _coyoteTimeCounter -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                _coyoteTimeCounter = _coyoteTime;
             }
 
-            return false;
+            if (_coyoteTimeCounter > 0 && _jumpBufferCounter > 0)
+            {
+                PerformJump();
+            }
         }
-        
+
+        private void PerformJump()
+        {
+            // Reset Y velocity before jump for consistent height
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+
+            // Consume Counters preventing double jump
+            _jumpBufferCounter = 0;
+            _coyoteTimeCounter = 0;
+        }
         #endregion
     }
 }
