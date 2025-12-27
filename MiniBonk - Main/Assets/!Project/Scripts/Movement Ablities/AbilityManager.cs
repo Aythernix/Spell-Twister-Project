@@ -24,8 +24,9 @@ namespace Minibonk.MovementAbilities
         {
             _inputManager.Player.Enable();
             _inputManager.Player.Sprint.performed += context => TriggerAbility(a => a is SprintAbility);
+            _inputManager.Player.Sprint.canceled += context => FinaliseAbility(a => a is SprintAbility);
         }
-
+        
         private void Start()
         {
             foreach (var abilities in _unlockedAbilities)
@@ -47,6 +48,17 @@ namespace Minibonk.MovementAbilities
                 return;
             }
             ability.Execute();
+        }
+
+        private void FinaliseAbility(Predicate<MovementAbility> abilityName)
+        {
+            MovementAbility ability = _unlockedAbilities.Find(abilityName);
+            if (ability == null)
+            {
+                Debug.LogWarning($"Ability: {abilityName} is not unlocked");
+                return;
+            }
+            ability.Finalise();
         }
         
         

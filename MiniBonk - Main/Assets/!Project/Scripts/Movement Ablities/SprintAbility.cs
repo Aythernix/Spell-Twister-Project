@@ -35,6 +35,11 @@ namespace Minibonk.MovementAbilities
         {
             _movement.speedMultiplier = _sprintMultiplier;
         }
+
+        public override void Finalise()
+        {
+            _movement.speedMultiplier = 1f;
+        }
     }
 }
 

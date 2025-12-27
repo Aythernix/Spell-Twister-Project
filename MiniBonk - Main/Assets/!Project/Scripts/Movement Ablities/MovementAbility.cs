@@ -10,6 +10,7 @@ namespace Minibonk.MovementAbilities
 
         public abstract void Initialize(GameObject player);
         public abstract void Execute();
+        public abstract void Finalise();
     }
 }
 

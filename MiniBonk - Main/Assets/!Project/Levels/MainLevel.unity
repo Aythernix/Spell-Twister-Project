@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 1640223070}
   - component: {fileID: 1640223069}
   - component: {fileID: 1640223068}
+  - component: {fileID: 1640223074}
   - component: {fileID: 1640223073}
   - component: {fileID: 1640223071}
   - component: {fileID: 1640223067}
@@ -729,7 +730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 8
-  _sprintMultiplier: 1.7
   _jumpForce: 5
   _jumpBuffer: 0.5
   _coyoteTime: 0.5
@@ -786,6 +786,22 @@ MonoBehaviour:
   _maxFov: 80
   _maxVelocityThreshold: 20
   _smoothSpeed: 5
+--- !u!114 &1640223074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640223065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d1283f53c0cad46b10bd82ee689e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _availableAbilities:
+  - {fileID: 11400000, guid: 08b4b4240fa3c104eac04fd4649df2ca, type: 2}
+  _unlockedAbilities:
+  - {fileID: 11400000, guid: 08b4b4240fa3c104eac04fd4649df2ca, type: 2}
 --- !u!1 &1719831695
 GameObject:
   m_ObjectHideFlags: 0

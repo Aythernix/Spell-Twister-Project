@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6d329afba95d34e94dbdc15d3023f4, type: 3}
   m_Name: Sprtint Ability
   m_EditorClassIdentifier: 
-  AbilityName: 
+  AbilityName: Sprint Ability
   Cooldown: 0
   _sprintMultiplier: 1.5
