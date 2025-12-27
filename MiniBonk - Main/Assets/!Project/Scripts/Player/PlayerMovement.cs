@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using Minibonk.Management;
 using RotaryHeart.Lib.PhysicsExtension;
-using UnityEngine.Serialization;
 
 namespace Minibonk.Player
 {
@@ -13,6 +12,7 @@ namespace Minibonk.Player
         #region Variables
         [Header("Movement Settings")]
         [SerializeField] private float _walkSpeed = 10f;
+        [SerializeField] private float _sprintMultiplier = 1.5f;
         [SerializeField] private float _jumpForce = 5f;
         [SerializeField] private float _jumpBuffer = 0.5f;
         [SerializeField] private float _coyoteTime = 0.5f;
@@ -35,16 +35,12 @@ namespace Minibonk.Player
 
         // Boolean Flags
         private bool _isSprintHeld;
-        
-        public MovementSates currentMovementState = MovementSates.Idle;
 
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
         private Vector3 _moveDirection;
         
-        public float speedMultiplier { get; set; } = 1f;
-        
-        
+        public MovementSates currentMovementState = MovementSates.Idle;
         #endregion
 
         #region Unity Methods
@@ -95,12 +91,15 @@ namespace Minibonk.Player
                     ApplyVelocity(_walkSpeed);
                     break;
                 case MovementSates.Sprinting:
-                    ApplyVelocity(_walkSpeed * speedMultiplier);
+                    ApplyVelocity(_walkSpeed * _sprintMultiplier);
                     break;
                 case MovementSates.Jumping:
                     ApplyVelocity(_walkSpeed); // Allow air control
                     break;
             }
+
+           
+
             HandleRotation();
         }
         #endregion
