@@ -1,19 +1,16 @@
-using UnityEngine;
-
 namespace Minibonk.MovementAbilities
 {
-    public class ImpulseAbility : MonoBehaviour
+    public abstract class ImpulseAbility : MovementAbility
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        protected override void OnExecute()
         {
-
+            ApplyImpulse();
+            Finalise(); 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        /// <summary>
+        /// Implement one time logic.
+        /// </summary>
+        protected abstract void ApplyImpulse();
     }
 }

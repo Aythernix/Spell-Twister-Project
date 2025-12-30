@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace Minibonk.MovementAbilities
 {
+    
+    //TODO REWORK THIS SCRIPT
     public class AbilityManager : MonoBehaviour
     {
         #region Variables

@@ -1,36 +1,25 @@
-using Minibonk.MovementAbilities;
-using Minibonk.Player;
-using UnityEngine;
-using UnityEngine.UI;
-
 namespace Minibonk.MovementAbilities
 {
     public abstract class ToggleAbility : MovementAbility
     {
-        [SerializeField] protected float _multiplier = 1.5f;
         protected bool _isActive;
 
-        public override void Execute()
+        protected override void OnExecute()
         {
-            // Only allow starting if not on cooldown
-            if (IsOnCooldown) return;
-
             _isActive = true;
-            Toggle(true);
+            SetToggle(true);
         }
 
-        public override void Finalise()
+        protected override void OnFinalise()
         {
             if (!_isActive) return;
-
             _isActive = false;
-            Toggle(false);
-
-            // Start the cooldown only when the ability is finished
-            StartCooldown();
+            SetToggle(false);
         }
 
-        protected abstract void Toggle(bool status);
+        /// <summary>
+        /// Implement custom ability logic.
+        /// </summary>
+        protected abstract void SetToggle(bool state);
     }
 }
-
