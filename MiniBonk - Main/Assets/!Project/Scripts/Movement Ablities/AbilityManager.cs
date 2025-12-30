@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using Minibonk.Management;
@@ -9,8 +8,13 @@ namespace Minibonk.MovementAbilities
     public class AbilityManager : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private List<MovementAbility> _availableAbilities;
-        [SerializeField] private List<MovementAbility> _unlockedAbilities;
+        
+        [Header("Ability Setup")]
+        // We keep the list for the Inspector, but we move it to a Dictionary for speed
+        [SerializeField] private List<MovementAbility> _startingAbilities;
+
+        // Fast lookup: Key is the Type (e.g., SprintAbility), Value is the specific instance
+        private Dictionary<Type, MovementAbility> _abilityCache = new Dictionary<Type, MovementAbility>();
 
         private InputManager _inputManager;
         
@@ -23,15 +27,21 @@ namespace Minibonk.MovementAbilities
         private void OnEnable()
         {
             _inputManager.Player.Enable();
-            _inputManager.Player.Sprint.performed += context => TriggerAbility(a => a is SprintAbility);
-            _inputManager.Player.Sprint.canceled += context => FinaliseAbility(a => a is SprintAbility);
+
+            // OPTIMIZED: No searching. We ask the dictionary for the specific type.
+            _inputManager.Player.Sprint.performed += _ => GetAbility<ToggleAbility>()?.Execute();
+            _inputManager.Player.Sprint.canceled += _ => GetAbility<ToggleAbility>()?.Finalise();
+            
+            // Example for a Dash:
+            // _inputManager.Player.Dash.performed += _ => GetAbility<DashAbility>()?.Execute();
         }
         
         private void Start()
         {
-            foreach (var abilities in _unlockedAbilities)
+            // Initialize starting abilities
+            foreach (var abilityAsset in _startingAbilities)
             {
-                abilities.Initialize(gameObject);
+                UnlockAbility(abilityAsset);
             }
         }
 
@@ -39,42 +49,39 @@ namespace Minibonk.MovementAbilities
 
         #region Private Methods
         
-        private void TriggerAbility(Predicate<MovementAbility> abilityName)
+        // This is O(1) complexity—the fastest possible way to get an ability
+        private T GetAbility<T>() where T : MovementAbility
         {
-            MovementAbility ability = _unlockedAbilities.Find(abilityName);
-            if (ability == null)
+            if (_abilityCache.TryGetValue(typeof(T), out MovementAbility ability))
             {
-                Debug.LogWarning($"Ability: {abilityName} is not unlocked");
-                return;
+                return (T)ability;
             }
-            ability.Execute();
+            return null;
         }
-
-        private void FinaliseAbility(Predicate<MovementAbility> abilityName)
-        {
-            MovementAbility ability = _unlockedAbilities.Find(abilityName);
-            if (ability == null)
-            {
-                Debug.LogWarning($"Ability: {abilityName} is not unlocked");
-                return;
-            }
-            ability.Finalise();
-        }
-        
         
         #endregion
 
         #region Public API
 
-        public void UnlockAbility(Predicate<MovementAbility> abilityName)
+        public void UnlockAbility(MovementAbility abilityAsset)
         {
-            MovementAbility ability = _availableAbilities.Find(abilityName);
-            _unlockedAbilities.Add(ability);
-            ability.Initialize(this.gameObject);
+            if (abilityAsset == null) return;
+
+            Type type = abilityAsset.GetType();
+
+            if (!_abilityCache.ContainsKey(type))
+            {
+                // 1. Create a unique instance (Safe for team-play/cooldowns)
+                MovementAbility instance = Instantiate(abilityAsset);
+                
+                // 2. Setup
+                instance.Initialize(this.gameObject);
+                
+                // 3. Store in Dictionary
+                _abilityCache.Add(type, instance);
+            }
         }
 
         #endregion
-       
     } 
 }
-
