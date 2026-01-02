@@ -15,7 +15,8 @@ namespace Minibonk.MovementAbilities
         public List<MovementAbility> allAvailAbilities;
         public List<MovementAbility> unlockedAbilities;
 
-        private Dictionary<string, MovementAbility> _abilityDatabase = new Dictionary<string, MovementAbility>();
+        private readonly Dictionary<string, MovementAbility> _abilityNameDictionary = new Dictionary<string, MovementAbility>();
+        private readonly Dictionary<int, MovementAbility> _abilityIdDictionary = new Dictionary<int, MovementAbility>();
 
         #endregion
 
@@ -23,31 +24,39 @@ namespace Minibonk.MovementAbilities
 
         private void Awake()
         {
-            BuildDatabase();
+            BuildDictionaries();
         }
 
         #endregion
         
         #region Private Methods
 
-        private void BuildDatabase()
+        // Builds the ability lookup dictionaries
+        private void BuildDictionaries()
         {
             foreach (var ability in allAvailAbilities)
             {
                 if (ability == null) continue;
                 
-                _abilityDatabase.TryAdd(ability.abilityName, ability);
+                _abilityNameDictionary.TryAdd(ability.abilityName, ability);
+                _abilityIdDictionary.TryAdd(ability.abilityID, ability);
             }
         }
         
+        // Looks up the abilities
         private MovementAbility AbilityLookup(string abilityName)
         {
-            return _abilityDatabase.GetValueOrDefault(abilityName);
+            return _abilityNameDictionary.GetValueOrDefault(abilityName);
+        }
+        private MovementAbility AbilityLookup(int abilityID)
+        {
+            return _abilityNameDictionary.GetValueOrDefault(abilityID.ToString());
         }
         #endregion
 
         #region Public API
 
+        // Allows abilities to be unlocked
         public void UnlockAbility(string abilityName)
         {
             MovementAbility ability = AbilityLookup(abilityName);
@@ -59,7 +68,12 @@ namespace Minibonk.MovementAbilities
                 unlockedAbilities.Add(instance);
             }
         }
+        public void UnlockAbility(int abilityID)
+        {
+            UnlockAbility(AbilityLookup(abilityID).abilityName);
+        }
 
+        // DEBUG
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F1))

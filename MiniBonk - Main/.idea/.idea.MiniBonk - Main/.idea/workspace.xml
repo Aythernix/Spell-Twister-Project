@@ -7,6 +7,7 @@
     <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/Base Class/MovementAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/Base Class/MovementAbility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +102,7 @@
       <workItem from="1766760828443" duration="24481000" />
       <workItem from="1766798564343" duration="7059000" />
       <workItem from="1767030930348" duration="15939000" />
-      <workItem from="1767365633822" duration="4030000" />
+      <workItem from="1767365633822" duration="6926000" />
     </task>
     <servers />
   </component>
