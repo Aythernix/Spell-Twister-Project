@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Minibonk.MovementAbilities
 {
     // TODO Implement Inventory Ability Slots, Replace Debug Inputs With Proper Inputs, Add More Edge Case Checks
-    // TODO Avoid Duplication, Add Comments and summaries
+    // TODO Add Comments and summaries
     public class AbilityManager : MonoBehaviour
     {
         #region Vairables
@@ -15,8 +15,12 @@ namespace Minibonk.MovementAbilities
         public List<MovementAbility> allAvailAbilities;
         public List<MovementAbility> unlockedAbilities;
 
-        private readonly Dictionary<string, MovementAbility> _abilityNameDictionary = new Dictionary<string, MovementAbility>();
-        private readonly Dictionary<int, MovementAbility> _abilityIdDictionary = new Dictionary<int, MovementAbility>();
+        // Fast Lookup tables
+        private readonly Dictionary<string, MovementAbility> _abilityDb = new();
+        private readonly Dictionary<int, MovementAbility> _abilityIdDb = new();
+
+        // Tracks Unlocked Ability IDs
+        private readonly HashSet<int> unlockedAblityIDs = new();
 
         #endregion
 
@@ -38,19 +42,19 @@ namespace Minibonk.MovementAbilities
             {
                 if (ability == null) continue;
                 
-                _abilityNameDictionary.TryAdd(ability.abilityName, ability);
-                _abilityIdDictionary.TryAdd(ability.abilityID, ability);
+                _abilityDb.TryAdd(ability.abilityName, ability);
+                _abilityIdDb.TryAdd(ability.abilityID, ability);
             }
         }
         
         // Looks up the abilities
         private MovementAbility AbilityLookup(string abilityName)
         {
-            return _abilityNameDictionary.GetValueOrDefault(abilityName);
+            return _abilityDb.GetValueOrDefault(abilityName);
         }
         private MovementAbility AbilityLookup(int abilityID)
         {
-            return _abilityNameDictionary.GetValueOrDefault(abilityID.ToString());
+            return _abilityIdDb.GetValueOrDefault(abilityID);
         }
         #endregion
 
@@ -61,11 +65,13 @@ namespace Minibonk.MovementAbilities
         {
             MovementAbility ability = AbilityLookup(abilityName);
 
-            if (ability != null && !unlockedAbilities.Contains(ability))
+            if (ability != null && !unlockedAblityIDs.Contains(ability.abilityID))
             {
                 MovementAbility instance = Instantiate(ability);
                 instance.Initialize(gameObject);
+                
                 unlockedAbilities.Add(instance);
+                unlockedAblityIDs.Add(instance.abilityID);
             }
         }
         public void UnlockAbility(int abilityID)
