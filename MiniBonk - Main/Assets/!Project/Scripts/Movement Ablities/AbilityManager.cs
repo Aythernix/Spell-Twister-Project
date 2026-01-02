@@ -1,87 +1,81 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Minibonk.Management;
 using UnityEngine;
 
 namespace Minibonk.MovementAbilities
 {
-    
-    //TODO REWORK THIS SCRIPT
+    // TODO Implement Inventory Ability Slots, Replace Debug Inputs With Proper Inputs, Add More Edge Case Checks
+    // TODO Avoid Duplication, Add Comments and summaries
     public class AbilityManager : MonoBehaviour
     {
-        #region Variables
-        
-        [Header("Ability Setup")]
-        // We keep the list for the Inspector, but we move it to a Dictionary for speed
-        [SerializeField] private List<MovementAbility> _startingAbilities;
+        #region Vairables
 
-        // Fast lookup: Key is the Type (e.g., SprintAbility), Value is the specific instance
-        private Dictionary<Type, MovementAbility> _abilityCache = new Dictionary<Type, MovementAbility>();
+        public List<MovementAbility> allAvailAbilities;
+        public List<MovementAbility> unlockedAbilities;
 
-        private InputManager _inputManager;
-        
+        private Dictionary<string, MovementAbility> _abilityDatabase = new Dictionary<string, MovementAbility>();
+
         #endregion
 
         #region Unity Methods
 
-        private void Awake() => _inputManager = new InputManager();
-
-        private void OnEnable()
+        private void Awake()
         {
-            _inputManager.Player.Enable();
-
-            // OPTIMIZED: No searching. We ask the dictionary for the specific type.
-            _inputManager.Player.Sprint.performed += _ => GetAbility<ToggleAbility>()?.Execute();
-            _inputManager.Player.Sprint.canceled += _ => GetAbility<ToggleAbility>()?.Finalise();
-            
-            // Example for a Dash:
-            // _inputManager.Player.Dash.performed += _ => GetAbility<DashAbility>()?.Execute();
-        }
-        
-        private void Start()
-        {
-            // Initialize starting abilities
-            foreach (var abilityAsset in _startingAbilities)
-            {
-                UnlockAbility(abilityAsset);
-            }
+            BuildDatabase();
         }
 
         #endregion
-
-        #region Private Methods
         
-        // This is O(1) complexity—the fastest possible way to get an ability
-        private T GetAbility<T>() where T : MovementAbility
+        #region Private Methods
+
+        private void BuildDatabase()
         {
-            if (_abilityCache.TryGetValue(typeof(T), out MovementAbility ability))
+            foreach (var ability in allAvailAbilities)
             {
-                return (T)ability;
+                if (ability == null) continue;
+                
+                _abilityDatabase.TryAdd(ability.abilityName, ability);
             }
-            return null;
         }
         
+        private MovementAbility AbilityLookup(string abilityName)
+        {
+            return _abilityDatabase.GetValueOrDefault(abilityName);
+        }
         #endregion
 
         #region Public API
 
-        public void UnlockAbility(MovementAbility abilityAsset)
+        public void UnlockAbility(string abilityName)
         {
-            if (abilityAsset == null) return;
+            MovementAbility ability = AbilityLookup(abilityName);
 
-            Type type = abilityAsset.GetType();
-
-            if (!_abilityCache.ContainsKey(type))
+            if (ability != null && !unlockedAbilities.Contains(ability))
             {
-                // 1. Create a unique instance (Safe for team-play/cooldowns)
-                MovementAbility instance = Instantiate(abilityAsset);
-                
-                // 2. Setup
-                instance.Initialize(this.gameObject);
-                
-                // 3. Store in Dictionary
-                _abilityCache.Add(type, instance);
+                MovementAbility instance = Instantiate(ability);
+                instance.Initialize(gameObject);
+                unlockedAbilities.Add(instance);
             }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                UnlockAbility("Sprint");
+                Debug.Log("unlocked");
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                foreach (var VARIABLE in unlockedAbilities)
+                {
+                    VARIABLE.Execute();
+                    Debug.Log("Executed");
+                }
+            }
+            
         }
 
         #endregion
