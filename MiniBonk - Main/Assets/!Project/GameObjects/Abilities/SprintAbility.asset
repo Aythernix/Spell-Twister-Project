@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e2965f4c30fea4d86398f5a8351133, type: 3}
   m_Name: SprintAbility
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: Sprint
+  abilityID: 0
   cooldownTime: 0
   staminaCost: 0
-  _sprintMultipler: 0
+  _sprintMultipler: 1.5

@@ -798,10 +798,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d1283f53c0cad46b10bd82ee689e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _availableAbilities:
-  - {fileID: 11400000, guid: 08b4b4240fa3c104eac04fd4649df2ca, type: 2}
-  _unlockedAbilities:
-  - {fileID: 11400000, guid: 08b4b4240fa3c104eac04fd4649df2ca, type: 2}
+  allAvailAbilities:
+  - {fileID: 11400000, guid: 87b15cc4493e6af458b5558458ec66e1, type: 2}
+  unlockedAbilities: []
 --- !u!1 &1719831695
 GameObject:
   m_ObjectHideFlags: 0
