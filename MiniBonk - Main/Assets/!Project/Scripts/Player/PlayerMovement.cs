@@ -88,6 +88,7 @@ namespace Minibonk.Player
             
             HandleJumpCheck(isGrounded);
 
+            // TODO Refactor to interact better with new abilities system
             // Execute Movement
             switch (currentMovementState)
             {
