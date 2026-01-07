@@ -15,7 +15,7 @@ namespace Minibonk.MovementAbilities
 
         #endregion
 
-        protected override void SetToggle(bool state)
+        protected override void OnToggle(bool state)
         {
             switch (state)
             {
@@ -27,6 +27,7 @@ namespace Minibonk.MovementAbilities
                     break;
             }
         }
+        
     }  
 }
 

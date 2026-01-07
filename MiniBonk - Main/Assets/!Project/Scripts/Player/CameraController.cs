@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Minibonk.Player
 {
+    // TODO Add Proper Comments
     public class CameraController : MonoBehaviour
     {
         #region Variables

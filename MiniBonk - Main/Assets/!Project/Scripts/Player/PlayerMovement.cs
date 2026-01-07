@@ -8,6 +8,7 @@ namespace Minibonk.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
+        // TODO Add Proper Comments
         public enum MovementSates { Sprinting, Dashing, Sliding, Jumping, Idle }
         
         #region Variables

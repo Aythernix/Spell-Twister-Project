@@ -2,24 +2,26 @@ namespace Minibonk.MovementAbilities
 {
     public abstract class ToggleAbility : MovementAbility
     {
-        protected bool _isActive;
+        protected bool _isActive { get; private set; }
 
         protected override void OnExecute()
         {
             _isActive = true;
-            SetToggle(true);
+            OnToggle(true);
         }
 
         protected override void OnFinalise()
         {
             if (!_isActive) return;
             _isActive = false;
-            SetToggle(false);
+            OnToggle(false);
         }
 
         /// <summary>
-        /// Implement custom ability logic.
+        /// Implement Custom Ability Logic
         /// </summary>
-        protected abstract void SetToggle(bool state);
+        /// <param name="state">The current state of the toggle, <see langword="true"/> or <see langword="false"/> </param> 
+        protected abstract void OnToggle(bool state);
+        
     }
 }
