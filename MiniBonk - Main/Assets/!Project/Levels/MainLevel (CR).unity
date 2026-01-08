@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ca253faf89a1d914ebd98dd749629f64, type: 2}
   player: {fileID: 1640223070}
+  navMeshAgent: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.110414475, y: 2.4797057e-14, z: -2.7547978e-15, w: 0.99388564}
-  m_LocalPosition: {x: 1.64, y: 4.4845877, z: -3.05916}
+  m_LocalPosition: {x: 1.22, y: 4.4845877, z: -3.05916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,7 +893,7 @@ Transform:
   m_GameObject: {fileID: 1640223065}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.64, y: 1.74, z: 3.14}
+  m_LocalPosition: {x: 1.22, y: 1.74, z: 3.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
