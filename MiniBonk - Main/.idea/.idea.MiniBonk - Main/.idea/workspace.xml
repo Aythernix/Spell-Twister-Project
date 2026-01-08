@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/Enemy.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/TestEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/MovementAbility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/SprintAbility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@eb5635ad590d/Runtime/NavMeshSurface.cs" root0="SKIP_HIGHLIGHTING" />
@@ -99,7 +96,7 @@
       <updated>1766760826546</updated>
       <workItem from="1766760828443" duration="24481000" />
       <workItem from="1766798564343" duration="7059000" />
-      <workItem from="1767893443812" duration="689000" />
+      <workItem from="1767893443812" duration="1094000" />
     </task>
     <servers />
   </component>

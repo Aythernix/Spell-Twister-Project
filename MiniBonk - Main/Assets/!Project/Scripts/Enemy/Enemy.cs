@@ -47,10 +47,13 @@ namespace MiniBonk.Enemy
         }
         protected virtual void FixedUpdate()
         {
-
             navMeshAgent.SetDestination(player.position);
+            float distance = Vector3.Distance(transform.position, player.position);
+            if (distance <= data.attackRange)
+            {
+                Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+            }
         }
-
         public abstract void Attack();
     }
 }
