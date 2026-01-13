@@ -52,14 +52,15 @@ namespace Minibonk.Player
 
         private void OnEnable()
         {
-            _playerHandler.events.OnMove += context => _directionInput = context;
-
-            // Flipped to booleans so they can overlap
-            // _inputManager.Player.Sprint.performed += _ => _isSprintHeld = true;
-            // _inputManager.Player.Sprint.canceled += _ => _isSprintHeld = false;
-
-            _playerHandler.events.OnJumpStarted += () => _jumpBufferCounter = _jumpBuffer;
+            _playerHandler.events.OnMove += HandleMoveInput;
+            _playerHandler.events.OnJumpStarted += HandleJumpInput;
             
+        }
+        
+        private void OnDisable()
+        {
+            _playerHandler.events.OnMove -= HandleMoveInput;
+            _playerHandler.events.OnJumpStarted -= HandleJumpInput;
         }
 
         private void FixedUpdate()
@@ -77,6 +78,8 @@ namespace Minibonk.Player
         #endregion
 
         #region Private Methods
+        private void HandleMoveInput(Vector2 input) => _directionInput = input;
+        private void HandleJumpInput() => _jumpBufferCounter = _jumpBuffer;
         private void UpdateCameraVectors()
         {
             _cameraForward = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;

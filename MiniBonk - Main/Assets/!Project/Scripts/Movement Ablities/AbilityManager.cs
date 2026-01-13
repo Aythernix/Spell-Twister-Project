@@ -10,7 +10,6 @@ namespace Minibonk.MovementAbilities
     // TODO Add Comments and summaries
     public class AbilityManager : PlayerSystem
     {
-        public enum AbilitySlot{Slot1 = 1, Slot2 = 2, Slot3 = 3}
         
         #region Vairables
 
@@ -35,10 +34,20 @@ namespace Minibonk.MovementAbilities
         protected override void Awake()
         {
             base.Awake();
-            _playerHandler.events.OnAbilityPressed += index => TriggerAbilitySlot(index);
-            _playerHandler.events.OnAbilityReleased += index => FinaliseAbilitySlot(index);
             BuildDictionaries();
         }
+
+        private void OnEnable()
+        {
+            _playerHandler.events.OnAbilityPressed += TriggerAbilitySlot;
+            _playerHandler.events.OnAbilityReleased += FinaliseAbilitySlot;
+        }
+        private void OnDisable()
+        {
+            _playerHandler.events.OnAbilityPressed -= TriggerAbilitySlot;
+            _playerHandler.events.OnAbilityReleased -= FinaliseAbilitySlot;
+        }
+        
 
         #endregion
         
@@ -87,8 +96,9 @@ namespace Minibonk.MovementAbilities
                 if (equippedSlots[i] == null) 
                 { 
                     equippedSlots[i] = instance;
+                    break;
                 }
-                break;
+                
             }
             
         }
