@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Minibonk.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : PlayerSystem
     {
         // TODO Add Proper Comments
         public enum MovementSates { Sprinting, Dashing, Sliding, Jumping, Idle }
@@ -49,19 +49,21 @@ namespace Minibonk.Player
         #endregion
 
         #region Unity Methods
-        private void Awake() => _inputManager = new InputManager();
+
+        protected override void Awake()
+        {
+            
+        } 
 
         private void OnEnable()
         {
-            _inputManager.Player.Enable();
-            _inputManager.Player.Move.performed += context => _directionInput = context.ReadValue<Vector2>();
-            _inputManager.Player.Move.canceled += _ => _directionInput = Vector2.zero;
+            _playerHandler.events.OnMove += context => _directionInput = context;
 
             // Flipped to booleans so they can overlap
             _inputManager.Player.Sprint.performed += _ => _isSprintHeld = true;
             _inputManager.Player.Sprint.canceled += _ => _isSprintHeld = false;
 
-            _inputManager.Player.Jump.performed += _ => _jumpBufferCounter = _jumpBuffer;
+            _playerHandler.events.OnJumpStarted += () => _jumpBufferCounter = _jumpBuffer;
             
         }
 
