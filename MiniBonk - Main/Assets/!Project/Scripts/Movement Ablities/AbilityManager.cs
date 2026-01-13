@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Minibonk.Management;
+using Minibonk.Player;
 using UnityEngine;
 
 namespace Minibonk.MovementAbilities
@@ -65,7 +65,7 @@ namespace Minibonk.MovementAbilities
         {
             return _abilityIdDb.GetValueOrDefault(abilityID);
         }
-
+        // TODO Add Unequiping
         private void EquipAbility(int abilityID, int slotIndex)
         {
             

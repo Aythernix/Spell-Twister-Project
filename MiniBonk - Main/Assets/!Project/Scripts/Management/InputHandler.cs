@@ -1,5 +1,6 @@
 using System;
 using Minibonk.Management;
+using Minibonk.Player;
 using UnityEngine;
 
 namespace Minibonk.Management
@@ -10,7 +11,8 @@ namespace Minibonk.Management
 
         [SerializeField] private InputManager _inputManager;
         #endregion
-       
+
+        #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
@@ -40,5 +42,6 @@ namespace Minibonk.Management
         {
         
         }
+        #endregion
     }
 }
