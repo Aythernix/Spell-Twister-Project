@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Minibonk.Player
 {
+    // TODO Add Comments and summaries
     public class PlayerHandler : MonoBehaviour
     {
         #region Variables

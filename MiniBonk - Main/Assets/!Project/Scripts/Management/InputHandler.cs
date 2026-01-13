@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Minibonk.Management
 {
+    // TODO Add Comments and summaries
     public class InputHandler : PlayerSystem
     {
         #region Variables

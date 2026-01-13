@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerSystems/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerSystems/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerSystems/PlayerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerSystems/PlayerSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +23,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b530a286076d43918b6b634b25e40ac21e0000/63/cc621bbd/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b530a286076d43918b6b634b25e40ac21e0000/76/c82f41ce/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityClasses/Dash.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityClasses/Sprint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/Sub Classes/ImpulseAbility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" root0="FORCE_HIGHLIGHTING" />
@@ -105,7 +110,7 @@
       <workItem from="1767389952501" duration="4407000" />
       <workItem from="1767539274704" duration="368000" />
       <workItem from="1767808765871" duration="2415000" />
-      <workItem from="1768329302851" duration="14554000" />
+      <workItem from="1768329302851" duration="15955000" />
     </task>
     <servers />
   </component>

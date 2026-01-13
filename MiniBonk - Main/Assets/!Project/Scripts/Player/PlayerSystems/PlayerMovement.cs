@@ -8,7 +8,7 @@ namespace Minibonk.Player
 {
     public class PlayerMovement : PlayerSystem
     {
-        // TODO Add Proper Comments
+        // TODO Add Comments and summaries
         public enum MovementSates { Sprinting, Dashing, Sliding, Jumping, Idle }
         
         #region Variables
