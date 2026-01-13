@@ -1,15 +1,14 @@
 using System;
-using Minibonk.Management;
 using Minibonk.Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Minibonk.Management
 {
     public class InputHandler : PlayerSystem
     {
         #region Variables
-
-        [SerializeField] private InputManager _inputManager;
+        private InputManager _inputManager;
         #endregion
 
         #region Unity Methods
@@ -17,31 +16,65 @@ namespace Minibonk.Management
         {
             base.Awake();
             _inputManager = new InputManager();
-            
-            _inputManager.Player.Move.performed += ctx => _playerHandler.events.OnMove?.Invoke(ctx.ReadValue<Vector2>());
-            _inputManager.Player.Move.canceled += _ => _playerHandler.events.OnMove?.Invoke(Vector2.zero);
-            
-            _inputManager.Player.Jump.performed += _ => _playerHandler.events.OnJumpStarted?.Invoke();
-
-            _inputManager.Player.Ability1.performed += _ => _playerHandler.events.OnAbilityPressed?.Invoke(0);
-            _inputManager.Player.Ability1.canceled += _ => _playerHandler.events.OnAbilityReleased?.Invoke(0);
         }
 
         private void OnEnable()
         {
             _inputManager.Enable();
-        }
+            
+            // Bind Input Actions to Named Methods
+            _inputManager.Player.Move.performed += HandleMove;
+            _inputManager.Player.Move.canceled += HandleMoveCancelled;
+            
+            _inputManager.Player.Jump.performed += HandleJump;
 
+            _inputManager.Player.Ability1.performed += HandleAbility1Pressed;
+            _inputManager.Player.Ability1.canceled += HandleAbility1Released;
+            
+        } 
         private void OnDisable()
         {
             _inputManager.Disable();
+            
+            _inputManager.Player.Move.performed -= HandleMove;
+            _inputManager.Player.Move.canceled -= HandleMoveCancelled;
+            
+            _inputManager.Player.Jump.performed -= HandleJump;
+
+            _inputManager.Player.Ability1.performed -= HandleAbility1Pressed;
+            _inputManager.Player.Ability1.canceled -= HandleAbility1Released;
+        }
+        #endregion
+
+        #region Input Callbacks (Named Methods)
+
+        private void HandleMove(InputAction.CallbackContext ctx)
+        {
+            Vector2 input = ctx.ReadValue<Vector2>();
+            _playerHandler.events.OnMove?.Invoke(input);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void HandleMoveCancelled(InputAction.CallbackContext ctx)
         {
-        
+            _playerHandler.events.OnMove?.Invoke(Vector2.zero);
         }
+
+        private void HandleJump(InputAction.CallbackContext ctx)
+        {
+            _playerHandler.events.OnJumpStarted?.Invoke();
+        }
+
+        private void HandleAbility1Pressed(InputAction.CallbackContext ctx)
+        {
+            // Slot 0 for Ability 1
+            _playerHandler.events.OnAbilityPressed?.Invoke(0);
+        }
+
+        private void HandleAbility1Released(InputAction.CallbackContext ctx)
+        {
+            _playerHandler.events.OnAbilityReleased?.Invoke(0);
+        }
+
         #endregion
     }
 }
