@@ -32,12 +32,7 @@ namespace Minibonk.Player
 
         private float _jumpBufferCounter;
         private float _coyoteTimeCounter;
-       
-
-        // Boolean Flags
-        private bool _isSprintHeld;
         
-        public MovementSates currentMovementState = MovementSates.Idle;
 
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
@@ -72,37 +67,11 @@ namespace Minibonk.Player
             // Update Directions
             UpdateCameraVectors();
             bool isGrounded = HandleGroundDetection();
-
-            // State Machine
-            if (!isGrounded)
-            {
-                currentMovementState = MovementSates.Jumping;
-            }
-            else if (_isSprintHeld && _directionInput.sqrMagnitude > 0.01f)
-            {
-                currentMovementState = MovementSates.Sprinting;
-            }
-            else
-            {
-                currentMovementState = MovementSates.Idle;
-            }
             
             HandleJumpCheck(isGrounded);
-
-            // TODO Refactor to interact better with new abilities system
-            // Execute Movement
-            switch (currentMovementState)
-            {
-                case MovementSates.Idle:
-                    ApplyVelocity(_walkSpeed);
-                    break;
-                case MovementSates.Sprinting:
-                    ApplyVelocity(_walkSpeed * speedMultiplier);
-                    break;
-                case MovementSates.Jumping:
-                    ApplyVelocity(_walkSpeed); // Allow air control
-                    break;
-            }
+            
+            ApplyVelocity(_walkSpeed * speedMultiplier);
+            
             HandleRotation();
         }
         #endregion
