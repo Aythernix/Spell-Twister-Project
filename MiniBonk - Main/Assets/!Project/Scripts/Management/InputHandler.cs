@@ -11,7 +11,7 @@ namespace Minibonk.Management
         [SerializeField] private InputManager _inputManager;
         #endregion
        
-        void Awake()
+        protected override void Awake()
         {
             base.Awake();
             _inputManager = new InputManager();
@@ -20,6 +20,9 @@ namespace Minibonk.Management
             _inputManager.Player.Move.canceled += _ => _playerHandler.events.OnMove?.Invoke(Vector2.zero);
             
             _inputManager.Player.Jump.performed += _ => _playerHandler.events.OnJumpStarted?.Invoke();
+
+            _inputManager.Player.Ability1.performed += _ => _playerHandler.events.OnAbilityPressed?.Invoke(1);
+            _inputManager.Player.Ability1.canceled += _ => _playerHandler.events.OnAbilityReleased?.Invoke(1);
         }
 
         private void OnEnable()

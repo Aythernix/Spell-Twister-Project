@@ -6,6 +6,7 @@ public abstract class PlayerSystem : MonoBehaviour
     protected virtual void Awake()
     {
         _playerHandler = transform.root.GetComponent<PlayerHandler>();
+        Debug.Log("ran");
     }
 
     // Update is called once per frame

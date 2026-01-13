@@ -52,7 +52,7 @@ namespace Minibonk.Player
 
         protected override void Awake()
         {
-            
+            base.Awake();
         } 
 
         private void OnEnable()
@@ -60,14 +60,12 @@ namespace Minibonk.Player
             _playerHandler.events.OnMove += context => _directionInput = context;
 
             // Flipped to booleans so they can overlap
-            _inputManager.Player.Sprint.performed += _ => _isSprintHeld = true;
-            _inputManager.Player.Sprint.canceled += _ => _isSprintHeld = false;
+            // _inputManager.Player.Sprint.performed += _ => _isSprintHeld = true;
+            // _inputManager.Player.Sprint.canceled += _ => _isSprintHeld = false;
 
             _playerHandler.events.OnJumpStarted += () => _jumpBufferCounter = _jumpBuffer;
             
         }
-
-        private void OnDisable() => _inputManager.Player.Disable();
 
         private void FixedUpdate()
         {
