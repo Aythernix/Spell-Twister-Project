@@ -7,11 +7,7 @@
     <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputManager.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputManager.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +44,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -112,7 +108,7 @@
       <workItem from="1767389952501" duration="4407000" />
       <workItem from="1767539274704" duration="368000" />
       <workItem from="1767808765871" duration="2415000" />
-      <workItem from="1768329302851" duration="5915000" />
+      <workItem from="1768329302851" duration="11823000" />
     </task>
     <servers />
   </component>

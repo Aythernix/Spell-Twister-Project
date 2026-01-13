@@ -21,8 +21,8 @@ namespace Minibonk.Management
             
             _inputManager.Player.Jump.performed += _ => _playerHandler.events.OnJumpStarted?.Invoke();
 
-            _inputManager.Player.Ability1.performed += _ => _playerHandler.events.OnAbilityPressed?.Invoke(1);
-            _inputManager.Player.Ability1.canceled += _ => _playerHandler.events.OnAbilityReleased?.Invoke(1);
+            _inputManager.Player.Ability1.performed += _ => _playerHandler.events.OnAbilityPressed?.Invoke(0);
+            _inputManager.Player.Ability1.canceled += _ => _playerHandler.events.OnAbilityReleased?.Invoke(0);
         }
 
         private void OnEnable()

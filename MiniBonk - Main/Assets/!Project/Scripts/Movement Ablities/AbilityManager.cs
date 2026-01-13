@@ -8,12 +8,16 @@ namespace Minibonk.MovementAbilities
 {
     // TODO Implement Inventory Ability Slots, Replace Debug Inputs With Proper Inputs, Add More Edge Case Checks
     // TODO Add Comments and summaries
-    public class AbilityManager : MonoBehaviour
+    public class AbilityManager : PlayerSystem
     {
+        public enum AbilitySlot{Slot1 = 1, Slot2 = 2, Slot3 = 3}
+        
         #region Vairables
 
         public List<MovementAbility> allAvailAbilities;
         public List<MovementAbility> unlockedAbilities;
+
+        [SerializeField] private MovementAbility[] equippedSlots = new MovementAbility[3];
 
         // Fast Lookup tables
         private readonly Dictionary<string, MovementAbility> _abilityDb = new();
@@ -22,12 +26,17 @@ namespace Minibonk.MovementAbilities
         // Tracks Unlocked Ability IDs
         private readonly HashSet<int> unlockedAblityIDs = new();
 
+        private readonly Dictionary<int, MovementAbility> _instanceIdDb = new();
+
         #endregion
 
         #region Unity Methods
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            _playerHandler.events.OnAbilityPressed += index => TriggerAbilitySlot(index);
+            _playerHandler.events.OnAbilityReleased += index => FinaliseAbilitySlot(index);
             BuildDictionaries();
         }
 
@@ -56,6 +65,51 @@ namespace Minibonk.MovementAbilities
         {
             return _abilityIdDb.GetValueOrDefault(abilityID);
         }
+
+        private void EquipAbility(int abilityID, int slotIndex)
+        {
+            
+        }
+
+        private void AutoEquipAbility(MovementAbility instance)
+        {
+            for (int i = 0; i < equippedSlots.Length; i++)
+            {
+                if (equippedSlots[i] != null && equippedSlots[i].abilityID == instance.abilityID)
+                {
+                    return;
+                }
+            }
+
+          
+            for (int i = 0; i < equippedSlots.Length; i++)
+            {
+                if (equippedSlots[i] == null) 
+                { 
+                    equippedSlots[i] = instance;
+                }
+                break;
+            }
+            
+        }
+
+        private void TriggerAbilitySlot(int slotIndex)
+        {
+            if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
+            {
+                equippedSlots[slotIndex]?.Execute();
+                Debug.Log("ability triggered");
+            }
+            
+        }
+
+        private void FinaliseAbilitySlot(int slotIndex)
+        {
+            if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
+            {
+                equippedSlots[slotIndex]?.Finalise();
+            }   
+        }
         #endregion
 
         #region Public API
@@ -72,6 +126,8 @@ namespace Minibonk.MovementAbilities
                 
                 unlockedAbilities.Add(instance);
                 unlockedAblityIDs.Add(instance.abilityID);
+                _instanceIdDb.Add(instance.abilityID, instance);
+                AutoEquipAbility(instance);
             }
         }
         public void UnlockAbility(int abilityID)
@@ -91,7 +147,7 @@ namespace Minibonk.MovementAbilities
             {
                 foreach (var VARIABLE in unlockedAbilities)
                 {
-                    VARIABLE.Execute();
+                    //VARIABLE.Execute();
                     Debug.Log("Executed");
                 }
             }
