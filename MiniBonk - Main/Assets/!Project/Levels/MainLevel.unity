@@ -613,6 +613,8 @@ GameObject:
   - component: {fileID: 1640223070}
   - component: {fileID: 1640223069}
   - component: {fileID: 1640223068}
+  - component: {fileID: 1640223075}
+  - component: {fileID: 1640223076}
   - component: {fileID: 1640223074}
   - component: {fileID: 1640223073}
   - component: {fileID: 1640223071}
@@ -740,7 +742,6 @@ MonoBehaviour:
     m_Bits: 64
   _cameraTransform: {fileID: 1719831700}
   _rb: {fileID: 1640223072}
-  currentMovementState: 5
 --- !u!54 &1640223072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -801,6 +802,35 @@ MonoBehaviour:
   allAvailAbilities:
   - {fileID: 11400000, guid: 87b15cc4493e6af458b5558458ec66e1, type: 2}
   unlockedAbilities: []
+  equippedSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &1640223075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640223065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516ce7271023db94cac56a87cb6f54bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: e152c2de93480494e96120e6ef87dd5d, type: 2}
+--- !u!114 &1640223076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640223065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f94783e0d8e154382e1e8be0752858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1719831695
 GameObject:
   m_ObjectHideFlags: 0
