@@ -174,6 +174,15 @@ namespace Minibonk.Management
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d88d4afb-1157-4225-ba30-9b3f7989f2ed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -559,6 +568,17 @@ namespace Minibonk.Management
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ffca3f1-77bf-431b-a832-09e2455f2e78"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1155,6 +1175,7 @@ namespace Minibonk.Management
             m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
+            m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1257,6 +1278,7 @@ namespace Minibonk.Management
         private readonly InputAction m_Player_Previous;
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Ability1;
+        private readonly InputAction m_Player_Ability2;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1304,6 +1326,10 @@ namespace Minibonk.Management
             /// Provides access to the underlying input action "Player/Ability1".
             /// </summary>
             public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Ability2".
+            /// </summary>
+            public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1357,6 +1383,9 @@ namespace Minibonk.Management
                 @Ability1.started += instance.OnAbility1;
                 @Ability1.performed += instance.OnAbility1;
                 @Ability1.canceled += instance.OnAbility1;
+                @Ability2.started += instance.OnAbility2;
+                @Ability2.performed += instance.OnAbility2;
+                @Ability2.canceled += instance.OnAbility2;
             }
 
             /// <summary>
@@ -1395,6 +1424,9 @@ namespace Minibonk.Management
                 @Ability1.started -= instance.OnAbility1;
                 @Ability1.performed -= instance.OnAbility1;
                 @Ability1.canceled -= instance.OnAbility1;
+                @Ability2.started -= instance.OnAbility2;
+                @Ability2.performed -= instance.OnAbility2;
+                @Ability2.canceled -= instance.OnAbility2;
             }
 
             /// <summary>
@@ -1758,6 +1790,13 @@ namespace Minibonk.Management
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAbility1(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Ability2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAbility2(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
