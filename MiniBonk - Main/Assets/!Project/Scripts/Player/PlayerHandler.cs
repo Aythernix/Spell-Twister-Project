@@ -5,19 +5,19 @@ using UnityEngine;
 namespace Minibonk.Player
 {
     // TODO Add Comments and summaries
-    public class PlayerHandler : MonoBehaviour
+    public class PlayerHandler : PlayerSystem
     {
         #region Variables
 
         public PlayerData playerData;
-        public Events events;
+        public Events events = new();
         #endregion
 
         #region Unity Methods
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Awake()
+        protected override void Awake()
         {
-            events = new Events();
+            base.Awake();
         }
 
         // Update is called once per frame
