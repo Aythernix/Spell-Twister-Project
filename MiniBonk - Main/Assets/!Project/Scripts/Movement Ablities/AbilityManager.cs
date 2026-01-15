@@ -151,15 +151,8 @@ namespace Minibonk.MovementAbilities
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 UnlockAbility("Sprint");
+                UnlockAbility("Dash");
                 Debug.Log("unlocked");
-            }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                foreach (var VARIABLE in unlockedAbilities)
-                {
-                    //VARIABLE.Execute();
-                    Debug.Log("Executed");
-                }
             }
             
         }

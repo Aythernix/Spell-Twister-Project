@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Minibonk.MovementAbilities
 {
+    [CreateAssetMenu]
     public class Dash : ImpulseAbility
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +19,7 @@ namespace Minibonk.MovementAbilities
 
         protected override void ApplyImpulse()
         {
-            // TODO Implement Dash
+            _rb.AddForce(_player.transform.forward * 100, ForceMode.Impulse);
         }
     }
 }

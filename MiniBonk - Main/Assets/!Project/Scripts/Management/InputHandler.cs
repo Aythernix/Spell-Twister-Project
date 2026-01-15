@@ -33,7 +33,8 @@ namespace Minibonk.Management
             _inputManager.Player.Ability1.canceled += HandleAbility1Released;
 
             _inputManager.Player.Ability2.performed += HandleAbility2Pressed;
-            _inputManager.Player.Ability2.performed += HandleAbility2Release;
+            _inputManager.Player.Ability2.canceled += HandleAbility2Release;
+
 
         } 
         private void OnDisable()
@@ -49,7 +50,7 @@ namespace Minibonk.Management
             _inputManager.Player.Ability1.canceled -= HandleAbility1Released;
             
             _inputManager.Player.Ability2.performed -= HandleAbility2Pressed;
-            _inputManager.Player.Ability2.performed -= HandleAbility2Release;
+            _inputManager.Player.Ability2.canceled -= HandleAbility2Release;
         }
         #endregion
 
@@ -84,13 +85,14 @@ namespace Minibonk.Management
 
         private void HandleAbility2Pressed(InputAction.CallbackContext ctx)
         {
-            
+            _playerHandler.events.OnAbilityPressed?.Invoke(1);
         }
 
         private void HandleAbility2Release(InputAction.CallbackContext ctx)
         {
-            
+            _playerHandler.events.OnAbilityReleased?.Invoke(1);
         }
+        
 
         #endregion
     }

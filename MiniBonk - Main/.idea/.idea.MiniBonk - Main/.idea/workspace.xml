@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Management/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputManager.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputManager.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityClasses/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityClasses/Dash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
