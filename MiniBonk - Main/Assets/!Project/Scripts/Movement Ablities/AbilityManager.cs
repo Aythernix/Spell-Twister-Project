@@ -117,7 +117,11 @@ namespace Minibonk.MovementAbilities
         {
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
-                equippedSlots[slotIndex]?.Finalise();
+                Debug.Log(equippedSlots[slotIndex].abilityName);
+                if (!equippedSlots[slotIndex].autoFinalise)
+                {
+                    equippedSlots[slotIndex]?.Finalise();
+                }
             }   
         }
         #endregion

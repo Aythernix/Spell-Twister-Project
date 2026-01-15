@@ -1,7 +1,15 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
 namespace Minibonk.MovementAbilities
 {
     public abstract class ImpulseAbility : MovementAbility
     {
+        public override void Initialize(GameObject player)
+        {
+            base.Initialize(player);
+            autoFinalise = true;
+        }
         protected override void OnExecute()
         {
             ApplyImpulse();
