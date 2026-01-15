@@ -801,6 +801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAvailAbilities:
   - {fileID: 11400000, guid: 87b15cc4493e6af458b5558458ec66e1, type: 2}
+  - {fileID: 11400000, guid: acc8d87e9eed9744ea81b19d181a0ff7, type: 2}
   unlockedAbilities: []
   equippedSlots:
   - {fileID: 0}

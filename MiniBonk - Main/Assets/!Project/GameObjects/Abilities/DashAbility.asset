@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15588e4c59c499b46a3764c87fa3bf79, type: 3}
   m_Name: DashAbility
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilityID: 0
+  abilityName: Dash
+  abilityID: 2
   cooldownTime: 0
   staminaCost: 0

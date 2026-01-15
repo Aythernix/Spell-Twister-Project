@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SprintAbility
   m_EditorClassIdentifier: 
   abilityName: Sprint
-  abilityID: 0
+  abilityID: 1
   cooldownTime: 0
   staminaCost: 0
   _sprintMultipler: 1.5
