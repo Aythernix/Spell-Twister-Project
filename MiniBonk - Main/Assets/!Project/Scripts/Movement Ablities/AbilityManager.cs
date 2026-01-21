@@ -105,6 +105,7 @@ namespace Minibonk.MovementAbilities
 
         private void TriggerAbilitySlot(int slotIndex)
         {
+            if (equippedSlots[slotIndex] == null) return;
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
                 equippedSlots[slotIndex]?.Execute();
@@ -115,6 +116,7 @@ namespace Minibonk.MovementAbilities
 
         private void FinaliseAbilitySlot(int slotIndex)
         {
+            if (equippedSlots[slotIndex] == null) return;
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
                 Debug.Log(equippedSlots[slotIndex].abilityName);
