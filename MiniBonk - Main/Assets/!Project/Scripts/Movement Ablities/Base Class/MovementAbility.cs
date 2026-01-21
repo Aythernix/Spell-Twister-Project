@@ -11,10 +11,12 @@ namespace Minibonk.MovementAbilities
         public float cooldownTime;
         public float staminaCost;
 
+        public bool autoFinalise { get; protected set; } = false;
+
         protected Rigidbody _rb;
         protected GameObject _player;
 
-        private float _nextReadyTime;
+        protected float _nextReadyTime;
         #endregion
 
         #region Initialization
@@ -47,6 +49,7 @@ namespace Minibonk.MovementAbilities
         {
             OnFinalise();
             StartCooldown();
+            Debug.Log("Finalise Executed");
         }
         #endregion
 

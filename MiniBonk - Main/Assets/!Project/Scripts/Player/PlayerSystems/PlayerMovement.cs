@@ -36,7 +36,7 @@ namespace Minibonk.Player
 
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
-        private Vector3 _moveDirection;
+        private Vector3 _moveDirection; 
         
         public float speedMultiplier { get; set; } = 1f;
         

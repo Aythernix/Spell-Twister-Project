@@ -105,6 +105,7 @@ namespace Minibonk.MovementAbilities
 
         private void TriggerAbilitySlot(int slotIndex)
         {
+            if (equippedSlots[slotIndex] == null) return;
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
                 equippedSlots[slotIndex]?.Execute();
@@ -115,9 +116,14 @@ namespace Minibonk.MovementAbilities
 
         private void FinaliseAbilitySlot(int slotIndex)
         {
+            if (equippedSlots[slotIndex] == null) return;
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
-                equippedSlots[slotIndex]?.Finalise();
+                Debug.Log(equippedSlots[slotIndex].abilityName);
+                if (!equippedSlots[slotIndex].autoFinalise)
+                {
+                    equippedSlots[slotIndex]?.Finalise();
+                }
             }   
         }
         #endregion
@@ -151,15 +157,8 @@ namespace Minibonk.MovementAbilities
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 UnlockAbility("Sprint");
+                UnlockAbility("Dash");
                 Debug.Log("unlocked");
-            }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                foreach (var VARIABLE in unlockedAbilities)
-                {
-                    //VARIABLE.Execute();
-                    Debug.Log("Executed");
-                }
             }
             
         }
