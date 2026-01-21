@@ -2,7 +2,7 @@ using UnityEngine;
 using MiniBonk.Enemy;
 public class TestEnemy : Enemy 
 {
-    public override void Attack() 
+    protected override void Attack() 
     {
         Debug.Log("I am attacking the player!");
     }

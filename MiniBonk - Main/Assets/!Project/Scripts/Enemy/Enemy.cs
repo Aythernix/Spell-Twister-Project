@@ -52,8 +52,14 @@ namespace MiniBonk.Enemy
             if (distance <= data.attackRange)
             {
                 Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+                navMeshAgent.isStopped = true;
+            }
+            else
+            {
+                navMeshAgent.isStopped = false;
             }
         }
-        public abstract void Attack();
+
+        protected abstract void Attack();
     }
 }
