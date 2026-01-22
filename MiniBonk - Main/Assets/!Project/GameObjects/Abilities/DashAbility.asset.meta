@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:MiniBonk - Main/Assets/!Project/GameObjects/Abilities/DashAbility.asset.meta
 guid: acc8d87e9eed9744ea81b19d181a0ff7
+========
+guid: ca253faf89a1d914ebd98dd749629f64
+>>>>>>>> Enemies:MiniBonk - Main/Assets/!Project/Scripts/Enemy/SampleEnemyStats.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

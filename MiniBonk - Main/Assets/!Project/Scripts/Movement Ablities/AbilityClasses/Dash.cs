@@ -19,7 +19,7 @@ namespace Minibonk.MovementAbilities
 
         protected override void ApplyImpulse()
         {
-            _rb.AddForce(_player.transform.forward * 100, ForceMode.Impulse);
+            _rb.AddForce(Camera.main.transform.forward * 100, ForceMode.Impulse);
             
         }
     }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:MiniBonk - Main/Assets/!Project/Scripts/Weapons.meta
 guid: edac7afc9ea94d046ae78dd8861d1dfb
+========
+guid: ea5af4f967b74c44a9c59d69c388f657
+>>>>>>>> Enemies:MiniBonk - Main/Assets/Development Scenes/MainLevel (CR).meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

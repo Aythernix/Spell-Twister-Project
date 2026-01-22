@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityClasses/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Movement Ablities/AbilityClasses/Dash.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="Merge branch 'Enemies' into Prototype&#10;&#10;# Conflicts:&#10;#&#9;MiniBonk - Main/.idea/.idea.MiniBonk - Main/.idea/projectSettingsUpdater.xml&#10;#&#9;MiniBonk - Main/.idea/.idea.MiniBonk - Main/.idea/workspace.xml&#10;#&#9;MiniBonk - Main/Assets/!MiniBonk.meta&#10;#&#9;MiniBonk - Main/Assets/!MiniBonk/Art.meta&#10;#&#9;MiniBonk - Main/Assets/!MiniBonk/Art/Prototype textures.meta&#10;#&#9;MiniBonk - Main/Assets/!MiniBonk/Art/Prototype textures/PNG.meta&#10;#&#9;MiniBonk - Main/Assets/!MiniBonk/Art/Prototype textures/PNG/Light/Materials/texture_7.mat.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/GameObjects.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/GameObjects/Abilities.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/GameObjects/Abilities/DashAbility.asset.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/GameObjects/Player.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/Scripts/Enemy.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/Scripts/Enemy/SampleEnemyStats.asset.meta&#10;#&#9;MiniBonk - Main/Assets/!Project/Scripts/Weapons.meta&#10;#&#9;MiniBonk - Main/Assets/Development Scenes/MainLevel (CR).meta&#10;#&#9;MiniBonk - Main/Assets/Development Scenes/MainLevel (CR).unity.meta&#10;#&#9;MiniBonk - Main/Assets/Development Scenes/MainLevel (CR)/NavMesh-World Plane.asset.meta" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "FinalisedAbilityPrototype",
+    "git-widget-placeholder": "Prototype",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
