@@ -26,6 +26,8 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // ------ Destroys bullet when it collides with an object with the 'Environment' tag ------//
+
         if (collision.gameObject.CompareTag("Environment"))
         {
             Destroy(gameObject);
