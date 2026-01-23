@@ -1,57 +1,79 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+namespace Minibonk.Player
 {
-	#region Variables
-
-	private float currentHealth;
-	private float maxHealth;
-
-	#endregion
-
-	#region Unity Functions
-
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+	public class PlayerHealth : PlayerSystem
 	{
-	}
+		#region Variables
+		
+		private float maxHealth;
 
-	// Update is called once per frame
-	void Update()
-	{
-	}
+		#endregion
 
-	#endregion
+		#region Unity Functions
 
-	#region Private Functions
-
-	private bool HealthEmpty()
-	{
-		return currentHealth <= 0f;
-	}
-
-	private void OnHealthEmpty()
-	{
-		Debug.Break();
-	}
-
-	#endregion
-
-	#region Public API
-
-	/// <summary>
-	///  Removes health from the player
-	/// </summary>
-	/// <param name="damage"> The amount of health to remove from the player </param>
-	public void TakeDamage(float damage)
-	{
-		currentHealth -= damage;
-		if (HealthEmpty())
+		private void OnEnable()
 		{
-			OnHealthEmpty();
+			// Event Subscription
+			_playerHandler.events.OnPlayerDamaged += TakeDamage;
 		}
-	}
 
-	#endregion
+		private void OnDisable()
+		{
+			// Event Unsubscription
+			_playerHandler.events.OnPlayerDamaged -= TakeDamage;
+		}
+
+		// Start is called once before the first execution of Update after the MonoBehaviour is created
+		void Start()
+		{
+		}
+
+		// Update is called once per frame
+		void Update()
+		{
+		}
+
+		#endregion
+
+		#region Private Functions
+
+		private bool HealthEmpty()
+		{
+			return _playerHandler.playerData.currentHealth <= 0f;
+		}
+
+		private void OnHealthEmpty()
+		{
+			Debug.Break();
+		}
+
+		#endregion
+
+		#region Public API
+
+		/// <summary>
+		///  Removes health from the player
+		/// </summary>
+		/// <param name="damage"> The amount of health to remove from the player </param>
+		public void TakeDamage(float damage)
+		{
+			_playerHandler.playerData.currentHealth -= damage;
+			if (HealthEmpty())
+			{
+				OnHealthEmpty();
+			}
+		}
+		/// <summary>
+		/// Sets the players health to the max health.
+		/// </summary>
+		public void SetHealthToMax()
+		{
+			maxHealth = _playerHandler.playerData.currentHealth;
+		}
+
+		#endregion
+	}
 }

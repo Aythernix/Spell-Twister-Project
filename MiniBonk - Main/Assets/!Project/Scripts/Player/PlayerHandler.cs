@@ -35,6 +35,7 @@ namespace Minibonk.Player
         public Action OnJumpStarted;
         public Action<int> OnAbilityPressed;
         public Action<int> OnAbilityReleased;
+        public Action<float> OnPlayerDamaged;
     }
 
 }
