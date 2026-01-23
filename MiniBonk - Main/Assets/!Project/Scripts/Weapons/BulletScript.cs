@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -8,6 +9,13 @@ public class BulletScript : MonoBehaviour
 
     private void Update()
     {
+        bulletTimer();
+    }
+
+    void bulletTimer()
+    {
+        // ------ Timer that destroys bullet when its lifetime runs out --------//
+
         if (bulletLife >= 0)
         {
             bulletLife -= Time.deltaTime;
@@ -16,6 +24,11 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
     }
 
-
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Environment"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
