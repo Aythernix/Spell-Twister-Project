@@ -7,8 +7,7 @@ namespace Minibonk.Player
 	public class PlayerHealth : PlayerSystem
 	{
 		#region Variables
-		
-		private float maxHealth;
+		//
 
 		#endregion
 
@@ -29,6 +28,7 @@ namespace Minibonk.Player
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
+			SetHealthToMax();
 		}
 
 		// Update is called once per frame
@@ -71,7 +71,7 @@ namespace Minibonk.Player
 		/// </summary>
 		public void SetHealthToMax()
 		{
-			maxHealth = _playerHandler.playerData.currentHealth;
+			_playerHandler.playerData.currentHealth = _playerHandler.playerData.maxHealth;
 		}
 
 		#endregion
