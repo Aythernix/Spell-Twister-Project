@@ -34,6 +34,13 @@ namespace Minibonk.Player
 		// Update is called once per frame
 		void Update()
 		{
+			// DEBUG
+			if (Input.GetKeyDown(KeyCode.F2))
+			{
+				TakeDamage(10f);
+			}
+			
+			Debug.Log(_playerHandler.playerData.currentHealth);
 		}
 
 		#endregion
@@ -60,7 +67,7 @@ namespace Minibonk.Player
 		/// <param name="damage"> The amount of health to remove from the player </param>
 		public void TakeDamage(float damage)
 		{
-			_playerHandler.playerData.currentHealth -= damage;
+			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth -= damage, 0, _playerHandler.playerData.maxHealth);
 			if (HealthEmpty())
 			{
 				OnHealthEmpty();
