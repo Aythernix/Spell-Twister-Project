@@ -7,6 +7,7 @@ namespace Minibonk.Player
     {
         public float maxHealth;
         public float currentHealth;
+        public int level;
     } 
 }
 
