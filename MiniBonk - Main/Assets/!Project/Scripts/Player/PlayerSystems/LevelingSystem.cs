@@ -1,4 +1,5 @@
 using Minibonk.Player;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class LevelingSystem : PlayerSystem
@@ -15,7 +16,11 @@ public class LevelingSystem : PlayerSystem
         get => _playerHandler.playerData.level;
         set => _playerHandler.playerData.level = value;
     }
-    private int _playerXp;
+    private int PlayerXp
+    {
+        get => _playerHandler.playerData.Xp;
+        set => _playerHandler.playerData.Xp = value;
+    }
 
     #endregion
 
@@ -38,33 +43,27 @@ public class LevelingSystem : PlayerSystem
     // Called when the XP count gets increased
     private void OnIncreaseXP(int amount)
     {
-        _playerXp += amount;
+        PlayerXp += amount;
 
-        if (_playerXp >=  RequiredXP())
+        while (PlayerXp >= RequiredXP(PlayerLevel))
         {
-            OnLevelIncrement();
+            int cost = RequiredXP(PlayerLevel);
+            PlayerXp -= cost;
+            OnLevelIncrement(); 
         }
-        // NOTE: Doesn't take into account the amount of incoming XP
-        // For Example, if the requirement is 100, and the player gets 200 XP
-        // The players level will increase by 1 not 2
     }
 
     // Called when the player level increases
-    private void OnLevelIncrement(int amount = 1)
+    private void OnLevelIncrement( int levelAmount = 1)
     {
-        PlayerLevel += amount;
-        
+        PlayerLevel += levelAmount;
     }
 
     // Calculates the amount of XP the player should need to level up
     // Dependent on the players current level
-    private int RequiredXP()
+    private int RequiredXP(int playerLevel)
     {
-        if (PlayerLevel == 1)
-        {
-            return _baseRequiredXp;
-        }
-        return Mathf.RoundToInt(_baseRequiredXp * Mathf.Pow(_XpMultipler, PlayerLevel));
+        return Mathf.RoundToInt(_baseRequiredXp * Mathf.Pow(_XpMultipler, playerLevel - 1));
     }
     
     #endregion
