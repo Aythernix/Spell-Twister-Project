@@ -10,7 +10,7 @@ namespace Minibonk.Player
         #region Variables
 
         public PlayerData playerData;
-        public Events events = new();
+        public readonly Events Events = new();
         #endregion
 
         #region Unity Methods
@@ -29,7 +29,7 @@ namespace Minibonk.Player
        
     }
 
-    public struct Events
+    public class Events
     {
         public Action<Vector2> OnMove;
         public Action OnJumpStarted;

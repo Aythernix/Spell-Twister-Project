@@ -16,13 +16,13 @@ namespace Minibonk.Player
 		private void OnEnable()
 		{
 			// Event Subscription
-			_playerHandler.events.OnPlayerDamaged += TakeDamage;
+			_playerHandler.Events.OnPlayerDamaged += TakeDamage;
 		}
 
 		private void OnDisable()
 		{
 			// Event Unsubscription
-			_playerHandler.events.OnPlayerDamaged -= TakeDamage;
+			_playerHandler.Events.OnPlayerDamaged -= TakeDamage;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created

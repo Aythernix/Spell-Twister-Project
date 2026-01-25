@@ -59,38 +59,38 @@ namespace Minibonk.Management
         private void HandleMove(InputAction.CallbackContext ctx)
         {
             Vector2 input = ctx.ReadValue<Vector2>();
-            _playerHandler.events.OnMove?.Invoke(input);
+            _playerHandler.Events.OnMove?.Invoke(input);
         }
 
         private void HandleMoveCancelled(InputAction.CallbackContext ctx)
         {
-            _playerHandler.events.OnMove?.Invoke(Vector2.zero);
+            _playerHandler.Events.OnMove?.Invoke(Vector2.zero);
         }
 
         private void HandleJump(InputAction.CallbackContext ctx)
         {
-            _playerHandler.events.OnJumpStarted?.Invoke();
+            _playerHandler.Events.OnJumpStarted?.Invoke();
         }
 
         private void HandleAbility1Pressed(InputAction.CallbackContext ctx)
         {
             // Slot 0 for Ability 1
-            _playerHandler.events.OnAbilityPressed?.Invoke(0);
+            _playerHandler.Events.OnAbilityPressed?.Invoke(0);
         }
 
         private void HandleAbility1Released(InputAction.CallbackContext ctx)
         {
-            _playerHandler.events.OnAbilityReleased?.Invoke(0);
+            _playerHandler.Events.OnAbilityReleased?.Invoke(0);
         }
 
         private void HandleAbility2Pressed(InputAction.CallbackContext ctx)
         {
-            _playerHandler.events.OnAbilityPressed?.Invoke(1);
+            _playerHandler.Events.OnAbilityPressed?.Invoke(1);
         }
 
         private void HandleAbility2Release(InputAction.CallbackContext ctx)
         {
-            _playerHandler.events.OnAbilityReleased?.Invoke(1);
+            _playerHandler.Events.OnAbilityReleased?.Invoke(1);
         }
         
 
