@@ -33,14 +33,14 @@ namespace Minibonk.Player
 
         private void OnEnable()
         {
-            GameManager.Instance.Events.AddXp += AddXp;
-            GameManager.Instance.Events.IncreasePlayerLevel += OnLevelIncrement;
+            GameManager.Instance.EventHandler.AddXp += AddXp;
+            GameManager.Instance.EventHandler.IncreasePlayerLevel += OnLevelIncrement;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.Events.AddXp -= AddXp;
-            GameManager.Instance.Events.IncreasePlayerLevel -= OnLevelIncrement;
+            GameManager.Instance.EventHandler.AddXp -= AddXp;
+            GameManager.Instance.EventHandler.IncreasePlayerLevel -= OnLevelIncrement;
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,7 +63,7 @@ namespace Minibonk.Player
         private void OnIncreaseXP(int amount)
         {
             PlayerXp += amount;
-            GameManager.Instance.Events.OnXpGained?.Invoke(PlayerXp);
+            GameManager.Instance.EventHandler.OnXpGained?.Invoke(PlayerXp);
 
             while (PlayerXp >= RequiredXp(PlayerLevel))
             {
@@ -79,7 +79,7 @@ namespace Minibonk.Player
         {
             PlayerLevel += levelAmount;
             
-            GameManager.Instance.Events.OnPlayerLevelIncrease?.Invoke(PlayerLevel);
+            GameManager.Instance.EventHandler.OnPlayerLevelIncrease?.Invoke(PlayerLevel);
         }
 
         // Calculates the amount of XP the player should need to level up
