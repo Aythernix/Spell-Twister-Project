@@ -1,6 +1,8 @@
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using UnityEngine.Rendering;
 
 public class BulletSpawner : MonoBehaviour
@@ -18,6 +20,9 @@ public class BulletSpawner : MonoBehaviour
     // Get bullet prefabs
     public GameObject bulletPrefab;
     public GameObject bulletSpawner;
+
+    // Get the enemy Range detector script
+    public EnemyRangeDetector enemyDetector;
 
     private void Awake()
     {
@@ -40,13 +45,28 @@ public class BulletSpawner : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && (bullets >= 0))
                 {
                     // Sets 'bullet' spawn at 'bullet spawners' position
-                    var bullet = Instantiate(bulletPrefab, bulletSpawner.transform);
+                    var bullet = Instantiate(bulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.transform.rotation);
+
+                    // creates a new vector with the 'closestEnemy' variable from the range detector script
+                    Transform enemyTarget = enemyDetector.CheckForClosestEnemy();
+
+                    // creates a new unnasigned vector 3 for the bullets move direction
+                    Vector3 bulletDirection;
+
+                    // if statement that checks if an enemy is in the hitbox of the range detector
+                    if (enemyTarget != null)
+                    {
+                        // sets the next bullets direction toward the closest enemies position
+                        bulletDirection = (enemyTarget.position - bulletSpawner.transform.position).normalized;
+                    }
+                    else
+                    {
+                        // sets the next bullets direction as the players forward transform (forward)
+                        bulletDirection = bulletSpawner.transform.forward;
+                    }
 
                     // calculates bullets shooting
-                    bullet.GetComponent<Rigidbody>().linearVelocity = (bulletSpawner.transform.forward * bulletSpeed);
-
-                    // stops the bullets rotation locking with 'bulletSpawner' after being shot
-                    bullet.transform.SetParent(null);
+                    bullet.GetComponent<Rigidbody>().linearVelocity = bulletDirection * bulletSpeed;
 
                     // removes a bullet each time the function is called
                     bullets -= 1;
@@ -75,6 +95,6 @@ public class BulletSpawner : MonoBehaviour
                 bullets = bulletsMax;
                 reloadTimer = 0;
            }
-        }
+        }  
     }
 }
