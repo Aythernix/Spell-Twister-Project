@@ -52,15 +52,15 @@ namespace Minibonk.Player
 
         private void OnEnable()
         {
-            _playerHandler.events.OnMove += HandleMoveInput;
-            _playerHandler.events.OnJumpStarted += HandleJumpInput;
+            _playerHandler.Events.OnMove += HandleMoveInput;
+            _playerHandler.Events.OnJumpStarted += HandleJumpInput;
             
         }
         
         private void OnDisable()
         {
-            _playerHandler.events.OnMove -= HandleMoveInput;
-            _playerHandler.events.OnJumpStarted -= HandleJumpInput;
+            _playerHandler.Events.OnMove -= HandleMoveInput;
+            _playerHandler.Events.OnJumpStarted -= HandleJumpInput;
         }
 
         private void FixedUpdate()
