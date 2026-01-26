@@ -13,7 +13,7 @@ namespace Minibonk.Player
         public int level;
         public int Xp;
 
-        private void Reset()
+        public void Reset()
         {
             currentHealth = maxHealth;
             level = 1;
