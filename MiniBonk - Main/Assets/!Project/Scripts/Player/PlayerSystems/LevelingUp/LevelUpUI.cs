@@ -7,12 +7,15 @@ using UnityEngine.Serialization;
 
 public class LevelUpUI : MonoBehaviour
 {
+    #region Variables
     public List<UpgradeData> allUpgrades = new List <UpgradeData>();
+    private List<UpgradeData> currentChoices = new List<UpgradeData>();
+    
     //Script used only for Level up UI
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private TextMeshProUGUI[] titleTexts;
     [SerializeField] private TextMeshProUGUI[] descriptionTexts;
-
+    #endregion
     private void Start()
     {
         //checking if instance exists before subscribing
@@ -37,7 +40,9 @@ public class LevelUpUI : MonoBehaviour
     {
         GameManager.Instance.EventHandler.OnPlayerLevelIncrease -= ShowLevelUpPanel;
     }
-
+    // ============================================================
+    //                    Display logic for Level Up Panel
+    // ============================================================
     private void ShowLevelUpPanel(int newLevel)
     {
         levelUpPanel.SetActive(true);
@@ -52,6 +57,7 @@ public class LevelUpUI : MonoBehaviour
         // ============================================================
         //                    Random Upgrade Selector
         // ============================================================
+        currentChoices.Clear(); // Clears previous choices
         List <UpgradeData> tempDeck = new List<UpgradeData>(allUpgrades);
         for (int i = 0; i < titleTexts.Length; i++)
         {
@@ -59,6 +65,9 @@ public class LevelUpUI : MonoBehaviour
             
             int randomIndex = UnityEngine.Random.Range(0, tempDeck.Count);
             UpgradeData selectedUpgrade = tempDeck[randomIndex];
+            
+            //Save choice into current list so
+            currentChoices.Add(selectedUpgrade);
             
             titleTexts[i].text = selectedUpgrade.upgradeName;
             descriptionTexts[i].text = selectedUpgrade.description;
@@ -72,13 +81,41 @@ public class LevelUpUI : MonoBehaviour
         levelUpPanel.SetActive(false);
         Time.timeScale = 1f;
     }
+    // ============================================================
+    //                    Upgrade Selection Logic
+    // ============================================================
+    // Calls for the index of the chosen upgrade button
+    // Bar 1 = 0, Bar 2 = 1, Bar 3 = 2
+    public void SelectUpgrade(int index)
+    {
+        if (index >= currentChoices.Count) return;
+        UpgradeData chosenUpgrade = currentChoices[index];
+        Debug.Log(chosenUpgrade.upgradeName);
+        
+        var abilitymanager = FindFirstObjectByType<Minibonk.MovementAbilities.AbilityManager>();
+        
+        if (abilitymanager != null && chosenUpgrade.abilitySO != null)
+        {
+           abilitymanager.UnlockAbility(chosenUpgrade.abilitySO.abilityID);
+        }
+        else
+        {
+            Debug.LogError("AbilityManager or chosen ability is null!");
+        }
+        CloseMenu();
+    }
 
     [System.Serializable]
     public class UpgradeData
     {
-        public string upgradeName;
+        public Minibonk.MovementAbilities.MovementAbility abilitySO;
+        //Future weaopon slot..
+        // public WeaponData weaponSO;
+        public string upgradeName => abilitySO != null ? abilitySO.abilityName : "Unknown Ability";
         public string description;
-        //public Sprite icon; 
+        //public Sprite icon;
+        
+        
     }
     
 }
