@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,10 +34,15 @@ namespace MiniBonk.Enemy
                 Die();
             }
         }
-        
+
         protected virtual void Die()
         {
-            Debug.Log($"{gameObject.name} has died.");
+            if (data != null)
+            {
+                GameManager.Instance.EventHandler.AddXp?.Invoke(data.xpValue);
+            }
+
+        Debug.Log($"{gameObject.name} has died.");
             Destroy(gameObject);
         }
         

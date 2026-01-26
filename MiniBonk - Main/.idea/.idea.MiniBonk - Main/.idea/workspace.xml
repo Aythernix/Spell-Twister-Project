@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7be19dd8-3fbe-4ceb-a95f-a9e008ad1599" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MiniBonk - Main/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/GameObjects/Player/PlayerData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/GameObjects/Player/PlayerData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/EnemyData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/SampleEnemyStats.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/SampleEnemyStats.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/TestEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Enemy/TestEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/!Project/Scripts/Player/PlayerHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
