@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6418f38c3ddc74d862cb0febca9ef9, type: 3}
   m_Name: SampleEnemyStats
   m_EditorClassIdentifier: 
-  speed: 29
-  acceleration: 10
-  stoppingDistance: 5
+  speed: 6
+  acceleration: 10000
+  stoppingDistance: 1
   health: 100
   damage: 10
   attackRange: 2
+  attackCooldown: 2
   model: {fileID: 0}
   debugColor: {r: 1, g: 0, b: 0, a: 1}

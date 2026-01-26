@@ -12,6 +12,7 @@ namespace MiniBonk.Enemy
         private NavMeshAgent navMeshAgent; 
         
         protected int currentHealth;
+        private float nextAttackTime;
 
         // Update is called once per frame
         protected virtual void Start()
@@ -51,7 +52,13 @@ namespace MiniBonk.Enemy
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance <= data.attackRange)
             {
-                Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+                if (Time.time >= nextAttackTime)
+                {
+                    Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+
+                    nextAttackTime = Time.time + data.attackCooldown;
+                }
+                     
                 navMeshAgent.isStopped = true;
             }
             else
