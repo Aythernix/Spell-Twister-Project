@@ -8,6 +8,7 @@ namespace Minibonk.MovementAbilities
         [Header("Generic Settings")]
         public string abilityName;
         public int abilityID;
+        public string abilityDescription;
         public float cooldownTime;
         public float staminaCost;
 
