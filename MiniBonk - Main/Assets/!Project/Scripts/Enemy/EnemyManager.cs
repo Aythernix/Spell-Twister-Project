@@ -60,7 +60,7 @@ namespace MiniBonk.Enemy
         {
             Vector3 point = Random.insideUnitSphere *  _spawnRadius;
             RaycastHit hit;
-            Vector3 spawnPos = Vector3.Scale(transform.position, point);
+            Vector3 spawnPos = _playerTransform.position + point;
             bool hasHit = Physics.Raycast(spawnPos, Vector3.down, out hit, float.PositiveInfinity, _groundLayer);
             spawnPos.y = hit.point.y;
             canSpawn = hasHit;
@@ -81,15 +81,16 @@ namespace MiniBonk.Enemy
         // Spawns an enemy of a random type
         private void SpawnEnemy()
         {
-            if (canSpawn)
-            {
+            
                 for (int i = 0; i < _enemiesToSpawnPerBatch; i++)
                 {
+                    var spawnPos = SpawnPosition();
+                    if (!canSpawn) continue;
                     var enemyTypeInex = Random.Range(0, _enemyTypes.Count - 1);
-                    var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  SpawnPosition(), Quaternion.identity);
+                    var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
                     _enemiesInSceneStack.Push(enemyAdded);
                 }  
-            }
+            
             StartCoroutine(HandleEnemySpawning());
         }
         #endregion
