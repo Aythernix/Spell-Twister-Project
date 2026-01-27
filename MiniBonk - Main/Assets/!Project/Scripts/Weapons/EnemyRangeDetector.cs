@@ -12,7 +12,7 @@ public class EnemyRangeDetector : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // adds enemy position to our list when its inside the trigger hitbox
+            // adds enemy position to the list when its inside the trigger hitbox
             enemiesWithinRange.Add(other.transform);
         }
     }
@@ -21,7 +21,7 @@ public class EnemyRangeDetector : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // Removes enemy position from our list when it leaves the trigger hitbox
+            // Removes enemy position from the list when it leaves the trigger hitbox
             enemiesWithinRange.Remove(other.transform);
         }
     }
@@ -31,10 +31,10 @@ public class EnemyRangeDetector : MonoBehaviour
         // sets the closestEnemy variable to null as there wont be a target on startup
         Transform closestEnemy = null;
 
-        // sets the default range of the closest distance to our enemy to infinty. This will make it easier to check which enemy position is closer to the player later on
+        // sets the default range of the closest distance to the enemy to infinty. This will make it easier to check which enemy position is closer to the player later on
         float closestEnemyDistance = Mathf.Infinity;
 
-        // creates a vector 3 with our players position so we can compare enemy positions to the players
+        // creates a vector 3 with the players position so we can compare enemy positions to the players
         Vector3 playerPos = transform.position;
 
         // will loop through all current transforms in our list
@@ -43,7 +43,7 @@ public class EnemyRangeDetector : MonoBehaviour
             // creates a vector 3 from the player to an enemy in the list
             Vector3 distanceFromEnemy = enemyPos.position - playerPos;
 
-            // gets the rough vector from our vector3 above and assigns it to the enemyRange variable
+            // gets the rough vector from the vector3 created above and assigns it to the enemyRange variable
             float enemyRange = distanceFromEnemy.sqrMagnitude;
 
             // if statement that checks if an enemy position is closer to the player than the last

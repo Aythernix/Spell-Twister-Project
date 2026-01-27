@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 106805183}
   m_Layer: 0
-  m_Name: BulletSpawner
+  m_Name: ProjectileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,10 +1378,9 @@ GameObject:
   - component: {fileID: 1640223071}
   - component: {fileID: 1640223067}
   - component: {fileID: 1640223072}
-  - component: {fileID: 1640223077}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1592,27 +1591,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f94783e0d8e154382e1e8be0752858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1640223077
+--- !u!1 &1652564071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652564074}
+  - component: {fileID: 1652564073}
+  - component: {fileID: 1652564072}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1652564072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640223065}
+  m_GameObject: {fileID: 1652564071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30924eb944af8d54690924f143eed1c2, type: 3}
+  m_Script: {fileID: 11500000, guid: cbf93bfa6fb84a34fb74008d5f07c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsMax: 10
-  bullets: 10
-  fireRate: 100
-  bulletSpeed: 30
-  reloadTimer: 1
+  fireBallsMax: 10
+  fireBalls: 30
+  fireRate: 0.75
+  fireBallSpeed: 30
+  reloadTimer: 2
   reloadTime: 1
-  bulletPrefab: {fileID: 2687303498020648872, guid: 27136ac292c08b24fa2c29ad311b086a, type: 3}
-  bulletSpawner: {fileID: 106805182}
+  autoFire: 0
+  fireBallPrefab: {fileID: 2687303498020648872, guid: 27136ac292c08b24fa2c29ad311b086a, type: 3}
+  projectileSpawner: {fileID: 106805182}
   enemyDetector: {fileID: 1389407988}
+--- !u!114 &1652564073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652564071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93398d7f852bf0b44831b85526182173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 1
+  fireWeapon: {fileID: 1652564072}
+--- !u!4 &1652564074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652564071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8654096, y: 1.1153988, z: -0.23211473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1719831695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,3 +1971,4 @@ SceneRoots:
   - {fileID: 1493341800}
   - {fileID: 1497571683}
   - {fileID: 788314377}
+  - {fileID: 1652564074}
