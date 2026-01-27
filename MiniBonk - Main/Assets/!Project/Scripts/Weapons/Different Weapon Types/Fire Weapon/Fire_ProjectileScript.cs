@@ -1,18 +1,20 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class Fire_ProjectileScript : MonoBehaviour
 {
+    // ------------- Script that handles only Fireball Projectile spawning ---------------//
+
     // Bullet parameters
 
     float bulletLife = 2.5f;
 
     private void Update()
     {
-        bulletTimer();
+        FireBallTimer();
     }
 
-    void bulletTimer()
+    void FireBallTimer()
     {
         // ------ Timer that destroys bullet when its lifetime runs out --------//
 

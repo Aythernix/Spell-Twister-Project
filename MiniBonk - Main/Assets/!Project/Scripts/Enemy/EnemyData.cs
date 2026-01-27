@@ -13,6 +13,8 @@ namespace MiniBonk.Enemy
         [Header("Combat Settings")] public int health = 100;
         public float damage = 10f;
         public float attackRange = 2f;
+        public float attackCooldown = 1.5f;
+        public int xpValue = 50;
 
         [Header("Visuals")] public GameObject model;
         public Color debugColor = Color.red;

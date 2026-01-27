@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,7 @@ namespace MiniBonk.Enemy
         private NavMeshAgent navMeshAgent; 
         
         protected int currentHealth;
+        private float nextAttackTime;
 
         // Update is called once per frame
         protected virtual void Start()
@@ -32,10 +34,15 @@ namespace MiniBonk.Enemy
                 Die();
             }
         }
-        
+
         protected virtual void Die()
         {
-            Debug.Log($"{gameObject.name} has died.");
+            if (data != null)
+            {
+                GameManager.Instance.EventHandler.AddXp?.Invoke(data.xpValue);
+            }
+
+        Debug.Log($"{gameObject.name} has died.");
             Destroy(gameObject);
         }
         
@@ -51,7 +58,13 @@ namespace MiniBonk.Enemy
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance <= data.attackRange)
             {
-                Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+                if (Time.time >= nextAttackTime)
+                {
+                    Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+
+                    nextAttackTime = Time.time + data.attackCooldown;
+                }
+                     
                 navMeshAgent.isStopped = true;
             }
             else

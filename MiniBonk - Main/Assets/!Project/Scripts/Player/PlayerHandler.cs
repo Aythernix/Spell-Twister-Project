@@ -18,6 +18,8 @@ namespace Minibonk.Player
         protected override void Awake()
         {
             base.Awake();
+
+            Events.OnPlayerDamaged += HandleTakingDamage;
         }
 
         // Update is called once per frame
@@ -26,7 +28,12 @@ namespace Minibonk.Player
         
         }
         #endregion
-       
+
+        private void HandleTakingDamage(float damageAmount)
+        {
+            playerData.currentHealth -= (int)damageAmount;
+            Debug.Log($"Player took {damageAmount} damage, current health: {playerData.currentHealth}");
+        }
     }
 
     public class Events
