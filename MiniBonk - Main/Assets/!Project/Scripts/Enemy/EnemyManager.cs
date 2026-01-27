@@ -81,16 +81,14 @@ namespace MiniBonk.Enemy
         // Spawns an enemy of a random type
         private void SpawnEnemy()
         {
-            
-                for (int i = 0; i < _enemiesToSpawnPerBatch; i++)
-                {
-                    var spawnPos = SpawnPosition();
-                    if (!canSpawn) continue;
-                    var enemyTypeInex = Random.Range(0, _enemyTypes.Count - 1);
-                    var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
-                    _enemiesInSceneStack.Push(enemyAdded);
-                }  
-            
+            for (int i = 0; i < _enemiesToSpawnPerBatch; i++)
+            {
+                var spawnPos = SpawnPosition();
+                if (!canSpawn) continue;
+                var enemyTypeInex = Random.Range(0, _enemyTypes.Count - 1);
+                var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
+                _enemiesInSceneStack.Push(enemyAdded);
+            }
             StartCoroutine(HandleEnemySpawning());
         }
         #endregion
