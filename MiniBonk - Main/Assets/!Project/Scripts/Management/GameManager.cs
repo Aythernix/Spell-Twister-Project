@@ -33,6 +33,7 @@ namespace Minibonk.Management
 			DontDestroyOnLoad(this);
 
 		}
+		
 
 		#endregion
 	}

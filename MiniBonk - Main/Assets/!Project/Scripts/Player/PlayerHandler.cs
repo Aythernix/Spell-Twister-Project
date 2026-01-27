@@ -22,6 +22,11 @@ namespace Minibonk.Player
             Events.OnPlayerDamaged += HandleTakingDamage;
         }
 
+        private void Start()
+        {
+            playerData.Reset();
+        }
+
         // Update is called once per frame
         void Update()
         {
