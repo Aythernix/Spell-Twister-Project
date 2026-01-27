@@ -78,6 +78,7 @@ public class LevelUpUI : MonoBehaviour
             currentChoices.Add(ability);
             
             titleTexts[i].text = ability.abilityName;
+            descriptionTexts[i].text = ability.abilityDescription;
             
             tempList.RemoveAt(randomIndex);
         }
