@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Dash
   abilityID: 2
+  abilityDescription: Dashing time!
   cooldownTime: 0
   staminaCost: 0
