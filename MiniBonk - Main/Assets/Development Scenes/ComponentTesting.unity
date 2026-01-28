@@ -3622,7 +3622,6 @@ GameObject:
   - component: {fileID: 1703106691}
   - component: {fileID: 1703106693}
   - component: {fileID: 1703106695}
-  - component: {fileID: 1703106694}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3670,26 +3669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2698b37b5c7cb47a507af0875f327c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1703106694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703106690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e950d664f75c898478da581f089ba229, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyTypes: []
-  _spawnRate: 5
-  _enemiesToSpawnPerBatch: 5
-  _spawnRadius: 0
-  _maxEnemiesInScene: 0
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1703106695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3702,14 +3681,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e950d664f75c898478da581f089ba229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyTypes: []
+  _enemyTypes:
+  - {fileID: 7521692644132424675, guid: 68047ff2c1e8a444aa5f159ed9ffa8c3, type: 3}
   _spawnRate: 10
   _enemiesToSpawnPerBatch: 5
   _spawnRadius: 30
   _maxEnemiesInScene: 30
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &1704759281
 GameObject:
   m_ObjectHideFlags: 0
