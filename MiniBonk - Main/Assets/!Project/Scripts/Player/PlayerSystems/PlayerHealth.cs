@@ -1,4 +1,6 @@
 using System;
+using Minibonk.Management;
+using Minibonk.UI;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,8 +9,8 @@ namespace Minibonk.Player
 	public class PlayerHealth : PlayerSystem
 	{
 		#region Variables
-		//
-
+		private UIManager _uiManager;
+		
 		#endregion
 
 		#region Unity Functions
@@ -29,6 +31,8 @@ namespace Minibonk.Player
 		void Start()
 		{
 			SetHealthToMax();
+
+			_uiManager = GameManager.Instance.GetComponentInChildren<UIManager>();
 		}
 
 		// Update is called once per frame
@@ -72,6 +76,9 @@ namespace Minibonk.Player
 			{
 				OnHealthEmpty();
 			}
+			
+			_uiManager.UIEvents.updatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.maxHealth);
+			
 		}
 		/// <summary>
 		/// Sets the players health to the max health.

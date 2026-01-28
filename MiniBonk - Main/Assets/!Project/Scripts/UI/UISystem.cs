@@ -13,7 +13,7 @@ namespace Minibonk.UI
 		#endregion
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
-		protected virtual void Start()
+		protected virtual void Awake()
 		{
 			_uiManager = GameManager.Instance.GetComponentInChildren<UIManager>();
 		}
@@ -25,7 +25,6 @@ namespace Minibonk.UI
 		}
 
 		#region Private Method
-
 		//
 
 		#endregion
