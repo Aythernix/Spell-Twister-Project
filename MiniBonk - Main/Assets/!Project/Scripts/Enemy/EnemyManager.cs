@@ -50,6 +50,15 @@ namespace MiniBonk.Enemy
             }
 
             #endregion
+
+            if (_enemiesInSceneStack.Count > _maxEnemiesInScene)
+            {
+                HandleMaxEnemy();
+            }
+            else
+            {
+                canSpawn = true;
+            }
         }
         #endregion
         
@@ -90,6 +99,12 @@ namespace MiniBonk.Enemy
                 _enemiesInSceneStack.Push(enemyAdded);
             }
             StartCoroutine(HandleEnemySpawning());
+        }
+
+        private void HandleMaxEnemy()
+        {
+            canSpawn = false;
+            _enemiesInSceneStack.Pop();
         }
         #endregion
     }
