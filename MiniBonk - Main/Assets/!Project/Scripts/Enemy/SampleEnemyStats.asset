@@ -16,8 +16,8 @@ MonoBehaviour:
   acceleration: 10000
   stoppingDistance: 1
   health: 100
-  damage: 10
-  attackRange: 2
+  damage: 5
+  attackRange: 1
   attackCooldown: 2
   xpValue: 50
   model: {fileID: 0}
