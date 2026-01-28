@@ -45,7 +45,11 @@ public class LevelUpUI : MonoBehaviour
     // ============================================================
     private void ShowLevelUpPanel(int newLevel)
     {
-        levelUpPanel.SetActive(true);
+        if (levelUpPanel != null)
+        {
+            levelUpPanel.SetActive(true);
+            Debug.Log("LevelUpUI: Panel GameObject set to Active.");
+        }
 
         Time.timeScale = 0f;
 
@@ -105,7 +109,7 @@ public class LevelUpUI : MonoBehaviour
     [System.Serializable]
     public class UpgradeData
     {
-        public Minibonk.MovementAbilities.MovementAbility abilitySO;
+        public MovementAbility abilitySO;
         //Future weaopon slot..
         // public WeaponData weaponSO;
         public string upgradeName => abilitySO != null ? abilitySO.abilityName : "Unknown Ability";
