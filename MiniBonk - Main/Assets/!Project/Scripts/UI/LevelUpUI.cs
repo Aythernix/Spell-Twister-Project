@@ -63,6 +63,8 @@ public class LevelUpUI : MonoBehaviour
     {
         levelUpPanel.SetActive(false);
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     private void GenerateUpgradesFromManager()
     {
