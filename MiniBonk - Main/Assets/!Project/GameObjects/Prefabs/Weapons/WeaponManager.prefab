@@ -65,7 +65,7 @@ MonoBehaviour:
   fireBallSpeed: 30
   reloadTimer: 2
   reloadTime: 1
-  autoFire: 0
+  autoFire: 1
   fireBallPrefab: {fileID: 2687303498020648872, guid: 27136ac292c08b24fa2c29ad311b086a, type: 3}
   projectileSpawner: {fileID: 170783243440418687, guid: 1e431d93b1e6e8d46bb0f5d62001aa37, type: 3}
   enemyDetector: {fileID: 7855080549918175609, guid: 2acd3c3f612bbf54aa0e7a08c71d3023, type: 3}

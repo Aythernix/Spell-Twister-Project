@@ -36,6 +36,7 @@ public class Fire_ProjectileScript : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
+
             Destroy(gameObject);
         }
     }
