@@ -20,6 +20,7 @@ namespace Minibonk.Player
 			// Event Subscription
 			_playerHandler.Events.OnPlayerDamaged += TakeDamage;
 		}
+		
 
 		private void OnDisable()
 		{
