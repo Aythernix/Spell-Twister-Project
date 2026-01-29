@@ -45,7 +45,7 @@ namespace Minibonk.Player
 				TakeDamage(10f);
 			}
 			
-			Debug.Log(_playerHandler.playerData.currentHealth);
+			//Debug.Log(_playerHandler.playerData.currentHealth);
 		}
 
 		#endregion

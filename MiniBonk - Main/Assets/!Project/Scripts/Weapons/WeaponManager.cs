@@ -6,7 +6,7 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private Weapon_FireType fireWeapon;
 
-    private void Update()
+    public void Update()
     {
         switch (currentWeapon)
         {
