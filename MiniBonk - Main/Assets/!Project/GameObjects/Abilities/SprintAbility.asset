@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Sprint
   abilityID: 1
+  abilityDescription: This is a sprint..
   cooldownTime: 0
   staminaCost: 0
   _sprintMultipler: 1.5

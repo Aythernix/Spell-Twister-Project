@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Weapon_FireType : MonoBehaviour
 {
@@ -16,7 +17,11 @@ public class Weapon_FireType : MonoBehaviour
 
     // --------------------- Options for weapon to become manual or automatic ---------------//
 
-    public bool autoFire = false;
+    public bool autoFire = true;
+
+    // ----------------------------- Weapon Damage -------------------------------//
+
+    //public int fireBallDmg = 100;
 
     // ------------------------------- Get bullet prefabs -----------------------------//
     public GameObject fireBallPrefab;
@@ -55,10 +60,12 @@ public class Weapon_FireType : MonoBehaviour
 
         // ------------------------- FIRE RATE TIMER LOGIC ---------------------------------//
 
-        if (lastFireBall < fireRate)
+        /*if (lastFireBall < fireRate)
         {
             lastFireBall += Time.deltaTime;
-        }
+        }*/
+
+        lastFireBall += Time.deltaTime;
 
         // ------------------------- SPAWNING FIREBALL LOGIC -------------------------------//
 
@@ -68,7 +75,8 @@ public class Weapon_FireType : MonoBehaviour
             if (lastFireBall >= fireRate)
             {
                 // spawns fireBall
-                createFireBall();
+                 createFireBall();
+               // chicken();
             }
         }
         else // This else statement is called when the shooting is in 'Manual' mode
@@ -78,43 +86,95 @@ public class Weapon_FireType : MonoBehaviour
             {
                 // spawns fireBall
                 createFireBall();
+                //chicken();
             }
         }
     }
 
     void createFireBall()
     {
+        // resets the timer for when the last bullet was shot
+        lastFireBall = 0;
+
+        if (fireBallPrefab == null || projectileSpawner == null) return;
+
         // Sets 'bullet' spawn at 'bullet spawners' position
         var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation);
+
+        // creates a new unnasigned vector 3 for the fireBalls move direction
+        Vector3 bulletDirection = projectileSpawner.transform.forward;
 
         // creates a new vector with the 'closestEnemy' variable from the range detector script
         Transform enemyTarget = enemyDetector.CheckForClosestEnemy();
 
-        // creates a new unnasigned vector 3 for the fireBalls move direction
-        Vector3 bulletDirection;
-
-        // if statement that checks if an enemy is in the hitbox of the range detector
         if (enemyTarget != null)
         {
-            // sets the next fireBalls direction toward the closest enemies position
-            bulletDirection = (enemyTarget.position - projectileSpawner.transform.position).normalized;
-        }
-        else
-        {
-            // sets the next fireBalls direction as the players forward transform (forward)
-            bulletDirection = projectileSpawner.transform.forward;
+            try
+            {
+                bulletDirection = (enemyTarget.position - projectileSpawner.transform.position).normalized;
+            }
+            catch (MissingReferenceException)
+            {
+                bulletDirection = projectileSpawner.transform.forward;
+            }
         }
 
-        // calculates fireBalls shooting
-        bullet.GetComponent<Rigidbody>().linearVelocity = bulletDirection * fireBallSpeed;
+
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = bulletDirection * fireBallSpeed;
+        }
+
 
         // removes a bullet each time the function is called
         fireBalls -= 1;
 
         // assigns the timer to default after being used
         reloadTimer = reloadTime;
+    }
 
+
+    /*void chicken()
+    {
         // resets the timer for when the last bullet was shot
         lastFireBall = 0;
-    }
+
+        if (fireBallPrefab == null || projectileSpawner == null) return;
+
+        // Sets 'bullet' spawn at 'bullet spawners' position
+        var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation);
+
+        // creates a new unnasigned vector 3 for the fireBalls move direction
+        Vector3 bulletDirection = projectileSpawner.transform.forward;
+
+        // creates a new vector with the 'closestEnemy' variable from the range detector script
+        Transform enemyTarget = enemyDetector.freaky();
+
+        if (enemyTarget != null)
+        {
+            try
+            {
+                bulletDirection = (enemyTarget.position - projectileSpawner.transform.position).normalized;  
+            }
+            catch (MissingReferenceException)
+            {
+                bulletDirection = projectileSpawner.transform.forward;
+            }
+        }
+        
+
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = bulletDirection * fireBallSpeed;
+        }
+        
+
+        // removes a bullet each time the function is called
+        fireBalls -= 1;
+
+        // assigns the timer to default after being used
+        reloadTimer = reloadTime;
+    }*/
 }

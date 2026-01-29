@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Minibonk.Management
 {
-
 	public class GameManager : MonoBehaviour
 	{
 		#region Variables
@@ -32,6 +31,7 @@ namespace Minibonk.Management
 
 			DontDestroyOnLoad(this);
 		}
+		
 
 		#endregion
 	}
