@@ -15,5 +15,5 @@ MonoBehaviour:
   abilityName: Dash
   abilityID: 2
   abilityDescription: Dashing time!
-  cooldownTime: 0
+  cooldownTime: 10
   staminaCost: 0
