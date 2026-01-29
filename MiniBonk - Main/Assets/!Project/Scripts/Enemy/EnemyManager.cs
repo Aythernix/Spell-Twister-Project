@@ -104,6 +104,12 @@ namespace MiniBonk.Enemy
         private void HandleMaxEnemy()
         {
             canSpawn = false;
+            if (_enemiesInSceneStack.Count == 0) return;
+            var nextEnemy = _enemiesInSceneStack.Peek();
+            if (nextEnemy != null)
+            {
+                Destroy(nextEnemy);
+            }
             _enemiesInSceneStack.Pop();
         }
         #endregion
