@@ -16,7 +16,7 @@ public class Weapon_FireType : MonoBehaviour
 
     // --------------------- Options for weapon to become manual or automatic ---------------//
 
-    public bool autoFire = false;
+    public bool autoFire = true;
 
     // ------------------------------- Get bullet prefabs -----------------------------//
     public GameObject fireBallPrefab;
