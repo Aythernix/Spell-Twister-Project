@@ -21,11 +21,6 @@ namespace Minibonk.Player
             playerData.Reset();
         }
 
-        private void Start()
-        {
-            playerData.Reset();
-        }
-
         // Update is called once per frame
         void Update()
         {
