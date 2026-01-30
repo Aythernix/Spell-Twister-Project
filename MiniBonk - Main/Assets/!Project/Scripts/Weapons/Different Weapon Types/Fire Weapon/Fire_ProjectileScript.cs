@@ -11,86 +11,48 @@ public class Fire_ProjectileScript : MonoBehaviour
 
     float bulletLife = 2.5f;
     private bool hasHit = false;
-
-    //public TestEnemy enemy;
-   // public WeaponManager weaponManager;
     public WeaponDamageStats weaponDamageStats;
 
+    // ------------------------ Projectile Lifetime Timer ---------------------------//
     private void Update()
     {
-        //FireBallTimer();
-        bulletLife -= Time.deltaTime;
-        if (bulletLife <= 0) Destroy(gameObject);
+        bulletLife -= Time.deltaTime; // constantly counts down the bullets life timer as soon as its awake
+        if (bulletLife <= 0) Destroy(gameObject); // when the projectiles life is up, kills projectile.
     }
 
-    void FireBallTimer()
-    {
-        // ------ Timer that destroys bullet when its lifetime runs out --------//
-
-        if (bulletLife >= 0)
-        {
-            bulletLife -= Time.deltaTime;
-        }
-        else
-            Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        if (hasHit) return;
-
-        
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            hasHit = true;
-
-            if (TryGetComponent<Collider>(out Collider col)) col.enabled = false;
-
-            if (TryGetComponent<Rigidbody>(out Rigidbody rb)) rb.linearVelocity = Vector3.zero; 
-           
-
-            var justHit = collision.gameObject.GetComponent<MiniBonk.Enemy.Enemy>();
-
-            if (justHit != null)
-            {
-                
-                justHit.TakeDamage(weaponDamageStats.fireBallProjectileDMG);
-            }
-            Destroy(gameObject);
-        }
-
-        // ------ Destroys bullet when it collides with an object with the 'Environment' tag ------//
-
-        if (collision.gameObject.CompareTag("Environment"))
-        {
-            hasHit = true;
-            Destroy(gameObject);
-        }
-    }
+    // -------------------------- Test if collided --------------------------------//
 
     private void OnTriggerEnter(Collider other)
     {
+        // Makes sure that collision code doesn't run twice due to timings
         if (hasHit) return ;
         
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")) // Checks if projectile is colliding with an object with tag 'Enemy'
         {
-            hasHit= true;
+            // sets the Boolean
+            hasHit = true;
 
+            // turns off projectile collider so it can't trigger code more than once
             GetComponent<Collider>().enabled = false;
 
+            // creates a local variable for the Enemy Class
             var justHit = other.GetComponent<MiniBonk.Enemy.Enemy>();
 
-            if (justHit != null)
+            if (justHit != null) // tests if the enemy that was hit still exists
             {
+                // adds damage accordingly
                 justHit.TakeDamage(weaponDamageStats.fireBallProjectileDMG);
             }
 
-            Destroy (gameObject);
+            // kills off projectile
+            Destroy(gameObject);
         }
-        else if (other.gameObject.CompareTag("Environment"))
+        else if (other.gameObject.CompareTag("Environment")) // Checks if projectile is colliding with an object with tag 'Environment'
         {
+            // sets the Boolean
             hasHit = true;
+
+            // kills off projectile
             Destroy(gameObject);
         }
     }

@@ -19,10 +19,6 @@ public class Weapon_FireType : MonoBehaviour
 
     public bool autoFire = true;
 
-    // ----------------------------- Weapon Damage -------------------------------//
-
-    //public int fireBallDmg = 100;
-
     // ------------------------------- Get bullet prefabs -----------------------------//
     public GameObject fireBallPrefab;
     public GameObject projectileSpawner;
@@ -60,11 +56,6 @@ public class Weapon_FireType : MonoBehaviour
 
         // ------------------------- FIRE RATE TIMER LOGIC ---------------------------------//
 
-        /*if (lastFireBall < fireRate)
-        {
-            lastFireBall += Time.deltaTime;
-        }*/
-
         lastFireBall += Time.deltaTime;
 
         // ------------------------- SPAWNING FIREBALL LOGIC -------------------------------//
@@ -86,7 +77,6 @@ public class Weapon_FireType : MonoBehaviour
             {
                 // spawns fireBall
                 createFireBall();
-                //chicken();
             }
         }
     }
@@ -133,48 +123,4 @@ public class Weapon_FireType : MonoBehaviour
         // assigns the timer to default after being used
         reloadTimer = reloadTime;
     }
-
-
-    /*void chicken()
-    {
-        // resets the timer for when the last bullet was shot
-        lastFireBall = 0;
-
-        if (fireBallPrefab == null || projectileSpawner == null) return;
-
-        // Sets 'bullet' spawn at 'bullet spawners' position
-        var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation);
-
-        // creates a new unnasigned vector 3 for the fireBalls move direction
-        Vector3 bulletDirection = projectileSpawner.transform.forward;
-
-        // creates a new vector with the 'closestEnemy' variable from the range detector script
-        Transform enemyTarget = enemyDetector.freaky();
-
-        if (enemyTarget != null)
-        {
-            try
-            {
-                bulletDirection = (enemyTarget.position - projectileSpawner.transform.position).normalized;  
-            }
-            catch (MissingReferenceException)
-            {
-                bulletDirection = projectileSpawner.transform.forward;
-            }
-        }
-        
-
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = bulletDirection * fireBallSpeed;
-        }
-        
-
-        // removes a bullet each time the function is called
-        fireBalls -= 1;
-
-        // assigns the timer to default after being used
-        reloadTimer = reloadTime;
-    }*/
 }

@@ -63,44 +63,4 @@ public class EnemyRangeDetector : MonoBehaviour
         }
         return closestEnemy;
     }
-
-    /*public Transform freaky()
-    {
-
-        enemiesWithinRange.RemoveAll(enemy => enemy == null);
-
-        // sets the closestEnemy variable to null as there wont be a target on startup
-        Transform closestEnemy = null;
-
-        // sets the default range of the closest distance to the enemy to infinty. This will make it easier to check which enemy position is closer to the player later on
-        float closestEnemyDistance = Mathf.Infinity;
-
-        // creates a vector 3 with the players position so we can compare enemy positions to the players
-        Vector3 playerPos = transform.position;
-
-        // will loop through all current transforms in our list
-        foreach (Transform enemyPos in enemiesWithinRange)
-        {
-
-            if (enemyPos == null) continue;
-
-            // creates a vector 3 from the player to an enemy in the list
-            Vector3 distanceFromEnemy = enemyPos.position - playerPos;
-
-            // gets the rough vector from the vector3 created above and assigns it to the enemyRange variable
-            float enemyRange = distanceFromEnemy.sqrMagnitude;
-
-            // if statement that checks if an enemy position is closer to the player than the last
-            if (enemyRange < closestEnemyDistance)
-            {
-                // sets the closest enemy in our lists position to the 'closestEnemyDistance' transform
-                closestEnemyDistance = enemyRange;
-
-                // assigns the closest enemies position to the 'closestEnemy' variable to be used
-                closestEnemy = enemyPos;
-            }
-        }
-        return closestEnemy;
-
-    }*/
 }
