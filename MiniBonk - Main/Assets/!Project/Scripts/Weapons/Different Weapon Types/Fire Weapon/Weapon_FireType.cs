@@ -13,7 +13,7 @@ public class Weapon_FireType : MonoBehaviour
     float lastFireBall;
 
     public float reloadTimer = 2f;
-    public float reloadTime = 1f;
+    public float reloadTime = 2f;
 
     // --------------------- Options for weapon to become manual or automatic ---------------//
 
@@ -67,7 +67,6 @@ public class Weapon_FireType : MonoBehaviour
             {
                 // spawns fireBall
                  createFireBall();
-               // chicken();
             }
         }
         else // This else statement is called when the shooting is in 'Manual' mode
