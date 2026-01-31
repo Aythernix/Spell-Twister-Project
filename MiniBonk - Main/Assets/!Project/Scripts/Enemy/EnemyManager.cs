@@ -17,7 +17,7 @@ namespace MiniBonk.Enemy
         
         [Header("SpawnSettings")]
         // How many seconds between enemy spawns
-        [SerializeField] private float _spawnRate = 5;
+        [SerializeField] private float _spawnDelay = 5;
         // How many enemies to spawn at once
         [SerializeField] private int _enemiesToSpawnPerBatch = 5;
         // The area around the player enemies will spawn
@@ -97,7 +97,7 @@ namespace MiniBonk.Enemy
         private IEnumerator HandleEnemySpawning()
         {
             
-            yield return new WaitForSeconds(_spawnRate);
+            yield return new WaitForSeconds(_spawnDelay);
 
 
             if (!_maxReached)
@@ -139,12 +139,13 @@ namespace MiniBonk.Enemy
             HandleRemoveEnemy(nextEnemy);
         }
         
+        // Passing parameters from Enemy Killed event to the handle enemy removed
         private void OnEnemyKilled(GameObject killer, GameObject enemyToRemove)
         {
-            HandleRemoveEnemy(enemyToRemove, killer);
+            HandleRemoveEnemy(enemyToRemove);
         }
         
-        private void HandleRemoveEnemy(GameObject enemyToRemove, GameObject killer = null)
+        private void HandleRemoveEnemy(GameObject enemyToRemove)
         {
             _enemiesInScene.Remove(enemyToRemove);
         }
