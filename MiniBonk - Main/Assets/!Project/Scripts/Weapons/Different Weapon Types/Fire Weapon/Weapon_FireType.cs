@@ -88,7 +88,7 @@ public class Weapon_FireType : MonoBehaviour
         if (fireBallPrefab == null || projectileSpawner == null) return;
 
         // Sets 'bullet' spawn at 'bullet spawners' position
-        var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation);
+        var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation, gameObject.transform);
 
         // creates a new unnasigned vector 3 for the fireBalls move direction
         Vector3 bulletDirection = projectileSpawner.transform.forward;

@@ -41,7 +41,7 @@ public class Fire_ProjectileScript : MonoBehaviour
             if (justHit != null) // tests if the enemy that was hit still exists
             {
                 // adds damage accordingly
-                justHit.TakeDamage(weaponDamageStats.fireBallProjectileDMG);
+                justHit.TakeDamage(weaponDamageStats.fireBallProjectileDMG, transform.root.gameObject);
             }
 
             // kills off projectile
