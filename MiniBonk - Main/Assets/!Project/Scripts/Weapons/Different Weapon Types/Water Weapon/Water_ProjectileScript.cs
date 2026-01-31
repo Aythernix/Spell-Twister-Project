@@ -40,7 +40,7 @@ public class Water_ProjectileScript : MonoBehaviour
             if (justHit != null) // tests if the enemy that was hit still exists
             {
                 // adds damage accordingly
-                justHit.TakeDamage(weaponDamageStats.waterBallProjectileDMG); 
+                justHit.TakeDamage(weaponDamageStats.waterBallProjectileDMG, transform.root.gameObject); 
             }
 
             // kills off projectile
