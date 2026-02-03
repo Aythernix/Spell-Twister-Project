@@ -6,6 +6,7 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private Weapon_FireType fireWeapon; // Type 1
     [SerializeField] private Weapon_WaterType waterWeapon; // Type 2
+    [SerializeField] private Weapon_WindType windWeapon; // Type 3
     
 
     public void Update()
@@ -17,6 +18,9 @@ public class WeaponManager : MonoBehaviour
                 break;
             case 2:
                 waterWeapon.ShootWaterPulse();
+                break;
+            case 3:
+                windWeapon.ShootWindBlade();
                 break;
             default:
                 Debug.Log("Not a weapon index!");

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 927869971261412868}
   - component: {fileID: 5214850597624710777}
   - component: {fileID: 1885152437500011605}
+  - component: {fileID: 9013737019127689757}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -46,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93398d7f852bf0b44831b85526182173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: 2
+  currentWeapon: 3
   fireWeapon: {fileID: 5214850597624710777}
   waterWeapon: {fileID: 1885152437500011605}
+  windWeapon: {fileID: 9013737019127689757}
 --- !u!114 &5214850597624710777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,8 +71,8 @@ MonoBehaviour:
   reloadTime: 1
   autoFire: 1
   fireBallPrefab: {fileID: 2687303498020648872, guid: 27136ac292c08b24fa2c29ad311b086a, type: 3}
-  projectileSpawner: {fileID: 170783243440418687, guid: 1e431d93b1e6e8d46bb0f5d62001aa37, type: 3}
-  enemyDetector: {fileID: 7855080549918175609, guid: 2acd3c3f612bbf54aa0e7a08c71d3023, type: 3}
+  projectileSpawner: {fileID: 0}
+  enemyDetector: {fileID: 0}
 --- !u!114 &1885152437500011605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,3 +96,25 @@ MonoBehaviour:
   waterBallProjectile: {fileID: 5865229540475323126, guid: f31a75e9a84a7e14db4d53244f717edc, type: 3}
   waterBallSpawner: {fileID: 0}
   autofire: 1
+--- !u!114 &9013737019127689757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6032548742318806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca6aee0d9725664eb7f681bc4c058d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windProjectilePrefab: {fileID: 5231465691767780103, guid: 88e94f616a3f1664c9b8011fc4e5e0ee, type: 3}
+  projectileSpawner: {fileID: 0}
+  autoFire: 1
+  windProjectileBurst: 0
+  windProjectileBurstMax: 3
+  windProjectileSpeed: 40
+  windProjectileBurstTime: 0.5
+  reloadTime: 2
+  reloadTimer: 1
+  lastProjectile: 0
