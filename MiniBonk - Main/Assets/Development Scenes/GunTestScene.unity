@@ -1211,6 +1211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 927869971261412868, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: currentWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1885152437500011605, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: waterBallSpawner
       value: 
@@ -1325,7 +1329,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5399568822079647743, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+    - {fileID: 5104636750793448571, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 754207162792449394, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       insertIndex: -1
