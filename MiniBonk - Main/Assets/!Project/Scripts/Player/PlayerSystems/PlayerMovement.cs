@@ -3,6 +3,7 @@ using UnityEngine;
 using Minibonk.Management;
 using RotaryHeart.Lib.PhysicsExtension;
 using UnityEngine.Serialization;
+using Physics = RotaryHeart.Lib.PhysicsExtension.Physics;
 
 namespace Minibonk.Player
 {
@@ -22,10 +23,17 @@ namespace Minibonk.Player
         [SerializeField] private float _radius = 0.5f;
         [SerializeField] private float _distance = 0.2f;
         [SerializeField] private LayerMask _groundLayer;
+        
+        [Header("Snapping Settings")]
+        [SerializeField] private float _maxSnapAngle;
+        [SerializeField] private float _minSnapAngle;
+        [SerializeField] private float _snappingForce;
 
         [Header("References")] 
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private Rigidbody _rb;
+        
+        private bool _isJumping = false;
         
         private InputManager _inputManager;
         private Vector2 _directionInput;
@@ -73,12 +81,14 @@ namespace Minibonk.Player
             
             ApplyVelocity(_walkSpeed * speedMultiplier);
             
+            SnapToGround();
+            
             HandleRotation();
         }
         #endregion
 
         #region Private Methods
-        private void HandleMoveInput(Vector2 input) => _directionInput = input;
+        private void HandleMoveInput(Vector2 input) => _directionInput = input.normalized;
         private void HandleJumpInput() => _jumpBufferCounter = _jumpBuffer;
         private void UpdateCameraVectors()
         {
@@ -97,13 +107,43 @@ namespace Minibonk.Player
         
         private void ApplyVelocity(float speed)
         {
-            _moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x);
+            _moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x).normalized;
             _rb.linearVelocity = new Vector3(_moveDirection.x * speed, _rb.linearVelocity.y, _moveDirection.z * speed);
+        }
+
+        private void SnapToGround()
+        {
+            Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, _groundLayer, PreviewCondition.Both, 1f, Color.cyan, Color.magenta);
+            if (hit.collider != null)
+            {
+                
+                if (_isJumping) return;
+                
+                var normal = hit.normal;
+                var angle = Vector3.Angle(normal, Vector3.down);
+                Debug.Log(angle);
+
+                if ((_minSnapAngle < angle && angle < _maxSnapAngle) && !HandleGroundDetection())
+                {
+                    _rb.linearVelocity = -hit.normal * _snappingForce;
+                }
+            }
+            Debug.Log(_rb.linearVelocity);
         }
 
         private bool HandleGroundDetection()
         {
-            return RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(transform.position, _radius, Vector3.down, out RaycastHit hit, _distance, _groundLayer, PreviewCondition.Both, 0.1f, Color.green, Color.red);
+            bool grounded = RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(
+                transform.position, _radius, Vector3.down, out RaycastHit hit, 
+                _distance, _groundLayer, PreviewCondition.Both, 0.1f, Color.green, Color.red);
+
+            // If we are touching the ground and moving downwards/stationary, we are no longer "Jumping"
+            if (grounded && _rb.linearVelocity.y <= 0.01f)
+            {
+                _isJumping = false;
+            }
+
+            return grounded;
         }
 
         private void HandleJumpCheck(bool groundCheck)
@@ -129,6 +169,8 @@ namespace Minibonk.Player
 
         private void PerformJump()
         {
+            _isJumping = true;
+            
             // Reset Y velocity before jump for consistent height
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
