@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class Weapon_WindType : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Weapon_WindType : MonoBehaviour
 
     public GameObject windProjectilePrefab;
     public GameObject projectileSpawner;
+    public EnemyRangeDetector enemyAreaDetector;
     public bool autoFire = true;
 
     public int windProjectileBurst = 0;
@@ -77,6 +79,20 @@ public class Weapon_WindType : MonoBehaviour
         // creates and makes a set vector 3 to be used on the newely made projectile
         var newWindProjectile = Instantiate(windProjectilePrefab, projectileSpawner.transform.position, projectileSpawner.transform.rotation, gameObject.transform);
         Vector3 windProjectileDirection = projectileSpawner.transform.forward;
+
+        Transform enemyTarget = enemyAreaDetector.CheckForClosestEnemy();
+
+        if (enemyTarget != null)
+        {
+            try
+            {
+                windProjectileDirection = (enemyTarget.position - projectileSpawner.transform.position).normalized;
+            }
+            catch (MissingReferenceException)
+            {
+                windProjectileDirection = projectileSpawner.transform.forward;
+            }
+        }
 
         // sets the new projectile to a rigid body
         Rigidbody rb = newWindProjectile.GetComponent<Rigidbody>();
