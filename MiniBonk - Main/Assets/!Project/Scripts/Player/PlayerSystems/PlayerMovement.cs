@@ -50,7 +50,6 @@ namespace Minibonk.Player
         
         public float speedMultiplier { get; set; } = 1f;
         
-        
         #endregion
 
         #region Unity Methods
@@ -124,12 +123,12 @@ namespace Minibonk.Player
             Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, _groundLayer, PreviewCondition.Both, 1f, Color.cyan, Color.magenta);
             if (hit.collider != null)
             {
-                
+
                 if (_isJumping) return;
-                
+
                 var normal = hit.normal;
                 var angle = Vector3.Angle(normal, Vector3.down);
-                Debug.Log(angle);
+                // Debug.Log(angle);
 
                 if ((_minSnapAngle < angle && angle < _maxSnapAngle) && !HandleGroundDetection())
                 {
@@ -171,6 +170,7 @@ namespace Minibonk.Player
             if (_coyoteTimeCounter > 0 && _jumpBufferCounter > 0)
             {
                 PerformJump();
+                Debug.Log("Jump");
             }
         }
 
@@ -179,8 +179,9 @@ namespace Minibonk.Player
             _isJumping = true;
             
             // Reset Y velocity before jump for consistent height
-            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
+            //_rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+
 
             // Consume Counters preventing double jump
             _jumpBufferCounter = 0;
