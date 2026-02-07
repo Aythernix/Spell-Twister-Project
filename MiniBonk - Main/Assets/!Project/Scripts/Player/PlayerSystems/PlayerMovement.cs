@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Minibonk.Management;
 using RotaryHeart.Lib.PhysicsExtension;
+using UnityEditor.Build;
 using UnityEngine.Serialization;
 using Physics = RotaryHeart.Lib.PhysicsExtension.Physics;
 
@@ -34,6 +35,7 @@ namespace Minibonk.Player
         [SerializeField] private Rigidbody _rb;
         
         private bool _isJumping = false;
+        private bool _resetMovement = true;
         
         private InputManager _inputManager;
         private Vector2 _directionInput;
@@ -62,7 +64,8 @@ namespace Minibonk.Player
         {
             _playerHandler.Events.OnMove += HandleMoveInput;
             _playerHandler.Events.OnJumpStarted += HandleJumpInput;
-            
+            _playerHandler.Events.PreventMovementInterference += HandlePreventMovementInterference;
+
         }
         
         private void OnDisable()
@@ -90,6 +93,8 @@ namespace Minibonk.Player
         #region Private Methods
         private void HandleMoveInput(Vector2 input) => _directionInput = input.normalized;
         private void HandleJumpInput() => _jumpBufferCounter = _jumpBuffer;
+
+        private void HandlePreventMovementInterference(bool state) => _resetMovement = !state;
         private void UpdateCameraVectors()
         {
             _cameraForward = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
@@ -108,7 +113,10 @@ namespace Minibonk.Player
         private void ApplyVelocity(float speed)
         {
             _moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x).normalized;
-            _rb.linearVelocity = new Vector3(_moveDirection.x * speed, _rb.linearVelocity.y, _moveDirection.z * speed);
+            if (_resetMovement)
+            {
+                _rb.linearVelocity = new Vector3(_moveDirection.x * speed, _rb.linearVelocity.y, _moveDirection.z * speed);
+            }
         }
 
         private void SnapToGround()
@@ -128,7 +136,6 @@ namespace Minibonk.Player
                     _rb.linearVelocity = -hit.normal * _snappingForce;
                 }
             }
-            Debug.Log(_rb.linearVelocity);
         }
 
         private bool HandleGroundDetection()
