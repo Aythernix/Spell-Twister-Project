@@ -17,3 +17,5 @@ MonoBehaviour:
   abilityDescription: Dashing time!
   cooldownTime: 10
   staminaCost: 0
+  _dashForce: 100
+  _maxDashDistance: 15
