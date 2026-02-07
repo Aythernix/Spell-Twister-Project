@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Minibonk.MovementAbilities
         {
             base.Initialize(player);
             autoFinalise = true;
+            Start();
         }
         protected override void OnExecute()
         {
@@ -20,5 +22,13 @@ namespace Minibonk.MovementAbilities
         /// Implement one time logic.
         /// </summary>
         protected abstract void ApplyImpulse();
+
+        /// <summary>
+        /// Implement any logic needed upon initialization
+        /// </summary>
+        protected virtual void Start()
+        {
+            
+        }
     }
 }
