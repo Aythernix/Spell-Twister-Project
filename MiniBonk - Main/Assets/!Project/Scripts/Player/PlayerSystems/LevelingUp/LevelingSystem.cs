@@ -23,8 +23,8 @@ namespace Minibonk.Player
 
         private int PlayerXp
         {
-            get => _playerHandler.playerData.Xp;
-            set => _playerHandler.playerData.Xp = value;
+            get => _playerHandler.playerData.xp;
+            set => _playerHandler.playerData.xp = value;
         }
 
         #endregion

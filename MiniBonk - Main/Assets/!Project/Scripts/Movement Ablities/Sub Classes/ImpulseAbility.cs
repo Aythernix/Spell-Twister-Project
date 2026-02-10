@@ -16,6 +16,7 @@ namespace Minibonk.MovementAbilities
         {
             ApplyImpulse();
             Finalise(); 
+            UtiliseStamina();
         }
 
         /// <summary>
