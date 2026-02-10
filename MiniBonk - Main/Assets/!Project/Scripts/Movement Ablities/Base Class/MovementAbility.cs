@@ -1,3 +1,4 @@
+using Minibonk.Player;
 using UnityEngine;
 
 namespace Minibonk.MovementAbilities
@@ -11,6 +12,7 @@ namespace Minibonk.MovementAbilities
         public string abilityDescription;
         public float cooldownTime;
         public float staminaCost;
+        public float StaminaLossRate;
 
         public bool autoFinalise { get; protected set; } = false;
 
@@ -40,6 +42,7 @@ namespace Minibonk.MovementAbilities
         public void Execute()
         {
             if (IsOnCooldown) return;
+            if (_player.GetComponent<PlayerHandler>().Events.GetCurrentStamina?.Invoke() - staminaCost < 0) return;
             OnExecute(); 
         }
 
@@ -69,6 +72,21 @@ namespace Minibonk.MovementAbilities
         /// Manually sets the next available time the ability can be used.
         /// </summary>
         protected void StartCooldown() => _nextReadyTime = Time.time + cooldownTime;
+
+        /// <summary>
+        /// Allows for frame based code in abilities
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        public virtual void Tick(float deltaTime){ }
+        
+        /// <summary>
+        /// Called to decrease the players stamina by the set rate (StaminaCost / StaminaPerSecond)
+        /// </summary>
+        protected virtual void UtiliseStamina()
+        {
+            float staminaToTake = staminaCost / StaminaLossRate;
+            _player.GetComponent<PlayerHandler>().Events.OnStaminaDecrease?.Invoke(staminaToTake);
+        }
         #endregion
 
         #region Checks

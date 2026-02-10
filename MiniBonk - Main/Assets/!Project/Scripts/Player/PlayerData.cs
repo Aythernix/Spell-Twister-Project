@@ -6,18 +6,22 @@ namespace Minibonk.Player
     [CreateAssetMenu(fileName = "PlayerID", menuName = "Scriptable Objects/PlayerID")]
     public class PlayerData : ScriptableObject
     {
-        // CONSTANTS
+        // Max
         public float maxHealth;
+        public float maxStamina;
+        
         
         public float currentHealth;
+        public float currentStamina;
         public int level;
-        public int Xp;
+        public int xp;
 
         public void Reset()
         {
             currentHealth = maxHealth;
+            currentStamina = maxStamina;
             level = 1;
-            Xp = 0;
+            xp = 0;
         }
     } 
     
