@@ -1,5 +1,7 @@
 using Minibonk.Management;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Minibonk.UI
 {
@@ -7,8 +9,13 @@ namespace Minibonk.UI
 	{
 
 		#region Variables
+		
+		private bool isHovered = false;
+		private bool isSelected = false;
 
 		protected UIManager _uiManager;
+		
+		
 
 		#endregion
 
@@ -21,12 +28,18 @@ namespace Minibonk.UI
 		// Update is called once per frame
 		void Update()
 		{
-
+			
 		}
 
 		#region Private Method
 		//
 
+		#endregion
+		
+		#region Protected Methods
+
+		//
+		
 		#endregion
 	}
 

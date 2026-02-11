@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Minibonk.UI
 {
@@ -7,7 +9,20 @@ namespace Minibonk.UI
 		#region Variables
 		
 		public Events UIEvents = new Events();
+		
 		#endregion
+
+		private void OnEnable()
+		{
+			UIEvents.OnInstantiateUIScene += InstantiateUIScene;
+			UIEvents.OnCloseUIScene += CloseUIScene;
+		}
+
+		private void OnDisable()
+		{
+			UIEvents.OnInstantiateUIScene -= InstantiateUIScene;
+			UIEvents.OnCloseUIScene -= CloseUIScene;
+		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
@@ -20,6 +35,20 @@ namespace Minibonk.UI
 		{
 
 		}
+
+		#region Private Methods
+
+		private void InstantiateUIScene(string sceneName)
+		{
+			SceneManager.LoadSceneAsync(sceneName,  LoadSceneMode.Additive);
+		}
+
+		private void CloseUIScene(string sceneName)
+		{
+			SceneManager.UnloadSceneAsync(sceneName);
+		}
+
+		#endregion
 	}
 
 	public struct Events
@@ -29,5 +58,14 @@ namespace Minibonk.UI
 		/// </summary>
 		public delegate void UpdatePlayerHealthUI(float health, float healthMax);
 		public UpdatePlayerHealthUI updatePlayerHealthUI;
+		
+		/// <summary>
+		/// Opens a UI scene by its given name
+		/// </summary>
+		public Action<string> OnInstantiateUIScene;
+		/// <summary>
+		/// Closes a UI scene by its given name
+		/// </summary>
+		public Action<string> OnCloseUIScene;
 	}
 }
