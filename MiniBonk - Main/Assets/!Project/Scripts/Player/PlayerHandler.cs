@@ -32,12 +32,6 @@ namespace Minibonk.Player
         
         }
         #endregion
-
-        private void HandleTakingDamage(float damageAmount)
-        {
-            playerData.currentHealth -= (int)damageAmount;
-            Debug.Log($"Player took {damageAmount} damage, current health: {playerData.currentHealth}");
-        }
     }
 
     public class Events
