@@ -12,8 +12,8 @@ public class Weapon_WaterType : MonoBehaviour
 
     public int waterPulsesMax = 5;
     public int waterPulses;
-    public int waterBalls = 20;
-    public float waterPulseFireRate = 1.5f;
+    public int waterBalls = 15;
+    public float waterPulseFireRate = 2.5f;
     public int waterBallSpeed = 15;
 
     public float lastwaterPulse;
