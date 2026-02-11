@@ -1753,7 +1753,7 @@ GameObject:
   - component: {fileID: 745619642}
   - component: {fileID: 745619641}
   m_Layer: 8
-  m_Name: EnemyRangeDetector
+  m_Name: EnemyRangeDetector15M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3116,6 +3116,9 @@ PrefabInstance:
       addedObject: {fileID: 745619640}
     - targetCorrespondingSourceObject: {fileID: 754207162792449394, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1344881680}
+    - targetCorrespondingSourceObject: {fileID: 754207162792449394, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1686154786}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
@@ -3406,16 +3409,40 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 927869971261412868, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 927869971261412868, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: currentWeapon
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1885152437500011605, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: waterBallSpawner
       value: 
       objectReference: {fileID: 1686154785}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: fireRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: reloadTime
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: iceBallPrefab
+      value: 
+      objectReference: {fileID: 5245447451294971856, guid: b2ba1b7c6fd297c40b3a4d9377ee60c3, type: 3}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: projectileSpawner
+      value: 
+      objectReference: {fileID: 1686154785}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: enemyRangeDetector
+      value: 
+      objectReference: {fileID: 1344881678}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: iceProjectileSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5214850597624710777, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: enemyDetector
       value: 
@@ -3616,6 +3643,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1344881677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344881680}
+  - component: {fileID: 1344881679}
+  - component: {fileID: 1344881678}
+  m_Layer: 8
+  m_Name: EnemyRangeDetector30M
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1344881678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344881677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f49e3fc86aad8543a9f65154eca6af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesWithinRange: []
+--- !u!135 &1344881679
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344881677}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1344881680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344881677}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1354115104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1354115104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 754207162792449394, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}

@@ -189,27 +189,26 @@ namespace Minibonk.Player
 				_coyoteTimeCounter = _coyoteTime;
 			}
 
-			if (_coyoteTimeCounter > 0 && _jumpBufferCounter > 0)
-			{
-				PerformJump();
-				Debug.Log("Jump");
-			}
-		}
+            if (_coyoteTimeCounter > 0 && _jumpBufferCounter > 0)
+            {
+                PerformJump();
+                Debug.Log("Jump");
+            }
+        }
 
-		private void PerformJump()
-		{
-			_isJumping = true;
+        private void PerformJump()
+        {
+            _isJumping = true;
+            
+            // Reset Y velocity before jump for consistent height
+            //_rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
 
-			// Reset Y velocity before jump for consistent height
-			//_rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
-			_rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
 
-
-			// Consume Counters preventing double jump
-			_jumpBufferCounter = 0;
-			_coyoteTimeCounter = 0;
-		}
-
-		#endregion
-	}
+            // Consume Counters preventing double jump
+            _jumpBufferCounter = 0;
+            _coyoteTimeCounter = 0;
+        }
+        #endregion
+    }
 }
