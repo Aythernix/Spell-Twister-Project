@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Dash
   abilityID: 2
-  abilityDescription: Dashing time!
-  cooldownTime: 10
-  staminaCost: 0
+  abilityDescription: Let's you zip though the air!
+  cooldownTime: 3
+  staminaCost: 25
+  StaminaLossRate: 0
   _dashForce: 100
   _maxDashDistance: 15

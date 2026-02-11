@@ -10,6 +10,7 @@ namespace Minibonk.MovementAbilities
     {
         #region Variables
 
+        [Header("Sprint Settings")]
         [SerializeField] private float _sprintMultipler;
     
 
@@ -27,7 +28,6 @@ namespace Minibonk.MovementAbilities
                     break;
             }
         }
-        
     }  
 }
 

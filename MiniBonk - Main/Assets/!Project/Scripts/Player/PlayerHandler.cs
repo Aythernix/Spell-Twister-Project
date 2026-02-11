@@ -1,5 +1,6 @@
 using Minibonk.Player;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Minibonk.Player
@@ -29,7 +30,7 @@ namespace Minibonk.Player
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
         #endregion
         
@@ -43,6 +44,13 @@ namespace Minibonk.Player
         public Action<int> OnAbilityReleased;
         public Action<bool> PreventMovementInterference;
         public Action<float> OnPlayerDamaged;
+        public Action<float> OnStaminaDecrease;
+        public Action<float> OnStaminaIncrease;
+        public Action OnStaminaEmpty;
+        public Action OnStaminaFull;
+        public Func<bool> IsStaminaEmpty;
+        public Func<bool> IsStaminaFull;
+        public Func<float> GetCurrentStamina;
     }
 
 }
