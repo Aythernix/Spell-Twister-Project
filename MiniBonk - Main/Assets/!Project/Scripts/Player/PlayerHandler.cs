@@ -15,6 +15,11 @@ namespace Minibonk.Player
 
         #region Unity Methods
         // Start is called once before the first execution of Update after the MonoBehaviour is created
+        protected override void Awake()
+        {
+            base.Awake();
+            
+        }
 
         private void Start()
         {
@@ -27,7 +32,12 @@ namespace Minibonk.Player
         
         }
         #endregion
-        
+
+        private void HandleTakingDamage(float damageAmount)
+        {
+            playerData.currentHealth -= (int)damageAmount;
+            Debug.Log($"Player took {damageAmount} damage, current health: {playerData.currentHealth}");
+        }
     }
 
     public class Events
@@ -36,7 +46,15 @@ namespace Minibonk.Player
         public Action OnJumpStarted;
         public Action<int> OnAbilityPressed;
         public Action<int> OnAbilityReleased;
+        public Action<bool> PreventMovementInterference;
         public Action<float> OnPlayerDamaged;
+        public Action<float> OnStaminaDecrease;
+        public Action<float> OnStaminaIncrease;
+        public Action OnStaminaEmpty;
+        public Action OnStaminaFull;
+        public Func<bool> IsStaminaEmpty;
+        public Func<bool> IsStaminaFull;
+        public Func<float> GetCurrentStamina;
     }
 
 }

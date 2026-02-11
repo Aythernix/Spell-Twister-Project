@@ -9,7 +9,7 @@ namespace Minibonk.Management
 		#region Variables
 
 		// Game Events
-		public readonly EventHandler EventHandler = new EventHandler();
+		public readonly Events EventHandler = new Events();
 
 		// Singleton
 		public static GameManager Instance;
@@ -38,7 +38,7 @@ namespace Minibonk.Management
 
 	// Game Management Events
 
-	public class EventHandler
+	public class Events
 	{
 		#region Death Events
 
@@ -50,7 +50,7 @@ namespace Minibonk.Management
 		/// <summary>
 		/// Named delegate so you can see 'killer' and 'victim' in autocomplete
 		/// </summary>
-		public delegate void EnemyKilledHandler(GameObject killer, Enemy victim);
+		public delegate void EnemyKilledHandler(GameObject killer, GameObject victim);
 
 		public EnemyKilledHandler OnEnemyKilled;
 

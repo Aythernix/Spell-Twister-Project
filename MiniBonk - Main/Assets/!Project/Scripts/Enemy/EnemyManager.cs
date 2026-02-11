@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Minibonk.Management;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MiniBonk.Enemy
 {
@@ -10,11 +13,11 @@ namespace MiniBonk.Enemy
         [Header("Enemies")]
         [SerializeField] private List<GameObject> _enemyTypes = new List<GameObject>();
         
-        private Stack<GameObject> _enemiesInSceneStack  = new Stack<GameObject>();
+        [SerializeField] private List<GameObject> _enemiesInScene  = new List<GameObject>();
         
         [Header("SpawnSettings")]
         // How many seconds between enemy spawns
-        [SerializeField] private float _spawnRate = 5;
+        [SerializeField] private float _spawnDelay = 5;
         // How many enemies to spawn at once
         [SerializeField] private int _enemiesToSpawnPerBatch = 5;
         // The area around the player enemies will spawn
@@ -26,12 +29,24 @@ namespace MiniBonk.Enemy
 
         private Transform _playerTransform;
         
-        private bool canSpawn = true;
-        private Vector3 lastSpawnPos = Vector3.zero;
+        private bool _validSpawn = true;
+        private bool _maxReached;
+        private Vector3 _lastSpawnPos = Vector3.zero;
         
         #endregion
         
         #region Unity Methods
+
+        private void OnEnable()
+        {
+            GameManager.Instance.EventHandler.OnEnemyKilled += OnEnemyKilled;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.Instance.EventHandler.OnEnemyKilled -= OnEnemyKilled;
+        }
+        
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -44,20 +59,20 @@ namespace MiniBonk.Enemy
         {
             #region Debugs
 
-            if (!canSpawn)
+            if (!_validSpawn)
             {
-                Debug.LogWarning($"Enemies are being prevented from spawning {lastSpawnPos}");
+                Debug.LogWarning($"Enemies are being prevented from spawning {_lastSpawnPos}");
             }
 
             #endregion
 
-            if (_enemiesInSceneStack.Count > _maxEnemiesInScene)
+            if (_enemiesInScene.Count >= _maxEnemiesInScene)
             {
                 HandleMaxEnemy();
             }
             else
             {
-                canSpawn = true;
+                _maxReached = false;
             }
         }
         #endregion
@@ -72,8 +87,8 @@ namespace MiniBonk.Enemy
             Vector3 spawnPos = _playerTransform.position + point;
             bool hasHit = Physics.Raycast(spawnPos, Vector3.down, out hit, float.PositiveInfinity, _groundLayer);
             spawnPos.y = hit.point.y;
-            canSpawn = hasHit;
-            lastSpawnPos = spawnPos;
+            _validSpawn = hasHit;
+            _lastSpawnPos = spawnPos;
             
             return spawnPos;
         }
@@ -82,9 +97,15 @@ namespace MiniBonk.Enemy
         private IEnumerator HandleEnemySpawning()
         {
             
-            yield return new WaitForSeconds(_spawnRate);
+            yield return new WaitForSeconds(_spawnDelay);
+
+
+            if (!_maxReached)
+            {
+                SpawnEnemy();
+            }
             
-            SpawnEnemy();
+            StartCoroutine(HandleEnemySpawning());
         }
         
         // Spawns an enemy of a random type
@@ -93,25 +114,42 @@ namespace MiniBonk.Enemy
             for (int i = 0; i < _enemiesToSpawnPerBatch; i++)
             {
                 var spawnPos = SpawnPosition();
-                if (!canSpawn) continue;
+                if (!_validSpawn) continue;
                 var enemyTypeInex = Random.Range(0, _enemyTypes.Count - 1);
                 var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
-                _enemiesInSceneStack.Push(enemyAdded);
+                _enemiesInScene.Add(enemyAdded);
             }
-            StartCoroutine(HandleEnemySpawning());
         }
 
         private void HandleMaxEnemy()
         {
-            canSpawn = false;
-            if (_enemiesInSceneStack.Count == 0) return;
-            var nextEnemy = _enemiesInSceneStack.Peek();
+            _maxReached = true;
+            
+            // Only runs following code if the enemies in the scene exceed the max
+            if (_enemiesInScene.Count <= _maxEnemiesInScene) return;
+            
+            // Returns the enemy at the last index of the list
+            var nextEnemy = _enemiesInScene[^1];
+            
             if (nextEnemy != null)
             {
                 Destroy(nextEnemy);
             }
-            _enemiesInSceneStack.Pop();
+            
+            HandleRemoveEnemy(nextEnemy);
         }
+        
+        // Passing parameters from Enemy Killed event to the handle enemy removed
+        private void OnEnemyKilled(GameObject killer, GameObject enemyToRemove)
+        {
+            HandleRemoveEnemy(enemyToRemove);
+        }
+        
+        private void HandleRemoveEnemy(GameObject enemyToRemove)
+        {
+            _enemiesInScene.Remove(enemyToRemove);
+        }
+
         #endregion
     }
 }

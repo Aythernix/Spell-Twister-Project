@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: WeaponDamageStats
   m_EditorClassIdentifier: 
   fireBallProjectileDMG: 50
+  fireBallProjectileDMG_LVL2: 75
+  waterBallProjectileDMG: 60
+  waterBallProjectileDMG_LVL2: 85
+  windBallProjectileDMG: 25
+  windBallProjectileDMG_LVL2: 30

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Minibonk.MovementAbilities
 {
     public abstract class ToggleAbility : MovementAbility
@@ -22,6 +24,13 @@ namespace Minibonk.MovementAbilities
         /// </summary>
         /// <param name="state">The current state of the toggle, <see langword="true"/> or <see langword="false"/> </param> 
         protected abstract void OnToggle(bool state);
-        
+
+        public override void Tick(float deltaTime)
+        {
+            if (_isActive)
+            {
+                UtiliseStamina();
+            }
+        }
     }
 }

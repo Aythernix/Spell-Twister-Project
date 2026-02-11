@@ -41,6 +41,7 @@ namespace Minibonk.MovementAbilities
         {
             _playerHandler.Events.OnAbilityPressed += TriggerAbilitySlot;
             _playerHandler.Events.OnAbilityReleased += FinaliseAbilitySlot;
+           
         }
         private void OnDisable()
         {
@@ -48,6 +49,22 @@ namespace Minibonk.MovementAbilities
             _playerHandler.Events.OnAbilityReleased -= FinaliseAbilitySlot;
         }
         
+        // DEBUG
+        private void Update()
+        {
+            foreach (MovementAbility ability in unlockedAbilities)
+            {
+                ability.Tick(Time.time);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                UnlockAbility("Sprint");
+                UnlockAbility("Dash");
+                Debug.Log("unlocked");
+            }
+            
+        }
 
         #endregion
         
@@ -149,18 +166,6 @@ namespace Minibonk.MovementAbilities
         public void UnlockAbility(int abilityID)
         {
             UnlockAbility(AbilityLookup(abilityID).abilityName);
-        }
-
-        // DEBUG
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                UnlockAbility("Sprint");
-                UnlockAbility("Dash");
-                Debug.Log("unlocked");
-            }
-            
         }
 
         #endregion

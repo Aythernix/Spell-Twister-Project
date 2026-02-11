@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Environment
   - Enemy
+  - FrostBiteDOTZone
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Ground
   - Projectile
   - Player
-  - 
+  - NavMesh
   - 
   - 
   - 
