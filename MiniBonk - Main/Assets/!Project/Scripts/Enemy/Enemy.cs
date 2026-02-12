@@ -27,7 +27,6 @@ namespace MiniBonk.Enemy
         public virtual void TakeDamage( int amount, GameObject instigator = null)
         {
             currentHealth -= amount;
-            Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}");
 
             if (currentHealth <= 0)
             {
