@@ -17,7 +17,8 @@ namespace Minibonk.UI
 		protected AudioClip _UIClickSound;
 
 		#endregion
-
+		
+		#region Unity Methods
 		void Update()
 		{	
 			// Detects is element is being selected
@@ -39,6 +40,7 @@ namespace Minibonk.UI
 				isSelected = false;
 			}
 		}
+		#endregion
 
 		#region Private Method
 		
