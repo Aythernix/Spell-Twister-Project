@@ -9,8 +9,7 @@ namespace Minibonk.Player
 		#region Varibles
 		
 		[Header("Player Stamina")]
-		[SerializeField] private float _staminaRecoveryRate;
-		[SerializeField] private float _staminaRecoveryAmount;
+		[SerializeField] private float _staminaRecoveryPerSecond;
 		[SerializeField] private float _staminaRecoveryCooldown;
 		[SerializeField] private float _timeSinceStaminaLost;
 
@@ -46,12 +45,14 @@ namespace Minibonk.Player
 		{
 			if (_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina)
 			{
-				float staminaPerSecond = _staminaRecoveryAmount / _staminaRecoveryRate;
+				float staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
 				if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
 				{
-					RecoverPlayerStamina(staminaPerSecond * Time.deltaTime);
+					RecoverPlayerStamina(staminaPerSecond);
 				}
 			}
+			
+			Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
 		}
 		#endregion
 

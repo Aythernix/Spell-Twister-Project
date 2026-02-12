@@ -84,7 +84,7 @@ namespace Minibonk.MovementAbilities
         /// </summary>
         protected virtual void UtiliseStamina()
         {
-            float staminaToTake = staminaCost / StaminaLossRate;
+            float staminaToTake = this is ToggleAbility ? StaminaLossRate * Time.deltaTime : staminaCost;
             _player.GetComponent<PlayerHandler>().Events.OnStaminaDecrease?.Invoke(staminaToTake);
         }
         #endregion

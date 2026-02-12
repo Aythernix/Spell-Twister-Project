@@ -192,7 +192,6 @@ namespace Minibonk.Player
             if (_coyoteTimeCounter > 0 && _jumpBufferCounter > 0)
             {
                 PerformJump();
-                Debug.Log("Jump");
             }
         }
 
