@@ -3779,8 +3779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54cba56e58d11548bf6e0dfcfb2f958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _staminaRecoveryRate: 5
-  _staminaRecoveryAmount: 10
+  _staminaRecoveryPerSecond: 15
   _staminaRecoveryCooldown: 3
   _timeSinceStaminaLost: 0
   isEmpty: 0
