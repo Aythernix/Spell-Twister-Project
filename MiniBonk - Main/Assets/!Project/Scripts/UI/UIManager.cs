@@ -4,11 +4,19 @@ using UnityEngine.SceneManagement;
 
 namespace Minibonk.UI
 {
+	public enum UISceneNames
+	{
+		GameplayHud,
+	}
 	public class UIManager : MonoBehaviour
 	{
+		
+
 		#region Variables
 		
-		public Events UIEvents = new Events();
+		public Events UIEvents;
+
+		public UISceneNames gamePlayUIScene;
 		
 		#endregion
 
@@ -27,7 +35,7 @@ namespace Minibonk.UI
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
-
+			OpenDefaultScenes();
 		}
 
 		// Update is called once per frame
@@ -38,16 +46,25 @@ namespace Minibonk.UI
 
 		#region Private Methods
 
-		private void InstantiateUIScene(string sceneName)
+		private void OpenDefaultScenes()
 		{
-			SceneManager.LoadSceneAsync(sceneName,  LoadSceneMode.Additive);
+			InstantiateUIScene(gamePlayUIScene);
 		}
 
-		private void CloseUIScene(string sceneName)
+		#endregion
+		
+		#region Public API
+		
+		public void InstantiateUIScene(UISceneNames uiSceneNames)
 		{
-			SceneManager.UnloadSceneAsync(sceneName);
+			SceneManager.LoadSceneAsync(uiSceneNames.ToString(),  LoadSceneMode.Additive);
 		}
 
+		public void CloseUIScene(UISceneNames uiSceneNames)
+		{
+			SceneManager.UnloadSceneAsync(uiSceneNames.ToString());
+		}
+		
 		#endregion
 	}
 
@@ -62,10 +79,10 @@ namespace Minibonk.UI
 		/// <summary>
 		/// Opens a UI scene by its given name
 		/// </summary>
-		public Action<string> OnInstantiateUIScene;
+		public Action<UISceneNames> OnInstantiateUIScene;
 		/// <summary>
 		/// Closes a UI scene by its given name
 		/// </summary>
-		public Action<string> OnCloseUIScene;
+		public Action<UISceneNames> OnCloseUIScene;
 	}
 }
