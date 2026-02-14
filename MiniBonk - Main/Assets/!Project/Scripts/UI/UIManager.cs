@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace Minibonk.UI
 {
+	/// <summary>
+	/// Name of all available scenes to switch too
+	/// </summary>
 	public enum UISceneNames
 	{
 		MainMenu,
