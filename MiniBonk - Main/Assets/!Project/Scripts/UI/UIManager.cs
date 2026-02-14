@@ -30,6 +30,7 @@ namespace Minibonk.UI
 			SceneManager.activeSceneChanged += OnSceneChange;
 			UIEvents.OnInstantiateUIScene += InstantiateUIScene;
 			UIEvents.OnCloseUIScene += CloseUIScene;
+			UIEvents.SwapActiveUIScene += SwapUIScene;
 		}
 
 		private void OnDisable()
@@ -37,12 +38,12 @@ namespace Minibonk.UI
 			SceneManager.activeSceneChanged -= OnSceneChange;
 			UIEvents.OnInstantiateUIScene -= InstantiateUIScene;
 			UIEvents.OnCloseUIScene -= CloseUIScene;
+			UIEvents.SwapActiveUIScene -= SwapUIScene;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
-			
 		}
 
 		// Update is called once per frame
@@ -56,6 +57,7 @@ namespace Minibonk.UI
 		// Called whenever a scene is changed
 		private void OnSceneChange(Scene from, Scene to)
 		{
+			Debug.Log($"Scene {from.name} changed to {to.name}");
 			// Opens HUD if scene is a playable scene
 			if (GameManager.Instance.sceneIsPlayable)
 			{
@@ -101,6 +103,15 @@ namespace Minibonk.UI
 			SceneManager.UnloadSceneAsync(uiSceneNames.ToString());
 		}
 		
+		/// <summary>
+		/// Swaps active UI scenes like the Main Menu
+		/// </summary>
+		/// <param name="uiSceneNames"> the name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
+		public void SwapUIScene(UISceneNames uiSceneNames)
+		{
+			SceneManager.LoadSceneAsync(uiSceneNames.ToString());
+		}
+		
 		#endregion
 	}
 
@@ -120,5 +131,6 @@ namespace Minibonk.UI
 		/// Closes a UI scene by its given name
 		/// </summary>
 		public Action<UISceneNames> OnCloseUIScene;
+		public Action<UISceneNames> SwapActiveUIScene;
 	}
 }
