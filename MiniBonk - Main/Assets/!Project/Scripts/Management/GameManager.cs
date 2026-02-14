@@ -13,6 +13,11 @@ namespace Minibonk.Management
 
 		// Singleton
 		public static GameManager Instance;
+		
+		// True if the current scene is a playable scene
+		public bool sceneIsPlayable = false;
+
+		public bool sceneIsUI;
 
 		#endregion
 
