@@ -1,0 +1,73 @@
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace Minibonk.Management
+{
+	public class LevelManager : MonoBehaviour
+	{
+		
+		public enum SceneTypes
+		{
+			Playable,
+			UI
+		}
+		
+		#region Variables
+		
+		[Header("Level Manager")]
+		[field: SerializeField] public SceneTypes sceneType {get; private set;}
+		[field: SerializeField] public string sceneName {get; protected set;}
+		
+		#endregion
+
+		#region Unity Methods
+
+		private void Awake()
+		{
+			sceneName = SceneManager.GetActiveScene().name;
+			SetGameManagerAsPlayable();
+			SetLevelManagerInGameManager();
+		}
+
+		private void Start()
+		{
+			InitializeScene();
+		}
+
+		#endregion
+		
+		#region Private Methods
+
+		// Toggles the playable flag
+		private void SetGameManagerAsPlayable()
+		{
+			if (sceneType == SceneTypes.Playable)
+			{
+				GameManager.Instance.sceneIsPlayable = true;
+			}
+			else
+			{
+				GameManager.Instance.sceneIsPlayable = false;
+			}
+		}
+		
+		// Sets this as the active level manage
+		private void SetLevelManagerInGameManager()
+		{
+			GameManager.Instance.currentLevelManager = this;
+		}
+		
+		#endregion
+		
+		#region Protected Methods
+
+		protected virtual void InitializeScene()
+		{
+			
+		}
+		
+		#endregion
+	}
+}
+

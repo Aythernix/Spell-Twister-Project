@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,12 +23,14 @@ namespace Minibonk.UI
 
 		private void OnEnable()
 		{
+			SceneManager.activeSceneChanged += OnSceneChange;
 			UIEvents.OnInstantiateUIScene += InstantiateUIScene;
 			UIEvents.OnCloseUIScene += CloseUIScene;
 		}
 
 		private void OnDisable()
 		{
+			SceneManager.activeSceneChanged -= OnSceneChange;
 			UIEvents.OnInstantiateUIScene -= InstantiateUIScene;
 			UIEvents.OnCloseUIScene -= CloseUIScene;
 		}
@@ -35,7 +38,7 @@ namespace Minibonk.UI
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
-			OpenDefaultScenes();
+			
 		}
 
 		// Update is called once per frame
@@ -46,9 +49,24 @@ namespace Minibonk.UI
 
 		#region Private Methods
 
-		private void OpenDefaultScenes()
+		private void OnSceneChange(Scene from, Scene to)
+		{
+			if (GameManager.Instance.sceneIsPlayable)
+			{
+				OpenPlayableScenes();
+			}
+			else
+			{
+				ClosePlayableScenes();
+			}
+		}
+		private void OpenPlayableScenes()
 		{
 			InstantiateUIScene(gamePlayUIScene);
+		}
+		private void ClosePlayableScenes()
+		{
+			CloseUIScene(gamePlayUIScene);
 		}
 
 		#endregion

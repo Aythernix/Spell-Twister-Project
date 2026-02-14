@@ -16,8 +16,8 @@ namespace Minibonk.Management
 		
 		// True if the current scene is a playable scene
 		public bool sceneIsPlayable = false;
-
-		public bool sceneIsUI;
+		
+		public LevelManager currentLevelManager;
 
 		#endregion
 
