@@ -17,7 +17,6 @@ namespace Minibonk.UI
 		{
 			_uiManager.UIEvents.updatePlayerHealthUI -= SetHealth;
 		}
-
 		
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
