@@ -7,6 +7,7 @@ namespace Minibonk.UI
 {
 	public enum UISceneNames
 	{
+		MainMenu,
 		GameplayHud,
 	}
 	public class UIManager : MonoBehaviour
@@ -48,9 +49,11 @@ namespace Minibonk.UI
 		}
 
 		#region Private Methods
-
+		
+		// Called whenever a scene is changed
 		private void OnSceneChange(Scene from, Scene to)
 		{
+			// Opens HUD if scene is a playable scene
 			if (GameManager.Instance.sceneIsPlayable)
 			{
 				OpenPlayableScenes();
@@ -60,10 +63,14 @@ namespace Minibonk.UI
 				ClosePlayableScenes();
 			}
 		}
+		
+		// Initiates the gameplay HUD
 		private void OpenPlayableScenes()
 		{
 			InstantiateUIScene(gamePlayUIScene);
 		}
+		
+		// Closes the gameplay HUD
 		private void ClosePlayableScenes()
 		{
 			CloseUIScene(gamePlayUIScene);
@@ -73,11 +80,19 @@ namespace Minibonk.UI
 		
 		#region Public API
 		
+		/// <summary>
+		///	Overlays UI scenes over the currently open scene 
+		/// </summary>
+		/// <param name="uiSceneNames"> the name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
 		public void InstantiateUIScene(UISceneNames uiSceneNames)
 		{
 			SceneManager.LoadSceneAsync(uiSceneNames.ToString(),  LoadSceneMode.Additive);
 		}
 
+		/// <summary>
+		/// Closes UI scene overlays
+		/// </summary>
+		/// <param name="uiSceneNames"> The name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
 		public void CloseUIScene(UISceneNames uiSceneNames)
 		{
 			SceneManager.UnloadSceneAsync(uiSceneNames.ToString());

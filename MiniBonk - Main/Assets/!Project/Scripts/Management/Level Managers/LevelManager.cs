@@ -52,7 +52,7 @@ namespace Minibonk.Management
 			}
 		}
 		
-		// Sets this as the active level manage
+		// Sets this as the active level manager
 		private void SetLevelManagerInGameManager()
 		{
 			GameManager.Instance.currentLevelManager = this;
@@ -61,7 +61,10 @@ namespace Minibonk.Management
 		#endregion
 		
 		#region Protected Methods
-
+		
+		/// <summary>
+		/// Runs whenever a new scene starts
+		/// </summary>
 		protected virtual void InitializeScene()
 		{
 			
