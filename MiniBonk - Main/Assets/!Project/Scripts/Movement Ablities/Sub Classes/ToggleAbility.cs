@@ -11,18 +11,18 @@ namespace Minibonk.MovementAbilities
         [Header("Toggle Ability Stamina Settings")]
         public float staminaLossRate;
         protected bool _isActive { get; private set; }
+        private Minibonk.Player.Events _playerEvents;
         
         #endregion
 
         #region Unity Methods
-
-        private void OnEnable()
-        {
-            _player.GetComponent<PlayerHandler>().PlayerEvents.OnStaminaEmpty += OnFinalise;
-        }
         private void OnDisable()
         {
-            _player.GetComponent<PlayerHandler>().PlayerEvents.OnStaminaEmpty -= OnFinalise;
+            if (_playerEvents != null)
+            {
+                _playerEvents.OnStaminaEmpty -= OnFinalise;
+                _playerEvents = null;
+            }
         }
         
         
@@ -31,6 +31,16 @@ namespace Minibonk.MovementAbilities
         public override void Initialize(GameObject player)
         {
             base.Initialize(player);
+            
+            if (_player != null)
+            {
+                var playerHandler = _player.GetComponent<PlayerHandler>();
+                if (playerHandler != null && playerHandler.PlayerEvents != null)
+                {
+                    _playerEvents = playerHandler.PlayerEvents;
+                    _playerEvents.OnStaminaEmpty += OnFinalise;
+                }
+            }
             
             _staminaLossRate = staminaLossRate;
         }

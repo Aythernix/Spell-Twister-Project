@@ -11,7 +11,7 @@ namespace Minibonk.Player
         #region Variables
 
         public PlayerData playerData;
-        public readonly Events PlayerEvents = new();
+        public readonly Events PlayerEvents = new Events();
         #endregion
 
         #region Unity Methods
