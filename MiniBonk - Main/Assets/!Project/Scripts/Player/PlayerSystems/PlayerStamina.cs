@@ -99,13 +99,7 @@ namespace Minibonk.Player
 
 		private void UpdateUI()
 		{
-			
-			var gameManager = GameManager.Instance;
-			if (gameManager == null) { Debug.LogError("GameManager.Instance is null"); return; }
-			if (gameManager.uiManager == null) { Debug.LogError("uiManager is null"); return; }
-			if (gameManager.uiManager.UIEvents.OnUpdatePlayerStaminaUI == null) { Debug.LogError("UIEvents is null"); return; }
-	
-			gameManager.uiManager.UIEvents.OnUpdatePlayerStaminaUI?.Invoke(_playerHandler.playerData.currentStamina, _playerHandler.playerData.maxStamina);
+			GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerStaminaUI?.Invoke(_playerHandler.playerData.currentStamina, _playerHandler.playerData.maxStamina);
 		}
 
 		#endregion

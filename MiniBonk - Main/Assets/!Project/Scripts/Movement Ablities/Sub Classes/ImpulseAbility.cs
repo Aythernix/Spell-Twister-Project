@@ -6,10 +6,13 @@ namespace Minibonk.MovementAbilities
 {
     public abstract class ImpulseAbility : MovementAbility
     {
+        [Header("Impulse Ability Stamina Settings")]
+        public float staminaCost;
         public override void Initialize(GameObject player)
         {
             base.Initialize(player);
             autoFinalise = true;
+            _staminaCost = staminaCost;
             Start();
         }
         protected override void OnExecute()

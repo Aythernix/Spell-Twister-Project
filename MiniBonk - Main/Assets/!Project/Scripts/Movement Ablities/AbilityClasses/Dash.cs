@@ -10,6 +10,7 @@ namespace Minibonk.MovementAbilities
         [Header("Dash Settings")]
         [SerializeField] private float _dashForce;
         [SerializeField] private float _maxDashDistance;
+        
 
         private bool dashActive;
 

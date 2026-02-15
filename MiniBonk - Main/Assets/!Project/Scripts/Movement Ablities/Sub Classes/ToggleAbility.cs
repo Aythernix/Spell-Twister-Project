@@ -1,10 +1,30 @@
+using System;
+using Minibonk.Player;
 using UnityEngine;
 
 namespace Minibonk.MovementAbilities
 {
     public abstract class ToggleAbility : MovementAbility
     {
+        [Header("Toggle Ability Stamina Settings")]
+        public float staminaLossRate;
         protected bool _isActive { get; private set; }
+
+        private void OnEnable()
+        {
+            _player.GetComponent<PlayerHandler>().Events.OnStaminaEmpty += OnFinalise;
+        }
+        private void OnDisable()
+        {
+            _player.GetComponent<PlayerHandler>().Events.OnStaminaEmpty -= OnFinalise;
+        }
+
+        public override void Initialize(GameObject player)
+        {
+            base.Initialize(player);
+            
+            _staminaLossRate = staminaLossRate;
+        }
 
         protected override void OnExecute()
         {
