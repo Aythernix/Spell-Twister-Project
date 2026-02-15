@@ -127,7 +127,13 @@ namespace Minibonk.UI
 		/// Updates the players health UI
 		/// </summary>
 		public delegate void UpdatePlayerHealthUI(float health, float healthMax);
-		public UpdatePlayerHealthUI updatePlayerHealthUI;
+		public UpdatePlayerHealthUI OnUpdatePlayerHealthUI;
+		
+		/// <summary>
+		/// Update the players stamina UI
+		/// </summary>
+		public delegate void UpdatePlayerStaminaUI(float current, float max);
+		public UpdatePlayerStaminaUI OnUpdatePlayerStaminaUI;
 		
 		/// <summary>
 		/// Opens a UI scene by its given name

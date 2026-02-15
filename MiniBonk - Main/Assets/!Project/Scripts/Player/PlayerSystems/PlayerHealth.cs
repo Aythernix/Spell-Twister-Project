@@ -78,7 +78,7 @@ namespace Minibonk.Player
 				OnHealthEmpty();
 			}
 			
-			_uiManager.UIEvents.updatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.maxHealth);
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.maxHealth);
 			
 		}
 		/// <summary>

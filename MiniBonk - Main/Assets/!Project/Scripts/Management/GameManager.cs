@@ -35,6 +35,8 @@ namespace Minibonk.Management
 
 		private void Awake()
 		{
+			SetSubManagers();
+			
 			if (Instance == null)
 			{
 				Instance = this;
@@ -45,9 +47,6 @@ namespace Minibonk.Management
 			}
 
 			DontDestroyOnLoad(gameObject);
-			
-			SetSubManagers();
-
 		}
 		
 		#endregion

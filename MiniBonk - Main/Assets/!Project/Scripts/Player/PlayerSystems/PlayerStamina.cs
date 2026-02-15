@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using Minibonk.Player;
 using UnityEngine;
 
@@ -43,7 +44,7 @@ namespace Minibonk.Player
 		// Update is called once per frame
 		void Update()
 		{
-			if (_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina)
+			if (_playerHandler.playerData.currentStamina <= _playerHandler.playerData.maxStamina)
 			{
 				float staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
 				if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
@@ -53,6 +54,7 @@ namespace Minibonk.Player
 			}
 			
 			Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
+			
 		}
 		#endregion
 
@@ -71,6 +73,8 @@ namespace Minibonk.Player
 			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
 			
 			Debug.Log($"Stamina Decreased: {amount}");
+			
+			UpdateUI();
 		}
 
 		private void IncrementPlayerStamina(float amount)
@@ -78,6 +82,8 @@ namespace Minibonk.Player
 			_playerHandler.playerData.currentStamina += amount;
 			
 			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
+			
+			UpdateUI();
 		}
 
 		private void RecoverPlayerStamina(float amount)
@@ -89,6 +95,17 @@ namespace Minibonk.Player
 		{
 			isEmpty = true;
 			_playerHandler.Events.OnStaminaEmpty?.Invoke();
+		}
+
+		private void UpdateUI()
+		{
+			
+			var gameManager = GameManager.Instance;
+			if (gameManager == null) { Debug.LogError("GameManager.Instance is null"); return; }
+			if (gameManager.uiManager == null) { Debug.LogError("uiManager is null"); return; }
+			if (gameManager.uiManager.UIEvents.OnUpdatePlayerStaminaUI == null) { Debug.LogError("UIEvents is null"); return; }
+	
+			gameManager.uiManager.UIEvents.OnUpdatePlayerStaminaUI?.Invoke(_playerHandler.playerData.currentStamina, _playerHandler.playerData.maxStamina);
 		}
 
 		#endregion
