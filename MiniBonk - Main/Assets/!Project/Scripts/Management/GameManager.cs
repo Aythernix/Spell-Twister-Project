@@ -1,5 +1,6 @@
 using System;
 using MiniBonk.Enemy;
+using Minibonk.UI;
 using UnityEngine;
 
 namespace Minibonk.Management
@@ -22,6 +23,14 @@ namespace Minibonk.Management
 
 		#endregion
 
+		#region SubManagers
+
+		public UIManager uiManager { get; private set; }
+		public EnemyManager enemyManager { get; private set; }
+		public SceneController sceneController { get; private set; }
+
+		#endregion
+
 		#region Unity Methods
 
 		private void Awake()
@@ -32,14 +41,26 @@ namespace Minibonk.Management
 			}
 			else if (Instance != this)
 			{
-				Destroy(this);
+				Destroy(gameObject);
 			}
 
-			DontDestroyOnLoad(this);
+			DontDestroyOnLoad(gameObject);
+			
+			SetSubManagers();
 
 		}
 		
+		#endregion
+		
+		#region Private Methods
 
+		private void SetSubManagers()
+		{
+			uiManager = GetComponentInChildren<UIManager>();
+			enemyManager = GetComponent<EnemyManager>();
+			sceneController = GetComponentInChildren<SceneController>();
+		}
+		
 		#endregion
 	}
 

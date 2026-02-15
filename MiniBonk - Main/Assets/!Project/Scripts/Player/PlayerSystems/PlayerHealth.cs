@@ -33,7 +33,7 @@ namespace Minibonk.Player
 		{
 			SetHealthToMax();
 
-			_uiManager = GameManager.Instance.GetComponentInChildren<UIManager>();
+			_uiManager = GameManager.Instance.uiManager;
 		}
 
 		// Update is called once per frame

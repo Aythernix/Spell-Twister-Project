@@ -21,7 +21,7 @@ namespace Minibonk.UI
 		
 		public Events UIEvents;
 
-		public UISceneNames gamePlayUIScene;
+		public UISceneNames gamePlayUIScene = UISceneNames.GameplayHud;
 		
 		#endregion
 
@@ -44,6 +44,7 @@ namespace Minibonk.UI
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
+			
 		}
 
 		// Update is called once per frame
@@ -100,6 +101,11 @@ namespace Minibonk.UI
 		/// <param name="uiSceneNames"> The name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
 		public void CloseUIScene(UISceneNames uiSceneNames)
 		{
+			if (!SceneManager.GetSceneByName(uiSceneNames.ToString()).isLoaded)
+			{
+				Debug.Log($"Scene {uiSceneNames.ToString()} not loaded");
+				return;
+			}
 			SceneManager.UnloadSceneAsync(uiSceneNames.ToString());
 		}
 		

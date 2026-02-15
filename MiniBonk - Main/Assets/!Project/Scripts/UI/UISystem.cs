@@ -22,7 +22,7 @@ namespace Minibonk.UI
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		protected virtual void Awake()
 		{
-			_uiManager = GameManager.Instance.GetComponentInChildren<UIManager>();
+			_uiManager = GameManager.Instance.uiManager;
 		}
 
 		// Update is called once per frame
