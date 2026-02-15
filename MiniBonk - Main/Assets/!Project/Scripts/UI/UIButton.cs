@@ -9,8 +9,8 @@ namespace Minibonk.UI
 	{
 		#region Variables
 
-		private bool isHovered = false;
-		private bool isSelected = false;
+		private bool _isHovered = false;
+		private bool _isSelected = false;
 
 		protected AudioClip _UIHoverSound;
 		protected AudioClip _UISelectSound;
@@ -22,10 +22,10 @@ namespace Minibonk.UI
 		void Update()
 		{	
 			// Detects is element is being selected
-			if (EventSystem.current.currentSelectedGameObject == gameObject && !isHovered)
+			if (EventSystem.current.currentSelectedGameObject == gameObject && !_isHovered)
 			{
 				OnUISelect(true);
-				isSelected = true;
+				_isSelected = true;
 				if (_UISelectSound != null)
 				{
 					//TODO Call UI Play Sound Event
@@ -34,10 +34,10 @@ namespace Minibonk.UI
 			
 			// Detects if element has been unselected after being previously selected
 			if (EventSystem.current.currentSelectedGameObject != gameObject &&
-			    EventSystem.current.currentSelectedGameObject != null && isSelected && !isHovered)
+			    EventSystem.current.currentSelectedGameObject != null && _isSelected && !_isHovered)
 			{
 				OnUISelect(false);
-				isSelected = false;
+				_isSelected = false;
 			}
 		}
 		#endregion
@@ -47,7 +47,7 @@ namespace Minibonk.UI
 		// Detects Mouse Hovers
 		public void OnPointerEnter(PointerEventData eventData)
 		{
-			isHovered = true;
+			_isHovered = true;
 
 			OnUIHover(true, eventData);
 
@@ -60,7 +60,7 @@ namespace Minibonk.UI
 		// Detects Mouse Exits
 		public void OnPointerExit(PointerEventData eventData)
 		{
-			isHovered = false;
+			_isHovered = false;
 
 			OnUIHover(false, eventData);
 		}
