@@ -115,7 +115,7 @@ namespace MiniBonk.Enemy
             {
                 var spawnPos = SpawnPosition();
                 if (!_validSpawn) continue;
-                var enemyTypeInex = Random.Range(0, _enemyTypes.Count - 1);
+                var enemyTypeInex = Random.Range(0, _enemyTypes.Count);
                 var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
                 _enemiesInScene.Add(enemyAdded);
             }

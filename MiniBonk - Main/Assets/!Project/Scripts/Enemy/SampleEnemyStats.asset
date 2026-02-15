@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6418f38c3ddc74d862cb0febca9ef9, type: 3}
   m_Name: SampleEnemyStats
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  projectileLifetime: 5
+  projectileSpeed: 20
   speed: 6
   acceleration: 10000
   stoppingDistance: 1
   health: 100
   damage: 5
-  attackRange: 1
-  attackCooldown: 2
+  attackRange: 2
+  attackCooldown: 0.6
   xpValue: 50
   model: {fileID: 0}
   debugColor: {r: 1, g: 0, b: 0, a: 1}

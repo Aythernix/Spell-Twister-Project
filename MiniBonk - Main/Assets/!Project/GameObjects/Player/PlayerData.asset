@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777d3010deab7c04d85b90ac21b1ad77, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   maxStamina: 100
-  currentHealth: 100
-  currentStamina: 100
-  level: 1
-  xp: 0
+  currentHealth: 555
+  currentStamina: 71.81676
+  level: 6
+  xp: 331

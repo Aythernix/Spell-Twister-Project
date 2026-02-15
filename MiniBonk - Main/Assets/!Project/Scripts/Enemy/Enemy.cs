@@ -21,14 +21,6 @@ namespace MiniBonk.Enemy
             navMeshAgent = GetComponent<NavMeshAgent>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform;
             
-            // This is to fix the clumping issue that prevents the player from running.
-            Collider enemyCollider = GetComponent<Collider>();
-            Collider playerCollider = GetComponent<Collider>();
-
-            if (enemyCollider != null && playerCollider != null)
-            {
-                Physics.IgnoreCollision(enemyCollider,playerCollider);
-            }
             currentHealth = data.health;
             ApplySettings();
         }
