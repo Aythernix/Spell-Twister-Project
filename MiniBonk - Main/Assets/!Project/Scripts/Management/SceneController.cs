@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace Minibonk.Management
 {
+	/// <summary>
+	/// Gameplay Scenes
+	/// </summary>
 	public enum SceneNames
 	{
 		MainLevel,
@@ -27,7 +30,11 @@ namespace Minibonk.Management
 		#endregion
 		
 		#region Public API
-
+		
+		/// <summary>
+		/// Changes the gameplay scene
+		/// </summary>
+		/// <param name="sceneName"> Scene to change to </param>
 		public void ChangeScene(SceneNames sceneName)
 		{
 			SceneManager.LoadSceneAsync(sceneName.ToString());

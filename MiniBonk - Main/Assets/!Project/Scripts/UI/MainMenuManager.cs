@@ -22,7 +22,8 @@ namespace Minibonk.UI
 		}
 
 		#region Button Events
-
+		
+		// Called when the player clicks start
 		public void OnStartClick()
 		{
 			_sceneController.ChangeScene(SceneNames.MainLevel);

@@ -18,14 +18,14 @@ namespace Minibonk.Player
 		private void OnEnable()
 		{
 			// Event Subscription
-			_playerHandler.Events.OnPlayerDamaged += TakeDamage;
+			_playerHandler.PlayerEvents.OnPlayerDamaged += TakeDamage;
 		}
 		
 
 		private void OnDisable()
 		{
 			// Event Unsubscription
-			_playerHandler.Events.OnPlayerDamaged -= TakeDamage;
+			_playerHandler.PlayerEvents.OnPlayerDamaged -= TakeDamage;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,12 +51,14 @@ namespace Minibonk.Player
 		#endregion
 
 		#region Private Functions
-
+		
+		// Checks if health is empty
 		private bool HealthEmpty()
 		{
 			return _playerHandler.playerData.currentHealth <= 0f;
 		}
-
+		
+		// Called upon death
 		private void OnHealthEmpty()
 		{
 			Debug.Break();
