@@ -19,7 +19,7 @@ namespace Minibonk.UI
 
 		private void OnEnable()
 		{
-			_uiManager.UIEvents.updatePlayerHealthUI += SetBarValue;
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI += SetBarValue;
 		}
 
 		// Update is called once per frame

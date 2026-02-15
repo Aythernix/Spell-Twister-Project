@@ -6,16 +6,19 @@ namespace Minibonk.UI
 	{
 		#region Variables
 		[SerializeField] private ResourceBarUI _healthBarUI;
+		[SerializeField] private ResourceBarUI _staminaBarUI;
 		#endregion
 		
 		private void OnEnable()
 		{
-			_uiManager.UIEvents.updatePlayerHealthUI += SetHealth;
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI += SetHealth;
+			_uiManager.UIEvents.OnUpdatePlayerStaminaUI += SetStamina;
 
 		}
 		private void OnDisable()
 		{
-			_uiManager.UIEvents.updatePlayerHealthUI -= SetHealth;
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI -= SetHealth;
+			_uiManager.UIEvents.OnUpdatePlayerStaminaUI -= SetStamina;
 		}
 		
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +39,11 @@ namespace Minibonk.UI
 		{
 			Debug.Log("SetHealth");
 			_healthBarUI.SetBarValue(value, max);
+		}
+
+		private void SetStamina(float value, float max)
+		{
+			_staminaBarUI.SetBarValue(value, max);
 		}
 		
 		#endregion
