@@ -100,6 +100,7 @@ namespace Minibonk.UI
 		/// <param name="uiSceneNames"> The name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
 		public void CloseUIScene(UISceneNames uiSceneNames)
 		{
+			Debug.Log($"Scene {uiSceneNames.ToString()} closed");
 			SceneManager.UnloadSceneAsync(uiSceneNames.ToString());
 		}
 		
