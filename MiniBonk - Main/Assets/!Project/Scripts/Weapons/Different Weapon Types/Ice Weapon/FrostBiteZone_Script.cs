@@ -21,6 +21,8 @@ public class FrostBiteZone_Script : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other == null) return;
+
             if (other.TryGetComponent<FrostBiteDOT>(out FrostBiteDOT existingDOT))
             {
                 existingDOT.ResetDurationTimer();
@@ -37,6 +39,8 @@ public class FrostBiteZone_Script : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other == null) return;
+
             if (other.TryGetComponent<FrostBiteDOT>(out FrostBiteDOT existingDOT))
             {
                 existingDOT.isInsideZone = false;

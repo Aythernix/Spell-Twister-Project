@@ -1,5 +1,6 @@
 using System;
 using MiniBonk.Enemy;
+using Minibonk.UI;
 using UnityEngine;
 
 namespace Minibonk.Management
@@ -13,6 +14,20 @@ namespace Minibonk.Management
 
 		// Singleton
 		public static GameManager Instance;
+		
+		// True if the current scene is a playable scene
+		public bool sceneIsPlayable = false;
+		
+		// The current active level manager
+		public LevelManager currentLevelManager;
+
+		#endregion
+
+		#region SubManagers
+
+		public UIManager uiManager { get; private set; }
+		public EnemyManager enemyManager { get; private set; }
+		public SceneController sceneController { get; private set; }
 
 		#endregion
 
@@ -20,20 +35,31 @@ namespace Minibonk.Management
 
 		private void Awake()
 		{
+			SetSubManagers();
+			
 			if (Instance == null)
 			{
 				Instance = this;
 			}
 			else if (Instance != this)
 			{
-				Destroy(this);
+				Destroy(gameObject);
 			}
 
-			DontDestroyOnLoad(this);
-
+			DontDestroyOnLoad(gameObject);
 		}
 		
+		#endregion
+		
+		#region Private Methods
 
+		private void SetSubManagers()
+		{
+			uiManager = GetComponentInChildren<UIManager>();
+			enemyManager = GetComponent<EnemyManager>();
+			sceneController = GetComponentInChildren<SceneController>();
+		}
+		
 		#endregion
 	}
 
