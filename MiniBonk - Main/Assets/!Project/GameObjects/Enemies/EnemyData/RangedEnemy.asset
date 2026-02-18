@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3892404503479868754, guid: ef7188c74779f944c856e5d379fe9bad, type: 3}
   projectileLifetime: 5
-  projectileSpeed: 5
+  projectileSpeed: 15
   speed: 1.5
   acceleration: 8
-  stoppingDistance: 10
+  stoppingDistance: 30
   health: 100
   damage: 10
   attackRange: 20
