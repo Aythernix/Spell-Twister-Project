@@ -11,15 +11,6 @@ namespace Minibonk.Player
 {
 	public class PlayerMovement : PlayerSystem
 	{
-		// TODO Add Comments and summaries
-		public enum MovementSates
-		{
-			Sprinting,
-			Dashing,
-			Sliding,
-			Jumping,
-			Idle
-		}
 
 		#region Variables
 
@@ -74,15 +65,15 @@ namespace Minibonk.Player
 
 		private void OnEnable()
 		{
-			_playerHandler.Events.OnMove += HandleMoveInput;
-			_playerHandler.Events.OnJumpStarted += HandleJumpInput;
-			_playerHandler.Events.PreventMovementInterference += HandlePreventMovementInterference;
+			_playerHandler.PlayerEvents.OnMove += HandleMoveInput;
+			_playerHandler.PlayerEvents.OnJumpStarted += HandleJumpInput;
+			_playerHandler.PlayerEvents.PreventMovementInterference += HandlePreventMovementInterference;
 		}
 
 		private void OnDisable()
 		{
-			_playerHandler.Events.OnMove -= HandleMoveInput;
-			_playerHandler.Events.OnJumpStarted -= HandleJumpInput;
+			_playerHandler.PlayerEvents.OnMove -= HandleMoveInput;
+			_playerHandler.PlayerEvents.OnJumpStarted -= HandleJumpInput;
 		}
 
 		private void FixedUpdate()
@@ -103,20 +94,24 @@ namespace Minibonk.Player
 		#endregion
 
 		#region Private Methods
-
+		
+		// Normalizes input
 		private void HandleMoveInput(Vector2 input) => _directionInput = input.normalized;
 		private void HandleJumpInput() => _jumpBufferCounter = _jumpBuffer;
 
+		// Stops movement controls
 		private void HandlePreventMovementInterference(bool state) => _resetMovement = !state;
-
+		
 		private void UpdateCameraVectors()
 		{
 			_cameraForward = Vector3.ProjectOnPlane(_cameraTransform.forward, Vector3.up).normalized;
 			_cameraRight = Vector3.ProjectOnPlane(_cameraTransform.right, Vector3.up).normalized;
 		}
-
+		
+		// Rotates the player to match the camera
 		private void HandleRotation()
 		{
+			// Only rotates when moving
 			if (_moveDirection.sqrMagnitude > 0.01f)
 			{
 				Quaternion targetRotation = Quaternion.LookRotation(_moveDirection, Vector3.up);
@@ -125,6 +120,7 @@ namespace Minibonk.Player
 			}
 		}
 
+		// Applies velocity to the player
 		private void ApplyVelocity(float speed)
 		{
 			_moveDirection = (_cameraForward * _directionInput.y) + (_cameraRight * _directionInput.x).normalized;
@@ -134,7 +130,8 @@ namespace Minibonk.Player
 					new Vector3(_moveDirection.x * speed, _rb.linearVelocity.y, _moveDirection.z * speed);
 			}
 		}
-
+		
+		// Snaps to the ground when not jumping
 		private void SnapToGround()
 		{
 			UnityEngine.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, _groundLayer);
@@ -153,6 +150,7 @@ namespace Minibonk.Player
 			}
 		}
 
+		// Detects ground via a sphere cast
 		private bool HandleGroundDetection()
 		{
 			#if UNITY_EDITOR
@@ -174,7 +172,8 @@ namespace Minibonk.Player
 
 			return grounded;
 		}
-
+		
+		// Applies buffer and coyote time
 		private void HandleJumpCheck(bool groundCheck)
 		{
 			_jumpBufferCounter -= Time.fixedDeltaTime;

@@ -1,13 +1,18 @@
 using UnityEngine;
+using Minibonk.Management;
 
 namespace Minibonk.UI
 {
 	public class MainMenuManager : MonoBehaviour
 	{
+		#region Variables
+		private SceneController _sceneController;
+		#endregion
+		
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
-
+			_sceneController = GameManager.Instance.sceneController;
 		}
 
 		// Update is called once per frame
@@ -17,10 +22,11 @@ namespace Minibonk.UI
 		}
 
 		#region Button Events
-
-		private void OnStartClick()
+		
+		// Called when the player clicks start
+		public void OnStartClick()
 		{
-
+			_sceneController.ChangeScene(SceneNames.MainLevel);
 		}
 
 		#endregion

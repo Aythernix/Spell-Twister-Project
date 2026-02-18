@@ -3,12 +3,16 @@ using UnityEngine.SceneManagement;
 
 namespace Minibonk.Management
 {
+	/// <summary>
+	/// Gameplay Scenes
+	/// </summary>
+	public enum SceneNames
+	{
+		MainLevel,
+	}
 	public class SceneController : MonoBehaviour
 	{
-		public enum SceneNames
-		{
-			
-		}
+		
 			
 		
 		#region Unity Methods
@@ -26,10 +30,14 @@ namespace Minibonk.Management
 		#endregion
 		
 		#region Public API
-
-		public void ChangeScene(string sceneName)
+		
+		/// <summary>
+		/// Changes the gameplay scene
+		/// </summary>
+		/// <param name="sceneName"> Scene to change to </param>
+		public void ChangeScene(SceneNames sceneName)
 		{
-			SceneManager.LoadSceneAsync(sceneName);
+			SceneManager.LoadSceneAsync(sceneName.ToString());
 		}
 		
 		#endregion
