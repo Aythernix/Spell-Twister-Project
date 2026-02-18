@@ -16,19 +16,23 @@ namespace MiniBonk.Enemy
                 return;
             }
             
-            Vector3 targetCenter = player.position + Vector3.up * 1f; // Aim at the player's center (adjust height as needed)
+            // Aim at the player's center (adjust height as needed)
+            Vector3 targetCenter = player.position + Vector3.up * 1f;
+            // Calculate the direction from the fire point to the target center
             Vector3 fireDirection = (targetCenter - _firePoint.position).normalized;
             
-            // Draw a green line in the Scene view for 1 second showing the fire path
-            Debug.DrawRay(_firePoint.position, fireDirection * 10f, Color.green, 1f);
-            
+          
+            //Rotates enemy's body to face player on Y axis
             Vector3 bodyLookDir = fireDirection;
             bodyLookDir.y = 0;
             transform.rotation = Quaternion.LookRotation(bodyLookDir);
-            
+            //Insantiates the projectile 
             GameObject projectileGO = Instantiate(data.projectilePrefab, _firePoint.position, Quaternion.LookRotation(fireDirection));
+            
+             
             if (projectileGO.TryGetComponent<Projectile>(out var projectile))
             {
+                // Pulls data from scriptable object
                 projectile.Setup(data.damage, data.projectileSpeed, data.projectileLifetime);
             }
         }

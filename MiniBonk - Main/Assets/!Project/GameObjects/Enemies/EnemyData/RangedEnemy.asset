@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6418f38c3ddc74d862cb0febca9ef9, type: 3}
   m_Name: RangedEnemy
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 3892404503479868754, guid: ef7188c74779f944c856e5d379fe9bad, type: 3}
   projectileLifetime: 5
-  projectileSpeed: 20
-  speed: 3.5
+  projectileSpeed: 5
+  speed: 1.5
   acceleration: 8
-  stoppingDistance: 5
+  stoppingDistance: 10
   health: 100
   damage: 10
-  attackRange: 2
-  attackCooldown: 1.5
+  attackRange: 20
+  attackCooldown: 0.5
   xpValue: 50
   model: {fileID: 0}
   debugColor: {r: 1, g: 0, b: 0, a: 1}
