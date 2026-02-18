@@ -153,16 +153,16 @@ namespace Minibonk.Player
 		// Detects ground via a sphere cast
 		private bool HandleGroundDetection()
 		{
-			#if UNITY_EDITOR
-			// Uses the custom library to draw debug lines in the Scene view
-			bool grounded = RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(
-				transform.position, _radius, Vector3.down, out RaycastHit hit,
-				_distance, _groundLayer, PreviewCondition.Both, 0.1f, Color.green, Color.red);
-			#else
+			// #if UNITY_EDITOR 
+			// // Uses the custom library to draw debug lines in the Scene view
+			// bool grounded = RotaryHeart.Lib.PhysicsExtension.Physics.SphereCast(
+			// 	transform.position, _radius, Vector3.down, out RaycastHit hit,
+			// 	_distance, _groundLayer, PreviewCondition.Both, 0.1f, Color.green, Color.red);
+			// #else
 			bool grounded = UnityEngine.Physics.SphereCast(
 				transform.position, _radius, Vector3.down, out RaycastHit hit, 
 				 _distance, _groundLayer);
-			#endif
+			// #endif
 
 			// If we are touching the ground and moving downwards/stationary, we are no longer "Jumping"
 			if (grounded && _rb.linearVelocity.y <= 0.01f)
