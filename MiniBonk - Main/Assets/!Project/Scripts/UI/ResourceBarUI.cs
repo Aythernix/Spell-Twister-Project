@@ -13,6 +13,8 @@ namespace Minibonk.UI
 		[SerializeField] private Image _healthSourceImage;
 		[SerializeField] private float _fillRate;
 		
+		private Coroutine _currentBarCoroutine;
+		
 		#endregion
 
 		#region Unity Methods
@@ -22,6 +24,10 @@ namespace Minibonk.UI
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI += SetBarValue;
 		}
 
+		private void OnDisable()
+		{
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI -= SetBarValue;
+		}
 		// Update is called once per frame
 		void Update()
 		{
@@ -51,6 +57,7 @@ namespace Minibonk.UI
 			_healthSourceImage.fillAmount = targetFill; // Snap to final value
 		}
 		
+		
 		#endregion
     
 		#region Public API
@@ -62,8 +69,11 @@ namespace Minibonk.UI
 		/// <param name="maxValue"> The max of the bar </param>
 		public void SetBarValue(float setValue, float maxValue)
 		{
-			Debug.Log("SetBarValue");
-			StartCoroutine(SetBarCoroutine(setValue, maxValue));
+			// Stop previous coroutine if running
+			if (_currentBarCoroutine != null)
+				StopCoroutine(_currentBarCoroutine);
+    
+			_currentBarCoroutine = StartCoroutine(SetBarCoroutine(setValue, maxValue));
 		}
 		
 		#endregion
