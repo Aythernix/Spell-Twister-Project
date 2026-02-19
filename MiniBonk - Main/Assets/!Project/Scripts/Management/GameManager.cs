@@ -26,7 +26,6 @@ namespace Minibonk.Management
 		#region SubManagers
 
 		public UIManager uiManager { get; private set; }
-		public EnemyManager enemyManager { get; private set; }
 		public SceneController sceneController { get; private set; }
 
 		#endregion
@@ -56,7 +55,6 @@ namespace Minibonk.Management
 		private void SetSubManagers()
 		{
 			uiManager = GetComponentInChildren<UIManager>();
-			enemyManager = GetComponent<EnemyManager>();
 			sceneController = GetComponentInChildren<SceneController>();
 		}
 		
