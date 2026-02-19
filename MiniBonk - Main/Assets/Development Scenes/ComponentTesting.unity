@@ -2930,6 +2930,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 149249643593601442, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 754207162792449394, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.68
@@ -2998,6 +3002,18 @@ PrefabInstance:
       propertyPath: 'descriptionTexts.Array.data[2]'
       value: 
       objectReference: {fileID: 640266997}
+    - target: {fileID: 7341410660515815771, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341410660515815771, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: CollideAgainst.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341410660515815771, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: AvoidObstacles.CameraRadius
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4227,7 +4243,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703106690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e950d664f75c898478da581f089ba229, type: 3}
   m_Name: 

@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0166c30a624643ae8be113cb22662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _debug: 0
   _walkSpeed: 8
   _jumpForce: 5
   _jumpBuffer: 0.5
@@ -380,7 +381,6 @@ GameObject:
   - component: {fileID: 7810970076869954272}
   - component: {fileID: 7341410660515815771}
   - component: {fileID: 3993504193941444576}
-  - component: {fileID: 149249643593601442}
   m_Layer: 8
   m_Name: Third Person Cam
   m_TagString: Untagged
@@ -545,14 +545,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7565691995379507314}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 64
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
@@ -635,36 +635,6 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
---- !u!114 &149249643593601442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565691995379507314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraRadius: 0.4
-  Decollision:
-    Enabled: 0
-    ObstacleLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    UseFollowTarget:
-      Enabled: 0
-      YOffset: 0
-    Damping: 0.5
-    SmoothingTime: 0
-  TerrainResolution:
-    Enabled: 1
-    TerrainLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    MaximumRaycast: 10
-    Damping: 0.5
 --- !u!1 &7590123431509154388
 GameObject:
   m_ObjectHideFlags: 0
