@@ -62,6 +62,7 @@ namespace Minibonk.MovementAbilities
         {
             if (!_isActive) return;
             _isActive = false;
+            OnToggle(false);
         }
 
         #endregion
