@@ -20,6 +20,7 @@ namespace MiniBonk.Enemy
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform;
+            
             currentHealth = data.health;
             ApplySettings();
         }
@@ -27,6 +28,7 @@ namespace MiniBonk.Enemy
         public virtual void TakeDamage( int amount, GameObject instigator = null)
         {
             currentHealth -= amount;
+            Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}");
 
             if (currentHealth <= 0)
             {
@@ -52,7 +54,8 @@ namespace MiniBonk.Enemy
             navMeshAgent.acceleration = data.acceleration;
             navMeshAgent.stoppingDistance = data.stoppingDistance;
         }
-        protected virtual void FixedUpdate()
+
+        protected virtual void Update()
         {
             navMeshAgent.SetDestination(player.position);
             float distance = Vector3.Distance(transform.position, player.position);
@@ -71,6 +74,9 @@ namespace MiniBonk.Enemy
             {
                 navMeshAgent.isStopped = false;
             }
+        }
+        protected virtual void FixedUpdate()
+        {
         }
 
         protected abstract void Attack();

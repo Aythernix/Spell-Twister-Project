@@ -18,8 +18,8 @@ TagManager:
   - Projectile
   - Player
   - NavMesh
-  - 
-  - 
+  - Enemy
+  - Enemy-Projectile
   - 
   - 
   - 

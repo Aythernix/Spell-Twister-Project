@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxStamina: 100
-  currentHealth: 100
+  currentHealth: 960
   currentStamina: 100
-  level: 1
-  xp: 0
+  level: 2
+  xp: 50
