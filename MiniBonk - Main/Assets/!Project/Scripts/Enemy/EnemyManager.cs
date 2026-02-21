@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Minibonk.Management;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace MiniBonk.Enemy
@@ -41,6 +42,7 @@ namespace MiniBonk.Enemy
         {
             GameManager.Instance.EventHandler.OnEnemyKilled += OnEnemyKilled;
         }
+        
 
         private void OnDisable()
         {
@@ -50,8 +52,7 @@ namespace MiniBonk.Enemy
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            StartCoroutine(HandleEnemySpawning());
+            StartEnemySpawning();
         }
 
         // Update is called once per frame
@@ -78,7 +79,16 @@ namespace MiniBonk.Enemy
         #endregion
         
         #region private methods
-
+        private void StartEnemySpawning()
+        {
+            Debug.Log("Enemy Spawning Called");
+            if (GameManager.Instance.sceneIsPlayable)
+            {
+                Debug.Log("Enemy Spawning Started");
+                _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+                StartCoroutine(HandleEnemySpawning());
+            }
+        }
         // Gets a random position in a sphere around the player
         private Vector3 SpawnPosition()
         {
@@ -105,6 +115,9 @@ namespace MiniBonk.Enemy
                 SpawnEnemy();
             }
             
+            if (!GameManager.Instance.sceneIsPlayable)
+                yield break;
+            
             StartCoroutine(HandleEnemySpawning());
         }
         
@@ -115,7 +128,7 @@ namespace MiniBonk.Enemy
             {
                 var spawnPos = SpawnPosition();
                 if (!_validSpawn) continue;
-                var enemyTypeInex = Random.Range(0, _enemyTypes.Count - 1);
+                var enemyTypeInex = Random.Range(0, _enemyTypes.Count);
                 var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
                 _enemiesInScene.Add(enemyAdded);
             }

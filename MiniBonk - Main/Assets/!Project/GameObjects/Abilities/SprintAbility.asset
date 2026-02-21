@@ -16,6 +16,5 @@ MonoBehaviour:
   abilityID: 1
   abilityDescription: Gotta go fast!
   cooldownTime: 0
-  staminaCost: 5
-  StaminaLossRate: 1
+  staminaLossRate: 10
   _sprintMultipler: 1.5

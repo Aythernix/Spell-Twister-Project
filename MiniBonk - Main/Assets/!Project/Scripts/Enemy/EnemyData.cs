@@ -5,6 +5,12 @@ namespace MiniBonk.Enemy
     [CreateAssetMenu(fileName = "NewEnemyData", menuName = "EnemyData")]
     public class EnemyData : ScriptableObject
     {
+        [Header("Ranged Settings")]
+        public GameObject projectilePrefab;
+        public float projectileLifetime = 5f;
+        public float projectileSpeed = 20f;
+        
+        
         [Header("Movement Settings")] 
         public float speed = 3.5f;
         public float acceleration = 8f;

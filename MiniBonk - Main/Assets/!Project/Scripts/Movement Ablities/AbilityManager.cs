@@ -39,14 +39,14 @@ namespace Minibonk.MovementAbilities
 
         private void OnEnable()
         {
-            _playerHandler.Events.OnAbilityPressed += TriggerAbilitySlot;
-            _playerHandler.Events.OnAbilityReleased += FinaliseAbilitySlot;
+            _playerHandler.PlayerEvents.OnAbilityPressed += TriggerAbilitySlot;
+            _playerHandler.PlayerEvents.OnAbilityReleased += FinaliseAbilitySlot;
            
         }
         private void OnDisable()
         {
-            _playerHandler.Events.OnAbilityPressed -= TriggerAbilitySlot;
-            _playerHandler.Events.OnAbilityReleased -= FinaliseAbilitySlot;
+            _playerHandler.PlayerEvents.OnAbilityPressed -= TriggerAbilitySlot;
+            _playerHandler.PlayerEvents.OnAbilityReleased -= FinaliseAbilitySlot;
         }
         
         // DEBUG

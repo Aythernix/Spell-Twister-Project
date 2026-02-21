@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using Minibonk.Player;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ namespace Minibonk.Player
 		#region Varibles
 		
 		[Header("Player Stamina")]
-		[SerializeField] private float _staminaRecoveryRate;
-		[SerializeField] private float _staminaRecoveryAmount;
+		[SerializeField] private float _staminaRecoveryPerSecond;
 		[SerializeField] private float _staminaRecoveryCooldown;
 		[SerializeField] private float _timeSinceStaminaLost;
 
@@ -22,17 +22,17 @@ namespace Minibonk.Player
 
 		private void OnEnable()
 		{
-			_playerHandler.Events.OnStaminaDecrease += DecrementPlayerStamina;
-			_playerHandler.Events.OnStaminaIncrease += IncrementPlayerStamina;
-			_playerHandler.Events.IsStaminaEmpty = () => isEmpty;
-			_playerHandler.Events.IsStaminaFull = () => _playerHandler.playerData.currentStamina >= _playerHandler.playerData.maxStamina;
-			_playerHandler.Events.GetCurrentStamina = () => _playerHandler.playerData.currentStamina;
+			_playerHandler.PlayerEvents.OnStaminaDecrease += DecrementPlayerStamina;
+			_playerHandler.PlayerEvents.OnStaminaIncrease += IncrementPlayerStamina;
+			_playerHandler.PlayerEvents.IsStaminaEmpty = () => isEmpty;
+			_playerHandler.PlayerEvents.IsStaminaFull = () => _playerHandler.playerData.currentStamina >= _playerHandler.playerData.maxStamina;
+			_playerHandler.PlayerEvents.GetCurrentStamina = () => _playerHandler.playerData.currentStamina;
 		}
 
 		private void OnDisable()
 		{
-			_playerHandler.Events.OnStaminaDecrease -= DecrementPlayerStamina;
-			_playerHandler.Events.OnStaminaIncrease -= IncrementPlayerStamina;
+			_playerHandler.PlayerEvents.OnStaminaDecrease -= DecrementPlayerStamina;
+			_playerHandler.PlayerEvents.OnStaminaIncrease -= IncrementPlayerStamina;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,19 +44,19 @@ namespace Minibonk.Player
 		// Update is called once per frame
 		void Update()
 		{
-			if (_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina)
-			{
-				float staminaPerSecond = _staminaRecoveryAmount / _staminaRecoveryRate;
-				if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
-				{
-					RecoverPlayerStamina(staminaPerSecond * Time.deltaTime);
-				}
-			}
+			StaminaCooldown();
+			
+			// Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
+			
 		}
 		#endregion
 
 		#region Private Methods
-
+		
+		/// <summary>
+		/// Decreases the players stamina
+		/// </summary>
+		/// <param name="amount"> amount to decrease by </param>
 		private void DecrementPlayerStamina(float amount)
 		{
 			_playerHandler.playerData.currentStamina -= amount;
@@ -69,25 +69,51 @@ namespace Minibonk.Player
 			
 			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
 			
-			Debug.Log($"Stamina Decreased: {amount}");
+			UpdateUI();
 		}
-
+		
+		/// <summary>
+		/// Increases the player stamina
+		/// </summary>
+		/// <param name="amount"> amount to increase by </param>
 		private void IncrementPlayerStamina(float amount)
 		{
 			_playerHandler.playerData.currentStamina += amount;
 			
 			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
+			
+			UpdateUI();
 		}
-
+		
+		// Regenerates the players stamina after a cooldown
 		private void RecoverPlayerStamina(float amount)
 		{
 			IncrementPlayerStamina(amount);
 		}
 
+		// Calls stamina recovery after a cooldown if stamina isn't full
+		private void StaminaCooldown()
+		{
+			if (!(_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina))
+				return;
+			var staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
+			if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
+			{
+				RecoverPlayerStamina(staminaPerSecond);
+			}
+		}
+		
+		// Fires an event if the stamina reaches zero
 		private void OnStaminaEmpty()
 		{
 			isEmpty = true;
-			_playerHandler.Events.OnStaminaEmpty?.Invoke();
+			_playerHandler.PlayerEvents.OnStaminaEmpty?.Invoke();
+		}
+
+		// Updates the UI every change
+		private void UpdateUI()
+		{
+			GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerStaminaUI?.Invoke(_playerHandler.playerData.currentStamina, _playerHandler.playerData.maxStamina);
 		}
 
 		#endregion
