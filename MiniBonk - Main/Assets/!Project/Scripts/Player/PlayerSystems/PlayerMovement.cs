@@ -14,24 +14,23 @@ namespace Minibonk.Player
 
 		#region Variables
 
-		[Header("Movement Settings")] [SerializeField]
-		private float _walkSpeed = 10f;
-
+		[Header("Movement Settings")]
+		
+		[SerializeField] float _walkSpeed = 10f;
 		[SerializeField] private float _jumpForce = 5f;
 		[SerializeField] private float _jumpBuffer = 0.5f;
 		[SerializeField] private float _coyoteTime = 0.5f;
 
-		[Header("Ground Check Settings")] [SerializeField]
-		private float _radius = 0.5f;
-
+		[Header("Ground Check Settings")] 
+		
+		[SerializeField] private float _radius = 0.5f;
 		[SerializeField] private float _distance = 0.2f;
 		[SerializeField] private LayerMask _groundLayer;
 
-		[Header("Snapping Settings")] [SerializeField]
-		private float _maxSnapAngle;
-
-		[SerializeField] private float _minSnapAngle;
-		[SerializeField] private float _snappingForce;
+		[Header("Snapping Settings")]
+		[SerializeField] private float _checkingDistance;
+		[SerializeField] private float _minSnappingAngle;
+		
 
 		[Header("References")] [SerializeField]
 		private Transform _cameraTransform;
@@ -134,20 +133,24 @@ namespace Minibonk.Player
 		// Snaps to the ground when not jumping
 		private void SnapToGround()
 		{
-			UnityEngine.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f, _groundLayer);
-			if (hit.collider != null)
-			{
-				if (_isJumping) return;
+			RotaryHeart.Lib.PhysicsExtension.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _checkingDistance, _groundLayer, PreviewCondition.Both, 1f, Color.red, Color.blue);
+			
+			// Only runs if the player isn't jumping and is on the ground
+			if (_isJumping || !hit.collider) return;
+			
+			var normal = hit.normal;
+			var angle = Vector3.Angle(normal, Vector3.down);
+			
+			// Only runs if the angle isn't too steep
+			if (angle <= _minSnappingAngle) return;
+			
 
-				var normal = hit.normal;
-				var angle = Vector3.Angle(normal, Vector3.down);
-				// Debug.Log(angle);
+			var velocity = _rb.linearVelocity;
+			
+			// Takes the velocity and projects it on the ground plane, making the player move on the angle of the ground. 
+			var projectedVelocity = Vector3.ProjectOnPlane(velocity, hit.normal);
 
-				if ((_minSnapAngle < angle && angle < _maxSnapAngle) && !HandleGroundDetection())
-				{
-					_rb.linearVelocity = -hit.normal * _snappingForce;
-				}
-			}
+			_rb.linearVelocity = projectedVelocity;
 		}
 
 		// Detects ground via a sphere cast
