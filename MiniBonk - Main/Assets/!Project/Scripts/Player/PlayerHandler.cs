@@ -1,6 +1,5 @@
 using Minibonk.Player;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Minibonk.Player
@@ -30,10 +29,9 @@ namespace Minibonk.Player
         // Update is called once per frame
         void Update()
         {
-            
+        
         }
         #endregion
-        
     }
     
     /// <summary>
