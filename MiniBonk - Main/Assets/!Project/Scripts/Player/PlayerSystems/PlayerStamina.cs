@@ -96,13 +96,12 @@ namespace Minibonk.Player
 		// Calls stamina recovery after a cooldown if stamina isn't full
 		private void StaminaCooldown()
 		{
-			if (_playerHandler.playerData.currentStamina <= _playerHandler.playerData.maxStamina)
+			if (!(_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina))
+				return;
+			var staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
+			if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
 			{
-				float staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
-				if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
-				{
-					RecoverPlayerStamina(staminaPerSecond);
-				}
+				RecoverPlayerStamina(staminaPerSecond);
 			}
 		}
 		
