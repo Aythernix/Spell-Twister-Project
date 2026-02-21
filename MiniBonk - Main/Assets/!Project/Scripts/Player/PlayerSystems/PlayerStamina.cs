@@ -46,7 +46,7 @@ namespace Minibonk.Player
 		{
 			StaminaCooldown();
 			
-			Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
+			// Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
 			
 		}
 		#endregion
@@ -68,8 +68,6 @@ namespace Minibonk.Player
 			}
 			
 			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
-			
-			Debug.Log($"Stamina Decreased: {amount}");
 			
 			UpdateUI();
 		}
@@ -96,13 +94,12 @@ namespace Minibonk.Player
 		// Calls stamina recovery after a cooldown if stamina isn't full
 		private void StaminaCooldown()
 		{
-			if (_playerHandler.playerData.currentStamina <= _playerHandler.playerData.maxStamina)
+			if (!(_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina))
+				return;
+			var staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
+			if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
 			{
-				float staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
-				if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
-				{
-					RecoverPlayerStamina(staminaPerSecond);
-				}
+				RecoverPlayerStamina(staminaPerSecond);
 			}
 		}
 		
