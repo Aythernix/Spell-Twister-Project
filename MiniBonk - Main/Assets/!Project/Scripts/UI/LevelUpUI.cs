@@ -21,7 +21,6 @@ public class LevelUpUI : MonoBehaviour
         //checking if instance exists before subscribing
         if (GameManager.Instance != null && GameManager.Instance.EventHandler != null)
         {
-            Debug.Log("LevelingSystem: Successfully subscribed to Events!");
             GameManager.Instance.EventHandler.OnPlayerLevelIncrease += ShowLevelUpPanel; 
         }
         else

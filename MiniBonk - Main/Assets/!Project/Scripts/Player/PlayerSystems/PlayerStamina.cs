@@ -46,7 +46,7 @@ namespace Minibonk.Player
 		{
 			StaminaCooldown();
 			
-			Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
+			// Debug.Log($"Stamina: {_playerHandler.playerData.currentStamina}/{_playerHandler.playerData.maxStamina}");
 			
 		}
 		#endregion
@@ -68,8 +68,6 @@ namespace Minibonk.Player
 			}
 			
 			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
-			
-			Debug.Log($"Stamina Decreased: {amount}");
 			
 			UpdateUI();
 		}
