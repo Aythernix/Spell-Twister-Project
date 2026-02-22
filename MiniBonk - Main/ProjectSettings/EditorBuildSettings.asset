@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/!Project/UIScenes/GameplayHud.unity
     guid: 071eb7ca60d10dd4ca2dd9ab28672825
+  - enabled: 1
+    path: Assets/!Project/UIScenes/LevelUpPopup.unity
+    guid: 64826d6ba7c60fe4f92faebdac183f5d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

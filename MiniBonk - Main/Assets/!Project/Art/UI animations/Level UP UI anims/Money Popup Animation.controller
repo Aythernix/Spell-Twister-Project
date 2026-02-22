@@ -54,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Option 1 Animation
+  m_Name: Money Popup Animation
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:

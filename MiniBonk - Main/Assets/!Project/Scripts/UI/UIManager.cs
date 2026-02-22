@@ -12,6 +12,7 @@ namespace Minibonk.UI
 	{
 		MainMenu,
 		GameplayHud,
+		LevelUpPopup,
 	}
 	public class UIManager : MonoBehaviour
 	{
@@ -19,7 +20,7 @@ namespace Minibonk.UI
 
 		#region Variables
 		
-		public Events UIEvents;
+		public Events UIEvents = new Events();
 
 		public UISceneNames gamePlayUIScene = UISceneNames.GameplayHud;
 		
