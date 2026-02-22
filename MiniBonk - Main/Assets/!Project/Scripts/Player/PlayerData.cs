@@ -25,6 +25,8 @@ namespace Minibonk.Player
 
         public void Reset()
         {
+            variableMaxHealth = MaxHealth;
+            variableMaxStamina = MaxStamina;
             currentHealth = MaxHealth;
             currentStamina = MaxStamina;
             level = 1;
