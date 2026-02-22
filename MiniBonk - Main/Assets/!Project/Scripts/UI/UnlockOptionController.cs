@@ -49,17 +49,19 @@ namespace MiniBonk.UI
     
         public void ExecuteReward()
         {
-            if (!_unlockableData.StatUpgrade)
+            Debug.Log($"Executing reward with amount: {_reward}");
+           
+            if (_unlockableData.maxHealthIncrease)
             {
-                if (_unlockableData.maxHealthIncrease)
-                {
-                    _unlockableData.IncreaseMaxHealth(_reward);
-                }
-                if (_unlockableData.maxStaminaIncrease)
-                {
-                    _unlockableData.IncreaseMaxStamina(_reward);
-                }
+                Debug.Log($"Increasing max health by {_reward}");
+                _unlockableData.IncreaseMaxHealth(_reward);
             }
+            if (_unlockableData.maxStaminaIncrease)
+            {
+                Debug.Log($"Increasing max stamina by {_reward}");
+                _unlockableData.IncreaseMaxStamina(_reward);
+            }
+            
         
             if (_unlockableData.moneyIncrease)
             {

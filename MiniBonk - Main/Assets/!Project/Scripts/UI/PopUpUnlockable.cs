@@ -20,21 +20,9 @@ public class PopUpUnlockable : ScriptableObject
     public bool traceIncrease;
     public bool maxHealthIncrease;
     public bool maxStaminaIncrease;
-    
-    public bool StatUpgrade { get; private set; }
+        
     #endregion
-
-    private void OnValidate()
-    {
-        if (maxHealthIncrease || maxStaminaIncrease)
-        {
-            StatUpgrade = true;
-        }
-        else
-        {
-            StatUpgrade = false;
-        }
-    }
+    
 
     #region Optional API
 

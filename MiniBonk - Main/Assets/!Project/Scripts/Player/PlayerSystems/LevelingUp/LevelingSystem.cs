@@ -103,7 +103,7 @@ namespace Minibonk.Player
             if (PlayerLevel % LevelUpPopUpIncrement == 0)
             {
                 Debug.Log("Level UP!");
-                GameManager.Instance.uiManager.UIEvents.OnInstantiateUIScene(UISceneNames.LevelUpPopup);
+                GameManager.Instance.uiManager.UIEvents.OnInstantiateUIScene(UISceneNames.LevelUpPopup, true);
             }
         }
 

@@ -117,7 +117,10 @@ namespace Minibonk.Player
 
 		private void IncreaseMaxStamina(int amount)
 		{
+			Debug.Log($"PlayerStamina: Increasing max stamina by {amount}. Current: {_playerHandler.playerData.variableMaxStamina}");
 			_playerHandler.playerData.variableMaxStamina += amount;
+			Debug.Log($"PlayerStamina: New max stamina: {_playerHandler.playerData.variableMaxStamina}");
+			UpdateUI();
 		}
 		private void DecreaseMaxStamina(int amount)
 		{

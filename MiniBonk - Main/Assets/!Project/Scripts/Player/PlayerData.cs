@@ -29,7 +29,9 @@ namespace Minibonk.Player
             variableMaxStamina = MaxStamina;
             currentHealth = MaxHealth;
             currentStamina = MaxStamina;
-            level = 1;
+            currentMoney = 0;
+            currentTracePoints = 0;
+            level = 0;
             xp = 0;
         }
     } 

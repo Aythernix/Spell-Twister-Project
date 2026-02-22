@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 5709388933868557942}
   - component: {fileID: 5449639576651530879}
   - component: {fileID: 3012902616732291797}
-  - component: {fileID: 8213373837183902238}
   - component: {fileID: 4684894486909211462}
   - component: {fileID: 1520220285367663341}
   m_Layer: 8
@@ -110,7 +109,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3032142572640402407}
-  - {fileID: 3716783711771736049}
   - {fileID: 4400381316970585331}
   - {fileID: 2522273856188746137}
   - {fileID: 4991395199770692469}
@@ -240,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseRequiredXp: 100
   _XpMultipler: 1.5
+  LevelUpPopUpIncrement: 1
 --- !u!114 &5709388933868557942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0166c30a624643ae8be113cb22662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debug: 0
   _walkSpeed: 8
   _jumpForce: 5
   _jumpBuffer: 0.5
@@ -280,9 +278,8 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _maxSnapAngle: 181
-  _minSnapAngle: 0
-  _snappingForce: 10
+  _checkingDistance: 1.3
+  _minSnappingAngle: 0
   _cameraTransform: {fileID: 3032142572640402407}
   _rb: {fileID: 1520220285367663341}
 --- !u!114 &3012902616732291797
@@ -298,22 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staminaRecoveryPerSecond: 15
-  _staminaRecoveryCooldown: 3
-  _timeSinceStaminaLost: 0
-  isEmpty: 0
---- !u!114 &8213373837183902238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356950065991098005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54cba56e58d11548bf6e0dfcfb2f958, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _staminaRecoveryPerSecond: 0
   _staminaRecoveryCooldown: 3
   _timeSinceStaminaLost: 0
   isEmpty: 0
@@ -427,7 +408,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60
+    FieldOfView: 69.02003
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -733,69 +714,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesWithinRange: []
---- !u!1001 &8774242610121088
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 754207162792449394}
-    m_Modifications:
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.47196472
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1246221
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.13614392
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5216942408671156703, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_Name
-      value: 'LevelUpUI - [PUT UNDER PLAYER!]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5216942408671156703, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
---- !u!4 &3716783711771736049 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3714210989649935985, guid: 1c3df85e7279a944d9825ca0a53f334a, type: 3}
-  m_PrefabInstance: {fileID: 8774242610121088}
-  m_PrefabAsset: {fileID: 0}
