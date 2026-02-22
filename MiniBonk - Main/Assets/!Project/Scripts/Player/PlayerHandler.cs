@@ -21,6 +21,26 @@ namespace Minibonk.Player
             
         }
 
+        private void OnEnable()
+        {
+            PlayerEvents.OnIncreaseMoney += IncreasePlayerMoney;
+            PlayerEvents.OnDecreaseMoney += DecreasePlayerMoney;
+            PlayerEvents.GetMoney += GetPlayerMoneyCount;
+            PlayerEvents.OnIncreaseTracePoints += IncreasePlayerTracePoints;
+            PlayerEvents.OnDecreaseTracePoints += DecreasePlayerTracePoints;
+            PlayerEvents.GetTracePoint += GetPlayerTracePointAmount;
+        }
+
+        private void OnDisable()
+        {
+            PlayerEvents.OnIncreaseMoney -= IncreasePlayerMoney;
+            PlayerEvents.OnDecreaseMoney -= DecreasePlayerMoney;
+            PlayerEvents.GetMoney -= GetPlayerMoneyCount;
+            PlayerEvents.OnIncreaseTracePoints -= IncreasePlayerTracePoints;
+            PlayerEvents.OnDecreaseTracePoints -= DecreasePlayerTracePoints;
+            PlayerEvents.GetTracePoint -= GetPlayerTracePointAmount;
+        }
+
         private void Start()
         {
             playerData.Reset();
@@ -31,6 +51,40 @@ namespace Minibonk.Player
         {
         
         }
+        #endregion
+
+        #region Private Methods
+
+        private void IncreasePlayerMoney(int amount)
+        {
+            playerData.currentMoney += amount;
+        }
+
+        private void DecreasePlayerMoney(int amount)
+        {
+            playerData.currentMoney -= amount;
+        }
+
+        private float GetPlayerMoneyCount()
+        {
+            return playerData.currentMoney;
+        }
+
+        private void IncreasePlayerTracePoints(int amount)
+        {
+            playerData.currentTracePoints += amount;
+        }
+
+        private void DecreasePlayerTracePoints(int amount)
+        {
+            playerData.currentTracePoints -= amount;
+        }
+
+        private float GetPlayerTracePointAmount()
+        {
+            return playerData.currentTracePoints;
+        }
+        
         #endregion
     }
     
@@ -52,6 +106,17 @@ namespace Minibonk.Player
         public Func<bool> IsStaminaEmpty;
         public Func<bool> IsStaminaFull;
         public Func<float> GetCurrentStamina;
+        public Action<int> OnIncreaseMaxStamina;
+        public Action<int> OnDecreaseMaxStamina;
+        public Action<int> OnIncreaseMaxHealth;
+        public Action<int> OnDecreaseMaxHealth;
+        public Action<int> OnIncreaseMoney;
+        public Action<int> OnDecreaseMoney;
+        public Func<float> GetMoney;
+        public Action<int> OnIncreaseTracePoints;
+        public Action<int> OnDecreaseTracePoints;
+        public Func<float> GetTracePoint;
+
     }
 
 }

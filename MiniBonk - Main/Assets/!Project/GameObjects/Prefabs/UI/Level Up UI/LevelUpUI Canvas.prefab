@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6113307501831237745, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
       propertyPath: m_Name
-      value: Level UP option 3
+      value: Level UP option 2
       objectReference: {fileID: 0}
     - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
@@ -564,6 +564,34 @@ PrefabInstance:
       propertyPath: m_Colors.m_ColorMultiplier
       value: 2.3
       objectReference: {fileID: 0}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRewardClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelUpPopUpManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7686783653320408231}
+    - target: {fileID: 7671244221912038365, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -572,6 +600,11 @@ PrefabInstance:
 --- !u!224 &3192757245499217986 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1311908711120868500, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
+  m_PrefabInstance: {fileID: 4501952323266841814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7686783653320408231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6113307501831237745, guid: 7ba222675162b6846bfe33d975c13235, type: 3}
   m_PrefabInstance: {fileID: 4501952323266841814}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4941450296110085948
@@ -670,11 +703,44 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRewardClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelUpPopUpManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 40365823280693649}
+    - target: {fileID: 8844939293523819777, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+--- !u!1 &40365823280693649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4908050983639430829, guid: 0133a22344b32094db8459e2b164c245, type: 3}
+  m_PrefabInstance: {fileID: 4941450296110085948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5074829237229086068 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 215861142410334792, guid: 0133a22344b32094db8459e2b164c245, type: 3}
@@ -691,6 +757,34 @@ PrefabInstance:
     - target: {fileID: 596634998481007704, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
       propertyPath: m_Name
       value: Level UP option 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRewardClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelUpPopUpManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6638712350256622788}
+    - target: {fileID: 3955501258142564340, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5667127655057494205, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
       propertyPath: m_Pivot.x
@@ -780,5 +874,10 @@ PrefabInstance:
 --- !u!224 &1928512027537655841 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5667127655057494205, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
+  m_PrefabInstance: {fileID: 6081792349037254812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6638712350256622788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 596634998481007704, guid: ee8faf25b1aa77e4bb620b6325e31834, type: 3}
   m_PrefabInstance: {fileID: 6081792349037254812}
   m_PrefabAsset: {fileID: 0}

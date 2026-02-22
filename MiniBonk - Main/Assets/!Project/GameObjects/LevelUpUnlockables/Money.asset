@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edb9f506c19cf7448d107caac0c7279, type: 3}
+  m_Name: Money
+  m_EditorClassIdentifier: 
+  animatorController: {fileID: 9100000, guid: be4a40c315551da4782cf70b5660fd26, type: 2}
+  description: Coins are spent in the item shop to gain movement abilites, this can
+    be accessed by pausing and clicking the 'Shop' Tab!
+  currency: Coins
+  reward: 50
+  levelMultiplier: 1.5
+  moneyIncrease: 1
+  traceIncrease: 0
+  maxHealthIncrease: 0
+  maxStaminaIncrease: 0

@@ -19,6 +19,7 @@ namespace Minibonk.Player
 		{
 			// Event Subscription
 			_playerHandler.PlayerEvents.OnPlayerDamaged += TakeDamage;
+			_playerHandler.PlayerEvents.OnIncreaseMaxHealth += IncreaseMaxHealth;
 		}
 		
 
@@ -26,6 +27,7 @@ namespace Minibonk.Player
 		{
 			// Event Unsubscription
 			_playerHandler.PlayerEvents.OnPlayerDamaged -= TakeDamage;
+			_playerHandler.PlayerEvents.OnDecreaseMaxHealth -= DecreaseMaxHealth;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,6 +66,16 @@ namespace Minibonk.Player
 			Debug.Break();
 		}
 
+		private void IncreaseMaxHealth(int amount)
+		{
+			_playerHandler.playerData.variableMaxHealth += amount;
+		}
+
+		private void DecreaseMaxHealth(int amount)
+		{
+			_playerHandler.playerData.variableMaxHealth -= amount;
+		}
+
 		#endregion
 
 		#region Public API
@@ -74,13 +86,13 @@ namespace Minibonk.Player
 		/// <param name="damage"> The amount of health to remove from the player </param>
 		public void TakeDamage(float damage)
 		{
-			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth -= damage, 0, _playerHandler.playerData.maxHealth);
+			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth -= damage, 0, _playerHandler.playerData.variableMaxHealth);
 			if (HealthEmpty())
 			{
 				OnHealthEmpty();
 			}
 			
-			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.maxHealth);
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 			
 		}
 		/// <summary>
@@ -88,7 +100,7 @@ namespace Minibonk.Player
 		/// </summary>
 		public void SetHealthToMax()
 		{
-			_playerHandler.playerData.currentHealth = _playerHandler.playerData.maxHealth;
+			_playerHandler.playerData.currentHealth = _playerHandler.playerData.variableMaxHealth;
 		}
 
 		#endregion

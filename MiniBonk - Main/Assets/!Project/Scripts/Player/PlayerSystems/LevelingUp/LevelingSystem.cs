@@ -1,5 +1,6 @@
 using System;
 using Minibonk.Management;
+using Minibonk.UI;
 using UnityEngine;
 
 namespace Minibonk.Player
@@ -13,6 +14,8 @@ namespace Minibonk.Player
         [SerializeField] private int _baseRequiredXp = 100;
 
         [SerializeField] private float _XpMultipler = 1.1f;
+
+        [SerializeField] private int LevelUpPopUpIncrement = 1;
 
         // Player Level Data
         private int PlayerLevel
@@ -85,6 +88,7 @@ namespace Minibonk.Player
             Debug.Log($"New Required XP: {RequiredXp(PlayerLevel)}");
             
             GameManager.Instance.EventHandler.OnPlayerLevelIncrease?.Invoke(PlayerLevel);
+            OpenLevelUp();
         }
 
         // Calculates the amount of XP the player should need to level up
@@ -92,6 +96,15 @@ namespace Minibonk.Player
         private int RequiredXp(int playerLevel)
         {
             return Mathf.RoundToInt(_baseRequiredXp * Mathf.Pow(_XpMultipler, playerLevel - 1));
+        }
+
+        private void OpenLevelUp()
+        {
+            if (PlayerLevel % LevelUpPopUpIncrement == 0)
+            {
+                Debug.Log("Level UP!");
+                GameManager.Instance.uiManager.UIEvents.OnInstantiateUIScene(UISceneNames.LevelUpPopup, true);
+            }
         }
 
         #endregion

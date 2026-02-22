@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,8 @@ namespace Minibonk.Management
 		[field: SerializeField] public SceneTypes sceneType {get; private set;}
 		[field: SerializeField] public string sceneName {get; protected set;}
 		
+		[field: SerializeField] public PlayerHandler playerHandler {get; private set;}
+		
 		#endregion
 
 		#region Unity Methods
@@ -28,6 +31,7 @@ namespace Minibonk.Management
 			sceneName = SceneManager.GetActiveScene().name;
 			SetGameManagerAsPlayable();
 			SetLevelManagerInGameManager();
+			SetPlayer();
 		}
 
 		private void Start()
@@ -56,6 +60,11 @@ namespace Minibonk.Management
 		private void SetLevelManagerInGameManager()
 		{
 			GameManager.Instance.currentLevelManager = this;
+		}
+
+		private void SetPlayer()
+		{
+			playerHandler = FindFirstObjectByType<PlayerHandler>();
 		}
 		
 		#endregion

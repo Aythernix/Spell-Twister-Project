@@ -12,6 +12,7 @@ namespace Minibonk.UI
 	{
 		MainMenu,
 		GameplayHud,
+		LevelUpPopup,
 	}
 	public class UIManager : MonoBehaviour
 	{
@@ -19,7 +20,7 @@ namespace Minibonk.UI
 
 		#region Variables
 		
-		public Events UIEvents;
+		public Events UIEvents = new Events();
 
 		public UISceneNames gamePlayUIScene = UISceneNames.GameplayHud;
 		
@@ -62,7 +63,7 @@ namespace Minibonk.UI
 			// Opens HUD if scene is a playable scene
 			if (GameManager.Instance.sceneIsPlayable)
 			{
-				OpenPlayableScenes();
+				OpenGamePlayUI();
 			}
 			else
 			{
@@ -71,35 +72,43 @@ namespace Minibonk.UI
 		}
 		
 		// Initiates the gameplay HUD
-		private void OpenPlayableScenes()
+		private void OpenGamePlayUI()
 		{
-			InstantiateUIScene(gamePlayUIScene);
+			InstantiateUIScene(gamePlayUIScene, false);
 		}
 		
 		// Closes the gameplay HUD
 		private void ClosePlayableScenes()
 		{
-			CloseUIScene(gamePlayUIScene);
+			CloseUIScene(gamePlayUIScene, true);
 		}
 
 		#endregion
 		
 		#region Public API
-		
-		/// <summary>
-		///	Overlays UI scenes over the currently open scene 
-		/// </summary>
-		/// <param name="uiSceneNames"> the name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
-		public void InstantiateUIScene(UISceneNames uiSceneNames)
+
+		///  <summary>
+		/// 	Overlays UI scenes over the currently open scene 
+		///  </summary>
+		///  <param name="uiSceneNames"> the name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
+		///  <param name="pause"> Should the game pause true by default</param>
+		public void InstantiateUIScene(UISceneNames uiSceneNames, bool pause = true)
 		{
 			SceneManager.LoadSceneAsync(uiSceneNames.ToString(),  LoadSceneMode.Additive);
+			if (pause)
+			{
+				Time.timeScale = 0;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+			}
 		}
 
 		/// <summary>
 		/// Closes UI scene overlays
 		/// </summary>
 		/// <param name="uiSceneNames"> The name of the scene to open, selectable via <see cref="UISceneNames"/> </param>
-		public void CloseUIScene(UISceneNames uiSceneNames)
+		/// <param name="unpause"> Should the game Unpause true by default</param>
+		public void CloseUIScene(UISceneNames uiSceneNames, bool unpause = true)
 		{
 			if (!SceneManager.GetSceneByName(uiSceneNames.ToString()).isLoaded)
 			{
@@ -107,6 +116,13 @@ namespace Minibonk.UI
 				return;
 			}
 			SceneManager.UnloadSceneAsync(uiSceneNames.ToString());
+
+			if (unpause)
+			{
+				Time.timeScale = 1;
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+			}
 		}
 		
 		/// <summary>
@@ -138,11 +154,11 @@ namespace Minibonk.UI
 		/// <summary>
 		/// Opens a UI scene by its given name
 		/// </summary>
-		public Action<UISceneNames> OnInstantiateUIScene;
+		public Action<UISceneNames, bool> OnInstantiateUIScene;
 		/// <summary>
 		/// Closes a UI scene by its given name
 		/// </summary>
-		public Action<UISceneNames> OnCloseUIScene;
+		public Action<UISceneNames, bool> OnCloseUIScene;
 		public Action<UISceneNames> SwapActiveUIScene;
 	}
 }

@@ -24,8 +24,10 @@ namespace Minibonk.Player
 		{
 			_playerHandler.PlayerEvents.OnStaminaDecrease += DecrementPlayerStamina;
 			_playerHandler.PlayerEvents.OnStaminaIncrease += IncrementPlayerStamina;
+			_playerHandler.PlayerEvents.OnIncreaseMaxStamina += IncreaseMaxStamina;
+			_playerHandler.PlayerEvents.OnDecreaseMaxStamina += DecreaseMaxStamina;
 			_playerHandler.PlayerEvents.IsStaminaEmpty = () => isEmpty;
-			_playerHandler.PlayerEvents.IsStaminaFull = () => _playerHandler.playerData.currentStamina >= _playerHandler.playerData.maxStamina;
+			_playerHandler.PlayerEvents.IsStaminaFull = () => _playerHandler.playerData.currentStamina >= _playerHandler.playerData.variableMaxStamina;
 			_playerHandler.PlayerEvents.GetCurrentStamina = () => _playerHandler.playerData.currentStamina;
 		}
 
@@ -33,6 +35,9 @@ namespace Minibonk.Player
 		{
 			_playerHandler.PlayerEvents.OnStaminaDecrease -= DecrementPlayerStamina;
 			_playerHandler.PlayerEvents.OnStaminaIncrease -= IncrementPlayerStamina;
+			_playerHandler.PlayerEvents.OnIncreaseMaxStamina -= IncreaseMaxStamina;
+			_playerHandler.PlayerEvents.OnDecreaseMaxStamina -= DecreaseMaxStamina;
+			
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,7 +72,7 @@ namespace Minibonk.Player
 				OnStaminaEmpty();
 			}
 			
-			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
+			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.variableMaxStamina);
 			
 			UpdateUI();
 		}
@@ -80,7 +85,7 @@ namespace Minibonk.Player
 		{
 			_playerHandler.playerData.currentStamina += amount;
 			
-			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.maxStamina);
+			_playerHandler.playerData.currentStamina = Mathf.Clamp(_playerHandler.playerData.currentStamina, 0 , _playerHandler.playerData.variableMaxStamina);
 			
 			UpdateUI();
 		}
@@ -94,7 +99,7 @@ namespace Minibonk.Player
 		// Calls stamina recovery after a cooldown if stamina isn't full
 		private void StaminaCooldown()
 		{
-			if (!(_playerHandler.playerData.currentStamina < _playerHandler.playerData.maxStamina))
+			if (!(_playerHandler.playerData.currentStamina < _playerHandler.playerData.variableMaxStamina))
 				return;
 			var staminaPerSecond = _staminaRecoveryPerSecond * Time.deltaTime;
 			if (Time.time >= _timeSinceStaminaLost + _staminaRecoveryCooldown)
@@ -110,10 +115,22 @@ namespace Minibonk.Player
 			_playerHandler.PlayerEvents.OnStaminaEmpty?.Invoke();
 		}
 
+		private void IncreaseMaxStamina(int amount)
+		{
+			Debug.Log($"PlayerStamina: Increasing max stamina by {amount}. Current: {_playerHandler.playerData.variableMaxStamina}");
+			_playerHandler.playerData.variableMaxStamina += amount;
+			Debug.Log($"PlayerStamina: New max stamina: {_playerHandler.playerData.variableMaxStamina}");
+			UpdateUI();
+		}
+		private void DecreaseMaxStamina(int amount)
+		{
+			_playerHandler.playerData.variableMaxStamina -= amount;
+		}
+
 		// Updates the UI every change
 		private void UpdateUI()
 		{
-			GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerStaminaUI?.Invoke(_playerHandler.playerData.currentStamina, _playerHandler.playerData.maxStamina);
+			GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerStaminaUI?.Invoke(_playerHandler.playerData.currentStamina, _playerHandler.playerData.variableMaxStamina);
 		}
 
 		#endregion
