@@ -29,6 +29,16 @@ namespace Minibonk.UI
 			_sceneController.ChangeScene(SceneNames.MainLevel);
 		}
 
+		public void OnSettingsClicked()
+		{
+			
+		}
+
+		public void OnQuitClicked()
+		{
+			
+		}
+
 		#endregion
 	}
 }
