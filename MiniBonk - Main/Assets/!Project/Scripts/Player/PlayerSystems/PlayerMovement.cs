@@ -170,9 +170,10 @@ namespace Minibonk.Player
 			// #endif
 
 			// If we are touching the ground and moving downwards/stationary, we are no longer "Jumping"
-			if (grounded && _rb.linearVelocity.y <= 0.01f)
+			if (grounded && _isJumping && _rb.linearVelocity.y <= 0.01f)
 			{
 				_isJumping = false;
+				_playerHandler.PlayerEvents.OnJumpLanded?.Invoke();
 			}
 
 			return grounded;
@@ -211,6 +212,8 @@ namespace Minibonk.Player
             // Consume Counters preventing double jump
             _jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
+            
+            _playerHandler.PlayerEvents.OnJumpSucceeded?.Invoke();
         }
         #endregion
     }
