@@ -93,11 +93,22 @@ namespace Minibonk.Player
     /// </summary>
     public class Events
     {
+        // Movement
         public Action<Vector2> OnMove;
         public Action OnJumpStarted;
+        public Action OnJumpSucceeded;
+        public Action OnJumpLanded;
+        public Action<bool> PreventMovementInterference;
+        
+        // Abilities
         public Action<int> OnAbilityPressed;
         public Action<int> OnAbilityReleased;
-        public Action<bool> PreventMovementInterference;
+        public Action OnDashStarted;
+        public Action OnDashFinished;
+        public Action OnSprintStarted;
+        public Action OnSprintFinished;
+       
+        // Stats
         public Action<float> OnPlayerDamaged;
         public Action<float> OnStaminaDecrease;
         public Action<float> OnStaminaIncrease;

@@ -24,8 +24,9 @@ namespace Minibonk.MovementAbilities
         protected override void ApplyImpulse()
         {
             _rb.GetComponent<MonoBehaviour>().StartCoroutine(PerformDash());
+            _player.GetComponent<PlayerHandler>().PlayerEvents.OnDashStarted?.Invoke();
         }
-        
+
         IEnumerator PerformDash()
         {
             dashActive = true;
@@ -69,6 +70,8 @@ namespace Minibonk.MovementAbilities
             
             // Allows player movement again
             _player.GetComponent<PlayerHandler>().PlayerEvents.PreventMovementInterference?.Invoke(false);
+            
+            _player.GetComponent<PlayerHandler>().PlayerEvents.OnDashFinished?.Invoke();
         }
     }
 }
