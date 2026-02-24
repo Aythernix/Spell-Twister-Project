@@ -133,7 +133,7 @@ namespace Minibonk.Player
 		// Snaps to the ground when not jumping
 		private void SnapToGround()
 		{
-			Debug.Log("Snapping");
+			// Debug.Log("Snapping");
 			RotaryHeart.Lib.PhysicsExtension.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _checkingDistance, _groundLayer, PreviewCondition.Both, 1f, Color.red, Color.blue);
 			
 			// Only runs if the player isn't jumping and is on the ground
@@ -152,7 +152,7 @@ namespace Minibonk.Player
 			var projectedVelocity = Vector3.ProjectOnPlane(velocity, hit.normal);
 
 			_rb.linearVelocity = projectedVelocity;
-			Debug.Log("Snapped");
+			// Debug.Log("Snapped");
 		}
 
 		// Detects ground via a sphere cast
