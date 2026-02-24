@@ -57,6 +57,16 @@ namespace Minibonk.Management
 			uiManager = GetComponentInChildren<UIManager>();
 			sceneController = GetComponentInChildren<SceneController>();
 		}
+
+		private void PauseGame()
+		{
+			
+		}
+
+		private void UnPauseGame()
+		{
+			
+		}
 		
 		#endregion
 	}
