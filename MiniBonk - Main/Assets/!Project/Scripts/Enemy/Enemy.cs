@@ -10,7 +10,8 @@ namespace MiniBonk.Enemy
         [Header ("Settings")]
         public EnemyData data; // Scriptable Object containing the enemy settings
         public Transform player;
-        private NavMeshAgent navMeshAgent; 
+        private NavMeshAgent navMeshAgent;
+        public bool isAlive = true;
         
         protected int currentHealth;
         private float nextAttackTime;
@@ -28,9 +29,9 @@ namespace MiniBonk.Enemy
         public virtual void TakeDamage( int amount, GameObject instigator = null)
         {
             currentHealth -= amount;
-            Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}");
+            // Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}");
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && isAlive)
             {
                 Die(instigator);
             }
@@ -38,13 +39,15 @@ namespace MiniBonk.Enemy
 
         protected virtual void Die(GameObject instigator)
         {
+            isAlive = false;
             if (data != null)
             {
+                Debug.Log($"{gameObject.name} has died. Worth {data.xpValue}");
                 GameManager.Instance.EventHandler.AddXp?.Invoke(data.xpValue);
             }
-
-            Debug.Log($"{gameObject.name} has died.");
+            
             GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
+            
             Destroy(gameObject);
         }
         

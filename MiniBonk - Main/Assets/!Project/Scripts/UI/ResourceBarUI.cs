@@ -42,7 +42,7 @@ namespace Minibonk.UI
 			while (Mathf.Abs(_healthSourceImage.fillAmount - targetFill) > 0.01f) 
 			{
 				_healthSourceImage.fillAmount = Mathf.Lerp(_healthSourceImage.fillAmount, targetFill, Time.deltaTime * _fillRate);
-				Debug.Log($"{gameObject.name} Filling bar, currently at {_healthSourceImage.fillAmount}, to {targetFill}");
+				// Debug.Log($"{gameObject.name} Filling bar, currently at {_healthSourceImage.fillAmount}, to {targetFill}");
 				yield return null; 
 			}
     
@@ -61,7 +61,7 @@ namespace Minibonk.UI
 		/// <param name="maxValue"> The max of the bar </param>
 		public void SetBarValue(float setValue, float maxValue)
 		{
-			Debug.Log($"{gameObject.name} Set Bar Value to {setValue} out of {maxValue}");
+			// Debug.Log($"{gameObject.name} Set Bar Value to {setValue} out of {maxValue}");
 			// Stop previous coroutine if running
 			if (_currentBarCoroutine != null)
 				StopCoroutine(_currentBarCoroutine);

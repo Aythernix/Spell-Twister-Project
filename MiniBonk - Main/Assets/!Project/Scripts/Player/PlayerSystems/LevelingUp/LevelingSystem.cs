@@ -68,20 +68,20 @@ namespace Minibonk.Player
             PlayerXp += amount;
             GameManager.Instance.EventHandler.OnXpGained?.Invoke(PlayerXp);
             
-            Debug.Log($"PlayerXp: {PlayerXp}");
+            Debug.Log($" Gained: {amount} PlayerXp: {PlayerXp}");
             
             while (PlayerXp >= RequiredXp(PlayerLevel))
             {
-                int cost = RequiredXp(PlayerLevel);
-                PlayerXp -= cost;
                 OnLevelIncrement();
-                
             }
         }
 
         // Called when the player level increases
         private void OnLevelIncrement(int levelAmount = 1)
         {
+            int cost = RequiredXp(PlayerLevel);
+            PlayerXp -= cost;
+            
             PlayerLevel += levelAmount;
             
             Debug.Log($"PlayerLevel: {PlayerLevel}");

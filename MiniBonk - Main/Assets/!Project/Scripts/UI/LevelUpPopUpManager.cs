@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Minibonk.Management;
+using Minibonk.UI;
 using UnityEngine;
 
 namespace MiniBonk.UI
@@ -84,6 +86,7 @@ namespace MiniBonk.UI
             {
                 unlockController.ExecuteReward();
             }
+            GameManager.Instance.uiManager.UIEvents.OnCloseUIScene(UISceneNames.LevelUpPopup, true);
         }
     
     }
