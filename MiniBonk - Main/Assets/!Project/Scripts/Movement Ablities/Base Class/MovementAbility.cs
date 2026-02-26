@@ -9,8 +9,14 @@ namespace Minibonk.MovementAbilities
         [Header("Generic Settings")]
         public string abilityName;
         public int abilityID;
-        public string abilityDescription;
         public float cooldownTime;
+
+        [Header("Display Settings")]
+        public RuntimeAnimatorController coverAnim;
+        public string displayName;
+        public string abilityDescription;
+        public int cost;
+        public string buyName;
         
         protected float _staminaCost;
         protected float _staminaLossRate;

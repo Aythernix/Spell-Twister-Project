@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Sprint
   abilityID: 1
-  abilityDescription: Gotta go fast!
   cooldownTime: 0
+  coverAnim: {fileID: 9100000, guid: 74ae6576405078846a5a8c52bbc3b030, type: 2}
+  displayName: Wing Boots
+  abilityDescription: Elegant boots that allow the wearer to move faster at the cost
+    of stamina
+  cost: 500
+  buyName: Sprint
   staminaLossRate: 10
   _sprintMultipler: 1.5

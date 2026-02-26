@@ -19,13 +19,13 @@ namespace Minibonk.MovementAbilities
         [SerializeField] private MovementAbility[] equippedSlots = new MovementAbility[3];
 
         // Fast Lookup tables
-        private readonly Dictionary<string, MovementAbility> _abilityDb = new();
-        private readonly Dictionary<int, MovementAbility> _abilityIdDb = new();
+        public readonly Dictionary<string, MovementAbility> _abilityDb = new();
+        public readonly Dictionary<int, MovementAbility> _abilityIdDb = new();
 
         // Tracks Unlocked Ability IDs
-        private readonly HashSet<int> unlockedAblityIDs = new();
+        public readonly HashSet<int> unlockedAblityIDs = new();
 
-        private readonly Dictionary<int, MovementAbility> _instanceIdDb = new();
+        public readonly Dictionary<int, MovementAbility> _instanceIdDb = new();
 
         #endregion
 

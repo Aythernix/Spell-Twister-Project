@@ -65,7 +65,7 @@ namespace Minibonk.Player
             playerData.currentMoney -= amount;
         }
 
-        private float GetPlayerMoneyCount()
+        private int GetPlayerMoneyCount()
         {
             return playerData.currentMoney;
         }
@@ -80,7 +80,7 @@ namespace Minibonk.Player
             playerData.currentTracePoints -= amount;
         }
 
-        private float GetPlayerTracePointAmount()
+        private int GetPlayerTracePointAmount()
         {
             return playerData.currentTracePoints;
         }
@@ -123,10 +123,10 @@ namespace Minibonk.Player
         public Action<int> OnDecreaseMaxHealth;
         public Action<int> OnIncreaseMoney;
         public Action<int> OnDecreaseMoney;
-        public Func<float> GetMoney;
+        public Func<int> GetMoney;
         public Action<int> OnIncreaseTracePoints;
         public Action<int> OnDecreaseTracePoints;
-        public Func<float> GetTracePoint;
+        public Func<int> GetTracePoint;
 
     }
 
