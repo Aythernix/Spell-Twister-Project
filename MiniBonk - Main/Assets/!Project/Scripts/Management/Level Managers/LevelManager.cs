@@ -76,7 +76,10 @@ namespace Minibonk.Management
 		/// </summary>
 		protected virtual void InitializeScene()
 		{
-			
+			if (sceneType == SceneTypes.Playable)
+			{
+				GameManager.Instance.currentGameState = GameManager.GameState.Playing;
+			}
 		}
 		
 		#endregion

@@ -2,11 +2,19 @@ using System;
 using MiniBonk.Enemy;
 using Minibonk.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Minibonk.Management
 {
 	public class GameManager : MonoBehaviour
 	{
+		public enum GameState
+		{
+			Playing,
+			Paused,
+			NotStarted,
+		}
+		
 		#region Variables
 
 		// Game Events
@@ -20,6 +28,8 @@ namespace Minibonk.Management
 		
 		// The current active level manager
 		public LevelManager currentLevelManager;
+
+		public GameState currentGameState;
 
 		#endregion
 
@@ -58,14 +68,35 @@ namespace Minibonk.Management
 			sceneController = GetComponentInChildren<SceneController>();
 		}
 
-		private void PauseGame()
+		public void PauseInput(InputAction.CallbackContext context)
 		{
-			
+
+			if (context.performed)
+			{
+				switch (currentGameState)
+				{
+					case GameState.Playing:
+						PauseGame();
+						break;
+					case GameState.Paused:
+						UnPauseGame();
+						break;
+					default:
+						break;
+				}
+			}
 		}
 
-		private void UnPauseGame()
+		private void PauseGame()
 		{
-			
+			if(!sceneIsPlayable) return; 
+			uiManager.UIEvents.OnInstantiateUIScene(UISceneNames.PauseMenu, true);
+		}
+
+		public void UnPauseGame()
+		{
+			if(!sceneIsPlayable) return; 
+			uiManager.UIEvents.OnCloseUIScene(UISceneNames.PauseMenu, true);
 		}
 		
 		#endregion

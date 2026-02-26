@@ -18,8 +18,8 @@ namespace Minibonk.Player
         
         public float currentHealth;
         public float currentStamina;
-        public float currentMoney;
-        public float currentTracePoints;
+        public int currentMoney;
+        public int currentTracePoints;
         public int level;
         public int xp;
 

@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Dash
   abilityID: 2
-  abilityDescription: Let's you zip though the air!
   cooldownTime: 3
+  coverAnim: {fileID: 9100000, guid: 7445af40d3d3c7c47be207b2b5862fb7, type: 2}
+  displayName: Wind Cloak
+  abilityDescription: Magical cloak coated in wind magic, allows the wearer to propel
+    themselves forward using stamina.
+  cost: 1200
+  buyName: Dash
   staminaCost: 30
-  StaminaLossRate: 0
   _dashForce: 100
   _maxDashDistance: 15

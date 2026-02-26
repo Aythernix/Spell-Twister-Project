@@ -125,7 +125,7 @@ namespace Minibonk.Management
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
@@ -179,6 +179,15 @@ namespace Minibonk.Management
                     ""name"": ""Ability2"",
                     ""type"": ""Button"",
                     ""id"": ""d88d4afb-1157-4225-ba30-9b3f7989f2ed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause Game"",
+                    ""type"": ""Button"",
+                    ""id"": ""17f97bf5-cd06-4a0a-a7ed-96e75f9a6165"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -579,6 +588,28 @@ namespace Minibonk.Management
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Ability2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""506b516c-26a5-4965-9e54-3f50af3c8f9e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Pause Game"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4bf4407-beba-46ec-a5c4-ef350b4cf221"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Game"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1176,6 +1207,7 @@ namespace Minibonk.Management
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
             m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
+            m_Player_PauseGame = m_Player.FindAction("Pause Game", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1279,6 +1311,7 @@ namespace Minibonk.Management
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Ability1;
         private readonly InputAction m_Player_Ability2;
+        private readonly InputAction m_Player_PauseGame;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1330,6 +1363,10 @@ namespace Minibonk.Management
             /// Provides access to the underlying input action "Player/Ability2".
             /// </summary>
             public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/PauseGame".
+            /// </summary>
+            public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1386,6 +1423,9 @@ namespace Minibonk.Management
                 @Ability2.started += instance.OnAbility2;
                 @Ability2.performed += instance.OnAbility2;
                 @Ability2.canceled += instance.OnAbility2;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
 
             /// <summary>
@@ -1427,6 +1467,9 @@ namespace Minibonk.Management
                 @Ability2.started -= instance.OnAbility2;
                 @Ability2.performed -= instance.OnAbility2;
                 @Ability2.canceled -= instance.OnAbility2;
+                @PauseGame.started -= instance.OnPauseGame;
+                @PauseGame.performed -= instance.OnPauseGame;
+                @PauseGame.canceled -= instance.OnPauseGame;
             }
 
             /// <summary>
@@ -1797,6 +1840,13 @@ namespace Minibonk.Management
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAbility2(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Pause Game" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPauseGame(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

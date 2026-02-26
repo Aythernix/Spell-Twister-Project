@@ -10,9 +10,13 @@ namespace Minibonk.UI
 	/// </summary>
 	public enum UISceneNames
 	{
-		MainMenu,
+		MainMenu, 
+		PauseMenu,
 		GameplayHud,
 		LevelUpPopup,
+		Shop,
+		Spells,
+		Settings,
 	}
 	public class UIManager : MonoBehaviour
 	{
@@ -100,6 +104,7 @@ namespace Minibonk.UI
 				Time.timeScale = 0;
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
+				GameManager.Instance.currentGameState = GameManager.GameState.Paused;
 			}
 		}
 
@@ -122,6 +127,7 @@ namespace Minibonk.UI
 				Time.timeScale = 1;
 				Cursor.visible = false;
 				Cursor.lockState = CursorLockMode.Locked;
+				GameManager.Instance.currentGameState = GameManager.GameState.Playing;
 			}
 		}
 		
@@ -153,10 +159,14 @@ namespace Minibonk.UI
 		
 		/// <summary>
 		/// Opens a UI scene by its given name
+		///
+		/// Takes the scene name, and if the game should pause 
 		/// </summary>
 		public Action<UISceneNames, bool> OnInstantiateUIScene;
 		/// <summary>
 		/// Closes a UI scene by its given name
+		///
+		/// Takes the scene name, and if the game should unpause
 		/// </summary>
 		public Action<UISceneNames, bool> OnCloseUIScene;
 		public Action<UISceneNames> SwapActiveUIScene;
