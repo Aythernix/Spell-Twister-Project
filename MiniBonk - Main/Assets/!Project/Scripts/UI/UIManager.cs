@@ -157,6 +157,9 @@ namespace Minibonk.UI
 		public delegate void UpdatePlayerStaminaUI(float current, float max);
 		public UpdatePlayerStaminaUI OnUpdatePlayerStaminaUI;
 		
+		public delegate void UpdatePlayerXpUi(float current, float max);
+		public UpdatePlayerXpUi OnUpdatePlayerXpUi;
+		
 		/// <summary>
 		/// Opens a UI scene by its given name
 		///

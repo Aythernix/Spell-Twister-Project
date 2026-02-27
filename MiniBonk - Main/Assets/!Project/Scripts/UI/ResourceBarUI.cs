@@ -37,6 +37,12 @@ namespace Minibonk.UI
 		/// <returns></returns>
 		private IEnumerator SetBarCoroutine(float setValue, float maxValue) 
 		{
+			if (_healthSourceImage == null)
+			{
+				Debug.LogError($"[{gameObject.name}] _healthSourceImage is not assigned in the Inspector!", this);
+				yield break;
+			}
+			
 			float targetFill = setValue / maxValue;
 			
 			while (Mathf.Abs(_healthSourceImage.fillAmount - targetFill) > 0.01f) 
