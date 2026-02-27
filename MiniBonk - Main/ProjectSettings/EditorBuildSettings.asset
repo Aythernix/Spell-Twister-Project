@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/!Project/UIScenes/Shop.unity
     guid: 81e50e784420cfb418dd4feb1f60e2f9
+  - enabled: 1
+    path: Assets/!Project/UIScenes/Spells.unity
+    guid: fef34bf7d8df740449d31faf188c35c0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
