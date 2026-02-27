@@ -177,7 +177,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 039ff8dd9fdc1184fb135a8ebc24aee4, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthSourceImage: {fileID: 1498358680}
-  _fillRate: 100
+  _fillRate: 30
 --- !u!1 &1593571562
 GameObject:
   m_ObjectHideFlags: 0

@@ -2124,7 +2124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674657148248499014, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       propertyPath: field of view
-      value: 63.064
+      value: 67.87897
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2671,7 +2671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409954555684627233, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: Lens.FieldOfView
-      value: 63.064
+      value: 67.87897
       objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
@@ -2970,7 +2970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 927869971261412868, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: currentWeapon
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1885152437500011605, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: waterBalls

@@ -37,22 +37,24 @@ namespace Minibonk.UI
 		/// <returns></returns>
 		private IEnumerator SetBarCoroutine(float setValue, float maxValue) 
 		{
-			if (_healthSourceImage == null)
+			if (_healthSourceImage != null)
+			{
+				float targetFill = setValue / maxValue;
+
+				while (Mathf.Abs(_healthSourceImage.fillAmount - targetFill) > 0.01f)
+				{
+					_healthSourceImage.fillAmount = Mathf.Lerp(_healthSourceImage.fillAmount, targetFill, Time.unscaledDeltaTime * _fillRate);
+					// Debug.Log($"{gameObject.name} Filling bar, currently at {_healthSourceImage.fillAmount}, to {targetFill}");
+					yield return null;
+				}
+
+				_healthSourceImage.fillAmount = targetFill; // Snap to final value
+			}
+			else
 			{
 				Debug.LogError($"[{gameObject.name}] _healthSourceImage is not assigned in the Inspector!", this);
-				yield break;
 			}
-			
-			float targetFill = setValue / maxValue;
-			
-			while (Mathf.Abs(_healthSourceImage.fillAmount - targetFill) > 0.01f) 
-			{
-				_healthSourceImage.fillAmount = Mathf.Lerp(_healthSourceImage.fillAmount, targetFill, Time.deltaTime * _fillRate);
-				// Debug.Log($"{gameObject.name} Filling bar, currently at {_healthSourceImage.fillAmount}, to {targetFill}");
-				yield return null; 
-			}
-    
-			_healthSourceImage.fillAmount = targetFill; // Snap to final value
+
 		}
 		
 		
@@ -67,7 +69,7 @@ namespace Minibonk.UI
 		/// <param name="maxValue"> The max of the bar </param>
 		public void SetBarValue(float setValue, float maxValue)
 		{
-			// Debug.Log($"{gameObject.name} Set Bar Value to {setValue} out of {maxValue}");
+			Debug.Log($"{gameObject.name} Set Bar Value to {setValue} out of {maxValue}");
 			// Stop previous coroutine if running
 			if (_currentBarCoroutine != null)
 				StopCoroutine(_currentBarCoroutine);
