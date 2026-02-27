@@ -40,7 +40,7 @@ public class SpellController : MonoBehaviour
 
     private void OnValidate()
     {
-        //AssignValues();
+        AssignValues();
     }
     void Start()
     {
