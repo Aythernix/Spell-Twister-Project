@@ -1,13 +1,17 @@
 using Minibonk.Management;
 using Minibonk.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
     #region Variables
 
-    //
+    [Header("References")]
+    [SerializeField] TextMeshProUGUI _moneyText;
+    [SerializeField] TextMeshProUGUI _tracePointsText;
 
     #endregion
     #region Unity Events
@@ -15,7 +19,8 @@ public class PauseMenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _moneyText.text = $"x{GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetMoney?.Invoke()}";
+        _tracePointsText.text = $"x{GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetTracePoint?.Invoke()}";
     }
 
     // Update is called once per frame
