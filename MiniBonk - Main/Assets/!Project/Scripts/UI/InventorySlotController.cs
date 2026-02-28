@@ -10,10 +10,16 @@ namespace Minibonk.UI
     public class InventorySlotController : MonoBehaviour
     {
         #region Variables
-
+    
+        [Header("Properties")]
+        [SerializeField] private float _scaleAmount = 1.3f;
+        [SerializeField] private float _scaleSpeed = 5f;
+        
         [Header("References")]
         [SerializeField] private Image _slotImage;
         [SerializeField] private ResourceBarUI _coolDownCover;
+        [SerializeField] private GameObject _slot;
+        [SerializeField] private Image _Keybind;
 
         private MovementAbility _movementAbility;
         
@@ -42,11 +48,21 @@ namespace Minibonk.UI
 
         private IEnumerator CoolDownCoroutine()
         {
+            // Displays the cooldown cover if cooldown is active
             while (_movementAbility.IsOnCooldown)
             {
                 _coolDownCover.SetBarValue(_movementAbility.CooldownNormalized, 1);
                 yield return null;
             }
+            
+            // Displays the slot as active
+            while (_movementAbility.IsActive)
+            {
+                _slot.transform.localScale = transform.localScale * _scaleAmount;
+                yield return null;
+            }
+            _slot.transform.localScale = new Vector3(1, 1, 1);
+            
         }
 
         #endregion
@@ -64,15 +80,15 @@ namespace Minibonk.UI
             if (_movementAbility == null)
             {
                 Debug.LogWarning($"Ability slot has triggered yet no ability has been assigned", this);
+                return;
             }
-            else
+            
+            // If the cooldown coroutine is already running, stop it
+            if(_coolDownCoroutine != null)
             {
-                if(_coolDownCoroutine != null)
-                {
-                    StopCoroutine(_coolDownCoroutine);
-                }
-                _coolDownCoroutine = StartCoroutine(CoolDownCoroutine());
+                StopCoroutine(_coolDownCoroutine);
             }
+            _coolDownCoroutine = StartCoroutine(CoolDownCoroutine());
         }
         
         #endregion

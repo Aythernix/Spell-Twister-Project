@@ -23,6 +23,7 @@ namespace Minibonk.MovementAbilities
         protected float _staminaLossRate;
 
         public bool autoFinalise { get; protected set; } = false;
+        public bool IsActive { get; protected set; } = false;
 
         protected Rigidbody _rb;
         protected GameObject _player;
@@ -52,6 +53,7 @@ namespace Minibonk.MovementAbilities
             if (IsOnCooldown) return;
             float staminaToTake = this is ToggleAbility ? _staminaLossRate : _staminaCost;
             if (_player.GetComponent<PlayerHandler>().PlayerEvents.GetCurrentStamina?.Invoke() - staminaToTake < 0) return;
+            IsActive = true;
             OnExecute(); 
         }
 
@@ -60,6 +62,7 @@ namespace Minibonk.MovementAbilities
         /// </summary>
         public void Finalise()
         {
+            IsActive = false;
             OnFinalise();
             StartCooldown();
             Debug.Log("Finalise Executed");
