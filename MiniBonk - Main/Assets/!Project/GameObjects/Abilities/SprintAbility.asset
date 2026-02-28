@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: Sprint
   abilityID: 1
   cooldownTime: 0
+  coverIcon: {fileID: -523707083, guid: cd548b076863da44888d79c165a3003d, type: 3}
   coverAnim: {fileID: 9100000, guid: 74ae6576405078846a5a8c52bbc3b030, type: 2}
   displayName: Wing Boots
   abilityDescription: Elegant boots that allow the wearer to move faster at the cost

@@ -12,6 +12,7 @@ namespace Minibonk.MovementAbilities
         public float cooldownTime;
 
         [Header("Display Settings")]
+        public Sprite coverIcon;
         public RuntimeAnimatorController coverAnim;
         public string displayName;
         public string abilityDescription;

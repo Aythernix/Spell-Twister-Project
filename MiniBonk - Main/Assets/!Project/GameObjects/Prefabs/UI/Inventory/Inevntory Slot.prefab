@@ -231,7 +231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -56779780, guid: 9dc7bb8417073784f89753c6f8ba674f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6454639756440903243}
   - component: {fileID: 2550886662919518482}
+  - component: {fileID: 8699584532708751182}
   m_Layer: 5
   m_Name: Inevntory Slot
   m_TagString: Untagged
@@ -305,6 +306,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &8699584532708751182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646915932996767028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefac1fe98acdc949886069f5c6307ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotImage: {fileID: 2127433877220103838}
+  _coolDownCover: {fileID: 8876880948744424678}
 --- !u!1 &6894210846573085124
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +367,7 @@ GameObject:
   - component: {fileID: 6809999493506968340}
   - component: {fileID: 1370645287313124113}
   - component: {fileID: 2801139863604949017}
+  - component: {fileID: 8876880948744424678}
   m_Layer: 5
   m_Name: Cooldown Cover
   m_TagString: Untagged
@@ -416,3 +432,17 @@ MonoBehaviour:
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8876880948744424678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076623705753206359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b09d7b349bb4f48a73383e609a802b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthSourceImage: {fileID: 2801139863604949017}
+  _fillRate: 100

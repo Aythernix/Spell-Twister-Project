@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Minibonk.Management;
 using Minibonk.Player;
 using UnityEngine;
 
@@ -94,7 +95,9 @@ namespace Minibonk.MovementAbilities
         // TODO Add Unequiping
         private void EquipAbility(int abilityID, int slotIndex)
         {
-            
+            _instanceIdDb.TryGetValue(abilityID, out var instance);
+            equippedSlots[slotIndex] = instance;
+            GameManager.Instance.EventHandler.OnAbilityEquipped?.Invoke(slotIndex, instance);
         }
 
         private void AutoEquipAbility(MovementAbility instance)
@@ -112,7 +115,7 @@ namespace Minibonk.MovementAbilities
             {
                 if (equippedSlots[i] == null) 
                 { 
-                    equippedSlots[i] = instance;
+                    EquipAbility(instance.abilityID, i);
                     break;
                 }
                 
@@ -127,6 +130,7 @@ namespace Minibonk.MovementAbilities
             {
                 equippedSlots[slotIndex]?.Execute();
                 Debug.Log("ability triggered");
+                GameManager.Instance.EventHandler.OnAbilitySlotTriggered?.Invoke(slotIndex);
             }
             
         }
