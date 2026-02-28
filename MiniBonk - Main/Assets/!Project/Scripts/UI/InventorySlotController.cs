@@ -24,6 +24,7 @@ namespace Minibonk.UI
         private MovementAbility _movementAbility;
         
         private Coroutine _coolDownCoroutine;
+        private Coroutine _visualiseClickCoroutine;
 
         #endregion
         
@@ -55,14 +56,18 @@ namespace Minibonk.UI
                 yield return null;
             }
             
+        }
+
+        private IEnumerator VisualiseClick()
+        {
+            Debug.Log("Visualise Click");
             // Displays the slot as active
-            while (_movementAbility.IsActive)
-            {
-                _slot.transform.localScale = transform.localScale * _scaleAmount;
-                yield return null;
-            }
-            _slot.transform.localScale = new Vector3(1, 1, 1);
             
+            _Keybind.transform.localScale = new Vector3(1, 1, 1) * _scaleAmount;
+            yield return new WaitForSeconds(0.1f);
+            yield return new WaitUntil(() => !_movementAbility.IsActive);
+            _Keybind.transform.localScale = new Vector3(1, 1, 1);
+            Debug.Log("Visualise Click End");
         }
 
         #endregion
@@ -89,6 +94,12 @@ namespace Minibonk.UI
                 StopCoroutine(_coolDownCoroutine);
             }
             _coolDownCoroutine = StartCoroutine(CoolDownCoroutine());
+            
+            if(_visualiseClickCoroutine != null)
+            {
+                StopCoroutine(_visualiseClickCoroutine);
+            }
+            _visualiseClickCoroutine = StartCoroutine(VisualiseClick());
         }
         
         #endregion

@@ -69,7 +69,7 @@ namespace Minibonk.UI
 		/// <param name="maxValue"> The max of the bar </param>
 		public void SetBarValue(float setValue, float maxValue)
 		{
-			Debug.Log($"{gameObject.name} Set Bar Value to {setValue} out of {maxValue}");
+			//Debug.Log($"{gameObject.name} Set Bar Value to {setValue} out of {maxValue}");
 			// Stop previous coroutine if running
 			if (_currentBarCoroutine != null)
 				StopCoroutine(_currentBarCoroutine);

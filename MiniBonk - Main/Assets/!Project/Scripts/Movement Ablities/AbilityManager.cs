@@ -128,9 +128,11 @@ namespace Minibonk.MovementAbilities
             if (equippedSlots[slotIndex] == null) return;
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
-                equippedSlots[slotIndex]?.Execute();
-                Debug.Log("ability triggered");
-                GameManager.Instance.EventHandler.OnAbilitySlotTriggered?.Invoke(slotIndex);
+                if (equippedSlots[slotIndex]?.Execute() == true)
+                {
+                    Debug.Log("ability triggered");
+                    GameManager.Instance.EventHandler.OnAbilitySlotTriggered?.Invoke(slotIndex);
+                }
             }
             
         }
