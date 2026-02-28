@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using Minibonk.Management;
 using Minibonk.Player;
 using UnityEngine;
 
@@ -48,23 +51,26 @@ namespace Minibonk.MovementAbilities
         /// Checks <see cref="IsOnCooldown"/> before 
         /// triggering the custom logic in <see cref="OnExecute"/>.
         /// </summary>
-        public void Execute()
+        public bool Execute()
         {
-            if (IsOnCooldown) return;
+            if (IsOnCooldown) return false;
             float staminaToTake = this is ToggleAbility ? _staminaLossRate : _staminaCost;
-            if (_player.GetComponent<PlayerHandler>().PlayerEvents.GetCurrentStamina?.Invoke() - staminaToTake < 0) return;
+            if (_player.GetComponent<PlayerHandler>().PlayerEvents.GetCurrentStamina?.Invoke() - staminaToTake < 0) return false;
             IsActive = true;
             OnExecute(); 
+            return true;
+            
         }
+        
 
         /// <summary>
         /// Ends the ability logic via <see cref="OnFinalise"/> and triggers the cooldown timer.
         /// </summary>
         public void Finalise()
         {
-            IsActive = false;
             OnFinalise();
             StartCooldown();
+            IsActive = false;
             Debug.Log("Finalise Executed");
         }
         #endregion

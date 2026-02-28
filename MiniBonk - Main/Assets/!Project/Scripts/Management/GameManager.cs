@@ -27,6 +27,9 @@ namespace Minibonk.Management
 		// True if the current scene is a playable scene
 		public bool sceneIsPlayable = false;
 		
+		// True if the game can be paused
+		public bool allowPause = true;
+		
 		// The current active level manager
 		public LevelManager currentLevelManager;
 
@@ -90,12 +93,14 @@ namespace Minibonk.Management
 
 		private void PauseGame()
 		{
+			if(!allowPause) return;
 			if(!sceneIsPlayable) return; 
 			uiManager.UIEvents.OnInstantiateUIScene(UISceneNames.PauseMenu, true);
 		}
 
 		public void UnPauseGame()
 		{
+			if(!allowPause) return;
 			if(!sceneIsPlayable) return; 
 			uiManager.UIEvents.OnCloseUIScene(UISceneNames.PauseMenu, true);
 		}
@@ -150,10 +155,23 @@ namespace Minibonk.Management
 		#region Inventory Events
 
 		/// <summary>
-		/// 
+		/// Called when an ability is equipped (parameters: slotIndex, ability)
 		/// </summary>
+		/// <param name="slotIndex"></param>
+		/// <param name="ability"></param>
 		public Action<int, MovementAbility> OnAbilityEquipped;
+		
+		/// <summary>
+		/// Called when an ability is unequipped (parameters: slotIndex, ability)
+		/// </summary>
+		/// <param name="slotIndex"></param>
+		/// <param name="ability"></param>
 		public Action<int, MovementAbility> OnAbilityUnequipped;
+		
+		/// <summary>
+		/// Called when an ability slot is triggered (parameter: slotIndex)
+		/// </summary>
+		/// <param name="slotIndex"></param>
 		public Action<int> OnAbilitySlotTriggered;
 
 		#endregion

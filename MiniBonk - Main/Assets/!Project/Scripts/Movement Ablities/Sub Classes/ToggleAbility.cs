@@ -62,6 +62,7 @@ namespace Minibonk.MovementAbilities
         {
             if (!_isActive) return;
             _isActive = false;
+            IsActive = false;
             OnToggle(false);
         }
 
@@ -79,7 +80,7 @@ namespace Minibonk.MovementAbilities
         /// <param name="deltaTime"></param>
         public override void Tick(float deltaTime)
         {
-            if (_isActive)
+            if (_isActive && _player.GetComponent<Rigidbody>().linearVelocity.sqrMagnitude > 0.1f)
             {
                 UtiliseStamina();
             }
