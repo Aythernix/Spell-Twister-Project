@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93398d7f852bf0b44831b85526182173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: 3
+  currentWeapon: 1
   fireWeapon: {fileID: 5214850597624710777}
   waterWeapon: {fileID: 1885152437500011605}
   windWeapon: {fileID: 9013737019127689757}
@@ -89,8 +89,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterPulsesMax: 5
   waterPulses: 0
-  waterBalls: 20
-  waterPulseFireRate: 1.5
+  waterBalls: 15
+  waterPulseFireRate: 2.5
   waterBallSpeed: 15
   lastwaterPulse: 0
   reloadTime: 3
@@ -115,8 +115,8 @@ MonoBehaviour:
   enemyAreaDetector: {fileID: 0}
   autoFire: 1
   windProjectileBurst: 0
-  windProjectileBurstMax: 3
-  windProjectileSpeed: 40
+  windProjectileBurstMax: 5
+  windProjectileSpeed: 35
   windProjectileBurstTime: 0.2
   reloadTime: 1
   reloadTimer: 1
@@ -139,8 +139,8 @@ MonoBehaviour:
   autoFire: 1
   iceProjectile: 0
   iceProjectileMax: 5
-  iceProjectileSpeed: 15
-  fireRate: 2
-  reloadTime: 2.5
+  iceProjectileSpeed: 10
+  fireRate: 5
+  reloadTime: 7.5
   reloadTimer: 0
   lastProjectile: 0
