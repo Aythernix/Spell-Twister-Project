@@ -1,5 +1,6 @@
 using System;
 using MiniBonk.Enemy;
+using Minibonk.MovementAbilities;
 using Minibonk.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -143,6 +144,17 @@ namespace Minibonk.Management
 		/// Called when the player actually receives XP (parameter: currentTotalXp)
 		/// </summary>
 		public Action<int> OnXpGained;
+
+		#endregion
+		
+		#region Inventory Events
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public Action<int, MovementAbility> OnAbilityEquipped;
+		public Action<int, MovementAbility> OnAbilityUnequipped;
+		public Action<int> OnAbilitySlotTriggered;
 
 		#endregion
 	}

@@ -2062,6 +2062,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1744126187790231550, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744126187790231550, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 36.944588
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744126187790231550, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.05084
+      objectReference: {fileID: 0}
     - target: {fileID: 5702111051728222433, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       propertyPath: m_Name
       value: Level Manager

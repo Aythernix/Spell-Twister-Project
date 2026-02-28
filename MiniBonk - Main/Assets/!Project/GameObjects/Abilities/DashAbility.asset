@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: Dash
   abilityID: 2
   cooldownTime: 3
+  coverIcon: {fileID: -56779780, guid: 9dc7bb8417073784f89753c6f8ba674f, type: 3}
   coverAnim: {fileID: 9100000, guid: 7445af40d3d3c7c47be207b2b5862fb7, type: 2}
   displayName: Wind Cloak
   abilityDescription: Magical cloak coated in wind magic, allows the wearer to propel
