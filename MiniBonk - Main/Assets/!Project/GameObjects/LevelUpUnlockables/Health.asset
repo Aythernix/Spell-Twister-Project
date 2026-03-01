@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   animatorController: {fileID: 9100000, guid: c08dd6fc4e0860547a217b84c6fdc5c2, type: 2}
-  description: Health potions give a flat +5 Health to your overall Health stat.
-    Great for players that like tanking Hits!
+  description: Health potions give a flat amount of Health to your overall Health
+    stat. Great for players that like tanking Hits!
   currency: Max Health
   reward: 5
   levelMultiplier: 1.5
