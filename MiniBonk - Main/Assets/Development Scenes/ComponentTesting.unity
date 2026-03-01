@@ -2661,6 +2661,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3151815216152561767, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: weaponManager
+      value: 
+      objectReference: {fileID: 1886411265}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4153,6 +4157,17 @@ Transform:
   - {fileID: 1124836993}
   m_Father: {fileID: 1739032229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886411265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 927869971261412868, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+  m_PrefabInstance: {fileID: 1331470794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93398d7f852bf0b44831b85526182173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905350614
 GameObject:
   m_ObjectHideFlags: 0

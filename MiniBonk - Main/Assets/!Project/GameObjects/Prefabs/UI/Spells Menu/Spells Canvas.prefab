@@ -847,7 +847,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 02685f416f516c242926fd0ef39bc6d0, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1348,7 +1348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _casts
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _speed
@@ -1356,7 +1356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _damage
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _coolDown
@@ -1469,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3692039375877488071, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
-      value: 'Casts: 10'
+      value: 'Casts: 15'
       objectReference: {fileID: 0}
     - target: {fileID: 4048212605116387376, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1601,7 +1601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7066853766031791079, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
-      value: 'Damage: 50'
+      value: 'Damage: 40'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1623,7 +1623,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 774231783747913122, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
-      value: 'Cast Time: 2.5 Secs'
+      value: 'Cast Time: 2 Secs'
       objectReference: {fileID: 0}
     - target: {fileID: 1039524016830053495, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
@@ -1644,7 +1644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _coolDown
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellCost
@@ -1932,7 +1932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _damage
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _coolDown
@@ -2181,7 +2181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7066853766031791079, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
-      value: 'Damage: 25'
+      value: 'Damage: 30'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2203,7 +2203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 774231783747913122, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
-      value: 'Cast Time: 5 Secs'
+      value: 'Cast Time: 4 Secs'
       objectReference: {fileID: 0}
     - target: {fileID: 1039524016830053495, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
@@ -2224,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _coolDown
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellCost

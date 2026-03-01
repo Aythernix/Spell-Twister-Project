@@ -6,7 +6,7 @@ public class Weapon_FireType : MonoBehaviour
     // ------------------------------ CODE FOR FIRE TYPE WEAPON -----------------------//
 
     // bullet parameters
-    public int fireBallsMax = 10;
+    public int fireBallsMax = 15;
     public int fireBalls = 30;
     public float fireRate = 0.5f;
     public int fireBallSpeed = 30;

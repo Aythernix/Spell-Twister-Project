@@ -550,7 +550,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cb8446ba3f6d7924e849c82465498a04, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1261,6 +1261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9208705189621424609}
     m_Modifications:
+    - target: {fileID: 2343988959632154354, guid: cd8d23a8ba447304791c97aefad2182a, type: 3}
+      propertyPath: m_fontSize
+      value: 25.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3915806120938334291, guid: cd8d23a8ba447304791c97aefad2182a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

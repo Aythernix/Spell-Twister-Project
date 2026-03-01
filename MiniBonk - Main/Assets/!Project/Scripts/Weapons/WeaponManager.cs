@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public int currentWeapon = 2;
+    // determins what weapon is currently active
+    public int currentWeapon = 1;
+
+    // Weapon scripts
 
     [SerializeField] private Weapon_FireType fireWeapon; // Type 1
     [SerializeField] private Weapon_WaterType waterWeapon; // Type 2
     [SerializeField] private Weapon_WindType windWeapon; // Type 3
     [SerializeField] private Weapon_IceType iceWeapon; // Type 4
-    
 
     public void Update()
     {
