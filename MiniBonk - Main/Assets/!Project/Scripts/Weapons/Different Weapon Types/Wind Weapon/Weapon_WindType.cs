@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using Minibonk.Player;
 
 public class Weapon_WindType : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Weapon_WindType : MonoBehaviour
     private void Start()
     {
         windProjectileBurst = windProjectileBurstMax; // sets the default when game starts
-        reloadTimer = reloadTime; // Sets the time to max
+        reloadTimer = reloadTime; // Sets the time to max 
     }
 
     public void ShootWindBlade()

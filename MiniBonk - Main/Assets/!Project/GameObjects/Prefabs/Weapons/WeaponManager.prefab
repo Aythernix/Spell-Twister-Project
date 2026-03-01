@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf93bfa6fb84a34fb74008d5f07c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallsMax: 10
+  fireBallsMax: 15
   fireBalls: 30
   fireRate: 0.5
   fireBallSpeed: 30
@@ -89,11 +89,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterPulsesMax: 5
   waterPulses: 0
-  waterBalls: 15
-  waterPulseFireRate: 2.5
+  waterBalls: 20
+  waterPulseFireRate: 2
   waterBallSpeed: 15
   lastwaterPulse: 0
-  reloadTime: 3
+  reloadTime: 3.5
   reloadTimer: 0
   waterBallProjectile: {fileID: 5865229540475323126, guid: f31a75e9a84a7e14db4d53244f717edc, type: 3}
   waterBallSpawner: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   iceProjectile: 0
   iceProjectileMax: 5
   iceProjectileSpeed: 10
-  fireRate: 5
-  reloadTime: 7.5
+  fireRate: 2
+  reloadTime: 4
   reloadTimer: 0
   lastProjectile: 0

@@ -16,7 +16,7 @@ namespace Minibonk.Player
 
 		[Header("Movement Settings")]
 		
-		[SerializeField] float _walkSpeed = 10f;
+		[SerializeField] private float _walkSpeed = 10f;
 		[SerializeField] private float _jumpForce = 5f;
 		[SerializeField] private float _jumpBuffer = 0.5f;
 		[SerializeField] private float _coyoteTime = 0.5f;

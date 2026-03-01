@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 2ca6aee0d9725664eb7f681bc4c058d6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - windProjectilePrefab: {instanceID: 0}
+  - projectileSpawner: {instanceID: 0}
+  - enemyAreaDetector: {instanceID: 0}
+  - playerMoveScript: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

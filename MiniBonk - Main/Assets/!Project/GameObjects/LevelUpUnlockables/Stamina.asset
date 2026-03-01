@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Stamina
   m_EditorClassIdentifier: 
   animatorController: {fileID: 9100000, guid: 0a67363329c1c3148a2a81714d603239, type: 2}
-  description: Stamina potions give a flat +3 stamina to your overall stamina stat.
-    Great for players that like using movement abilites!
+  description: Stamina potions give a flat amount of stamina to your overall stamina
+    stat. Great for players that like using movement abilites!
   currency: Max Stamina
   reward: 3
   levelMultiplier: 1.5

@@ -12,13 +12,13 @@ public class Weapon_WaterType : MonoBehaviour
 
     public int waterPulsesMax = 5;
     public int waterPulses;
-    public int waterBalls = 15;
-    public float waterPulseFireRate = 2.5f;
+    public int waterBalls = 20;
+    public float waterPulseFireRate = 2f;
     public int waterBallSpeed = 15;
 
     public float lastwaterPulse;
 
-    public float reloadTime = 3f;
+    public float reloadTime = 3.5f;
     public float reloadTimer;
 
     // ---------------- special Parameters -----------//

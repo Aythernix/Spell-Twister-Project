@@ -15,8 +15,8 @@ public class Weapon_IceType : MonoBehaviour
     public int iceProjectileMax = 5;
     public int iceProjectileSpeed = 10;
 
-    public float fireRate = 5f;
-    public float reloadTime = 7.5f;
+    public float fireRate = 2f;
+    public float reloadTime = 4f;
     public float reloadTimer = 0;
 
     public float lastProjectile = 0;
