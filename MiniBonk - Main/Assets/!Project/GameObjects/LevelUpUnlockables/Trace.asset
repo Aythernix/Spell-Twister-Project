@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Trace points (TP) are spent to learn new spell types. This can be
     accessed by pausing and clicking the 'Spells' tab!
   currency: Trace Points
-  reward: 5
+  reward: 2
   levelMultiplier: 1.5
   moneyIncrease: 0
   traceIncrease: 1

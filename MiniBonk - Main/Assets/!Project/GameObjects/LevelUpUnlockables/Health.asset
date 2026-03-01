@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edb9f506c19cf7448d107caac0c7279, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 0a67363329c1c3148a2a81714d603239, type: 2}
-  description: Give health
+  animatorController: {fileID: 9100000, guid: c08dd6fc4e0860547a217b84c6fdc5c2, type: 2}
+  description: Health potions give a flat +5 Health to your overall Health stat.
+    Great for players that like tanking Hits!
   currency: Max Health
-  reward: 3
+  reward: 5
   levelMultiplier: 1.5
   moneyIncrease: 0
   traceIncrease: 0
