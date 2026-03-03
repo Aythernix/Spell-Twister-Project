@@ -68,7 +68,6 @@ namespace Minibonk.Player
             PlayerXp += amount;
             GameManager.Instance.EventHandler.OnXpGained?.Invoke(PlayerXp);
             
-            Debug.Log($" Gained: {amount} PlayerXp: {PlayerXp}");
             
             GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerXpUi?.Invoke(PlayerXp, RequiredXp(PlayerLevel));
             
@@ -86,11 +85,9 @@ namespace Minibonk.Player
             
             PlayerLevel += levelAmount;
             
-            Debug.Log($"PlayerLevel: {PlayerLevel}");
-            Debug.Log($"New Required XP: {RequiredXp(PlayerLevel)}");
-            
             GameManager.Instance.EventHandler.OnPlayerLevelIncrease?.Invoke(PlayerLevel);
             GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerXpUi?.Invoke(PlayerXp, RequiredXp(PlayerLevel));
+            GameManager.Instance.uiManager.UIEvents.OnUpdateLevelTextUI?.Invoke(PlayerLevel);
             
             OpenLevelUp();
         }
@@ -106,7 +103,6 @@ namespace Minibonk.Player
         {
             if (PlayerLevel % LevelUpPopUpIncrement == 0)
             {
-                Debug.Log("Level UP!");
                 GameManager.Instance.uiManager.UIEvents.OnInstantiatePersistantUIScene(UISceneNames.LevelUpPopup, true);
             }
         }
