@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +16,24 @@ public class WeaponSlotController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Image _weaponCoverImage;
     [SerializeField] private Image _Keybind;
+    
+    private Coroutine _clickCoroutine;
 
     #endregion
     
     #region Unity Methods
 
+    private void OnEnable()
+    {
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnUnlockSpell += Unlock;
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired += SpellTriggered;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnUnlockSpell -= Unlock;
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired -= SpellTriggered;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,8 +59,22 @@ public class WeaponSlotController : MonoBehaviour
         Debug.Log("Visualise Click End");
     }
 
-    private void Unlock()
+    private void SpellTriggered(SpellTypes spellType)
     {
+        if (_spellTypes != spellType) return;
+
+        if (_clickCoroutine != null)
+        {
+            StopCoroutine(_clickCoroutine);
+        }
+        
+        _clickCoroutine = StartCoroutine(VisualiseClick());
+    }
+
+    private void Unlock(SpellTypes spellType)
+    {
+        if (_spellTypes != spellType) return;
+        
         _weaponCoverImage.enabled = true;
     }
 }
