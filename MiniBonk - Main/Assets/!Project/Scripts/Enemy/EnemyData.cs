@@ -22,6 +22,9 @@ namespace MiniBonk.Enemy
         public float attackCooldown = 1.5f;
         public int xpValue = 50;
 
+        [Header("Spawn Settings")]
+        [Range(0,100)]public float spawnChance;
+
         [Header("Visuals")] public GameObject model;
         public Color debugColor = Color.red;
 
