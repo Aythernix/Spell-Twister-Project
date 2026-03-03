@@ -5,6 +5,7 @@ using Minibonk.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Minibonk.Management
 {
@@ -35,6 +36,8 @@ namespace Minibonk.Management
 		public LevelManager currentLevelManager;
 
 		public GameState currentGameState;
+
+		public float baseChaosMultiplier = 1.2f;
 
 		#endregion
 
@@ -72,6 +75,8 @@ namespace Minibonk.Management
 			uiManager = GetComponentInChildren<UIManager>();
 			sceneController = GetComponentInChildren<SceneController>();
 		}
+		
+		#endregion
 
 		public void PauseInput(InputAction.CallbackContext context)
 		{
@@ -122,8 +127,34 @@ namespace Minibonk.Management
 			Cursor.lockState = CursorLockMode.Locked;
 			Instance.currentGameState = GameState.Playing;
 		}
-		
-		#endregion
+
+		public bool Probability(float chance, float maxChance = 100)
+		{
+			var randomValue = Random.Range(0f, maxChance);
+
+			if (randomValue <= chance)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public float ChaosMultiplier()
+		{
+			try
+			{
+				var chaosMultiplier = Mathf.RoundToInt(1 * Mathf.Pow(baseChaosMultiplier, currentLevelManager.playerHandler.playerData.level - 1));
+				return chaosMultiplier;
+			}
+			catch (Exception e)
+			{
+				
+				Console.WriteLine(e);
+				return baseChaosMultiplier;
+			}
+		}
+
+
 	}
 
 	// Game Management Events
