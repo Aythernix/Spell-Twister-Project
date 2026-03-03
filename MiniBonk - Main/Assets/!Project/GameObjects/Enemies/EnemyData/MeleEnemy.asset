@@ -23,6 +23,8 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 0.6
   xpValue: 10
+  healthDrop: {fileID: 7119216674329871604, guid: aad919e6ff9e27f4fa07433752c164d0, type: 3}
+  chanceOfDroppingHealth: 25
   spawnChance: 75
   model: {fileID: 0}
   debugColor: {r: 1, g: 0, b: 0, a: 1}
