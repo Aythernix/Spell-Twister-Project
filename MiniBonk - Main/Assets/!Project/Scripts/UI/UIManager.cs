@@ -157,10 +157,12 @@ namespace Minibonk.UI
 
 			if (unpause)
 			{
-				Time.timeScale = 1;
-				Cursor.visible = false;
-				Cursor.lockState = CursorLockMode.Locked;
-				GameManager.Instance.currentGameState = GameManager.GameState.Playing;
+				GameManager.Instance.UnPauseGame();
+			}
+
+			if (_closeableSceneStack.Contains(SceneManager.GetSceneByName(uiSceneNames.ToString()).buildIndex))
+			{
+				_closeableSceneStack.Pop();
 			}
 		}
 		

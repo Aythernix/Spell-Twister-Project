@@ -1337,6 +1337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4874834693210289558}
     m_Modifications:
+    - target: {fileID: 592552399679855719, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6224739453182320667}
     - target: {fileID: 774231783747913122, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
       value: 'Cast Time: 0.5 Secs'
@@ -1621,6 +1625,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4874834693210289558}
     m_Modifications:
+    - target: {fileID: 592552399679855719, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6224739453182320667}
     - target: {fileID: 774231783747913122, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
       value: 'Cast Time: 2 Secs'
@@ -1657,6 +1665,10 @@ PrefabInstance:
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellName
       value: Spell of Waves
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: _spellType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellDescription
@@ -1913,6 +1925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4874834693210289558}
     m_Modifications:
+    - target: {fileID: 592552399679855719, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6224739453182320667}
     - target: {fileID: 774231783747913122, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
       value: 'Cast Time: 0.2 Secs'
@@ -1949,6 +1965,10 @@ PrefabInstance:
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellName
       value: Spell of Winds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: _spellType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellDescription
@@ -2201,6 +2221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4874834693210289558}
     m_Modifications:
+    - target: {fileID: 592552399679855719, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6224739453182320667}
     - target: {fileID: 774231783747913122, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: m_text
       value: 'Cast Time: 4 Secs'
@@ -2237,6 +2261,10 @@ PrefabInstance:
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellName
       value: Spell of Frost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
+      propertyPath: _spellType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1829261481611994126, guid: 20d54bd9720c0284fb4400c6b41174f5, type: 3}
       propertyPath: _spellDescription

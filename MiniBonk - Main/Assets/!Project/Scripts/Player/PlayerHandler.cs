@@ -127,6 +127,12 @@ namespace Minibonk.Player
         public Action<int> OnIncreaseTracePoints;
         public Action<int> OnDecreaseTracePoints;
         public Func<int> GetTracePoint;
+        
+        //Weapons
+        public Action<SpellTypes> OnUnlockSpell;
+        public Action<SpellTypes> OnEquipSpell;
+        public Action<SpellTypes> OnUnequipSpell;
+        public Func<SpellTypes, bool> isSpellUnlocked;
 
     }
 
