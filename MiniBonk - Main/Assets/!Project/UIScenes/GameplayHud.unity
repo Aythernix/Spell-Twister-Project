@@ -1096,6 +1096,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1734069583, guid: 26c116354417fec4ca9b0775fb2d6e79, type: 3}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4100265713282742488, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1351,6 +1363,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1734069583, guid: 26c116354417fec4ca9b0775fb2d6e79, type: 3}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4100265713282742488, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2717,6 +2741,18 @@ PrefabInstance:
       objectReference: {fileID: 1734069583, guid: 26c116354417fec4ca9b0775fb2d6e79, type: 3}
     - target: {fileID: 2127433877220103838, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4100265713282742488, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
