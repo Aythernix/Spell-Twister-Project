@@ -20,8 +20,7 @@ namespace MiniBonk.Enemy
         protected virtual void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
-            if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform;
-            
+            if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
             currentHealth = data.health;
             ApplySettings();
         }
@@ -44,6 +43,10 @@ namespace MiniBonk.Enemy
             {
                 Debug.Log($"{gameObject.name} has died. Worth {data.xpValue}");
                 GameManager.Instance.EventHandler.AddXp?.Invoke(data.xpValue);
+                if (GameManager.Instance.Probability(data.chanceOfDroppingHealth))
+                {
+                    Instantiate(data.healthDrop, transform.position, Quaternion.identity);
+                }
             }
             
             GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);

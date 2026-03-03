@@ -19,6 +19,7 @@ namespace Minibonk.Player
 		{
 			// Event Subscription
 			_playerHandler.PlayerEvents.OnPlayerDamaged += TakeDamage;
+			_playerHandler.PlayerEvents.OnPlayerHeal += Heal;
 			_playerHandler.PlayerEvents.OnIncreaseMaxHealth += IncreaseMaxHealth;
 		}
 		
@@ -27,6 +28,7 @@ namespace Minibonk.Player
 		{
 			// Event Unsubscription
 			_playerHandler.PlayerEvents.OnPlayerDamaged -= TakeDamage;
+			_playerHandler.PlayerEvents.OnPlayerHeal -= Heal;
 			_playerHandler.PlayerEvents.OnDecreaseMaxHealth -= DecreaseMaxHealth;
 		}
 
@@ -69,11 +71,15 @@ namespace Minibonk.Player
 		private void IncreaseMaxHealth(int amount)
 		{
 			_playerHandler.playerData.variableMaxHealth += amount;
+			
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 		}
 
 		private void DecreaseMaxHealth(int amount)
 		{
 			_playerHandler.playerData.variableMaxHealth -= amount;
+			
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 		}
 
 		#endregion
@@ -94,6 +100,13 @@ namespace Minibonk.Player
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 			
+		}
+
+		public void Heal(float amount)
+		{
+			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth += amount, 0, _playerHandler.playerData.variableMaxHealth);
+			
+			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 		}
 		/// <summary>
 		/// Sets the players health to the max health.

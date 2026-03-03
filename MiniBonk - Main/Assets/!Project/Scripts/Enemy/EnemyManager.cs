@@ -187,7 +187,7 @@ namespace MiniBonk.Enemy
                     currentChance += enemyComponent.data.spawnChance;
                     
                     // If the random value falls within this enemy's range, select it
-                    if (randomValue <= currentChance)
+                    if (GameManager.Instance.Probability(currentChance, totalChance))
                     {
                         return enemy;
                     }

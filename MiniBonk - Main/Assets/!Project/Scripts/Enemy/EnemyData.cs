@@ -22,6 +22,10 @@ namespace MiniBonk.Enemy
         public float attackCooldown = 1.5f;
         public int xpValue = 50;
 
+        [Header("Drops")]
+        public GameObject healthDrop;
+        public float chanceOfDroppingHealth = 25;
+
         [Header("Spawn Settings")]
         [Range(0,100)]public float spawnChance;
 

@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (other.TryGetComponent<PlayerHandler>(out var handler))
+            if (other.transform.root.TryGetComponent<PlayerHandler>(out var handler))
             {
                 handler.PlayerEvents.OnPlayerDamaged?.Invoke(_damage);
             }

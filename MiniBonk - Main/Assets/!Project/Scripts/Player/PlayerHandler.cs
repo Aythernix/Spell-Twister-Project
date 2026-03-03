@@ -110,6 +110,7 @@ namespace Minibonk.Player
        
         // Stats
         public Action<float> OnPlayerDamaged;
+        public Action<float> OnPlayerHeal;
         public Action<float> OnStaminaDecrease;
         public Action<float> OnStaminaIncrease;
         public Action OnStaminaEmpty;
