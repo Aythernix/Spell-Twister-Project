@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using Minibonk.Management;
+using Minibonk.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,6 +43,10 @@ public class WeaponSlotController : MonoBehaviour
     void Start()
     {
         _weaponCoverImage.enabled = false;
+        if (GameManager.Instance.currentLevelManager.playerHandler.GetComponent<PlayerWeaponHandler>().CheckIfSpellUnlocked(_spellTypes))
+        {
+            _weaponCoverImage.enabled = true;
+        }
     }
 
     // Update is called once per frame
