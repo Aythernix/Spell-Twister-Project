@@ -1,3 +1,4 @@
+using Minibonk.Management;
 using UnityEngine;
 using Minibonk.Player;
 public class Projectile : MonoBehaviour
@@ -23,7 +24,7 @@ public class Projectile : MonoBehaviour
         {
             if (other.transform.root.TryGetComponent<PlayerHandler>(out var handler))
             {
-                handler.PlayerEvents.OnPlayerDamaged?.Invoke(_damage);
+                handler.PlayerEvents.OnPlayerDamaged?.Invoke(_damage * GameManager.Instance.ChaosMultiplier());
             }
             Destroy(gameObject);
         }

@@ -81,10 +81,8 @@ namespace MiniBonk.Enemy
         #region private methods
         private void StartEnemySpawning()
         {
-            Debug.Log("Enemy Spawning Called");
             if (GameManager.Instance.sceneIsPlayable)
             {
-                Debug.Log("Enemy Spawning Started");
                 _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
                 StartCoroutine(HandleEnemySpawning());
             }
@@ -106,8 +104,9 @@ namespace MiniBonk.Enemy
         // Handles the enemy spawn rate (Seconds)
         private IEnumerator HandleEnemySpawning()
         {
+            Debug.Log($"Spawning delay {_spawnDelay - GameManager.Instance.ChaosMultiplier()}");
+            yield return new WaitForSeconds(Mathf.Clamp(_spawnDelay - GameManager.Instance.ChaosMultiplier(), 0, _spawnDelay));
             
-            yield return new WaitForSeconds(_spawnDelay);
 
 
             if (!_maxReached)
@@ -117,6 +116,8 @@ namespace MiniBonk.Enemy
             
             if (!GameManager.Instance.sceneIsPlayable)
                 yield break;
+
+            _maxEnemiesInScene += Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier());
             
             StartCoroutine(HandleEnemySpawning());
         }
@@ -127,8 +128,9 @@ namespace MiniBonk.Enemy
         /// </summary>
         private void SpawnEnemy()
         {
+            Debug.Log($"Spawning {_enemiesToSpawnPerBatch * GameManager.Instance.ChaosMultiplier()} enemies");
             // Spawn multiple enemies per batch as configured
-            for (int i = 0; i < _enemiesToSpawnPerBatch; i++)
+            for (int i = 0; i < _enemiesToSpawnPerBatch * GameManager.Instance.ChaosMultiplier(); i++)
             {
                 // Get a valid spawn position around the player
                 var spawnPos = SpawnPosition();
@@ -172,9 +174,7 @@ namespace MiniBonk.Enemy
                 Debug.LogWarning("No valid spawn chances found, using random selection");
                 return _enemyTypes[Random.Range(0, _enemyTypes.Count)];
             }
-
-            // Generate a random value within the total chance range
-            float randomValue = Random.Range(0f, totalChance);
+            
             float currentChance = 0f;
 
             // Iterate through enemies to find which one the random value falls into

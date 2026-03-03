@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace Minibonk.UI
@@ -8,6 +9,7 @@ namespace Minibonk.UI
 		[SerializeField] private ResourceBarUI _healthBarUI;
 		[SerializeField] private ResourceBarUI _staminaBarUI;
 		[SerializeField] private ResourceBarUI _xpBarUI;
+		[SerializeField] private TextMeshProUGUI _levelText;
 		#endregion
 		
 		private void OnEnable()
@@ -15,6 +17,7 @@ namespace Minibonk.UI
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI += SetHealth;
 			_uiManager.UIEvents.OnUpdatePlayerStaminaUI += SetStamina;
 			_uiManager.UIEvents.OnUpdatePlayerXpUi += SetXP;
+			_uiManager.UIEvents.OnUpdateLevelTextUI += SetLevel;
 
 		}
 		private void OnDisable()
@@ -22,6 +25,7 @@ namespace Minibonk.UI
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI -= SetHealth;
 			_uiManager.UIEvents.OnUpdatePlayerStaminaUI -= SetStamina;
 			_uiManager.UIEvents.OnUpdatePlayerXpUi -= SetXP;
+			_uiManager.UIEvents.OnUpdateLevelTextUI -= SetLevel;
 		}
 		
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,6 +56,11 @@ namespace Minibonk.UI
 		private void SetXP(float value, float max)
 		{
 			_xpBarUI.SetBarValue(value, max);
+		}
+
+		private void SetLevel(int level)
+		{
+			_levelText.text = level.ToString();
 		}
 		
 		#endregion
