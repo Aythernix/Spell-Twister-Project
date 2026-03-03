@@ -121,17 +121,82 @@ namespace MiniBonk.Enemy
             StartCoroutine(HandleEnemySpawning());
         }
         
-        // Spawns an enemy of a random type
+        /// <summary>
+        /// Spawns enemies using weighted random selection based on each enemy's spawn chance.
+        /// Each enemy type has a probability of being selected proportional to its spawnChance value.
+        /// </summary>
         private void SpawnEnemy()
         {
+            // Spawn multiple enemies per batch as configured
             for (int i = 0; i < _enemiesToSpawnPerBatch; i++)
             {
+                // Get a valid spawn position around the player
                 var spawnPos = SpawnPosition();
                 if (!_validSpawn) continue;
-                var enemyTypeInex = Random.Range(0, _enemyTypes.Count);
-                var enemyAdded = Instantiate(_enemyTypes[enemyTypeInex],  spawnPos, Quaternion.identity);
-                _enemiesInScene.Add(enemyAdded);
+                
+                // Select an enemy type using weighted random selection
+                var selectedEnemy = GetWeightedRandomEnemy();
+                if (selectedEnemy != null)
+                {
+                    // Instantiate the selected enemy at the spawn position
+                    var enemyAdded = Instantiate(selectedEnemy, spawnPos, Quaternion.identity);
+                    // Track the spawned enemy in the scene list
+                    _enemiesInScene.Add(enemyAdded);
+                }
             }
+        }
+
+        /// <summary>
+        /// Selects an enemy type using weighted random selection based on spawnChance values.
+        /// Enemies with higher spawnChance have higher probability of being selected.
+        /// </summary>
+        /// <returns>The selected enemy prefab, or null if no valid enemies found</returns>
+        private GameObject GetWeightedRandomEnemy()
+        {
+            // Calculate the total spawn chance across all enemy types
+            float totalChance = 0f;
+            foreach (var enemy in _enemyTypes)
+            {
+                // Get the Enemy component to access the EnemyData
+                var enemyComponent = enemy.GetComponent<Enemy>();
+                if (enemyComponent != null && enemyComponent.data != null)
+                {
+                    // Accumulate the spawn chance for this enemy type
+                    totalChance += enemyComponent.data.spawnChance;
+                }
+            }
+
+            // If no spawn chances are set (all zero or no valid data), fall back to random selection
+            if (totalChance <= 0f)
+            {
+                Debug.LogWarning("No valid spawn chances found, using random selection");
+                return _enemyTypes[Random.Range(0, _enemyTypes.Count)];
+            }
+
+            // Generate a random value within the total chance range
+            float randomValue = Random.Range(0f, totalChance);
+            float currentChance = 0f;
+
+            // Iterate through enemies to find which one the random value falls into
+            foreach (var enemy in _enemyTypes)
+            {
+                var enemyComponent = enemy.GetComponent<Enemy>();
+                if (enemyComponent != null && enemyComponent.data != null)
+                {
+                    // Add this enemy's spawn chance to the running total
+                    currentChance += enemyComponent.data.spawnChance;
+                    
+                    // If the random value falls within this enemy's range, select it
+                    if (randomValue <= currentChance)
+                    {
+                        return enemy;
+                    }
+                }
+            }
+
+            // Safety fallback - should never reach here if totalChance > 0
+            Debug.LogWarning("Weighted selection failed, falling back to first enemy");
+            return _enemyTypes[0];
         }
 
         private void HandleMaxEnemy()
