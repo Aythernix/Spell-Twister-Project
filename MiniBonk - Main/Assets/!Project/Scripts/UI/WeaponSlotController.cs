@@ -18,6 +18,7 @@ public class WeaponSlotController : MonoBehaviour
     [SerializeField] private Image _Keybind;
     
     private Coroutine _clickCoroutine;
+    private Coroutine _fireCoroutine;
 
     #endregion
     
@@ -26,13 +27,15 @@ public class WeaponSlotController : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnUnlockSpell += Unlock;
-        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired += SpellTriggered;
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnEquipSpell += SpellEquipped;
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired += SpellFired;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnUnlockSpell -= Unlock;
-        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired -= SpellTriggered;
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnEquipSpell -= SpellEquipped;
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired -= SpellFired;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,16 +53,23 @@ public class WeaponSlotController : MonoBehaviour
     
     private IEnumerator VisualiseClick()
     {
-        Debug.Log("Visualise Click");
         // Displays the slot as active
             
         _Keybind.transform.localScale = new Vector3(1, 1, 1) * _scaleAmount;
         yield return new WaitForSeconds(0.1f);
         _Keybind.transform.localScale = new Vector3(1, 1, 1);
-        Debug.Log("Visualise Click End");
+    }
+    
+    private IEnumerator VisualiseFire()
+    {
+        // Displays the slot as active
+            
+        _weaponCoverImage.transform.localScale = new Vector3(1, 1, 1) * _scaleAmount;
+        yield return new WaitForSeconds(0.1f);
+        _weaponCoverImage.transform.localScale = new Vector3(1, 1, 1);
     }
 
-    private void SpellTriggered(SpellTypes spellType)
+    private void SpellEquipped(SpellTypes spellType)
     {
         if (_spellTypes != spellType) return;
 
@@ -69,6 +79,18 @@ public class WeaponSlotController : MonoBehaviour
         }
         
         _clickCoroutine = StartCoroutine(VisualiseClick());
+    }
+
+    private void SpellFired(SpellTypes spellType)
+    {
+        if (_spellTypes != spellType) return;
+
+        if (_clickCoroutine != null)
+        {
+            StopCoroutine(_fireCoroutine);
+        }
+        
+        _fireCoroutine = StartCoroutine(VisualiseFire());
     }
 
     private void Unlock(SpellTypes spellType)
