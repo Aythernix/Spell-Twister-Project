@@ -4,6 +4,7 @@ using Minibonk.MovementAbilities;
 using Minibonk.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Minibonk.Management
 {
@@ -80,10 +81,10 @@ namespace Minibonk.Management
 				switch (currentGameState)
 				{
 					case GameState.Playing:
-						PauseGame();
+						OpenPauseMenu();
 						break;
 					case GameState.Paused:
-						UnPauseGame();
+						ClosePauseMenu();
 						break;
 					default:
 						break;
@@ -91,18 +92,35 @@ namespace Minibonk.Management
 			}
 		}
 
-		private void PauseGame()
+		public void OpenPauseMenu()
 		{
 			if(!allowPause) return;
 			if(!sceneIsPlayable) return; 
 			uiManager.UIEvents.OnInstantiateUIScene(UISceneNames.PauseMenu, true);
 		}
 
-		public void UnPauseGame()
+		public void ClosePauseMenu()
 		{
 			if(!allowPause) return;
 			if(!sceneIsPlayable) return; 
-			uiManager.UIEvents.OnCloseUIScene(UISceneNames.PauseMenu, true);
+			// uiManager.UIEvents.OnCloseUIScene(UISceneNames.PauseMenu, true);
+			uiManager.CloseClosableSceneStack();
+		}
+
+		public void PauseGame()
+		{
+			Time.timeScale = 0;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+			currentGameState = GameState.Paused;
+		}
+
+		public void UnPauseGame()
+		{
+			Time.timeScale = 1;
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			Instance.currentGameState = GameState.Playing;
 		}
 		
 		#endregion

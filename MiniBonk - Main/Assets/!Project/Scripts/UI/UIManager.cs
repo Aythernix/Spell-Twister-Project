@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,12 +29,15 @@ namespace Minibonk.UI
 
 		public UISceneNames gamePlayUIScene = UISceneNames.GameplayHud;
 		
+		private Stack<int> _closeableSceneStack = new Stack<int>();
+		
 		#endregion
 
 		private void OnEnable()
 		{
 			SceneManager.activeSceneChanged += OnSceneChange;
 			UIEvents.OnInstantiateUIScene += InstantiateUIScene;
+			UIEvents.OnInstantiatePersistantUIScene += OpenPersistantUI;
 			UIEvents.OnCloseUIScene += CloseUIScene;
 			UIEvents.SwapActiveUIScene += SwapUIScene;
 		}
@@ -42,6 +46,7 @@ namespace Minibonk.UI
 		{
 			SceneManager.activeSceneChanged -= OnSceneChange;
 			UIEvents.OnInstantiateUIScene -= InstantiateUIScene;
+			UIEvents.OnInstantiatePersistantUIScene -= OpenPersistantUI;
 			UIEvents.OnCloseUIScene -= CloseUIScene;
 			UIEvents.SwapActiveUIScene -= SwapUIScene;
 		}
@@ -101,12 +106,40 @@ namespace Minibonk.UI
 			SceneManager.LoadSceneAsync(uiSceneNames.ToString(),  LoadSceneMode.Additive);
 			if (pause)
 			{
-				Time.timeScale = 0;
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.None;
-				GameManager.Instance.currentGameState = GameManager.GameState.Paused;
+				GameManager.Instance.PauseGame();
+			}
+
+			if (GameManager.Instance.currentGameState == GameManager.GameState.Paused)
+			{
+				_closeableSceneStack.Push(SceneManager.GetSceneByName(uiSceneNames.ToString()).buildIndex);
 			}
 		}
+
+		public void OpenPersistantUI(UISceneNames uiSceneNames, bool pause = true)
+		{
+			SceneManager.LoadSceneAsync(uiSceneNames.ToString(),  LoadSceneMode.Additive);
+			if (pause)
+			{
+				GameManager.Instance.PauseGame();
+			}
+		}
+
+		public void CloseClosableSceneStack()
+		{
+			bool stackWasUsed = false;
+			if (_closeableSceneStack.Count > 0)
+			{
+				SceneManager.UnloadSceneAsync(_closeableSceneStack.Pop());
+				stackWasUsed = true;
+			}
+			
+			if (_closeableSceneStack.Count == 0 && stackWasUsed)
+			{
+				GameManager.Instance.UnPauseGame();
+			}
+		}
+		
+        
 
 		/// <summary>
 		/// Closes UI scene overlays
@@ -124,10 +157,12 @@ namespace Minibonk.UI
 
 			if (unpause)
 			{
-				Time.timeScale = 1;
-				Cursor.visible = false;
-				Cursor.lockState = CursorLockMode.Locked;
-				GameManager.Instance.currentGameState = GameManager.GameState.Playing;
+				GameManager.Instance.UnPauseGame();
+			}
+
+			if (_closeableSceneStack.Contains(SceneManager.GetSceneByName(uiSceneNames.ToString()).buildIndex))
+			{
+				_closeableSceneStack.Pop();
 			}
 		}
 		
@@ -166,6 +201,8 @@ namespace Minibonk.UI
 		/// Takes the scene name, and if the game should pause 
 		/// </summary>
 		public Action<UISceneNames, bool> OnInstantiateUIScene;
+
+		public Action<UISceneNames, bool> OnInstantiatePersistantUIScene;
 		/// <summary>
 		/// Closes a UI scene by its given name
 		///

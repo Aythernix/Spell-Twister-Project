@@ -1,39 +1,122 @@
-using Minibonk.Player;
+using System;
 using UnityEngine;
-
-public class PlayerWeaponHandler : MonoBehaviour
+using UnityEngine.InputSystem;
+namespace Minibonk.Player
 {
-    // script that handles the switching of weapons
-
-    // weapon bools
-
-    public bool hasWaterSpell = false;
-    public bool hasWindSpell = false;
-    public bool hasIceSpell = false;
-
-    public WeaponManager weaponManager;
-    private void Update()
+    public class PlayerWeaponHandler : PlayerSystem
     {
-        InputChecks();
-    }
+        // script that handles the switching of weapons
 
-    void InputChecks()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        // weapon bools
+
+        public bool hasFireballSpell = true;
+        public bool hasWaterSpell = false;
+        public bool hasWindSpell = false;
+        public bool hasIceSpell = false;
+
+        public WeaponManager weaponManager;
+
+        private void OnEnable()
         {
-            weaponManager.currentWeapon = 1;
+            _playerHandler.PlayerEvents.OnUnlockSpell += UnlockSpells;
+            _playerHandler.PlayerEvents.isSpellUnlocked += CheckIfSpellUnlocked;
         }
-        else if (hasWaterSpell && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+
+        private void OnDisable()
         {
-            weaponManager.currentWeapon = 2;
+            _playerHandler.PlayerEvents.OnUnlockSpell -= UnlockSpells;
+            _playerHandler.PlayerEvents.isSpellUnlocked -= CheckIfSpellUnlocked;
         }
-        else if (hasWindSpell && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+
+        public void UnlockSpells(SpellTypes spellType)
         {
-            weaponManager.currentWeapon = 3;     
+            switch (spellType)
+            {
+                case SpellTypes.FireballSpell:
+                    hasFireballSpell = true;
+                    break;
+                case SpellTypes.WindSpell:
+                    hasWindSpell = true;
+                    break;
+                case SpellTypes.WaterSpell:
+                    hasWaterSpell = true;
+                    break;
+                case SpellTypes.IceSpell:
+                    hasIceSpell = true;
+                    break;
+            }
         }
-        else if (hasIceSpell && Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+
+        public bool CheckIfSpellUnlocked(SpellTypes spellType)
         {
-            weaponManager.currentWeapon = 4;
+            switch (spellType)
+            {
+                case SpellTypes.FireballSpell:
+                    return hasFireballSpell;
+                    break;
+                case SpellTypes.WindSpell:
+                    return hasWindSpell;
+                    break;
+                case SpellTypes.WaterSpell:
+                    return hasWaterSpell;
+                    break;
+                case SpellTypes.IceSpell:
+                    return hasIceSpell;
+                    break;
+                default:
+                    return false;
+            }
+        }
+
+        public void EquipFireballSpell(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                if (hasFireballSpell)
+                {
+                    weaponManager.currentWeapon = 1;
+                    _playerHandler.PlayerEvents.OnEquipSpell?.Invoke(SpellTypes.FireballSpell);
+                }
+            }
+        }
+
+        public void EquipWaterSpell(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                if (hasWaterSpell)
+                {
+                    weaponManager.currentWeapon = 2;
+                    _playerHandler.PlayerEvents.OnEquipSpell?.Invoke(SpellTypes.WaterSpell);
+                }
+            }
+        }
+
+        public void EquipWindSpell(InputAction.CallbackContext context)
+        {
+            Debug.Log("EquipWindCalled");
+            if (context.started)
+            {
+                Debug.Log("Action Started");
+                if (hasWindSpell)
+                {
+                    Debug.Log("Equiped");
+                    weaponManager.currentWeapon = 3;
+                    _playerHandler.PlayerEvents.OnEquipSpell?.Invoke(SpellTypes.WindSpell);
+                }
+            }
+        }
+
+        public void EquipIceSpell(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                if (hasIceSpell)
+                {
+                    weaponManager.currentWeapon = 4;
+                    _playerHandler.PlayerEvents.OnEquipSpell?.Invoke(SpellTypes.IceSpell);
+                }
+            }
         }
     }
 }

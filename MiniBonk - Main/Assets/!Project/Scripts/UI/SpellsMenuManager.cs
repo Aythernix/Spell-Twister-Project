@@ -29,8 +29,24 @@ public class SpellsMenuManager : MonoBehaviour
 
     #region Private Methods
 
-    public void LearnSpell()
+    public void LearnSpell(SpellController spellController)
     {
+        var spellType = spellController._spellType;
+        var cost = spellController._spellCost;
+       
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.isSpellUnlocked.Invoke(spellType))
+        {
+            return;
+        }
+
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetTracePoint?.Invoke() < cost)
+        {
+            return;
+        }
+        
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnDecreaseTracePoints?.Invoke(cost);
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnUnlockSpell?.Invoke(spellType);
+        spellController.CheckIfLearnt();
         
     }
     

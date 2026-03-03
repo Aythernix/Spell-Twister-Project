@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum SpellTypes
+{
+    FireballSpell,
+    WaterSpell,
+    WindSpell,
+    IceSpell,
+}
+
 public class WeaponManager : MonoBehaviour
 {
     // determins what weapon is currently active

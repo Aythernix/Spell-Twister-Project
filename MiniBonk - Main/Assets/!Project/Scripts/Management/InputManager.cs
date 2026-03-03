@@ -192,6 +192,42 @@ namespace Minibonk.Management
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipFireball"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7e45e83-6c93-4ebc-89b1-c1b1e560e879"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipWater"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0fd45a5-1efd-4177-a163-3e31dd69d469"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipWind"",
+                    ""type"": ""Button"",
+                    ""id"": ""29725cff-28fa-42a2-b361-57badb26ec71"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipIce"",
+                    ""type"": ""Button"",
+                    ""id"": ""5aa831b7-0c81-4dbf-9aca-e328b0935526"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -610,6 +646,94 @@ namespace Minibonk.Management
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause Game"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ee6a630-ac26-4aff-9262-6eab01050f66"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipFireball"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffbc3a0a-d4a5-48d1-8889-48c16d1f6cc8"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipFireball"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""602be88c-49c4-49da-87e0-2a36c1178d88"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipWater"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""635a6c01-71f8-4e1a-8e64-452c53eca1f4"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipWater"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a2e3bef-59a1-4f3e-bf79-3e28fd986f9b"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Touch"",
+                    ""action"": ""EquipWind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11369230-ebc6-4ec2-9f49-6dd15782a11f"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipWind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed1beee4-2581-4803-a95a-d93b1866c048"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipIce"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca47809c-df47-485b-953c-1aad43522c51"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipIce"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1208,6 +1332,10 @@ namespace Minibonk.Management
             m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
             m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
             m_Player_PauseGame = m_Player.FindAction("Pause Game", throwIfNotFound: true);
+            m_Player_EquipFireball = m_Player.FindAction("EquipFireball", throwIfNotFound: true);
+            m_Player_EquipWater = m_Player.FindAction("EquipWater", throwIfNotFound: true);
+            m_Player_EquipWind = m_Player.FindAction("EquipWind", throwIfNotFound: true);
+            m_Player_EquipIce = m_Player.FindAction("EquipIce", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1312,6 +1440,10 @@ namespace Minibonk.Management
         private readonly InputAction m_Player_Ability1;
         private readonly InputAction m_Player_Ability2;
         private readonly InputAction m_Player_PauseGame;
+        private readonly InputAction m_Player_EquipFireball;
+        private readonly InputAction m_Player_EquipWater;
+        private readonly InputAction m_Player_EquipWind;
+        private readonly InputAction m_Player_EquipIce;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1367,6 +1499,22 @@ namespace Minibonk.Management
             /// Provides access to the underlying input action "Player/PauseGame".
             /// </summary>
             public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/EquipFireball".
+            /// </summary>
+            public InputAction @EquipFireball => m_Wrapper.m_Player_EquipFireball;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/EquipWater".
+            /// </summary>
+            public InputAction @EquipWater => m_Wrapper.m_Player_EquipWater;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/EquipWind".
+            /// </summary>
+            public InputAction @EquipWind => m_Wrapper.m_Player_EquipWind;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/EquipIce".
+            /// </summary>
+            public InputAction @EquipIce => m_Wrapper.m_Player_EquipIce;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1426,6 +1574,18 @@ namespace Minibonk.Management
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
+                @EquipFireball.started += instance.OnEquipFireball;
+                @EquipFireball.performed += instance.OnEquipFireball;
+                @EquipFireball.canceled += instance.OnEquipFireball;
+                @EquipWater.started += instance.OnEquipWater;
+                @EquipWater.performed += instance.OnEquipWater;
+                @EquipWater.canceled += instance.OnEquipWater;
+                @EquipWind.started += instance.OnEquipWind;
+                @EquipWind.performed += instance.OnEquipWind;
+                @EquipWind.canceled += instance.OnEquipWind;
+                @EquipIce.started += instance.OnEquipIce;
+                @EquipIce.performed += instance.OnEquipIce;
+                @EquipIce.canceled += instance.OnEquipIce;
             }
 
             /// <summary>
@@ -1470,6 +1630,18 @@ namespace Minibonk.Management
                 @PauseGame.started -= instance.OnPauseGame;
                 @PauseGame.performed -= instance.OnPauseGame;
                 @PauseGame.canceled -= instance.OnPauseGame;
+                @EquipFireball.started -= instance.OnEquipFireball;
+                @EquipFireball.performed -= instance.OnEquipFireball;
+                @EquipFireball.canceled -= instance.OnEquipFireball;
+                @EquipWater.started -= instance.OnEquipWater;
+                @EquipWater.performed -= instance.OnEquipWater;
+                @EquipWater.canceled -= instance.OnEquipWater;
+                @EquipWind.started -= instance.OnEquipWind;
+                @EquipWind.performed -= instance.OnEquipWind;
+                @EquipWind.canceled -= instance.OnEquipWind;
+                @EquipIce.started -= instance.OnEquipIce;
+                @EquipIce.performed -= instance.OnEquipIce;
+                @EquipIce.canceled -= instance.OnEquipIce;
             }
 
             /// <summary>
@@ -1847,6 +2019,34 @@ namespace Minibonk.Management
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPauseGame(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "EquipFireball" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnEquipFireball(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "EquipWater" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnEquipWater(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "EquipWind" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnEquipWind(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "EquipIce" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnEquipIce(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -35,7 +35,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void ResumeGameButton()
     {
-        GameManager.Instance.UnPauseGame();
+        GameManager.Instance.ClosePauseMenu();
     }
 
     public void ShopButton()

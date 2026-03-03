@@ -20,7 +20,7 @@ MonoBehaviour:
   displayName: Wing Boots
   abilityDescription: Elegant boots that allow the wearer to move faster at the cost
     of stamina
-  cost: 500
+  cost: 300
   buyName: Sprint
   staminaLossRate: 10
   _sprintMultipler: 1.5

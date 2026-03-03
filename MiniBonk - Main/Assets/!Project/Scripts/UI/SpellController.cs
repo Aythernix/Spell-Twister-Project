@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,12 +21,13 @@ public class SpellController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _speedText;
     
     [Header("Properties")]
-    [SerializeField] Sprite _spellIcon;
+    [SerializeField] private Sprite _spellIcon;
+    public SpellTypes _spellType;
     [SerializeField] private string _spellName;
     [SerializeField] private Color _spellNameColor;
     [TextArea]
     [SerializeField] private string _spellDescription;
-    [SerializeField] private int _spellCost;
+    public int _spellCost;
 
     [Header("Stats")]
     [SerializeField] private float _damage;
@@ -45,6 +47,7 @@ public class SpellController : MonoBehaviour
     void Start()
     {
         AssignValues();
+        CheckIfLearnt();
     }
 
     // Update is called once per frame
@@ -71,6 +74,18 @@ public class SpellController : MonoBehaviour
         _coolDownText.text = $"Cast Time: {_coolDown} Secs";
         _castsText.text = $"Casts: {_casts}";
         _speedText.text = $"Speed: {_speed} m/s";
+    }
+
+    public void CheckIfLearnt()
+    {
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.isSpellUnlocked.Invoke(_spellType))
+        {
+            _alreadyLearntText.gameObject.SetActive(true);
+        }
+        else
+        {
+            _alreadyLearntText.gameObject.SetActive(false);
+        }
     }
     
     #endregion

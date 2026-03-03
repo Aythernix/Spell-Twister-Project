@@ -20,7 +20,7 @@ MonoBehaviour:
   displayName: Wind Cloak
   abilityDescription: Magical cloak coated in wind magic, allows the wearer to propel
     themselves forward using stamina.
-  cost: 1200
+  cost: 800
   buyName: Dash
   staminaCost: 30
   _dashForce: 100
