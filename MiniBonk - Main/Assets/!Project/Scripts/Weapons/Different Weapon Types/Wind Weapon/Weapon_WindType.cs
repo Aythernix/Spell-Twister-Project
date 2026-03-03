@@ -1,7 +1,8 @@
+using Minibonk.Management;
+using Minibonk.Player;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
-using System;
-using Minibonk.Player;
 
 public class Weapon_WindType : MonoBehaviour
 {
@@ -76,6 +77,10 @@ public class Weapon_WindType : MonoBehaviour
     {
         lastProjectile = 0; // Resets last projectile timer to 0
         if (windProjectilePrefab == null || projectileSpawner == null) return; // safety line that makes sure the prefab and spawner actually exist
+
+        // Allows for weapon to communicate to GameManager
+
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.WindSpell);
 
         // creates and makes a set vector 3 to be used on the newely made projectile
         var newWindProjectile = Instantiate(windProjectilePrefab, projectileSpawner.transform.position, projectileSpawner.transform.rotation, gameObject.transform);

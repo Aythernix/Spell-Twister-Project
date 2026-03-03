@@ -1,3 +1,4 @@
+using Minibonk.Management;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -87,6 +88,10 @@ public class Weapon_WaterType : MonoBehaviour
         if (waterBallProjectile == null || waterBallSpawner == null) return;
 
         // ------------- actual spawning ------------------//
+
+        // Allows for weapon to communicate to GameManager
+
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.WaterSpell);
 
         for (int i = 0; i < waterBalls; i++)
         {

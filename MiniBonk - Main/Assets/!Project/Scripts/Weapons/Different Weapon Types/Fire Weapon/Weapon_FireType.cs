@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Minibonk.Management;
 
 public class Weapon_FireType : MonoBehaviour
 {
@@ -82,6 +83,10 @@ public class Weapon_FireType : MonoBehaviour
 
     void createFireBall()
     {
+        // Allows for weapon to communicate to GameManager
+
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.FireballSpell);
+
         // resets the timer for when the last bullet was shot
         lastFireBall = 0;
 

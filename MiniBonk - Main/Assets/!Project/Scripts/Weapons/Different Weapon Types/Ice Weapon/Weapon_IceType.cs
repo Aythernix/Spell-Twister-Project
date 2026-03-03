@@ -1,3 +1,4 @@
+using Minibonk.Management;
 using UnityEngine;
 
 public class Weapon_IceType : MonoBehaviour
@@ -75,6 +76,10 @@ public class Weapon_IceType : MonoBehaviour
         lastProjectile = 0;
 
         if (iceBallPrefab == null || projectileSpawner == null) return;
+
+        // Allows for weapon to communicate to GameManager
+
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.IceSpell);
 
         var newProjectile = Instantiate(iceBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.rotation, gameObject.transform);
         Vector3 newProjectileDirection = projectileSpawner.transform.forward;
