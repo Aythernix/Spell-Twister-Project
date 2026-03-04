@@ -21,11 +21,11 @@ namespace Minibonk.MovementAbilities
             switch (state)
             {
                 case true:
-                    _player.GetComponent<PlayerMovement>().speedMultiplier = _sprintMultipler;
+                    _player.GetComponent<PlayerMovement>().speedMultiplier += _sprintMultipler;
                     _player.GetComponent<PlayerHandler>().PlayerEvents.OnSprintStarted?.Invoke();
                     break;
                 case false:
-                    _player.GetComponent<PlayerMovement>().speedMultiplier = 1;
+                    _player.GetComponent<PlayerMovement>().speedMultiplier -= _sprintMultipler;
                     _player.GetComponent<PlayerHandler>().PlayerEvents.OnSprintFinished?.Invoke();
                     break;
             }
