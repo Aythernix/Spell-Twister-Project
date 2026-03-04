@@ -23,4 +23,4 @@ MonoBehaviour:
   cost: 300
   buyName: Sprint
   staminaLossRate: 10
-  _sprintMultipler: 1.5
+  _sprintMultipler: 0.5
