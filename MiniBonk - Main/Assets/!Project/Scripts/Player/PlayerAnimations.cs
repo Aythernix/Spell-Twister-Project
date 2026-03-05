@@ -86,6 +86,7 @@ namespace Minibonk.Player
             }
 
             isJumping = true;
+            isSprinting = false;
             _animator.SetBool("Jumping", true);
         }
 
@@ -99,6 +100,8 @@ namespace Minibonk.Player
             }
 
             isDashing = true;
+            isJumping = false;
+            isSprinting = false;
             _animator.SetBool("Dashing", true);
         }
 
@@ -111,8 +114,11 @@ namespace Minibonk.Player
                 return;
             }
 
-            isSprinting = true;
-            _animator.SetBool("Sprinting", true);
+            if (!isDashing && !isJumping)
+            {
+                isSprinting = true;
+                _animator.SetBool("Sprinting", true);
+            }
         }
 
         #endregion
