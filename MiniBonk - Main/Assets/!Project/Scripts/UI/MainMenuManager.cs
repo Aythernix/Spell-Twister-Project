@@ -27,7 +27,7 @@ namespace Minibonk.UI
 		// Called when the player clicks start
 		public void OnStartClick()
 		{
-			_sceneController.ChangeScene(SceneNames.MainLevel);
+			_sceneController.ChangeScene(SceneNames.ComponentTesting);
 		}
 
 		public void OnSettingsClicked()

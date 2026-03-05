@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Minibonk.Collectable
@@ -7,6 +8,7 @@ namespace Minibonk.Collectable
     {
         [SerializeField] float _frequnecy;
         [SerializeField] float _Magnitude;
+        [SerializeField] private float _lifeTime = 45f;
 
         private Vector3 _startPos;
         
@@ -16,6 +18,8 @@ namespace Minibonk.Collectable
         void Start()
         {
             _startPos = transform.position;
+
+            StartCoroutine(DestroyOnLifetime());
         }
 
         // Update is called once per frame
@@ -30,7 +34,7 @@ namespace Minibonk.Collectable
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player"))
             {
                 Collected();
                 HandleCollection();
@@ -39,6 +43,12 @@ namespace Minibonk.Collectable
 
         private void HandleCollection()
         {
+            Destroy(gameObject);
+        }
+
+        private IEnumerator DestroyOnLifetime()
+        {
+            yield return new WaitForSeconds(_lifeTime);
             Destroy(gameObject);
         }
 

@@ -9,6 +9,7 @@ namespace Minibonk.Management
 	public enum SceneNames
 	{
 		MainLevel,
+		ComponentTesting
 	}
 	public class SceneController : MonoBehaviour
 	{

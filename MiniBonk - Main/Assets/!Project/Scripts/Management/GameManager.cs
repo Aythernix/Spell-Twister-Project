@@ -145,7 +145,7 @@ namespace Minibonk.Management
 			{
 				if (currentLevelManager.playerHandler.playerData.level == 1)
 					return 1f;
-				var chaosMultiplier = 0.8f * Mathf.Pow(baseChaosMultiplier, currentLevelManager.playerHandler.playerData.level - 1);
+				var chaosMultiplier = 1f * Mathf.Pow(baseChaosMultiplier, currentLevelManager.playerHandler.playerData.level - 1);
 				return chaosMultiplier;
 			}
 			catch (Exception e)

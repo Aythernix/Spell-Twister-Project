@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frequnecy: 3
   _Magnitude: 0.5
+  _lifeTime: 45
   _healthAmount: 15
 --- !u!65 &785442305625048337
 BoxCollider:

@@ -111,8 +111,11 @@ namespace Minibonk.Player
                 return;
             }
 
-            isSprinting = true;
-            _animator.SetBool("Sprinting", true);
+            if (!isDashing && !isJumping)
+            {
+                isSprinting = true;
+                _animator.SetBool("Sprinting", true);
+            }
         }
 
         #endregion
