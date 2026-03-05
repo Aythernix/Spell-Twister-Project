@@ -93,7 +93,7 @@ public class WeaponSlotController : MonoBehaviour
     {
         if (_spellTypes != spellType) return;
 
-        if (_clickCoroutine != null)
+        if (_fireCoroutine != null)
         {
             StopCoroutine(_fireCoroutine);
         }
