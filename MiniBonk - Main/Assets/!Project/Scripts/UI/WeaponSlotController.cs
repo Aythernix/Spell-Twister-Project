@@ -11,8 +11,10 @@ public class WeaponSlotController : MonoBehaviour
     #region Variables
     
     [Header("Properties")]
-    [SerializeField] private float _scaleAmount = 1.3f;
-    [SerializeField] private float _scaleSpeed = 5f;
+    [SerializeField] private float _KeybindScaleAmount = 1.3f;
+    [SerializeField] private float _KeybindScaleSpeed = 5f;
+    [SerializeField] private float _SpriteScaleAmount = 1.1f;
+    [SerializeField] private float _SpriteScaleSpeed = 5f;
     [SerializeField] private SpellTypes _spellTypes;
 
     [Header("References")]
@@ -61,7 +63,7 @@ public class WeaponSlotController : MonoBehaviour
     {
         // Displays the slot as active
             
-        _Keybind.transform.localScale = new Vector3(1, 1, 1) * _scaleAmount;
+        _Keybind.transform.localScale = new Vector3(1, 1, 1) * _KeybindScaleAmount;
         yield return new WaitForSeconds(0.1f);
         _Keybind.transform.localScale = new Vector3(1, 1, 1);
     }
@@ -70,7 +72,7 @@ public class WeaponSlotController : MonoBehaviour
     {
         // Displays the slot as active
             
-        _weaponCoverImage.transform.localScale = new Vector3(1, 1, 1) * _scaleAmount;
+        _weaponCoverImage.transform.localScale = new Vector3(1, 1, 1) * _SpriteScaleAmount;
         yield return new WaitForSeconds(0.1f);
         _weaponCoverImage.transform.localScale = new Vector3(1, 1, 1);
     }
@@ -91,7 +93,7 @@ public class WeaponSlotController : MonoBehaviour
     {
         if (_spellTypes != spellType) return;
 
-        if (_clickCoroutine != null)
+        if (_fireCoroutine != null)
         {
             StopCoroutine(_fireCoroutine);
         }

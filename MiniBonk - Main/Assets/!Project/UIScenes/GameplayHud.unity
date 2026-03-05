@@ -396,8 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123bc0a89f2dc9647b7c875cc7924b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleAmount: 1.3
-  _scaleSpeed: 5
+  _KeybindScaleAmount: 1.3
+  _KeybindScaleSpeed: 5
+  _SpriteScaleAmount: 1.1
+  _SpriteScaleSpeed: 5
   _spellTypes: 2
   _weaponCoverImage: {fileID: 1636378552}
   _Keybind: {fileID: 36188086}
@@ -1443,8 +1445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123bc0a89f2dc9647b7c875cc7924b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleAmount: 1.3
-  _scaleSpeed: 5
+  _KeybindScaleAmount: 1.3
+  _KeybindScaleSpeed: 5
+  _SpriteScaleAmount: 1.1
+  _SpriteScaleSpeed: 5
   _spellTypes: 1
   _weaponCoverImage: {fileID: 1605595000}
   _Keybind: {fileID: 1975916756}
@@ -2066,8 +2070,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123bc0a89f2dc9647b7c875cc7924b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleAmount: 1.3
-  _scaleSpeed: 5
+  _KeybindScaleAmount: 1.3
+  _KeybindScaleSpeed: 5
+  _SpriteScaleAmount: 1.1
+  _SpriteScaleSpeed: 5
   _spellTypes: 3
   _weaponCoverImage: {fileID: 2049463224}
   _Keybind: {fileID: 1288090885}
@@ -2680,8 +2686,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123bc0a89f2dc9647b7c875cc7924b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleAmount: 1.3
-  _scaleSpeed: 5
+  _KeybindScaleAmount: 1.3
+  _KeybindScaleSpeed: 5
+  _SpriteScaleAmount: 1.1
+  _SpriteScaleSpeed: 5
   _spellTypes: 0
   _weaponCoverImage: {fileID: 605179134}
   _Keybind: {fileID: 1866297282}
@@ -3146,6 +3154,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2550886662919518482, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 80
@@ -3188,7 +3200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454639756440903243, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 114.0463
       objectReference: {fileID: 0}
     - target: {fileID: 6454639756440903243, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_SizeDelta.y
