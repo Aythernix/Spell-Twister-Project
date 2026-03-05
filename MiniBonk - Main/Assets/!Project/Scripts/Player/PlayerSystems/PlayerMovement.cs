@@ -134,8 +134,8 @@ namespace Minibonk.Player
 		private void SnapToGround()
 		{
 			// Debug.Log("Snapping");
-			RotaryHeart.Lib.PhysicsExtension.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _checkingDistance, _groundLayer, PreviewCondition.Both, 1f, Color.red, Color.blue);
-			
+			//RotaryHeart.Lib.PhysicsExtension.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _checkingDistance, _groundLayer, PreviewCondition.Both, 1f, Color.red, Color.blue);
+			UnityEngine.Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _checkingDistance, _groundLayer);
 			// Only runs if the player isn't jumping and is on the ground
 			if (_isJumping || !hit.collider) return;
 			
