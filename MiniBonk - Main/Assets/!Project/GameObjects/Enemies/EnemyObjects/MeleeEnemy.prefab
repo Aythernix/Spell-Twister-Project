@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ec7cfc26d16b4ef4dbeb764b5bfd55c0, type: 2}
   player: {fileID: 0}
+  isAlive: 1
 --- !u!136 &5508262004003210702
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 4
 --- !u!54 &-7106996447482635448
 Rigidbody:
   m_ObjectHideFlags: 0
