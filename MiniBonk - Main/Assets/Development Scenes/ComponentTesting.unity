@@ -2669,6 +2669,10 @@ PrefabInstance:
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 1886411265}
+    - target: {fileID: 6316486999067946203, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _allowDamageTimer
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7143317492793045124, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -4653,6 +4657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 399981198368201694, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
+      propertyPath: baseChaosMultiplier
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3937352027428624044, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1680353
