@@ -9,7 +9,7 @@ namespace Minibonk.Collectables
 
         protected override void Collected()
         {
-            GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnPlayerHeal?.Invoke(_healthAmount);
+            GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnPlayerHeal?.Invoke(_healthAmount * GameManager.Instance.ChaosMultiplier());
         }
     }
 }

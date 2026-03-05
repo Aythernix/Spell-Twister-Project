@@ -19,6 +19,8 @@ namespace MiniBonk.Enemy
         [Header("SpawnSettings")]
         // How many seconds between enemy spawns
         [SerializeField] private float _spawnDelay = 5;
+        
+        [SerializeField] private float _maxDistanceToPlayer = 10;
         // How many enemies to spawn at once
         [SerializeField] private int _enemiesToSpawnPerBatch = 5;
         // The area around the player enemies will spawn
@@ -41,12 +43,14 @@ namespace MiniBonk.Enemy
         private void OnEnable()
         {
             GameManager.Instance.EventHandler.OnEnemyKilled += OnEnemyKilled;
+            GameManager.Instance.EventHandler.OnPlayerLevelIncrease += ChaosMultiplier;
         }
         
 
         private void OnDisable()
         {
             GameManager.Instance.EventHandler.OnEnemyKilled -= OnEnemyKilled;
+            GameManager.Instance.EventHandler.OnPlayerLevelIncrease -= ChaosMultiplier;
         }
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -79,6 +83,12 @@ namespace MiniBonk.Enemy
         #endregion
         
         #region private methods
+        
+        private void ChaosMultiplier(int level)
+        {
+            _spawnDelay = Mathf.Clamp(_spawnDelay - GameManager.Instance.ChaosMultiplier(), 3, _spawnDelay);
+            _maxEnemiesInScene += Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier());
+        }
         private void StartEnemySpawning()
         {
             if (GameManager.Instance.sceneIsPlayable)
@@ -94,6 +104,10 @@ namespace MiniBonk.Enemy
             RaycastHit hit;
             Vector3 spawnPos = _playerTransform.position + point;
             bool hasHit = Physics.Raycast(spawnPos, Vector3.down, out hit, float.PositiveInfinity, _groundLayer);
+            if (Vector3.Distance(spawnPos, _playerTransform.position) < _maxDistanceToPlayer)
+            {
+                hasHit = false;
+            }
             spawnPos.y = hit.point.y;
             _validSpawn = hasHit;
             _lastSpawnPos = spawnPos;
@@ -104,8 +118,7 @@ namespace MiniBonk.Enemy
         // Handles the enemy spawn rate (Seconds)
         private IEnumerator HandleEnemySpawning()
         {
-            Debug.Log($"Spawning delay {_spawnDelay - GameManager.Instance.ChaosMultiplier()}");
-            yield return new WaitForSeconds(Mathf.Clamp(_spawnDelay - GameManager.Instance.ChaosMultiplier(), 0, _spawnDelay));
+            yield return new WaitForSeconds(_spawnDelay - GameManager.Instance.ChaosMultiplier());
             
 
 
@@ -116,8 +129,6 @@ namespace MiniBonk.Enemy
             
             if (!GameManager.Instance.sceneIsPlayable)
                 yield break;
-
-            _maxEnemiesInScene += Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier());
             
             StartCoroutine(HandleEnemySpawning());
         }
@@ -130,20 +141,33 @@ namespace MiniBonk.Enemy
         {
             Debug.Log($"Spawning {_enemiesToSpawnPerBatch * GameManager.Instance.ChaosMultiplier()} enemies");
             // Spawn multiple enemies per batch as configured
-            for (int i = 0; i < _enemiesToSpawnPerBatch * GameManager.Instance.ChaosMultiplier(); i++)
+            int totalEnemies = (int)(_enemiesToSpawnPerBatch * GameManager.Instance.ChaosMultiplier());
+            int maxAttemptsPerEnemy = 10; // Failsafe to prevent crash
+
+            for (int i = 0; i < totalEnemies; i++)
             {
-                // Get a valid spawn position around the player
-                var spawnPos = SpawnPosition();
-                if (!_validSpawn) continue;
-                
-                // Select an enemy type using weighted random selection
-                var selectedEnemy = GetWeightedRandomEnemy();
-                if (selectedEnemy != null)
+                bool spawnSuccessful = false;
+    
+                // Attempt to find a position up to maxAttemptsPerEnemy times
+                for (int attempt = 0; attempt < maxAttemptsPerEnemy; attempt++)
                 {
-                    // Instantiate the selected enemy at the spawn position
-                    var enemyAdded = Instantiate(selectedEnemy, spawnPos, Quaternion.identity);
-                    // Track the spawned enemy in the scene list
-                    _enemiesInScene.Add(enemyAdded);
+                    var spawnPos = SpawnPosition();
+                    if (_validSpawn && !_maxReached)
+                    {
+                        var selectedEnemy = GetWeightedRandomEnemy();
+                        if (selectedEnemy != null)
+                        {
+                            var enemyAdded = Instantiate(selectedEnemy, spawnPos, Quaternion.identity);
+                            _enemiesInScene.Add(enemyAdded);
+                            spawnSuccessful = true;
+                        }
+                        break; // Exit the attempt loop once successfully spawned
+                    }
+                }
+
+                if (!spawnSuccessful)
+                {
+                    Debug.LogWarning($"Could not find valid spawn for enemy {i} after {maxAttemptsPerEnemy} tries.");
                 }
             }
         }
@@ -203,18 +227,18 @@ namespace MiniBonk.Enemy
         {
             _maxReached = true;
             
-            // Only runs following code if the enemies in the scene exceed the max
-            if (_enemiesInScene.Count <= _maxEnemiesInScene) return;
-            
-            // Returns the enemy at the last index of the list
-            var nextEnemy = _enemiesInScene[^1];
-            
-            if (nextEnemy != null)
-            {
-                Destroy(nextEnemy);
-            }
-            
-            HandleRemoveEnemy(nextEnemy);
+            // // Only runs following code if the enemies in the scene exceed the max
+            // if (_enemiesInScene.Count <= _maxEnemiesInScene) return;
+            //
+            // // Returns the enemy at the last index of the list
+            // var nextEnemy = _enemiesInScene[^1];
+            //
+            // if (nextEnemy != null)
+            // {
+            //     Destroy(nextEnemy);
+            // }
+            //
+            // HandleRemoveEnemy(nextEnemy);
         }
         
         // Passing parameters from Enemy Killed event to the handle enemy removed

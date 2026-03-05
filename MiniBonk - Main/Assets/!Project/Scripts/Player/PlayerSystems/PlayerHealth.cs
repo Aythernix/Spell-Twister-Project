@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Minibonk.Management;
 using Minibonk.UI;
 using UnityEditor;
@@ -9,7 +10,13 @@ namespace Minibonk.Player
 	public class PlayerHealth : PlayerSystem
 	{
 		#region Variables
+
+		[SerializeField] private float _allowDamageTimer = 0.5f;
+		
 		private UIManager _uiManager;
+		
+		private bool _allowDamage = true;
+		private Coroutine _takeDamageCoroutine;
 		
 		#endregion
 
@@ -81,6 +88,12 @@ namespace Minibonk.Player
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 		}
+		
+		private IEnumerator AllowDamageTimer()
+		{
+			yield return new WaitForSeconds(_allowDamageTimer);
+			_allowDamage = true;
+		}
 
 		#endregion
 
@@ -92,11 +105,20 @@ namespace Minibonk.Player
 		/// <param name="damage"> The amount of health to remove from the player </param>
 		public void TakeDamage(float damage)
 		{
+			if (!_allowDamage) return;
+			
+			_allowDamage = false;
 			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth -= damage, 0, _playerHandler.playerData.variableMaxHealth);
 			if (HealthEmpty())
 			{
 				OnHealthEmpty();
 			}
+			
+			if (_takeDamageCoroutine != null)
+			{
+				StopCoroutine(_takeDamageCoroutine);
+			}
+			_takeDamageCoroutine = StartCoroutine(AllowDamageTimer());
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 			
