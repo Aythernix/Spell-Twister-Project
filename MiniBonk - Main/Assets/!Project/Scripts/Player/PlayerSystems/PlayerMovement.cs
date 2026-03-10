@@ -75,6 +75,12 @@ namespace Minibonk.Player
 			_playerHandler.PlayerEvents.OnJumpStarted -= HandleJumpInput;
 		}
 
+		private void Update()
+		{
+			SnapToGround();
+		}
+		
+
 		private void FixedUpdate()
 		{
 			// Update Directions
@@ -85,7 +91,7 @@ namespace Minibonk.Player
 
 			ApplyVelocity(_walkSpeed * speedMultiplier);
 
-			SnapToGround();
+			
 
 			HandleRotation();
 		}
