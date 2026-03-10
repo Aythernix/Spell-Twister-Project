@@ -71,7 +71,7 @@ namespace MiniBonk.Enemy
                 if (Time.time >= nextAttackTime)
                 {
                     Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
-                    GetComponent<EnemyAnimations>().CheckForAttacking();
+                    GetComponentInChildren<EnemyAnimations>().CheckForAttacking();
 
                     nextAttackTime = Time.time + data.attackCooldown;
                 }
