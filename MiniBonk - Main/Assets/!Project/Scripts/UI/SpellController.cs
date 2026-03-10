@@ -78,7 +78,7 @@ public class SpellController : MonoBehaviour
 
     public void CheckIfLearnt()
     {
-        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.isSpellUnlocked.Invoke(_spellType))
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellUnlocked.Invoke(_spellType))
         {
             _alreadyLearntText.gameObject.SetActive(true);
         }

@@ -133,8 +133,9 @@ namespace Minibonk.Player
         public Action<SpellTypes> OnUnlockSpell;
         public Action<SpellTypes> OnEquipSpell;
         public Action<SpellTypes> OnUnequipSpell;
-        public Func<SpellTypes, bool> isSpellUnlocked;
+        public Func<SpellTypes, bool> IsSpellUnlocked;
         public Action<SpellTypes> OnSpellFired;
+        public Func<SpellTypes, bool> IsSpellEquipped;
 
     }
 

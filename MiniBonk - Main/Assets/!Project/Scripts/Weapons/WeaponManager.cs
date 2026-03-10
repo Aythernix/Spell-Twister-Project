@@ -1,3 +1,5 @@
+using System;
+using Minibonk.Management;
 using UnityEngine;
 
 public enum SpellTypes
@@ -20,6 +22,16 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private Weapon_WindType windWeapon; // Type 3
     [SerializeField] private Weapon_IceType iceWeapon; // Type 4
 
+    private void OnEnable()
+    {
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellEquipped += GetCurrentWeapon;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellEquipped -= GetCurrentWeapon;
+    }
+
     public void Update()
     {
         switch (currentWeapon)
@@ -40,5 +52,10 @@ public class WeaponManager : MonoBehaviour
                 Debug.Log("Not a weapon index!");
                 break;
         }
+    }
+
+    private bool GetCurrentWeapon(SpellTypes spellType)
+    {
+        return (int)spellType + 1 == currentWeapon;
     }
 }

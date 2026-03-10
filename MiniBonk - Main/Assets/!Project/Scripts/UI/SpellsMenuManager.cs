@@ -34,7 +34,7 @@ public class SpellsMenuManager : MonoBehaviour
         var spellType = spellController._spellType;
         var cost = spellController._spellCost;
        
-        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.isSpellUnlocked.Invoke(spellType))
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellUnlocked.Invoke(spellType))
         {
             return;
         }

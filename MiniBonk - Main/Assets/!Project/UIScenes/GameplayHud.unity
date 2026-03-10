@@ -403,6 +403,7 @@ MonoBehaviour:
   _spellTypes: 2
   _weaponCoverImage: {fileID: 1636378552}
   _Keybind: {fileID: 36188086}
+  _SelectionOutline: {fileID: 2098845734}
 --- !u!1 &262829331
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ GameObject:
   - component: {fileID: 271582089}
   - component: {fileID: 271582088}
   m_Layer: 5
-  m_Name: SelectedWaterWeapon
+  m_Name: SelectionOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,7 +975,7 @@ GameObject:
   - component: {fileID: 845019659}
   - component: {fileID: 845019658}
   m_Layer: 5
-  m_Name: 'SelectedIceWeapon '
+  m_Name: SelectionOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,7 +1331,7 @@ GameObject:
   - component: {fileID: 1234722725}
   - component: {fileID: 1234722724}
   m_Layer: 5
-  m_Name: SelectedFlameWeapon
+  m_Name: SelectionOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1452,6 +1453,7 @@ MonoBehaviour:
   _spellTypes: 1
   _weaponCoverImage: {fileID: 1605595000}
   _Keybind: {fileID: 1975916756}
+  _SelectionOutline: {fileID: 271582086}
 --- !u!1 &1288090883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2079,7 @@ MonoBehaviour:
   _spellTypes: 3
   _weaponCoverImage: {fileID: 2049463224}
   _Keybind: {fileID: 1288090885}
+  _SelectionOutline: {fileID: 845019656}
 --- !u!1 &1605594997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,6 +2696,7 @@ MonoBehaviour:
   _spellTypes: 0
   _weaponCoverImage: {fileID: 605179134}
   _Keybind: {fileID: 1866297282}
+  _SelectionOutline: {fileID: 1234722722}
 --- !u!1 &1853432718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,7 +3063,7 @@ GameObject:
   - component: {fileID: 2098845737}
   - component: {fileID: 2098845736}
   m_Layer: 5
-  m_Name: SelectedWindWeapon
+  m_Name: SelectionOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
