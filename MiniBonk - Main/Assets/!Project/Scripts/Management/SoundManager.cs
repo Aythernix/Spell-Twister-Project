@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Minibonk.Management
@@ -52,6 +53,8 @@ namespace Minibonk.Management
                 case  AudioClips.UICancel:
                     PlayCustomAudio(_UiCancel);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(clip), clip, null);
             }
         }
 
