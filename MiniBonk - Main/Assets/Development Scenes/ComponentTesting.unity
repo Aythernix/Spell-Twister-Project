@@ -2661,17 +2661,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2318963656376098866, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 3151815216152561767, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 1886411265}
+    - target: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _checkingDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316486999067946203, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261823012688839407, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
