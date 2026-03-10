@@ -78,15 +78,14 @@ namespace Minibonk.Player
 
         private void CheckForJumping()
         {
-            if (isJumping)
-            {
-                isJumping = false;
-                _animator.SetBool("Jumping", false);
-                return;
+             if (isJumping)
+             {
+                 isJumping = false;
+                 return;
             }
-
+             
             isJumping = true;
-            _animator.SetBool("Jumping", true);
+            _animator.SetTrigger("Jumping");
         }
 
         private void CheckForDashing()
