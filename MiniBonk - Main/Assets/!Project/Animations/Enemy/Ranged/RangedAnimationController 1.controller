@@ -97,7 +97,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6145077ca4bdaca43b0be138b3c67d66, type: 2}
+  m_Motion: {fileID: 7400000, guid: 02bc14d2057650b40a07fcb2e822c154, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -159,7 +159,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyAnimationController
+  m_Name: RangedAnimationController 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsMoving
@@ -194,7 +194,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Melee
+  m_Name: Shoot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -208,7 +208,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f2f038820e6fd9241ac59a11f9a5a46c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4c0269c43c322a34999603372a7647fd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -236,7 +236,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c7f99b2954031154fb594584945f3699, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1b852af8c50c0fa4dae0975ef8c007d4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
