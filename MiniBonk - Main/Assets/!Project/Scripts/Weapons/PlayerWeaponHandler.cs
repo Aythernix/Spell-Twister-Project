@@ -19,13 +19,13 @@ namespace Minibonk.Player
         private void OnEnable()
         {
             _playerHandler.PlayerEvents.OnUnlockSpell += UnlockSpells;
-            _playerHandler.PlayerEvents.isSpellUnlocked += CheckIfSpellUnlocked;
+            _playerHandler.PlayerEvents.IsSpellUnlocked += CheckIfSpellUnlocked;
         }
 
         private void OnDisable()
         {
             _playerHandler.PlayerEvents.OnUnlockSpell -= UnlockSpells;
-            _playerHandler.PlayerEvents.isSpellUnlocked -= CheckIfSpellUnlocked;
+            _playerHandler.PlayerEvents.IsSpellUnlocked -= CheckIfSpellUnlocked;
         }
 
         public void UnlockSpells(SpellTypes spellType)

@@ -20,6 +20,7 @@ public class WeaponSlotController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Image _weaponCoverImage;
     [SerializeField] private Image _Keybind;
+    [SerializeField] private GameObject _SelectionOutline;
     
     private Coroutine _clickCoroutine;
     private Coroutine _fireCoroutine;
@@ -49,6 +50,19 @@ public class WeaponSlotController : MonoBehaviour
         {
             _weaponCoverImage.enabled = true;
         }
+
+        var enableOutline = GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellEquipped?.Invoke(_spellTypes);
+
+        if (enableOutline is true)
+        {
+            _SelectionOutline.SetActive(true);
+        }
+        else
+        {
+            _SelectionOutline.SetActive(false);
+        }
+        
+        
     }
 
     // Update is called once per frame
@@ -79,14 +93,25 @@ public class WeaponSlotController : MonoBehaviour
 
     private void SpellEquipped(SpellTypes spellType)
     {
-        if (_spellTypes != spellType) return;
+        if (_spellTypes != spellType)
+        {
+            SpellUnequipped();
+            return;
+        }
 
         if (_clickCoroutine != null)
         {
             StopCoroutine(_clickCoroutine);
         }
+
+        _SelectionOutline.SetActive(true);
         
         _clickCoroutine = StartCoroutine(VisualiseClick());
+    }
+
+    private void SpellUnequipped()
+    {
+        _SelectionOutline.SetActive(false);
     }
 
     private void SpellFired(SpellTypes spellType)
@@ -107,4 +132,5 @@ public class WeaponSlotController : MonoBehaviour
         
         _weaponCoverImage.enabled = true;
     }
+    
 }
