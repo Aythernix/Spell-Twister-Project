@@ -35,7 +35,6 @@ namespace Minibonk.Enemy
             {
                 _animator.SetBool("IsMoving", false);
             }
-            Debug.Log(_navMeshAgent.isStopped);
         }
 
         public void CheckForAttacking()
