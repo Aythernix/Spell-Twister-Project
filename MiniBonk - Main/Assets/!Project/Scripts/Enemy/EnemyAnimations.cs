@@ -39,8 +39,6 @@ namespace Minibonk.Enemy
             {
                 _animator.SetBool("IsMoving", false);
             }
-            Debug.Log($"Speed: {_navMeshAgent.velocity.magnitude} | IsMoving: {_animator.GetBool("IsMoving")} ");
-            
         }
 
         public void CheckForAttacking()
@@ -52,7 +50,5 @@ namespace Minibonk.Enemy
             }
                
         }
-
-
     }
 }

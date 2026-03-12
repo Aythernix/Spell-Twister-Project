@@ -4,6 +4,7 @@ using Minibonk.Management;
 using Minibonk.UI;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Minibonk.Player
 {
@@ -12,11 +13,18 @@ namespace Minibonk.Player
 		#region Variables
 
 		[SerializeField] private float _allowDamageTimer = 0.5f;
+		[SerializeField] private float _lowHealthThreshold = 20f;
+		[SerializeField] private Color _lowHealthColor = Color.red;
+		[SerializeField] private float _vignetteTransitionDuration = 1f;
+		private bool _isLowHealth = false;
 		
 		private UIManager _uiManager;
 		
 		private bool _allowDamage = true;
 		private Coroutine _takeDamageCoroutine;
+		private Coroutine _vignetteTransitionCoroutine;
+		
+		private Vignette _vignette;
 		
 		#endregion
 
@@ -45,6 +53,11 @@ namespace Minibonk.Player
 			SetHealthToMax();
 
 			_uiManager = GameManager.Instance.uiManager;
+
+			if (GameManager.Instance.currentLevelManager.postProcessVolume.profile.TryGet<Vignette>(out var vignette))
+			{
+				_vignette = vignette;
+			}
 		}
 
 		// Update is called once per frame
@@ -80,6 +93,7 @@ namespace Minibonk.Player
 			_playerHandler.playerData.variableMaxHealth += amount;
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
+			
 		}
 
 		private void DecreaseMaxHealth(int amount)
@@ -93,6 +107,21 @@ namespace Minibonk.Player
 		{
 			yield return new WaitForSeconds(_allowDamageTimer);
 			_allowDamage = true;
+		}
+		
+		private IEnumerator SmoothVignetteTransition(Color startColour, Color endColour)
+		{
+			float elapsedTime = 0f;
+			
+			while (elapsedTime < _vignetteTransitionDuration)
+			{
+				elapsedTime += Time.deltaTime;
+				float t = Mathf.Clamp01(elapsedTime / _vignetteTransitionDuration);
+				_vignette.color.Override(Color.Lerp(startColour, endColour, t));
+				yield return null;
+			}
+			
+			_vignette.color.Override(endColour);
 		}
 
 		#endregion
@@ -121,6 +150,16 @@ namespace Minibonk.Player
 			_takeDamageCoroutine = StartCoroutine(AllowDamageTimer());
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
+
+			if (_playerHandler.playerData.currentHealth <= _lowHealthThreshold && !_isLowHealth)
+			{
+				_isLowHealth = true;
+				if (_vignetteTransitionCoroutine != null)
+				{
+					StopCoroutine(_vignetteTransitionCoroutine);
+				}
+				_vignetteTransitionCoroutine = StartCoroutine(SmoothVignetteTransition(Color.black, _lowHealthColor));
+			}
 			
 		}
 
@@ -129,6 +168,16 @@ namespace Minibonk.Player
 			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth += amount, 0, _playerHandler.playerData.variableMaxHealth);
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
+			
+			if (_playerHandler.playerData.currentHealth > _lowHealthThreshold && _isLowHealth)
+			{
+				_isLowHealth = false;
+				if (_vignetteTransitionCoroutine != null)
+				{
+					StopCoroutine(_vignetteTransitionCoroutine);
+				}
+				_vignetteTransitionCoroutine = StartCoroutine(SmoothVignetteTransition(_lowHealthColor, Color.black));
+			}
 		}
 		/// <summary>
 		/// Sets the players health to the max health.

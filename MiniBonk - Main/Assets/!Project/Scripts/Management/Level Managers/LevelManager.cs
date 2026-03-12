@@ -1,6 +1,7 @@
 using System;
 using Minibonk.Player;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace Minibonk.Management
@@ -21,6 +22,7 @@ namespace Minibonk.Management
 		[field: SerializeField] public string sceneName {get; protected set;}
 		
 		[field: SerializeField] public PlayerHandler playerHandler {get; private set;}
+		[field: SerializeField] public Volume postProcessVolume {get; private set;}
 		
 		#endregion
 
@@ -79,6 +81,7 @@ namespace Minibonk.Management
 			if (sceneType == SceneTypes.Playable)
 			{
 				GameManager.Instance.currentGameState = GameManager.GameState.Playing;
+				postProcessVolume = FindAnyObjectByType<Volume>();
 			}
 		}
 		
