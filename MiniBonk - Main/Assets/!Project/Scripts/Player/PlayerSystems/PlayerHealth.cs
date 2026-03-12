@@ -13,7 +13,7 @@ namespace Minibonk.Player
 		#region Variables
 
 		[SerializeField] private float _allowDamageTimer = 0.5f;
-		[SerializeField] private float _lowHealthThreshold = 15f;
+		[SerializeField] private float _lowHealthThreshold = 20f;
 		[SerializeField] private Color _lowHealthColor = Color.red;
 		[SerializeField] private float _vignetteTransitionDuration = 1f;
 		private bool _isLowHealth = false;
@@ -151,7 +151,7 @@ namespace Minibonk.Player
 			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 
-			if (_playerHandler.playerData.currentHealth <= _lowHealthThreshold)
+			if (_playerHandler.playerData.currentHealth <= _lowHealthThreshold && !_isLowHealth)
 			{
 				_isLowHealth = true;
 				if (_vignetteTransitionCoroutine != null)
