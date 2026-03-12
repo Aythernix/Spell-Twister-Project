@@ -108,6 +108,7 @@ namespace MiniBonk.Enemy
             {
                 hasHit = false;
             }
+            Debug.Log(Vector3.Distance(spawnPos, _playerTransform.position));
             spawnPos.y = hit.point.y;
             _validSpawn = hasHit;
             _lastSpawnPos = spawnPos;
