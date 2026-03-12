@@ -15,12 +15,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileLifetime: 5
   projectileSpeed: 20
-  speed: 6
+  speed: 8
   acceleration: 10000
-  stoppingDistance: 1
+  stoppingDistance: 2
   health: 100
   damage: 5
-  attackRange: 2
+  attackRange: 1
   attackCooldown: 0.6
   xpValue: 10
   healthDrop: {fileID: 7119216674329871604, guid: aad919e6ff9e27f4fa07433752c164d0, type: 3}
