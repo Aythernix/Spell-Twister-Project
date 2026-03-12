@@ -15,8 +15,10 @@ namespace Minibonk.Enemy
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            _animator = GetComponent<Animator>();
+            _navMeshAgent = GetComponentInParent<NavMeshAgent>();
+            _animator = GetComponentInChildren<Animator>();
+
+            
         }
 
         // Update is called once per frame
@@ -27,7 +29,9 @@ namespace Minibonk.Enemy
 
         private void CheckForMovement()
         {
-            if (!_navMeshAgent.isStopped)
+            if (_animator == null) return;
+            
+            if (_navMeshAgent.velocity.magnitude > 0.1f)
             {
                 _animator.SetBool("IsMoving", true);
             }
@@ -39,7 +43,12 @@ namespace Minibonk.Enemy
 
         public void CheckForAttacking()
         {
-            _animator.SetTrigger("IsAttacking");
+            if (_animator != null)
+            {
+                _animator.SetTrigger("IsAttacking");
+                Debug.Log($"!!!Attack Triggered!!!");
+            }
+               
         }
     }
 }
