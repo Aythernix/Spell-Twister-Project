@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -199,6 +203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 668125653}
     m_Modifications:
+    - target: {fileID: -8749369896623230817, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -255,6 +263,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8090652247584442346, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8087971548157268404, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -7952279307788472284, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -303,9 +319,45 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7484788988647153913, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -7282519713800833929, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6542135936058548447, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5115471461389547182, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4289005989705381887, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -4015812091806407785, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -3693064115830171846, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3487545646361857514, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3306282872226927678, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3274669517285266058, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -2909725791908999537, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -363,9 +415,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.205
       objectReference: {fileID: 0}
+    - target: {fileID: -1868372268316723822, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -946796682571560236, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -776981864577371145, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -772660304023873763, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -741420294297185877, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -622772128291470306, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -18505733669663158, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 138047965159001560, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_Name
       value: MainSceneTestPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1370317516011489534, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -374,6 +462,86 @@ PrefabInstance:
     - target: {fileID: 1370317516011489534, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 260.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695247791826282626, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1751733304607064725, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892611019123992817, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948856637020350330, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757277626819476652, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122042539364317164, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181691292964903302, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686997220105300153, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856479647452421794, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493330472597721029, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351360079325524599, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446613656803911990, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479185247941857549, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292905171112357659, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380229744041921007, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763238612328941117, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656632702463610066, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998438321719506256, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033453312296824817, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903503277691865250, guid: e8274d18a9aa791439288172bdbcdb3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -506,6 +674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -577,6 +749,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -713,6 +889,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -956,6 +1136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1176,6 +1360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1300,6 +1488,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1474,6 +1666,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _jumpForce
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1617,6 +1813,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d89d21d149aa77843883f8ef0cd6fe3d, type: 3}
       propertyPath: m_Name
       value: RightPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d89d21d149aa77843883f8ef0cd6fe3d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488640376542015914, guid: d89d21d149aa77843883f8ef0cd6fe3d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036961293688550793, guid: d89d21d149aa77843883f8ef0cd6fe3d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1775,6 +1983,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1856,9 +2068,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 668125653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseTerrain
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1952,6 +2164,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 952141819c751654e8f9d2a124375d6e, type: 3}
       propertyPath: m_Name
       value: MoatBackRamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 952141819c751654e8f9d2a124375d6e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2057,6 +2273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2161,6 +2381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2232,6 +2456,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2427,9 +2655,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -814811008022390127, guid: fdacdae1951e8c74c8b2a0719a223824, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fdacdae1951e8c74c8b2a0719a223824, type: 3}
       propertyPath: m_Name
       value: CastleFrontPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fdacdae1951e8c74c8b2a0719a223824, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068847094668094886, guid: fdacdae1951e8c74c8b2a0719a223824, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2590,6 +2830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2661,6 +2905,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2798,6 +3046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2928,6 +3180,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3279,6 +3535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3350,6 +3610,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 502202db1bbc14c499934d9a7cce2f60, type: 3}
       propertyPath: m_Name
       value: DrawBridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 502202db1bbc14c499934d9a7cce2f60, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3487,6 +3751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3618,6 +3886,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3689,6 +3961,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3788,6 +4064,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3920,6 +4200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3995,6 +4279,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3dee729bde58db4a86ff2bb232ef3d9, type: 3}
       propertyPath: m_Name
       value: MainPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3dee729bde58db4a86ff2bb232ef3d9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4208,6 +4496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4279,6 +4571,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4355,6 +4651,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b34a980500e6c114bb64ef01581bb730, type: 3}
       propertyPath: m_Name
       value: LeftPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b34a980500e6c114bb64ef01581bb730, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4497,6 +4797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4628,6 +4932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mound (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4677,9 +4985,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2049170107}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mounds
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4815,6 +5123,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
       propertyPath: m_Name
       value: Mound (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54ee24dbe5a1564785c0e5fb4fb8658, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
