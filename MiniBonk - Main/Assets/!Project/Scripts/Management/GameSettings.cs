@@ -68,7 +68,7 @@ public class GameSettings : ScriptableObject
             audioMixer.SetFloat("MusicVolume", LinearToDecibel(musicVolume));
         }
 
-        ResizeRenderTexture(renderTexture, (int)(_defaultPixelWidth * pixelisation), (int)(_defaultPixelHeight * pixelisation));
+        ResizeRenderTexture(renderTexture, (int)(_defaultPixelWidth / pixelisation), (int)(_defaultPixelHeight / pixelisation));
         
        
     }

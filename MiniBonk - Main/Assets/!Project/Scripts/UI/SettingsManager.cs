@@ -72,6 +72,7 @@ public class SettingsManager : MonoBehaviour
     public void PixelisationChanged(float pixelisation)
     {
         _gameSettings.pixelisation = pixelisation;
+        _gameSettings.ApplySettings();
     }
     
     public void ResetSettings()

@@ -134,7 +134,7 @@ public class TutorialManager : MonoBehaviour
     
     public IEnumerator HideShopPrompt()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(10f);
         try
         {
             _shopPrompt.GetComponent<Animator>().Play("Close Anim");
