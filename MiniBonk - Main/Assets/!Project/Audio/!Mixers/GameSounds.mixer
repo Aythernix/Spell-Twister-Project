@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Sounds
+  m_Name: PlayerVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e42b84f9dd1a4234b89d6a4ee44ae0ed
   m_Children: []
@@ -25,7 +25,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy Sounds
+  m_Name: EnemyVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: a35ef7e55c3146a479c1b41578c8ce35
   m_Children: []
@@ -67,7 +67,17 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 60bf6e04387583e4fa47eabd8a2a6a84
+    name: EnemyVolume
+  - guid: a0230a4990d821e43a9f1c445c31e0cf
+    name: GameplayVolume
+  - guid: 3844d3f405b21864a91ca00e9afc7138
+    name: MasterVolume
+  - guid: 56779d3957182a0438641c6db3bdc099
+    name: MusicVolume
+  - guid: 6dcd92779bbe6864b895512ad27ded47
+    name: PlayerVolume
   m_AudioMixerGroupViews:
   - guids:
     - da0427a564bd454499bc20c5533f01c7
@@ -124,7 +134,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 3456be6d4a1a5f74680237acf44a4d4c
-  m_FloatValues: {}
+  m_FloatValues:
+    3844d3f405b21864a91ca00e9afc7138: 20
   m_TransitionOverrides: {}
 --- !u!243 &545126270901363974
 AudioMixerGroupController:
@@ -132,7 +143,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Game Sounds
+  m_Name: GameplayVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 6bef45803de4a2b4db62563fb9f0efa7
   m_Children: []
@@ -165,7 +176,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Music
+  m_Name: MusicVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 2010a902bfec57541a0eddc3ba9b6d5c
   m_Children: []
