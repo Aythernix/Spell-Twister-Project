@@ -19,7 +19,7 @@ MonoBehaviour:
   playerVolume: 1
   musicVolume: 1
   audioMixer: {fileID: 24100000, guid: e93f2c9ebc0679d47b0de9a104caa21b, type: 2}
-  pixelisation: 1
+  pixelisation: 0.333
   renderTexture: {fileID: 8400000, guid: b4d514366149e7445af77466e66fb061, type: 2}
   _defaultMasterVolume: 1
   _defaultGameplayVolume: 1
