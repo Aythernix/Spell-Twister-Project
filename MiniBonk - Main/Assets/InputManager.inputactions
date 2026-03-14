@@ -97,6 +97,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Ability3",
+                    "type": "Button",
+                    "id": "61c99c29-5a11-49d5-8979-255d08e5d548",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause Game",
                     "type": "Button",
                     "id": "17f97bf5-cd06-4a0a-a7ed-96e75f9a6165",
@@ -536,6 +545,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Ability2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fb93599-f444-4123-b051-83f417185042",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ability3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

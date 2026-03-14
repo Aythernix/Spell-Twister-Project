@@ -42,7 +42,7 @@ namespace MiniBonk.Enemy
             isAlive = false;
             if (data != null)
             {
-                Debug.Log($"{gameObject.name} has died. Worth {data.xpValue}");
+                // Debug.Log($"{gameObject.name} has died. Worth {data.xpValue}");
                 GameManager.Instance.EventHandler.AddXp?.Invoke((int)(data.xpValue * GameManager.Instance.ChaosMultiplier()));
                 if (GameManager.Instance.Probability(data.chanceOfDroppingHealth * GameManager.Instance.ChaosMultiplier()))
                 {

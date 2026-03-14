@@ -28,6 +28,11 @@ namespace Minibonk.Player
             _playerHandler.PlayerEvents.IsSpellUnlocked -= CheckIfSpellUnlocked;
         }
 
+        private void Start()
+        {
+            weaponManager = FindAnyObjectByType<WeaponManager>();
+        }
+
         public void UnlockSpells(SpellTypes spellType)
         {
             switch (spellType)

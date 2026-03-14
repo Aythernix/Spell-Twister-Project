@@ -24,4 +24,4 @@ MonoBehaviour:
   buyName: Dash
   staminaCost: 30
   _dashForce: 100
-  _maxDashDistance: 15
+  _maxDashDistance: 10

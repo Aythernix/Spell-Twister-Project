@@ -32,7 +32,7 @@ namespace Minibonk.UI
 
 		public void OnSettingsClicked()
 		{
-			
+			GameManager.Instance.uiManager.UIEvents.OnInstantiateUIScene?.Invoke(UISceneNames.Settings, false);
 		}
 
 		public void OnQuitClicked()

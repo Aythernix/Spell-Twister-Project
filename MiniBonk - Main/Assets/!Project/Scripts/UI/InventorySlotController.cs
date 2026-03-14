@@ -60,14 +60,14 @@ namespace Minibonk.UI
 
         private IEnumerator VisualiseClick()
         {
-            Debug.Log("Visualise Click");
+            // Debug.Log("Visualise Click");
             // Displays the slot as active
             
             _Keybind.transform.localScale = new Vector3(1, 1, 1) * _scaleAmount;
             yield return new WaitForSeconds(0.1f);
             yield return new WaitUntil(() => !_movementAbility.IsActive);
             _Keybind.transform.localScale = new Vector3(1, 1, 1);
-            Debug.Log("Visualise Click End");
+            // Debug.Log("Visualise Click End");
         }
 
         #endregion
@@ -78,6 +78,7 @@ namespace Minibonk.UI
         {
             _movementAbility = movementAbility;
             _slotImage.sprite = movementAbility.coverIcon;
+            _coolDownCover._healthSourceImage.sprite = movementAbility.coverIcon;
         }
 
         public void OnAbilityTriggered()

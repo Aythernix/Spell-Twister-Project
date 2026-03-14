@@ -185,6 +185,15 @@ namespace Minibonk.Management
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Ability3"",
+                    ""type"": ""Button"",
+                    ""id"": ""61c99c29-5a11-49d5-8979-255d08e5d548"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Pause Game"",
                     ""type"": ""Button"",
                     ""id"": ""17f97bf5-cd06-4a0a-a7ed-96e75f9a6165"",
@@ -624,6 +633,17 @@ namespace Minibonk.Management
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Ability2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fb93599-f444-4123-b051-83f417185042"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1331,6 +1351,7 @@ namespace Minibonk.Management
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
             m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
+            m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
             m_Player_PauseGame = m_Player.FindAction("Pause Game", throwIfNotFound: true);
             m_Player_EquipFireball = m_Player.FindAction("EquipFireball", throwIfNotFound: true);
             m_Player_EquipWater = m_Player.FindAction("EquipWater", throwIfNotFound: true);
@@ -1439,6 +1460,7 @@ namespace Minibonk.Management
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Ability1;
         private readonly InputAction m_Player_Ability2;
+        private readonly InputAction m_Player_Ability3;
         private readonly InputAction m_Player_PauseGame;
         private readonly InputAction m_Player_EquipFireball;
         private readonly InputAction m_Player_EquipWater;
@@ -1495,6 +1517,10 @@ namespace Minibonk.Management
             /// Provides access to the underlying input action "Player/Ability2".
             /// </summary>
             public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Ability3".
+            /// </summary>
+            public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
             /// <summary>
             /// Provides access to the underlying input action "Player/PauseGame".
             /// </summary>
@@ -1571,6 +1597,9 @@ namespace Minibonk.Management
                 @Ability2.started += instance.OnAbility2;
                 @Ability2.performed += instance.OnAbility2;
                 @Ability2.canceled += instance.OnAbility2;
+                @Ability3.started += instance.OnAbility3;
+                @Ability3.performed += instance.OnAbility3;
+                @Ability3.canceled += instance.OnAbility3;
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
@@ -1627,6 +1656,9 @@ namespace Minibonk.Management
                 @Ability2.started -= instance.OnAbility2;
                 @Ability2.performed -= instance.OnAbility2;
                 @Ability2.canceled -= instance.OnAbility2;
+                @Ability3.started -= instance.OnAbility3;
+                @Ability3.performed -= instance.OnAbility3;
+                @Ability3.canceled -= instance.OnAbility3;
                 @PauseGame.started -= instance.OnPauseGame;
                 @PauseGame.performed -= instance.OnPauseGame;
                 @PauseGame.canceled -= instance.OnPauseGame;
@@ -2012,6 +2044,13 @@ namespace Minibonk.Management
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAbility2(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Ability3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAbility3(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "Pause Game" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

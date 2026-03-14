@@ -46,7 +46,7 @@ namespace Minibonk.Enemy
             if (_animator != null)
             {
                 _animator.SetTrigger("IsAttacking");
-                Debug.Log($"!!!Attack Triggered!!!");
+                // Debug.Log($"!!!Attack Triggered!!!");
             }
                
         }

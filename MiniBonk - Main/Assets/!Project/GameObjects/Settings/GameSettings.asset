@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9b1a8d847e9d54392ee4576ef43c61, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  showTutorial: 1
+  masterVolume: 1
+  gameplayVolume: 1
+  enemyVolume: 1
+  playerVolume: 1
+  musicVolume: 1
+  audioMixer: {fileID: 24100000, guid: e93f2c9ebc0679d47b0de9a104caa21b, type: 2}
+  pixelisation: 0.333
+  renderTexture: {fileID: 8400000, guid: b4d514366149e7445af77466e66fb061, type: 2}
+  _defaultMasterVolume: 1
+  _defaultGameplayVolume: 1
+  _defaultEnemyVolume: 1
+  _defaultPlayerVolume: 1
+  _defaultMusicVolume: 1
+  _defaultPixelisation: 1
+  _defaultPixelWidth: 256
+  _defaultPixelHeight: 144
+  _defaultAudioMixer: {fileID: 24100000, guid: e93f2c9ebc0679d47b0de9a104caa21b, type: 2}
+  _defaultRenderTexture: {fileID: 8400000, guid: b4d514366149e7445af77466e66fb061, type: 2}
