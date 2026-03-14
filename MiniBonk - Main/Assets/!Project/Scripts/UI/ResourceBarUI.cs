@@ -10,7 +10,7 @@ namespace Minibonk.UI
 
 		#region Variable
 
-		[SerializeField] private Image _healthSourceImage;
+		public Image _healthSourceImage;
 		[SerializeField] private float _fillRate;
 		
 		private Coroutine _currentBarCoroutine;

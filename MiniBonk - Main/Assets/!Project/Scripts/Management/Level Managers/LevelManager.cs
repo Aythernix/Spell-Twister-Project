@@ -34,11 +34,12 @@ namespace Minibonk.Management
 			SetGameManagerAsPlayable();
 			SetLevelManagerInGameManager();
 			SetPlayer();
+			InitializeScene();
 		}
 
 		private void Start()
 		{
-			InitializeScene();
+			
 		}
 
 		#endregion

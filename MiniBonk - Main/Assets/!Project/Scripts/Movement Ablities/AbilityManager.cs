@@ -13,6 +13,8 @@ namespace Minibonk.MovementAbilities
     {
         
         #region Vairables
+        
+        public MovementAbility defaultAbility;
 
         public List<MovementAbility> allAvailAbilities;
         public List<MovementAbility> unlockedAbilities;
@@ -36,6 +38,13 @@ namespace Minibonk.MovementAbilities
         {
             base.Awake();
             BuildDictionaries();
+        }
+
+        private void Start()
+        {
+            if(defaultAbility == null) return;
+            UnlockAbility(defaultAbility.abilityID, false);
+            EquipAbility(defaultAbility.abilityID, 2);
         }
 
         private void OnEnable()
@@ -130,7 +139,7 @@ namespace Minibonk.MovementAbilities
             {
                 if (equippedSlots[slotIndex]?.Execute() == true)
                 {
-                    Debug.Log("ability triggered");
+                    // Debug.Log("ability triggered");
                     GameManager.Instance.EventHandler.OnAbilitySlotTriggered?.Invoke(slotIndex);
                 }
             }
@@ -142,7 +151,7 @@ namespace Minibonk.MovementAbilities
             if (equippedSlots[slotIndex] == null) return;
             if (slotIndex >= 0 && slotIndex < equippedSlots.Length)
             {
-                Debug.Log(equippedSlots[slotIndex].abilityName);
+                // Debug.Log(equippedSlots[slotIndex].abilityName);
                 if (!equippedSlots[slotIndex].autoFinalise)
                 {
                     equippedSlots[slotIndex]?.Finalise();
@@ -154,7 +163,7 @@ namespace Minibonk.MovementAbilities
         #region Public API
 
         // Allows abilities to be unlocked
-        public void UnlockAbility(string abilityName)
+        public void UnlockAbility(string abilityName, bool autoEquip = true)
         {
             MovementAbility ability = AbilityLookup(abilityName);
 
@@ -166,12 +175,13 @@ namespace Minibonk.MovementAbilities
                 unlockedAbilities.Add(instance);
                 unlockedAblityIDs.Add(instance.abilityID);
                 _instanceIdDb.Add(instance.abilityID, instance);
-                AutoEquipAbility(instance);
+                
+                if (autoEquip) AutoEquipAbility(instance);
             }
         }
-        public void UnlockAbility(int abilityID)
+        public void UnlockAbility(int abilityID, bool autoEquip = true)
         {
-            UnlockAbility(AbilityLookup(abilityID).abilityName);
+            UnlockAbility(AbilityLookup(abilityID).abilityName, autoEquip);
         }
 
         #endregion

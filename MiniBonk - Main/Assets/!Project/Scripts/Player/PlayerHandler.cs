@@ -107,6 +107,8 @@ namespace Minibonk.Player
         public Action OnDashFinished;
         public Action OnSprintStarted;
         public Action OnSprintFinished;
+        public Action OnUpwardsDashStarted;
+        public Action OnUpwardsDashFinished;
        
         // Stats
         public Action<float> OnPlayerDamaged;

@@ -3134,50 +3134,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 366547808}
     m_Modifications:
-    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2127433877220103838, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1734069583, guid: 26c116354417fec4ca9b0775fb2d6e79, type: 3}
-    - target: {fileID: 2127433877220103838, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550886662919518482, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978923647543836543, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4100265713282742488, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e1057c5650fd6ef48a2820f1c54d0e17, type: 3}
     - target: {fileID: 6454639756440903243, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3261,30 +3217,6 @@ PrefabInstance:
     - target: {fileID: 6646915932996767028, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Name
       value: Inevntory Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8573729218918306774, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 115
-      objectReference: {fileID: 0}
-    - target: {fileID: 8573729218918306774, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 115
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

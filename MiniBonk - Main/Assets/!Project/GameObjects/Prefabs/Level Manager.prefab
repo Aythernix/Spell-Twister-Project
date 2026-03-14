@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 3406408783657514089}
   serializedVersion: 2
   m_LocalRotation: {x: 0.110414475, y: 2.4797057e-14, z: -2.7547978e-15, w: 0.99388564}
-  m_LocalPosition: {x: 32.68, y: 36.944588, z: 26.05084}
+  m_LocalPosition: {x: 87.3, y: 46.944588, z: -71.99916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4086
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: b2a98382de8a4954fbee36e0fd070da3, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5840242994393144505
 GameObject:
@@ -1019,11 +1019,11 @@ MonoBehaviour:
   - {fileID: 7521692644132424675, guid: 68047ff2c1e8a444aa5f159ed9ffa8c3, type: 3}
   - {fileID: 7521692644132424675, guid: 144e17f00799a1f42b8eccd501a1ad73, type: 3}
   _enemiesInScene: []
-  _spawnDelay: 5
-  _maxDistanceToPlayer: 10
-  _enemiesToSpawnPerBatch: 5
-  _spawnRadius: 30
-  _maxEnemiesInScene: 30
+  _spawnDelay: 3
+  _maxDistanceToPlayer: 30
+  _enemiesToSpawnPerBatch: 10
+  _spawnRadius: 100
+  _maxEnemiesInScene: 400
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64

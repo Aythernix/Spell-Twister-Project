@@ -104,11 +104,12 @@ namespace MiniBonk.Enemy
             RaycastHit hit;
             Vector3 spawnPos = _playerTransform.position + point;
             bool hasHit = Physics.Raycast(spawnPos, Vector3.down, out hit, float.PositiveInfinity, _groundLayer);
+            
             if (Vector3.Distance(spawnPos, _playerTransform.position) < _maxDistanceToPlayer)
             {
                 hasHit = false;
             }
-            Debug.Log(Vector3.Distance(spawnPos, _playerTransform.position));
+            
             spawnPos.y = hit.point.y;
             _validSpawn = hasHit;
             _lastSpawnPos = spawnPos;

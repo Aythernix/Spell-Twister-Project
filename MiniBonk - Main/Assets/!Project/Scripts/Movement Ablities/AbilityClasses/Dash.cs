@@ -48,7 +48,8 @@ namespace Minibonk.MovementAbilities
     
             // Applies the initial force
             _rb.AddForce(dashDir * _dashForce, ForceMode.Impulse);
-    
+            
+            yield return new WaitForSeconds(0.05f);
             // Dash keeps going until it hits a certain distance from the start, or hits an object
             while (Vector3.Distance(startPos, _rb.position) < _maxDashDistance)
             {

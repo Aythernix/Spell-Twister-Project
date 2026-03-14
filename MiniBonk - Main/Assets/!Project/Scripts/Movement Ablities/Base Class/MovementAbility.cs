@@ -71,7 +71,7 @@ namespace Minibonk.MovementAbilities
             OnFinalise();
             StartCooldown();
             IsActive = false;
-            Debug.Log("Finalise Executed");
+            // Debug.Log("Finalise Executed");
         }
         #endregion
 

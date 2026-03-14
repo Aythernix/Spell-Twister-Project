@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02af8aa9c006f584ba43b096526ff40d, type: 3}
+  m_Name: UpwardsDash
+  m_EditorClassIdentifier: 
+  abilityName: UpwardsDash
+  abilityID: 3
+  cooldownTime: 4
+  coverIcon: {fileID: 1076641501, guid: 15e2930367144c24cab3e10052976be4, type: 3}
+  coverAnim: {fileID: 0}
+  displayName: SprintBoots
+  abilityDescription: Spring boots that allow you to jump way above the heads of
+    enemies, perfect for escaping tricky situations
+  cost: 0
+  buyName: SprintBoots
+  staminaCost: 30
+  _dashForce: 100
+  _maxDashDistance: 5
