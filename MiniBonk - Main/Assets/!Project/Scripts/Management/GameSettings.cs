@@ -4,6 +4,9 @@ using UnityEngine.Audio;
 [CreateAssetMenu(fileName = "GameSettings", menuName = "Scriptable Objects/GameSettings")]
 public class GameSettings : ScriptableObject
 {
+    [Header("Game Settings")]
+    public bool showTutorial = true;
+    
     [Header("Volume Settings")]
     [Range(0f, 1f)] public float masterVolume = 1f;
     [Range(0f, 1f)] public float gameplayVolume = 1f;

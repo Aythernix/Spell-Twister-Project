@@ -286,6 +286,7 @@ MonoBehaviour:
   sceneIsPlayable: 0
   allowPause: 1
   currentLevelManager: {fileID: 0}
+  gameSettings: {fileID: 11400000, guid: 7e60863968b3ca34cb51004d289d0059, type: 2}
   currentGameState: 0
   baseChaosMultiplier: 1.1
 --- !u!114 &5288521850801605740
@@ -421,6 +422,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 17f97bf5-cd06-4a0a-a7ed-96e75f9a6165
     m_ActionName: Player/Pause Game
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7e45e83-6c93-4ebc-89b1-c1b1e560e879
+    m_ActionName: 'Player/EquipFireball[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c0fd45a5-1efd-4177-a163-3e31dd69d469
+    m_ActionName: 'Player/EquipWater[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29725cff-28fa-42a2-b361-57badb26ec71
+    m_ActionName: 'Player/EquipWind[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5aa831b7-0c81-4dbf-9aca-e328b0935526
+    m_ActionName: 'Player/EquipIce[/Keyboard/4]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

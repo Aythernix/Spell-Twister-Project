@@ -427,6 +427,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 787528789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &215336425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2767444305102729493, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+  m_PrefabInstance: {fileID: 620400004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &215336426 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+  m_PrefabInstance: {fileID: 620400004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275895523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1213,135 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596788587}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &620400004
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1830067391}
+    m_Modifications:
+    - target: {fileID: 2767444305102729493, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_Name
+      value: Shop Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767444305102729493, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 623.9979
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 347
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164971316104446599, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_text
+      value: 'This is the shop, you can spend money to unlock abilities.
+
+
+        Abilities
+        give you different ways to move, at the cost of stamina'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164971316104446599, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_fontSize
+      value: 16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164971316104446599, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_margin.x
+      value: 25.626587
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164971316104446599, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_margin.z
+      value: 25.626587
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164971316104446599, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164971316104446599, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 4096
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
 --- !u!1 &634261866
 GameObject:
   m_ObjectHideFlags: 0
@@ -3919,6 +4058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkingPrompt: {fileID: 1125374948}
   _levelUpPrompt: {fileID: 943932180}
+  _shopPrompt: {fileID: 215336425}
 --- !u!114 &1752964227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,7 +4210,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &1817388873
@@ -4215,6 +4355,7 @@ RectTransform:
   m_Children:
   - {fileID: 1125374949}
   - {fileID: 1952779834}
+  - {fileID: 215336426}
   m_Father: {fileID: 1752964225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5095,7 +5236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767444305102729493, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3840001886148886456, guid: 884bc28d5541d034687c8268d026fa27, type: 3}
       propertyPath: m_Pivot.x

@@ -35,6 +35,9 @@ namespace Minibonk.Management
 		
 		// The current active level manager
 		public LevelManager currentLevelManager;
+		
+		// The current game settings
+		public GameSettings gameSettings;
 
 		public GameState currentGameState;
 
