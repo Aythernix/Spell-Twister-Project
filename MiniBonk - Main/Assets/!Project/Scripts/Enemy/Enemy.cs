@@ -16,14 +16,21 @@ namespace MiniBonk.Enemy
         
         protected int currentHealth;
         private float nextAttackTime;
+        private float lastUpdateTime;
+        private Vector3 lastPlayerPosition;
+        private EnemyAnimations enemyAnimations;
+        private const float UPDATE_INTERVAL = 0.1f; // Update 10 times per second instead of 60+
 
         // Update is called once per frame
         protected virtual void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            enemyAnimations = GetComponentInChildren<EnemyAnimations>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
             currentHealth = data.health;
             ApplySettings();
+            lastUpdateTime = Time.time;
+            lastPlayerPosition = player.position;
         }
 
         public virtual void TakeDamage( int amount, GameObject instigator = null)
@@ -64,14 +71,28 @@ namespace MiniBonk.Enemy
 
         protected virtual void Update()
         {
-            navMeshAgent.SetDestination(player.position);
-            float distance = Vector3.Distance(transform.position, player.position);
-            if (distance <= data.attackRange)
+            if (!isAlive) return;
+            
+            // Only update pathfinding if player moved significantly or enough time passed
+            if (Time.time >= lastUpdateTime + UPDATE_INTERVAL || 
+                Vector3.Distance(lastPlayerPosition, player.position) > 0.5f)
+            {
+                navMeshAgent.SetDestination(player.position);
+                lastUpdateTime = Time.time;
+                lastPlayerPosition = player.position;
+            }
+            
+            // Use squared distance for comparison (faster than sqrt)
+            float sqrDistance = (transform.position - player.position).sqrMagnitude;
+            float sqrAttackRange = data.attackRange * data.attackRange;
+            
+            if (sqrDistance <= sqrAttackRange)
             {
                 if (Time.time >= nextAttackTime)
                 {
                     Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
-                    GetComponentInChildren<EnemyAnimations>().CheckForAttacking();
+                    if (enemyAnimations != null)
+                        enemyAnimations.CheckForAttacking();
 
                     nextAttackTime = Time.time + data.attackCooldown;
                 }
