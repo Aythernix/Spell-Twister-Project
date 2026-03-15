@@ -26,8 +26,6 @@ namespace MiniBonk.Enemy
         {
             
             navMeshAgent = GetComponent<NavMeshAgent>();
-            meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
-            enemyAnimations = GetComponentInChildren<EnemyAnimations>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
             currentHealth = (int)(data.health * GameManager.Instance.ChaosMultiplier());
             playerRigidbody = player.GetComponent<Rigidbody>();
