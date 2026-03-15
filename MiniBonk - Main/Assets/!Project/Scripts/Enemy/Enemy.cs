@@ -76,7 +76,7 @@ namespace MiniBonk.Enemy
         {
             float randomSpeed = data.speed + UnityEngine.Random.Range(-data.speedVariance, data.speedVariance);
             
-            navMeshAgent.speed = data.speed;
+            navMeshAgent.speed = randomSpeed;
             navMeshAgent.acceleration = data.acceleration;
             navMeshAgent.stoppingDistance = data.stoppingDistance;
         }
