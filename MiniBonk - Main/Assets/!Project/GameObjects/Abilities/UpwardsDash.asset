@@ -15,8 +15,8 @@ MonoBehaviour:
   abilityName: UpwardsDash
   abilityID: 3
   cooldownTime: 4
-  coverIcon: {fileID: 1076641501, guid: 15e2930367144c24cab3e10052976be4, type: 3}
-  coverAnim: {fileID: 0}
+  coverIcon: {fileID: -1036163399, guid: 40834697b69718648bbc930c19c9ddbe, type: 3}
+  coverAnim: {fileID: 9100000, guid: 516268d807fe36e4c9b42539cc347ea7, type: 2}
   displayName: SprintBoots
   abilityDescription: Spring boots that allow you to jump way above the heads of
     enemies, perfect for escaping tricky situations

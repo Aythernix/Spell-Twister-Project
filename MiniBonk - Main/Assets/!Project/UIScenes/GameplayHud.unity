@@ -3134,6 +3134,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 366547808}
     m_Modifications:
+    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777500390239156573, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6454639756440903243, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3217,6 +3233,22 @@ PrefabInstance:
     - target: {fileID: 6646915932996767028, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
       propertyPath: m_Name
       value: Inevntory Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312551029679569806, guid: ee3d10661c83bd641acf122aa99e2da6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
