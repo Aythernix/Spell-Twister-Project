@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7988645130350994218}
-  - component: {fileID: 1685668132126964760}
+  - component: {fileID: 5466852125231986779}
   - component: {fileID: 3798102829265536809}
   m_Layer: 0
   m_Name: SoundManager
@@ -122,7 +122,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3937352027428624044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1685668132126964760
+--- !u!114 &5466852125231986779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,12 +131,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 5433706914818556040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c650e575485d14ea895fb12d75fb17, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bc9304f3f666a04cb555321c86d7e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UiSelect: {fileID: 0}
-  _UiConfirm: {fileID: 0}
-  _UiCancel: {fileID: 0}
+  Sounds:
+  - name: PlayerFootsteps
+    clips:
+    - {fileID: 8300000, guid: 0ee07d619990c8347ab9c05a6514df56, type: 3}
+    - {fileID: 8300000, guid: 422dc960b2b80474bbb4d07a1c13eb5a, type: 3}
+    - {fileID: 8300000, guid: 9c8178b5ade8c4f489662c522b5dd232, type: 3}
+    - {fileID: 8300000, guid: 53b7693cb24c7d540a869259f5d4a707, type: 3}
+    - {fileID: 8300000, guid: db69eb3536da1034395bdf105ff63ad0, type: 3}
+    volume: 0.1
+  - name: PlayerJump
+    clips: []
+    volume: 0
+  - name: Fireball
+    clips: []
+    volume: 0
+  - name: Wave
+    clips: []
+    volume: 0
+  - name: Wind
+    clips: []
+    volume: 0
+  - name: Ice
+    clips: []
+    volume: 0
+  - name: IceImpact
+    clips: []
+    volume: 0
+  - name: MeleeFootSteps
+    clips: []
+    volume: 0
+  - name: MeleeAttacks
+    clips: []
+    volume: 0
+  - name: RangedFootSteps
+    clips: []
+    volume: 0
+  - name: RangedAttacks
+    clips: []
+    volume: 0
+  - name: RangedImpact
+    clips: []
+    volume: 0
+  - name: UIHover
+    clips: []
+    volume: 0
+  - name: UIConfirm
+    clips: []
+    volume: 0
 --- !u!82 &3798102829265536809
 AudioSource:
   m_ObjectHideFlags: 0
