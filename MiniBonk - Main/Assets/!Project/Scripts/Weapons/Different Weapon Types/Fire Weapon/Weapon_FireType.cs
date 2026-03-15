@@ -4,6 +4,14 @@ using Minibonk.Management;
 
 public class Weapon_FireType : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        GameManager.Instance.EventHandler.OnPlayerLevelIncrease += ApplyChaosMultiplier;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.EventHandler.OnPlayerLevelIncrease -= ApplyChaosMultiplier;
+    }
     // ------------------------------ CODE FOR FIRE TYPE WEAPON -----------------------//
 
     // bullet parameters
@@ -79,6 +87,11 @@ public class Weapon_FireType : MonoBehaviour
                 createFireBall();
             }
         }
+    }
+    
+    private void ApplyChaosMultiplier(int lvl)
+    {
+     fireRate = Mathf.Clamp(fireRate / GameManager.Instance.ChaosMultiplier(), 0.1f, fireRate);   
     }
 
     void createFireBall()
