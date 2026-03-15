@@ -27,7 +27,7 @@ namespace MiniBonk.Enemy
             navMeshAgent = GetComponent<NavMeshAgent>();
             enemyAnimations = GetComponentInChildren<EnemyAnimations>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
-            currentHealth = data.health;
+            currentHealth = (int)(data.health * GameManager.Instance.ChaosMultiplier());
             ApplySettings();
             lastUpdateTime = Time.time;
             lastPlayerPosition = player.position;

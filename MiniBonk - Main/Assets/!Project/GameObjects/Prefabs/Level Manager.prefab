@@ -981,6 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4333161612894634218}
   - component: {fileID: 522926705318873135}
+  - component: {fileID: 4067401804744379252}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -1027,6 +1028,20 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &4067401804744379252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998750724136321917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af55f8b27b4806846aa0b2289e07de3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateInterval: 0.1
+  _maxEnemiesPerFrame: 100
 --- !u!1 &8078268995034469422
 GameObject:
   m_ObjectHideFlags: 0
