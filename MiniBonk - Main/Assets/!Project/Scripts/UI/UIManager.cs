@@ -35,6 +35,7 @@ namespace Minibonk.UI
 
 		private void OnEnable()
 		{
+			Application.backgroundLoadingPriority = ThreadPriority.Low;
 			SceneManager.activeSceneChanged += OnSceneChange;
 			UIEvents.OnInstantiateUIScene += InstantiateUIScene;
 			UIEvents.OnInstantiatePersistantUIScene += OpenPersistantUI;

@@ -98,14 +98,34 @@ namespace MiniBonk.Enemy
             _spawnDelay = Mathf.Clamp(_spawnDelay - GameManager.Instance.ChaosMultiplier(), 3, _spawnDelay);
             _maxEnemiesInScene += Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier());
         }
+        private Coroutine _spawnCoroutine;
+        private float _nextSpawnTime;
+        
         private void StartEnemySpawning()
         {
             if (GameManager.Instance.sceneIsPlayable)
             {
                 _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-                StartCoroutine(HandleEnemySpawning());
+                _nextSpawnTime = Time.time + _spawnDelay - GameManager.Instance.ChaosMultiplier();
+                _spawnCoroutine = StartCoroutine(HandleEnemySpawning());
             }
         }
+        
+        // Handles the enemy spawn rate (Seconds)
+        private IEnumerator HandleEnemySpawning()
+        {
+            while (GameManager.Instance.sceneIsPlayable)
+            {
+                yield return new WaitForSeconds(0.1f); // Check every 100ms instead of creating new coroutines
+                
+                if (Time.time >= _nextSpawnTime && !_maxReached)
+                {
+                    SpawnEnemy();
+                    _nextSpawnTime = Time.time + _spawnDelay - GameManager.Instance.ChaosMultiplier();
+                }
+            }
+        }
+        
         // Gets a random position in a sphere around the player
         private Vector3 SpawnPosition()
         {
@@ -124,24 +144,6 @@ namespace MiniBonk.Enemy
             _lastSpawnPos = spawnPos;
             
             return spawnPos;
-        }
-
-        // Handles the enemy spawn rate (Seconds)
-        private IEnumerator HandleEnemySpawning()
-        {
-            yield return new WaitForSeconds(_spawnDelay - GameManager.Instance.ChaosMultiplier());
-            
-
-
-            if (!_maxReached)
-            {
-                SpawnEnemy();
-            }
-            
-            if (!GameManager.Instance.sceneIsPlayable)
-                yield break;
-            
-            StartCoroutine(HandleEnemySpawning());
         }
         
         /// <summary>

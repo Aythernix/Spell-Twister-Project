@@ -24,6 +24,9 @@ namespace Minibonk.Management
         private float _lastProcessTime;
         private int _currentProcessIndex;
         
+        // Separation optimization - single array for all enemies
+        private Collider[] _hitColliders = new Collider[50];
+        
         // Cached references
         private Transform _playerTransform;
         private Vector3 _lastPlayerPosition;
@@ -53,11 +56,8 @@ namespace Minibonk.Management
         
         private void Update()
         {
-            if (Time.time >= _lastProcessTime + _updateInterval)
-            {
-                ProcessAllEnemies();
-                _lastProcessTime = Time.time;
-            }
+            // Process in smaller chunks every frame instead of large batches every 0.1s
+            ProcessEnemyChunk();
         }
         #endregion
         
@@ -100,33 +100,52 @@ namespace Minibonk.Management
         
         #region Private Methods
         /// <summary>
-        /// Process all enemies in batches for optimal performance
+        /// Process enemies in small chunks every frame for smooth performance
         /// </summary>
-        private void ProcessAllEnemies()
+        private void ProcessEnemyChunk()
         {
             if (_activeEnemies.Count == 0) return;
             
-            // Check if player moved significantly
+            // Process only a small number of enemies per frame
+            int enemiesPerFrame = 5; // Much smaller than before
+            int processedCount = 0;
+            
+            // Check if player moved significantly (less frequent check)
             bool playerMoved = _playerTransform != null && 
-                             Vector3.Distance(_lastPlayerPosition, _playerTransform.position) > 0.5f;
+                             Vector3.Distance(_lastPlayerPosition, _playerTransform.position) > 1.0f;
             
             if (playerMoved)
             {
                 _lastPlayerPosition = _playerTransform.position;
             }
             
-            // Process enemies in batches to avoid frame spikes
-            int processedCount = 0;
-            int startIndex = _currentProcessIndex;
-            
-            for (int i = 0; i < _activeEnemies.Count && processedCount < _maxEnemiesPerFrame; i++)
+            // Process enemies in small chunks
+            for (int i = 0; i < _activeEnemies.Count && processedCount < enemiesPerFrame; i++)
             {
-                int index = (startIndex + i) % _activeEnemies.Count;
+                int index = (_currentProcessIndex + i) % _activeEnemies.Count;
                 var enemy = _activeEnemies[index];
                 
                 if (enemy != null && enemy.isAlive)
                 {
-                    ProcessEnemy(enemy, playerMoved);
+                    // Only update pathfinding less frequently
+                    if (playerMoved || Time.time >= enemy.GetLastUpdateTime() + enemy.GetUpdateInterval())
+                    {
+                        enemy.UpdatePathfinding(_playerTransform.position);
+                        enemy.SetLastUpdateTime(Time.time);
+                    }
+                    
+                    // Check combat less frequently
+                    if (Time.time % 0.2f < Time.deltaTime) // Every ~200ms
+                    {
+                        ProcessCombatLogic(enemy);
+                    }
+                    
+                    // Process separation even less frequently
+                    if (Time.time % 0.5f < Time.deltaTime) // Every ~500ms
+                    {
+                        ProcessSeparation(enemy);
+                    }
+                    
                     processedCount++;
                 }
                 else if (enemy == null || !enemy.isAlive)
@@ -142,24 +161,20 @@ namespace Minibonk.Management
             }
             
             // Update process index for next frame
-            _currentProcessIndex = (startIndex + processedCount) % _activeEnemies.Count;
+            _currentProcessIndex = (_currentProcessIndex + processedCount) % _activeEnemies.Count;
             
-            // Process animations separately
-            ProcessAnimations();
+            // Process animations separately but also in chunks
+            if (Time.time % 0.1f < Time.deltaTime) // Every ~100ms
+            {
+                ProcessAnimationChunk();
+            }
         }
         
         /// <summary>
-        /// Process individual enemy logic
+        /// Process combat logic separately for better performance
         /// </summary>
-        private void ProcessEnemy(MiniBonk.Enemy.Enemy enemy, bool playerMoved)
+        private void ProcessCombatLogic(MiniBonk.Enemy.Enemy enemy)
         {
-            // Only update pathfinding if player moved significantly or enough time passed
-            if (playerMoved || Time.time >= enemy.GetLastUpdateTime() + enemy.GetUpdateInterval())
-            {
-                enemy.UpdatePathfinding(_playerTransform.position);
-                enemy.SetLastUpdateTime(Time.time);
-            }
-            
             // Use squared distance for comparison (faster than sqrt)
             float sqrDistance = (enemy.transform.position - _playerTransform.position).sqrMagnitude;
             float sqrAttackRange = enemy.GetAttackRange() * enemy.GetAttackRange();
@@ -180,16 +195,20 @@ namespace Minibonk.Management
         }
         
         /// <summary>
-        /// Process all enemy animations in batch
+        /// Process animations in small chunks
         /// </summary>
-        private void ProcessAnimations()
+        private void ProcessAnimationChunk()
         {
-            for (int i = 0; i < _enemyAnimations.Count; i++)
+            int animationsPerFrame = 3;
+            int processed = 0;
+            
+            for (int i = 0; i < _enemyAnimations.Count && processed < animationsPerFrame; i++)
             {
                 var anim = _enemyAnimations[i];
                 if (anim != null)
                 {
                     anim.ProcessAnimation();
+                    processed++;
                 }
                 else
                 {
@@ -198,6 +217,31 @@ namespace Minibonk.Management
                 }
             }
         }
+        
+        /// <summary>
+        /// Process enemy separation using centralized collision detection
+        /// </summary>
+        private void ProcessSeparation(MiniBonk.Enemy.Enemy enemy)
+        {
+            if (enemy.data == null) return;
+            
+            int hitCount = UnityEngine.Physics.OverlapSphereNonAlloc(
+                enemy.transform.position, 
+                enemy.data.seperationRadius, 
+                _hitColliders
+            );
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                var other = _hitColliders[i];
+                if (other.gameObject != enemy.gameObject && other.CompareTag("Enemy"))
+                {
+                    Vector3 pushDirection = enemy.transform.position - other.transform.position;
+                    enemy.transform.position += pushDirection.normalized * enemy.data.seperationAmount * Time.fixedDeltaTime;
+                }
+            }
+        }
+
         #endregion
     }
 }
