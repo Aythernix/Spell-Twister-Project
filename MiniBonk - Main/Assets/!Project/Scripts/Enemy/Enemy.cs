@@ -31,6 +31,9 @@ namespace MiniBonk.Enemy
             ApplySettings();
             lastUpdateTime = Time.time;
             lastPlayerPosition = player.position;
+            
+            // Register with centralized processor
+            EnemyProcessor.RegisterEnemy(this);
         }
 
         public virtual void TakeDamage( int amount, GameObject instigator = null)
@@ -47,6 +50,10 @@ namespace MiniBonk.Enemy
         protected virtual void Die(GameObject instigator)
         {
             isAlive = false;
+            
+            // Unregister from centralized processor
+            EnemyProcessor.UnregisterEnemy(this);
+            
             if (data != null)
             {
                 // Debug.Log($"{gameObject.name} has died. Worth {data.xpValue}");
@@ -71,43 +78,30 @@ namespace MiniBonk.Enemy
 
         protected virtual void Update()
         {
-            if (!isAlive) return;
-            
-            // Only update pathfinding if player moved significantly or enough time passed
-            if (Time.time >= lastUpdateTime + UPDATE_INTERVAL || 
-                Vector3.Distance(lastPlayerPosition, player.position) > 0.5f)
-            {
-                navMeshAgent.SetDestination(player.position);
-                lastUpdateTime = Time.time;
-                lastPlayerPosition = player.position;
-            }
-            
-            // Use squared distance for comparison (faster than sqrt)
-            float sqrDistance = (transform.position - player.position).sqrMagnitude;
-            float sqrAttackRange = data.attackRange * data.attackRange;
-            
-            if (sqrDistance <= sqrAttackRange)
-            {
-                if (Time.time >= nextAttackTime)
-                {
-                    Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
-                    if (enemyAnimations != null)
-                        enemyAnimations.CheckForAttacking();
-
-                    nextAttackTime = Time.time + data.attackCooldown;
-                }
-                     
-                navMeshAgent.isStopped = true;
-            }
-            else
-            {
-                navMeshAgent.isStopped = false;
-            }
+            // Update method disabled - now handled by EnemyProcessor
         }
+        
+        // Public methods for EnemyProcessor access
+        public float GetLastUpdateTime() => lastUpdateTime;
+        public void SetLastUpdateTime(float time) => lastUpdateTime = time;
+        public float GetUpdateInterval() => UPDATE_INTERVAL;
+        public float GetAttackRange() => data.attackRange;
+        public float GetNextAttackTime() => nextAttackTime;
+        public void SetNextAttackTime(float time) => nextAttackTime = time;
+        public float GetAttackCooldown() => data.attackCooldown;
+        
+        public void UpdatePathfinding(Vector3 targetPosition)
+        {
+            navMeshAgent.SetDestination(targetPosition);
+            lastPlayerPosition = targetPosition;
+        }
+        
+        public void StopMovement() => navMeshAgent.isStopped = true;
+        public void ResumeMovement() => navMeshAgent.isStopped = false;
         protected virtual void FixedUpdate()
         {
         }
 
-        protected abstract void Attack();
+        public abstract void Attack();
     }
 }

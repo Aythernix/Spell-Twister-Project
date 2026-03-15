@@ -31,10 +31,11 @@ namespace MiniBonk.Enemy
         [SerializeField] private LayerMask _groundLayer;
 
         private Transform _playerTransform;
-        
         private bool _validSpawn = true;
         private bool _maxReached;
         private Vector3 _lastSpawnPos = Vector3.zero;
+        private float lastManagerUpdateTime;
+        private const float MANAGER_UPDATE_INTERVAL = 0.1f; // Check 10 times per second
         
         #endregion
         
@@ -56,28 +57,36 @@ namespace MiniBonk.Enemy
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            lastManagerUpdateTime = Time.time;
             StartEnemySpawning();
         }
 
         // Update is called once per frame
         void Update()
         {
-            #region Debugs
-
-            if (!_validSpawn)
+            // Only update manager at intervals to reduce CPU load
+            if (Time.time >= lastManagerUpdateTime + MANAGER_UPDATE_INTERVAL)
             {
-                Debug.LogWarning($"Enemies are being prevented from spawning {_lastSpawnPos}");
-            }
+                #region Debugs
 
-            #endregion
+                if (!_validSpawn)
+                {
+                    Debug.LogWarning($"Enemies are being prevented from spawning {_lastSpawnPos}");
+                }
 
-            if (_enemiesInScene.Count >= _maxEnemiesInScene)
-            {
-                HandleMaxEnemy();
-            }
-            else
-            {
-                _maxReached = false;
+                #endregion
+
+                if (_enemiesInScene.Count >= _maxEnemiesInScene)
+                {
+                    HandleMaxEnemy();
+                }
+                else
+                {
+                    _maxReached = false;
+                }
+                
+                lastManagerUpdateTime = Time.time;
             }
         }
         #endregion

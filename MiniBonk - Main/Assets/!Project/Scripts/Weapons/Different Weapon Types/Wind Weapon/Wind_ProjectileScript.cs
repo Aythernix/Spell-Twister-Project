@@ -9,6 +9,12 @@ public class Wind_ProjectileScript : MonoBehaviour
     float bladeLife = 2f;
     private bool hasHit = false;
     public WeaponDamageStats weaponDamageStats;
+    private Collider projectileCollider; // Cached collider
+
+    private void Awake()
+    {
+        projectileCollider = GetComponent<Collider>();
+    }
 
     // --------------------------- Main Logic -----------------------------//
 
@@ -27,7 +33,7 @@ public class Wind_ProjectileScript : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             hasHit = true;
-            GetComponent<Collider>().enabled = false;
+            projectileCollider.enabled = false;
 
             var justHit = other.GetComponent<MiniBonk.Enemy.Enemy>();
 

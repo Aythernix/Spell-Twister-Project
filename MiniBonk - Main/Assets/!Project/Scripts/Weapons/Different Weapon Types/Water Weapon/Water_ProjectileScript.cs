@@ -10,6 +10,12 @@ public class Water_ProjectileScript : MonoBehaviour
     float waterProjectileLife = 4f;
     public WeaponDamageStats weaponDamageStats;
     bool hasHit = false;
+    private Collider projectileCollider; // Cached collider
+
+    private void Awake()
+    {
+        projectileCollider = GetComponent<Collider>();
+    }
 
     // ------------------------ Projectile Lifetime Timer ---------------------------//
 
@@ -32,7 +38,7 @@ public class Water_ProjectileScript : MonoBehaviour
             hasHit = true; 
 
             // turns off projectile collider so it can't trigger code more than once
-            GetComponent<Collider>().enabled = false;
+            projectileCollider.enabled = false;
 
             // creates a local variable for the Enemy Class
             var justHit = other.GetComponent<MiniBonk.Enemy.Enemy>();
