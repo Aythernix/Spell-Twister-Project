@@ -16,6 +16,7 @@ namespace MiniBonk.Enemy
         
         protected int currentHealth;
         private float nextAttackTime;
+        private Rigidbody playerRigidbody;
         private float lastUpdateTime;
         private Vector3 lastPlayerPosition;
         private EnemyAnimations enemyAnimations;
@@ -24,10 +25,12 @@ namespace MiniBonk.Enemy
         // Update is called once per frame
         protected virtual void Start()
         {
+            
             navMeshAgent = GetComponent<NavMeshAgent>();
             enemyAnimations = GetComponentInChildren<EnemyAnimations>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
             currentHealth = (int)(data.health * GameManager.Instance.ChaosMultiplier());
+            playerRigidbody = player.GetComponent<Rigidbody>();
             ApplySettings();
             lastUpdateTime = Time.time;
             lastPlayerPosition = player.position;
@@ -71,6 +74,8 @@ namespace MiniBonk.Enemy
         
         private void ApplySettings()
         {
+            float randomSpeed = data.speed + UnityEngine.Random.Range(-data.speedVariance, data.speedVariance);
+            
             navMeshAgent.speed = data.speed;
             navMeshAgent.acceleration = data.acceleration;
             navMeshAgent.stoppingDistance = data.stoppingDistance;
@@ -94,12 +99,57 @@ namespace MiniBonk.Enemy
         {
             navMeshAgent.SetDestination(targetPosition);
             lastPlayerPosition = targetPosition;
+            if (!isAlive) return;
+            
+            Vector3 targetPos = player.position;
+            if (playerRigidbody != null)
+            {
+                targetPos += playerRigidbody.linearVelocity * data.predictionTime;
+            }
+            navMeshAgent.SetDestination(targetPos);
+            float distance = Vector3.Distance(transform.position, player.position);
+            if (distance > 15f)
+            {
+                navMeshAgent.speed = data.speed * 1.5f; //Catch up to player if far
+            }
+            else
+            {
+                navMeshAgent.speed = data.speed;
+            }
+            if (distance <= data.attackRange)
+            {
+                if (Time.time >= nextAttackTime)
+                {
+                    Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
+                    GetComponentInChildren<EnemyAnimations>().CheckForAttacking();
+
+                    nextAttackTime = Time.time + data.attackCooldown;
+                }
+                     
+                navMeshAgent.isStopped = true;
+            }
+            else
+            {
+                navMeshAgent.isStopped = false;
+            }
         }
         
         public void StopMovement() => navMeshAgent.isStopped = true;
         public void ResumeMovement() => navMeshAgent.isStopped = false;
         protected virtual void FixedUpdate()
         {
+            Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, data.seperationRadius);
+
+            foreach (var other in nearbyEnemies)
+            {
+
+                if (other.gameObject != gameObject && other.CompareTag("Enemy"))
+                {
+                    Vector3 pushDirection = transform.position - other.transform.position;
+                    transform.position += pushDirection.normalized * data.seperationAmount * Time.fixedDeltaTime;
+                }
+            }
+            
         }
 
         public abstract void Attack();
