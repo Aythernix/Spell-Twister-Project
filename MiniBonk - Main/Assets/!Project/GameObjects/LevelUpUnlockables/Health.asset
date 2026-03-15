@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Health potions give a flat amount of Health to your overall Health
     stat. Great for players that like tanking Hits!
   currency: Max Health
-  reward: 5
+  reward: 2
   levelMultiplier: 1.5
   moneyIncrease: 0
   traceIncrease: 0
