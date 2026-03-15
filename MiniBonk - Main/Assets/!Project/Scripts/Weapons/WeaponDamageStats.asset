@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b8e1d681834d349822627cbcdfb62d, type: 3}
   m_Name: WeaponDamageStats
   m_EditorClassIdentifier: 
-  fireBallProjectileDMG: 40
-  fireBallProjectileDMG_LVL2: 75
-  waterBallProjectileDMG: 60
-  waterBallProjectileDMG_LVL2: 85
-  windBallProjectileDMG: 30
-  windBallProjectileDMG_LVL2: 40
+  fireBallProjectileDMG: 100
+  waterBallProjectileDMG: 150
+  windBallProjectileDMG: 100
   iceBallProjectileDMG: 20
-  iceBallProjectileDMG_LVL2: 25
-  frostBiteDOT: 10
+  frostBiteDOT: 5
