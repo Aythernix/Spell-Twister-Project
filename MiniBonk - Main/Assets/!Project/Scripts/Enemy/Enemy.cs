@@ -1,6 +1,7 @@
 using System;
 using Minibonk.Enemy;
 using Minibonk.Management;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,12 +17,14 @@ namespace MiniBonk.Enemy
         
         protected int currentHealth;
         private float nextAttackTime;
-
+        private Rigidbody playerRigidbody;
         // Update is called once per frame
         protected virtual void Start()
         {
+            
             navMeshAgent = GetComponent<NavMeshAgent>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
+            playerRigidbody = player.GetComponent<Rigidbody>();
             currentHealth = data.health;
             ApplySettings();
         }
@@ -57,6 +60,8 @@ namespace MiniBonk.Enemy
         
         private void ApplySettings()
         {
+            float randomSpeed = data.speed + UnityEngine.Random.Range(-data.speedVariance, data.speedVariance);
+            
             navMeshAgent.speed = data.speed;
             navMeshAgent.acceleration = data.acceleration;
             navMeshAgent.stoppingDistance = data.stoppingDistance;
@@ -64,8 +69,23 @@ namespace MiniBonk.Enemy
 
         protected virtual void Update()
         {
-            navMeshAgent.SetDestination(player.position);
+            if (!isAlive) return;
+            
+            Vector3 targetPos = player.position;
+            if (playerRigidbody != null)
+            {
+                targetPos += playerRigidbody.linearVelocity * data.predictionTime;
+            }
+            navMeshAgent.SetDestination(targetPos);
             float distance = Vector3.Distance(transform.position, player.position);
+            if (distance > 15f)
+            {
+                navMeshAgent.speed = data.speed * 1.5f; //Catch up to player if far
+            }
+            else
+            {
+                navMeshAgent.speed = data.speed;
+            }
             if (distance <= data.attackRange)
             {
                 if (Time.time >= nextAttackTime)
@@ -85,6 +105,18 @@ namespace MiniBonk.Enemy
         }
         protected virtual void FixedUpdate()
         {
+            Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, data.seperationRadius);
+
+            foreach (var other in nearbyEnemies)
+            {
+
+                if (other.gameObject != gameObject && other.CompareTag("Enemy"))
+                {
+                    Vector3 pushDirection = transform.position - other.transform.position;
+                    transform.position += pushDirection.normalized * data.seperationAmount * Time.fixedDeltaTime;
+                }
+            }
+            
         }
 
         protected abstract void Attack();

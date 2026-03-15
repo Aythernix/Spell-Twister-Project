@@ -10,9 +10,10 @@ namespace MiniBonk.Enemy
         public float projectileLifetime = 5f;
         public float projectileSpeed = 20f;
         
-        
         [Header("Movement Settings")] 
         public float speed = 3.5f;
+
+        public float speedVariance = 0.5f;
         public float acceleration = 8f;
         public float stoppingDistance = 5f;
 
@@ -28,6 +29,12 @@ namespace MiniBonk.Enemy
 
         [Header("Spawn Settings")]
         [Range(0,100)]public float spawnChance;
+        
+        [Header("Advancced Settings")]
+        public float predictionTime = 0.5f; // Time in seconds to predict player's future position for aiming
+        public float seperationAmount = 1.5f; // How much enemey avoids others
+        public float seperationRadius = 2f; // Distance to keep
+        
 
         [Header("Visuals")] public GameObject model;
         public Color debugColor = Color.red;
