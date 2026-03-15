@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using MiniBonk.Enemy;
 using Minibonk.MovementAbilities;
@@ -209,12 +210,12 @@ namespace Minibonk.Management
 		/// <summary>
 		/// Plays audio from the audio Manager, Takes the audio clip and Source
 		/// </summary>
-		public Action<AudioManager.AudioClips, AudioSource> PlayAudio;
+		public Action<AudioManager.AudioClips, AudioSource?> PlayAudio;
 		
 		/// <summary>
 		/// Plays a custom audio in the Audio Manager, takes the audio clip,volume and source.
 		/// </summary>
-		public Action<AudioClip, float, AudioSource> PlayCustomAudio;
+		public Action<AudioClip, float, AudioSource?> PlayCustomAudio;
 
 		#endregion
 		

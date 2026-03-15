@@ -123,7 +123,7 @@ namespace Minibonk.Player
 
         public void PlayFootSteps()
         {
-            GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
         }
     }
 }

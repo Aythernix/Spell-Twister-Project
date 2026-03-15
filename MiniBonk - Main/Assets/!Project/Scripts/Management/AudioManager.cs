@@ -10,6 +10,7 @@ namespace Minibonk.Management
         #region Variables
         
         private AudioSource _audioSource;
+        public  AudioSource globalAudioSource;
         
         public enum AudioClips
         {
@@ -60,16 +61,18 @@ namespace Minibonk.Management
         }
         private void Start()
         {
-            
+            globalAudioSource = GetComponent<AudioSource>();
         }
 
-        public void PlayCustomAudio(AudioClip clip, float volume, AudioSource source)
+        public void PlayCustomAudio(AudioClip clip, float volume, AudioSource source = null)
         {
+            if (source == null) source = globalAudioSource;
             _audioSource = source;
             _audioSource.PlayOneShot(clip, volume);
         }
-        public void PlayAudio(AudioClips clips, AudioSource source)
+        public void PlayAudio(AudioClips clips, AudioSource source = null)
         {
+            if (source == null) source = globalAudioSource;
             _audioSource = source;
             var clipIndex = Random.Range(0, Sounds[(int)clips].clips.Length);
             PlayCustomAudio(Sounds[(int)clips].clips[clipIndex], Sounds[(int)clips].volume, source);
