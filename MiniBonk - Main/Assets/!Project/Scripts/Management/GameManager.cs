@@ -205,6 +205,16 @@ namespace Minibonk.Management
 		/// Called when the player actually receives XP (parameter: currentTotalXp)
 		/// </summary>
 		public Action<int> OnXpGained;
+		
+		/// <summary>
+		/// Plays audio from the audio Manager, Takes the audio clip and Source
+		/// </summary>
+		public Action<AudioManager.AudioClips, AudioSource> PlayAudio;
+		
+		/// <summary>
+		/// Plays a custom audio in the Audio Manager, takes the audio clip,volume and source.
+		/// </summary>
+		public Action<AudioClip, float, AudioSource> PlayCustomAudio;
 
 		#endregion
 		

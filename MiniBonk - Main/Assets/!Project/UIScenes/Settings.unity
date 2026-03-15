@@ -312,7 +312,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1035658598673606590, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_Name
-      value: Volume Slider (1)
+      value: Gameplay Volume Slider (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2653548934955410091, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchorMax.y
@@ -553,7 +553,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1035658598673606590, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_Name
-      value: Volume Slider (4)
+      value: Music Volume Slider (4)
       objectReference: {fileID: 0}
     - target: {fileID: 2653548934955410091, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchorMax.y
@@ -996,7 +996,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1035658598673606590, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_Name
-      value: Volume Slider (3)
+      value: Player Volume Slider (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2653548934955410091, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1399,7 +1399,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1035658598673606590, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_Name
-      value: Volume Slider (2)
+      value: Enemy Volume Slider (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2653548934955410091, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1692,8 +1692,8 @@ MonoBehaviour:
   _gameSettings: {fileID: 11400000, guid: 7e60863968b3ca34cb51004d289d0059, type: 2}
   _masterVolumeSlider: {fileID: 525513426}
   _gameplayVolumeSlider: {fileID: 625459974}
-  _playerVolumeSlider: {fileID: 1671752147}
-  _enemyVolumeSlider: {fileID: 925152947}
+  _playerVolumeSlider: {fileID: 925152947}
+  _enemyVolumeSlider: {fileID: 1671752147}
   _musicVolumeSlider: {fileID: 301485063}
   _pixelisationSlider: {fileID: 395066793}
 --- !u!1 &1032716304
@@ -2420,7 +2420,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1035658598673606590, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_Name
-      value: Volume Slider
+      value: Master Volume Slider
       objectReference: {fileID: 0}
     - target: {fileID: 2653548934955410091, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchorMax.y

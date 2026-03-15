@@ -11,6 +11,7 @@ namespace Minibonk.Player
 
         public PlayerData playerData;
         public readonly Events PlayerEvents = new Events();
+        public AudioSource playerAudioSource;
         #endregion
 
         #region Unity Methods
@@ -44,6 +45,7 @@ namespace Minibonk.Player
         private void Start()
         {
             playerData.Reset();
+            playerAudioSource = GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
