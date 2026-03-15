@@ -41,7 +41,7 @@ namespace Minibonk.Management
 
 		public GameState currentGameState;
 
-		public float baseChaosMultiplier = 1.2f;
+		public float growthRate = 1.2f;
 
 		#endregion
 
@@ -149,14 +149,15 @@ namespace Minibonk.Management
 			{
 				if (currentLevelManager.playerHandler.playerData.level == 1)
 					return 1f;
-				var chaosMultiplier = 1f * Mathf.Pow(baseChaosMultiplier, currentLevelManager.playerHandler.playerData.level - 1);
+				var chaosMultiplier = 1f + (growthRate * (currentLevelManager.playerHandler.playerData.level - 1));
+				Debug.Log($"Chaos Multiplier: {chaosMultiplier}");
 				return chaosMultiplier;
 			}
 			catch (Exception e)
 			{
 				
 				Console.WriteLine(e);
-				return baseChaosMultiplier;
+				return growthRate;
 			}
 		}
 

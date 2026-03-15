@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02f1bc27bc05fc4cb11abcfb78768e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allowDamageTimer: 0.75
-  _lowHealthThreshold: 20
+  _allowDamageTimer: 0.2
+  _lowHealthThreshold: 40
   _lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
   _vignetteTransitionDuration: 1
 --- !u!114 &5323530357719695731
@@ -701,7 +701,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 67.87897
+    FieldOfView: 60.16051
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000

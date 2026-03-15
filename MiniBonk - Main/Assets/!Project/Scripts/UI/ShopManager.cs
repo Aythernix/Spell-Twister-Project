@@ -1,3 +1,4 @@
+using System;
 using Minibonk.Management;
 using Minibonk.MovementAbilities;
 using Minibonk.UI;
@@ -11,16 +12,31 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _moneyText;
 
     #endregion
+
+    private void OnEnable()
+    {
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerMoneyUI += UpdateMoney;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerMoneyUI -= UpdateMoney;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _moneyText.text = $"x{GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetMoney?.Invoke()}";
+        GameManager.Instance.uiManager.UIEvents.UpdateUI?.Invoke();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void UpdateMoney(int money)
+    {
+        _moneyText.text = $"x{money}";
     }
 
     #region Button Methods
@@ -39,6 +55,7 @@ public class ShopManager : MonoBehaviour
                 GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnDecreaseMoney(shopOptionController._movementAbilitySO.cost);
                 GameManager.Instance.currentLevelManager.playerHandler.GetComponent<AbilityManager>().UnlockAbility(shopOptionController._movementAbilitySO.abilityID);
                 shopOptionController.CheckIfPurchased();
+                GameManager.Instance.uiManager.UIEvents.UpdateUI?.Invoke();
             }
         }
         

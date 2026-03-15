@@ -675,7 +675,7 @@ namespace Minibonk.Management
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""EquipFireball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -686,7 +686,7 @@ namespace Minibonk.Management
                     ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""EquipFireball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -697,7 +697,7 @@ namespace Minibonk.Management
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""EquipWater"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -708,7 +708,7 @@ namespace Minibonk.Management
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""EquipWater"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -719,7 +719,7 @@ namespace Minibonk.Management
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Touch"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""EquipWind"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -730,7 +730,7 @@ namespace Minibonk.Management
                     ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""EquipWind"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -741,7 +741,7 @@ namespace Minibonk.Management
                     ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""EquipIce"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -752,7 +752,7 @@ namespace Minibonk.Management
                     ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""EquipIce"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

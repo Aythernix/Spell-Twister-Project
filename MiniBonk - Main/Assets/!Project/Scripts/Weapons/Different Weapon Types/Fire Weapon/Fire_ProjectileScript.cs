@@ -12,6 +12,12 @@ public class Fire_ProjectileScript : MonoBehaviour
     float bulletLife = 2.5f;
     private bool hasHit = false;
     public WeaponDamageStats weaponDamageStats;
+    private Collider projectileCollider; // Cached collider
+
+    private void Awake()
+    {
+        projectileCollider = GetComponent<Collider>();
+    }
 
     // ------------------------ Projectile Lifetime Timer ---------------------------//
     private void Update()
@@ -33,7 +39,7 @@ public class Fire_ProjectileScript : MonoBehaviour
             hasHit = true;
 
             // turns off projectile collider so it can't trigger code more than once
-            GetComponent<Collider>().enabled = false;
+            projectileCollider.enabled = false;
 
             // creates a local variable for the Enemy Class
             var justHit = other.GetComponent<MiniBonk.Enemy.Enemy>();

@@ -1,3 +1,4 @@
+using System;
 using Minibonk.Management;
 using Minibonk.UI;
 using TMPro;
@@ -13,10 +14,14 @@ public class SpellsMenuManager : MonoBehaviour
     #endregion
     #region Unity Methods
 
+    private void OnEnable()
+    {
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerTracePoints += UpdateTracePoints;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        _tracePointsText.text = $"x{GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetTracePoint?.Invoke()}";
+    { 
+        GameManager.Instance.uiManager.UIEvents.UpdateUI?.Invoke();   
     }
 
     // Update is called once per frame
@@ -29,6 +34,10 @@ public class SpellsMenuManager : MonoBehaviour
 
     #region Private Methods
 
+    private void UpdateTracePoints(int tracePoints)
+    {
+        _tracePointsText.text = $"x{tracePoints}";
+    }
     public void LearnSpell(SpellController spellController)
     {
         var spellType = spellController._spellType;

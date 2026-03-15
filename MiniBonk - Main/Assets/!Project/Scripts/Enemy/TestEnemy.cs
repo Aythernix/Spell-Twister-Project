@@ -5,12 +5,20 @@ using Minibonk.Player;
 
 public class TestEnemy : Enemy 
 {
-    protected override void Attack() 
+    private PlayerHandler playerHandler; // Cached PlayerHandler
+    
+    protected override void Start()
     {
-        if (player.TryGetComponent <PlayerHandler>(out PlayerHandler handler))
+        base.Start();
+        player.TryGetComponent<PlayerHandler>(out playerHandler);
+    }
+    
+    public override void Attack() 
+    {
+        if (playerHandler != null)
         {
             Debug.Log($"Enemy dealt {data.damage * GameManager.Instance.ChaosMultiplier()}");
-            handler.PlayerEvents.OnPlayerDamaged?.Invoke(data.damage * GameManager.Instance.ChaosMultiplier()); // "?" used to ensure there are subscribers and prevent Null crash if no subs
+            playerHandler.PlayerEvents.OnPlayerDamaged?.Invoke(data.damage * GameManager.Instance.ChaosMultiplier()); 
         }
         // Debug.Log("I am attacking the player!");
     }

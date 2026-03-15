@@ -288,7 +288,7 @@ MonoBehaviour:
   currentLevelManager: {fileID: 0}
   gameSettings: {fileID: 11400000, guid: 7e60863968b3ca34cb51004d289d0059, type: 2}
   currentGameState: 0
-  baseChaosMultiplier: 1.1
+  growthRate: 0.05
 --- !u!114 &5288521850801605740
 MonoBehaviour:
   m_ObjectHideFlags: 0

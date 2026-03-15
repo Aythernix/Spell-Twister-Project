@@ -1,3 +1,4 @@
+using System;
 using Minibonk.Management;
 using Minibonk.UI;
 using TMPro;
@@ -16,11 +17,21 @@ public class PauseMenuManager : MonoBehaviour
     #endregion
     #region Unity Events
 
+    private void OnEnable()
+    {
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerMoneyUI += UpdateMoneyUI;
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerTracePoints += UpdateTracePointsUI;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerMoneyUI -= UpdateMoneyUI;
+        GameManager.Instance.uiManager.UIEvents.OnUpdatePlayerTracePoints -= UpdateTracePointsUI;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _moneyText.text = $"x{GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetMoney?.Invoke()}";
-        _tracePointsText.text = $"x{GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetTracePoint?.Invoke()}";
+        GameManager.Instance.uiManager.UIEvents.UpdateUI?.Invoke();
     }
 
     // Update is called once per frame
@@ -30,6 +41,16 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     #endregion
+    
+    private void UpdateMoneyUI(int money)
+    {
+        _moneyText.text = $"x{money}";
+    }
+
+    private void UpdateTracePointsUI(int tracePoints)
+    {
+        _tracePointsText.text = $"x{tracePoints}";
+    }
 
     #region Button Methods
 

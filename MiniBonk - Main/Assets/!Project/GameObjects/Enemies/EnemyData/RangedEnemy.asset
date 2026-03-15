@@ -18,14 +18,14 @@ MonoBehaviour:
   speed: 7
   speedVariance: 0.5
   acceleration: 8
-  stoppingDistance: 30
+  stoppingDistance: 5
   health: 100
   damage: 15
   attackRange: 20
   attackCooldown: 1.5
   xpValue: 25
   healthDrop: {fileID: 7119216674329871604, guid: aad919e6ff9e27f4fa07433752c164d0, type: 3}
-  chanceOfDroppingHealth: 10
+  chanceOfDroppingHealth: 5
   spawnChance: 15
   predictionTime: 2
   seperationAmount: 0.5

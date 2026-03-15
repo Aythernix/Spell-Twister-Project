@@ -77,7 +77,11 @@ namespace Minibonk.Player
 
 		private void Update()
 		{
-			SnapToGround();
+			// Only snap to ground when needed
+			if (_resetMovement && !_isJumping)
+			{
+				SnapToGround();
+			}
 		}
 		
 
