@@ -38,28 +38,20 @@ namespace Minibonk.Enemy
         {
             if (_animator == null) return;
             
-            if (_navMeshAgent.velocity.magnitude > 0.1f)
-            {
-                _animator.SetBool("IsMoving", true);
-            }
-            else
-            {
-                _animator.SetBool("IsMoving", false);
-            }
-        }
-
-        private void CheckForMovement()
-        {
-            if (_animator == null) return;
+            // More reliable movement detection using desired velocity and position change
+            bool isMoving = false;
             
-            if (_navMeshAgent.velocity.magnitude > 0.1f)
+            if (_navMeshAgent != null && _navMeshAgent.isOnNavMesh && !_navMeshAgent.isStopped)
             {
-                _animator.SetBool("IsMoving", true);
+                // Check if the agent has a path and is actively moving
+                if (_navMeshAgent.hasPath && _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
+                {
+                    // Use desired velocity as it's more reliable than actual velocity
+                    isMoving = _navMeshAgent.desiredVelocity.magnitude > 0.1f;
+                }
             }
-            else
-            {
-                _animator.SetBool("IsMoving", false);
-            }
+            
+            _animator.SetBool("IsMoving", isMoving);
         }
 
         public void CheckForAttacking()

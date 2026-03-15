@@ -97,6 +97,7 @@ namespace MiniBonk.Enemy
         {
             _spawnDelay = Mathf.Clamp(_spawnDelay - GameManager.Instance.ChaosMultiplier(), 3, _spawnDelay);
             _maxEnemiesInScene += Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier());
+            _enemiesToSpawnPerBatch = Mathf.Clamp( _enemiesToSpawnPerBatch + Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier()), 3, 20);
         }
         private Coroutine _spawnCoroutine;
         private float _nextSpawnTime;

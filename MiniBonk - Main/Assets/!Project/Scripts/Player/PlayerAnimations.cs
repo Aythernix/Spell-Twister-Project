@@ -1,4 +1,5 @@
 using System;
+using Minibonk.Management;
 using Minibonk.Player;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -116,7 +117,13 @@ namespace Minibonk.Player
                 _animator.SetBool("Sprinting", true);
             }
         }
+        
 
         #endregion
+
+        public void PlayFootSteps()
+        {
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
+        }
     }
 }
