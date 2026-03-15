@@ -125,5 +125,10 @@ namespace Minibonk.Player
         {
             GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
         }
+        
+        public void PlaySprint()
+        {
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerSprint, _playerHandler.playerAudioSource);
+        }
     }
 }

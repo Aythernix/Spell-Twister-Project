@@ -16,6 +16,7 @@ namespace Minibonk.Management
         {
             // Player Sounds
             PlayerFootsteps,
+            PlayerSprint,
             PlayerJump,
             // Weapon Sounds
             Fireball,
@@ -74,7 +75,7 @@ namespace Minibonk.Management
         {
             if (source == null) source = globalAudioSource;
             _audioSource = source;
-            var clipIndex = Random.Range(0, Sounds[(int)clips].clips.Length);
+            var clipIndex = Random.Range(0, Sounds[(int)clips].clips.Length-1);
             PlayCustomAudio(Sounds[(int)clips].clips[clipIndex], Sounds[(int)clips].volume, source);
         }
     }
