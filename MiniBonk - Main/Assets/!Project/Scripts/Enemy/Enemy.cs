@@ -19,7 +19,6 @@ namespace MiniBonk.Enemy
         private Rigidbody playerRigidbody;
         private float lastUpdateTime;
         private Vector3 lastPlayerPosition;
-        private EnemyAnimations enemyAnimations;
         private const float UPDATE_INTERVAL = 0.1f; // Update 10 times per second instead of 60+
 
         // Update is called once per frame
@@ -27,7 +26,6 @@ namespace MiniBonk.Enemy
         {
             
             navMeshAgent = GetComponent<NavMeshAgent>();
-            enemyAnimations = GetComponentInChildren<EnemyAnimations>();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
             currentHealth = (int)(data.health * GameManager.Instance.ChaosMultiplier());
             playerRigidbody = player.GetComponent<Rigidbody>();
@@ -84,8 +82,10 @@ namespace MiniBonk.Enemy
         protected virtual void Update()
         {
             // Update method disabled - now handled by EnemyProcessor
+            
         }
         
+
         // Public methods for EnemyProcessor access
         public float GetLastUpdateTime() => lastUpdateTime;
         public void SetLastUpdateTime(float time) => lastUpdateTime = time;
@@ -134,22 +134,13 @@ namespace MiniBonk.Enemy
             }
         }
         
+        private Collider[] hitColliders = new Collider[10];
+        
         public void StopMovement() => navMeshAgent.isStopped = true;
         public void ResumeMovement() => navMeshAgent.isStopped = false;
         protected virtual void FixedUpdate()
         {
-            Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, data.seperationRadius);
-
-            foreach (var other in nearbyEnemies)
-            {
-
-                if (other.gameObject != gameObject && other.CompareTag("Enemy"))
-                {
-                    Vector3 pushDirection = transform.position - other.transform.position;
-                    transform.position += pushDirection.normalized * data.seperationAmount * Time.fixedDeltaTime;
-                }
-            }
-            
+            // Separation logic moved to EnemyProcessor for better performance
         }
 
         public abstract void Attack();
