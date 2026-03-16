@@ -36,9 +36,14 @@ namespace Minibonk.Enemy
         /// </summary>
         public void ProcessAnimation()
         {
+            CheckForMovement();
+        }
+
+        public void CheckForMovement()
+        {
             if (_animator == null) return;
             
-            // More reliable movement detection using desired velocity and position change
+            
             bool isMoving = false;
             
             if (_navMeshAgent != null && _navMeshAgent.isOnNavMesh && !_navMeshAgent.isStopped)
@@ -46,14 +51,12 @@ namespace Minibonk.Enemy
                 // Check if the agent has a path and is actively moving
                 if (_navMeshAgent.hasPath && _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
                 {
-                    // Use desired velocity as it's more reliable than actual velocity
                     isMoving = _navMeshAgent.desiredVelocity.magnitude > 0.1f;
                 }
             }
             
             _animator.SetBool("IsMoving", isMoving);
         }
-
         public void CheckForAttacking()
         {
             if (_animator != null)
