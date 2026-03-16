@@ -20,6 +20,7 @@ namespace MiniBonk.Enemy
         private float lastUpdateTime;
         private Vector3 lastPlayerPosition;
         private const float UPDATE_INTERVAL = 0.1f; // Update 10 times per second instead of 60+
+        private Vector3 lazyTarget;
 
         // Update is called once per frame
         protected virtual void Start()
@@ -95,44 +96,30 @@ namespace MiniBonk.Enemy
         public void SetNextAttackTime(float time) => nextAttackTime = time;
         public float GetAttackCooldown() => data.attackCooldown;
         
-        public void UpdatePathfinding(Vector3 targetPosition)
+        public void UpdatePathfinding(Vector3 realPlayerPosition)
         {
-            navMeshAgent.SetDestination(targetPosition);
-            lastPlayerPosition = targetPosition;
             if (!isAlive) return;
             
-            Vector3 targetPos = player.position;
-            if (playerRigidbody != null)
-            {
-                targetPos += playerRigidbody.linearVelocity * data.predictionTime;
-            }
-            navMeshAgent.SetDestination(targetPos);
-            float distance = Vector3.Distance(transform.position, player.position);
-            if (distance > 15f)
-            {
-                navMeshAgent.speed = data.speed * 1.5f; //Catch up to player if far
-            }
-            else
-            {
-                navMeshAgent.speed = data.speed;
-            }
-            if (distance <= data.attackRange)
-            {
-                if (Time.time >= nextAttackTime)
-                {
-                    Attack(); // This calls the specific attack logic (Melee, Ranged, etc.)
-                    GetComponentInChildren<EnemyAnimations>().CheckForAttacking();
+            float distance = Vector3.Distance(transform.position, realPlayerPosition);
+            
+            Vector3 finalTarget = realPlayerPosition;
 
-                    nextAttackTime = Time.time + data.attackCooldown;
-                }
-                     
-                navMeshAgent.isStopped = true;
-            }
-            else
+            if (playerRigidbody != null && data.predictionTime > 0)
             {
-                navMeshAgent.isStopped = false;
+                Vector3 lead = playerRigidbody.linearVelocity * (data.predictionTime * data.predictionIntensity);
+
+                if (lead.magnitude > distance * 0.9f)
+                {
+                    lead = lead.normalized * (distance * 0.9f);
+                }
+                finalTarget += lead;
             }
+            navMeshAgent.SetDestination(finalTarget);
+            
+            
+            navMeshAgent.speed = (distance > 15f) ? data.speed * 1.5f : data.speed;
         }
+   
         
         private Collider[] hitColliders = new Collider[10];
         
