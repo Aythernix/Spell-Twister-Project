@@ -117,7 +117,7 @@ namespace Minibonk.Management
                     
                     if (Time.time % 0.2f < Time.deltaTime)
                     {
-                        ProcessCombatLogic(enemy);
+                        ProcessCombatLogic(enemy, index);
                     }
                     
                     if (Time.time % 0.5f < Time.deltaTime)
@@ -143,7 +143,7 @@ namespace Minibonk.Management
             ProcessAnimationChunk();
         }
         
-        private void ProcessCombatLogic(MiniBonk.Enemy.Enemy enemy)
+        private void ProcessCombatLogic(MiniBonk.Enemy.Enemy enemy, int index)
         {
             float sqrDistance = (enemy.transform.position - _playerTransform.position).sqrMagnitude;
             float sqrAttackRange = enemy.GetAttackRange() * enemy.GetAttackRange();
@@ -153,6 +153,7 @@ namespace Minibonk.Management
                 if (Time.time >= enemy.GetNextAttackTime())
                 {
                     enemy.Attack();
+                    _enemyAnimations[index].CheckForAttacking();
                     enemy.SetNextAttackTime(Time.time + enemy.GetAttackCooldown());
                     enemy.StopMovement();
                 }
