@@ -27,7 +27,7 @@ MonoBehaviour:
   healthDrop: {fileID: 7119216674329871604, guid: aad919e6ff9e27f4fa07433752c164d0, type: 3}
   chanceOfDroppingHealth: 10
   spawnChance: 75
-  predictionTime: 0.5
+  predictionTime: 5
   seperationAmount: 1.5
   seperationRadius: 2
   model: {fileID: 0}
