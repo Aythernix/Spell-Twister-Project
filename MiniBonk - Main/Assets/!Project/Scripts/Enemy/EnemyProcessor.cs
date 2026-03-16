@@ -16,9 +16,6 @@ namespace Minibonk.Management
         [SerializeField] private float _updateInterval = 0.1f; // Process 10 times per second
         [SerializeField] private int _maxEnemiesPerFrame = 50; // Process in batches
         
-        private static EnemyProcessor _instance;
-        public static EnemyProcessor Instance => _instance;
-        
         private List<MiniBonk.Enemy.Enemy> _activeEnemies = new List<MiniBonk.Enemy.Enemy>();
         private List<EnemyAnimations> _enemyAnimations = new List<EnemyAnimations>();
         private float _lastProcessTime;
@@ -38,20 +35,6 @@ namespace Minibonk.Management
         #region Unity Methods
         private void Awake()
         {
-            if (_instance == null)
-            {
-                _instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-                return;
-            }
-        }
-        
-        private void Start()
-        {
             _playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
             _lastPlayerPosition = _playerTransform?.position ?? Vector3.zero;
             _lastProcessTime = Time.time;
@@ -70,15 +53,16 @@ namespace Minibonk.Management
         /// </summary>
         public static void RegisterEnemy(MiniBonk.Enemy.Enemy enemy)
         {
-            if (_instance != null && enemy != null && !_instance._activeEnemies.Contains(enemy))
+            var processor = FindFirstObjectByType<EnemyProcessor>();
+            if (processor != null && enemy != null && !processor._activeEnemies.Contains(enemy))
             {
-                _instance._activeEnemies.Add(enemy);
+                processor._activeEnemies.Add(enemy);
                 
                 // Also register animations if available
                 var animations = enemy.GetComponentInChildren<EnemyAnimations>();
-                if (animations != null && !_instance._enemyAnimations.Contains(animations))
+                if (animations != null && !processor._enemyAnimations.Contains(animations))
                 {
-                    _instance._enemyAnimations.Add(animations);
+                    processor._enemyAnimations.Add(animations);
                 }
             }
         }
@@ -88,14 +72,15 @@ namespace Minibonk.Management
         /// </summary>
         public static void UnregisterEnemy(MiniBonk.Enemy.Enemy enemy)
         {
-            if (_instance != null && enemy != null)
+            var processor = FindFirstObjectByType<EnemyProcessor>();
+            if (processor != null && enemy != null)
             {
-                _instance._activeEnemies.Remove(enemy);
+                processor._activeEnemies.Remove(enemy);
                 
                 var animations = enemy.GetComponentInChildren<EnemyAnimations>();
                 if (animations != null)
                 {
-                    _instance._enemyAnimations.Remove(animations);
+                    processor._enemyAnimations.Remove(animations);
                 }
             }
         }

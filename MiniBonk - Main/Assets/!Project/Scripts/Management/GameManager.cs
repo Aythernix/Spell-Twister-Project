@@ -216,6 +216,16 @@ namespace Minibonk.Management
 		/// Plays a custom audio in the Audio Manager, takes the audio clip,volume and source.
 		/// </summary>
 		public Action<AudioClip, float, AudioSource?> PlayCustomAudio;
+		
+		/// <summary>
+		/// Plays a looping audio clip in the Audio Manager, takes the audio clip and source.
+		/// </summary>
+		public Action<AudioClip, AudioSource?> StartLoopingAudio;
+		
+		/// <summary>
+		/// Stops a looping audio clip in the Audio Manager, takes the source.
+		/// </summary>
+		public Action<AudioSource?> StopLoopingAudio;
 
 		#endregion
 		
