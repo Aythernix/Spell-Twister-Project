@@ -35,11 +35,13 @@ namespace Minibonk.UI
 
 		private void OnEnable()
 		{
+			Application.backgroundLoadingPriority = ThreadPriority.Low;
 			SceneManager.activeSceneChanged += OnSceneChange;
 			UIEvents.OnInstantiateUIScene += InstantiateUIScene;
 			UIEvents.OnInstantiatePersistantUIScene += OpenPersistantUI;
 			UIEvents.OnCloseUIScene += CloseUIScene;
 			UIEvents.SwapActiveUIScene += SwapUIScene;
+			UIEvents.UpdateUI += UpdateUI;
 		}
 
 		private void OnDisable()
@@ -49,6 +51,7 @@ namespace Minibonk.UI
 			UIEvents.OnInstantiatePersistantUIScene -= OpenPersistantUI;
 			UIEvents.OnCloseUIScene -= CloseUIScene;
 			UIEvents.SwapActiveUIScene -= SwapUIScene;
+			UIEvents.UpdateUI -= UpdateUI;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,7 +67,15 @@ namespace Minibonk.UI
 		}
 
 		#region Private Methods
-		
+
+		private void UpdateUI()
+		{
+			UIEvents.OnUpdatePlayerHealthUI?.Invoke(GameManager.Instance.currentLevelManager.playerHandler.playerData.currentHealth, GameManager.Instance.currentLevelManager.playerHandler.playerData.variableMaxHealth);
+			UIEvents.OnUpdatePlayerStaminaUI?.Invoke(GameManager.Instance.currentLevelManager.playerHandler.playerData.currentStamina, GameManager.Instance.currentLevelManager.playerHandler.playerData.variableMaxStamina);
+			UIEvents.OnUpdateLevelTextUI?.Invoke(GameManager.Instance.currentLevelManager.playerHandler.playerData.level);
+			UIEvents.OnUpdatePlayerMoneyUI?.Invoke(GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetMoney.Invoke());
+			UIEvents.OnUpdatePlayerTracePoints?.Invoke(GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.GetTracePoint.Invoke());
+		}
 		// Called whenever a scene is changed
 		private void OnSceneChange(Scene from, Scene to)
 		{
@@ -194,6 +205,12 @@ namespace Minibonk.UI
 		
 		public delegate void UpdatePlayerXpUi(float current, float max);
 		public UpdatePlayerXpUi OnUpdatePlayerXpUi;
+		
+		public delegate void UpdatePlayerTracePoints(int tracePoints);
+		public UpdatePlayerTracePoints OnUpdatePlayerTracePoints;
+		
+		public delegate void UpdatePlayerMoneyUI(int money);
+		public UpdatePlayerMoneyUI OnUpdatePlayerMoneyUI;
 
 		public Action<int> OnUpdateLevelTextUI;
 		
@@ -212,5 +229,7 @@ namespace Minibonk.UI
 		/// </summary>
 		public Action<UISceneNames, bool> OnCloseUIScene;
 		public Action<UISceneNames> SwapActiveUIScene;
+
+		public Action UpdateUI;
 	}
 }

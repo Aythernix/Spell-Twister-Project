@@ -65,11 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf93bfa6fb84a34fb74008d5f07c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallsMax: 50
+  fireBallsMax: 100
   fireBalls: 30
-  fireRate: 0.25
+  fireRate: 2
   fireBallSpeed: 30
-  reloadTimer: 2
+  reloadTimer: 3
   reloadTime: 2
   autoFire: 1
   fireBallPrefab: {fileID: 2687303498020648872, guid: 27136ac292c08b24fa2c29ad311b086a, type: 3}
@@ -93,7 +93,7 @@ MonoBehaviour:
   waterPulseFireRate: 1
   waterBallSpeed: 15
   lastwaterPulse: 0
-  reloadTime: 2
+  reloadTime: 3
   reloadTimer: 0
   waterBallProjectile: {fileID: 5865229540475323126, guid: f31a75e9a84a7e14db4d53244f717edc, type: 3}
   waterBallSpawner: {fileID: 0}
@@ -117,8 +117,8 @@ MonoBehaviour:
   windProjectileBurst: 0
   windProjectileBurstMax: 10
   windProjectileSpeed: 35
-  windProjectileBurstTime: 0.25
-  reloadTime: 1
+  windProjectileBurstTime: 0.1
+  reloadTime: 1.5
   reloadTimer: 1
   lastProjectile: 0
 --- !u!114 &4686229173457088936

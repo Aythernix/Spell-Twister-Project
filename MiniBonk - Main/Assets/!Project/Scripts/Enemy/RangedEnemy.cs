@@ -8,7 +8,7 @@ namespace MiniBonk.Enemy
         private Transform _firePoint;
         
 
-        protected override void Attack()
+        public override void Attack()
         {
             if (data.projectilePrefab == null)
             {

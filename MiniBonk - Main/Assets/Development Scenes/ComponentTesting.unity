@@ -1260,6 +1260,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 787528789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &695790574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6998750724136321917, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+  m_PrefabInstance: {fileID: 1037716695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &695790577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695790574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af55f8b27b4806846aa0b2289e07de3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateInterval: 0.1
+  _maxEnemiesPerFrame: 100
 --- !u!1 &699454329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,6 +2081,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1744126187790231550, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744126187790231550, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 36.944588
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744126187790231550, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.05084
+      objectReference: {fileID: 0}
     - target: {fileID: 5702111051728222433, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       propertyPath: m_Name
       value: Level Manager
@@ -2106,10 +2137,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7674657148248499014, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: field of view
+      value: 60.16051
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5800087929607467336, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6998750724136321917, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695790577}
   m_SourcePrefab: {fileID: 100100000, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
 --- !u!1 &1072052276
 GameObject:
@@ -2653,6 +2692,18 @@ PrefabInstance:
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 1886411265}
+    - target: {fileID: 5409954555684627233, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: Lens.FieldOfView
+      value: 60.16051
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316486999067946203, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _allowDamageTimer
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316486999067946203, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _lowHealthThreshold
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4560,6 +4611,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 399981198368201694, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
+      propertyPath: baseChaosMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3937352027428624044, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1680353

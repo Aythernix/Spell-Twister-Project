@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using MiniBonk.Enemy;
 using Minibonk.MovementAbilities;
@@ -41,7 +42,7 @@ namespace Minibonk.Management
 
 		public GameState currentGameState;
 
-		public float baseChaosMultiplier = 1.2f;
+		public float growthRate = 1.2f;
 
 		#endregion
 
@@ -149,14 +150,15 @@ namespace Minibonk.Management
 			{
 				if (currentLevelManager.playerHandler.playerData.level == 1)
 					return 1f;
-				var chaosMultiplier = 1f * Mathf.Pow(baseChaosMultiplier, currentLevelManager.playerHandler.playerData.level - 1);
+				var chaosMultiplier = 1f + (growthRate * (currentLevelManager.playerHandler.playerData.level - 1));
+				Debug.Log($"Chaos Multiplier: {chaosMultiplier}");
 				return chaosMultiplier;
 			}
 			catch (Exception e)
 			{
 				
 				Console.WriteLine(e);
-				return baseChaosMultiplier;
+				return growthRate;
 			}
 		}
 
@@ -204,6 +206,16 @@ namespace Minibonk.Management
 		/// Called when the player actually receives XP (parameter: currentTotalXp)
 		/// </summary>
 		public Action<int> OnXpGained;
+		
+		/// <summary>
+		/// Plays audio from the audio Manager, Takes the audio clip and Source
+		/// </summary>
+		public Action<AudioManager.AudioClips, AudioSource?> PlayAudio;
+		
+		/// <summary>
+		/// Plays a custom audio in the Audio Manager, takes the audio clip,volume and source.
+		/// </summary>
+		public Action<AudioClip, float, AudioSource?> PlayCustomAudio;
 
 		#endregion
 		

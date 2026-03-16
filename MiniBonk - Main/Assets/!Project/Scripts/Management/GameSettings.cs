@@ -54,7 +54,7 @@ public class GameSettings : ScriptableObject
 
     private float LinearToDecibel(float linearValue)
     {
-        return (linearValue - 1) * 80;
+        return Mathf.Log10(linearValue) * 20;
     }
     
     public void ApplySettings()
@@ -68,7 +68,7 @@ public class GameSettings : ScriptableObject
             audioMixer.SetFloat("MusicVolume", LinearToDecibel(musicVolume));
         }
 
-        ResizeRenderTexture(renderTexture, (int)(_defaultPixelWidth * pixelisation), (int)(_defaultPixelHeight * pixelisation));
+        ResizeRenderTexture(renderTexture, (int)(_defaultPixelWidth / pixelisation), (int)(_defaultPixelHeight / pixelisation));
         
        
     }

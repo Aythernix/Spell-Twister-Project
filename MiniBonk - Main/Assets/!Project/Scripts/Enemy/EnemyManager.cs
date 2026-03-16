@@ -31,10 +31,11 @@ namespace MiniBonk.Enemy
         [SerializeField] private LayerMask _groundLayer;
 
         private Transform _playerTransform;
-        
         private bool _validSpawn = true;
         private bool _maxReached;
         private Vector3 _lastSpawnPos = Vector3.zero;
+        private float lastManagerUpdateTime;
+        private const float MANAGER_UPDATE_INTERVAL = 0.1f; // Check 10 times per second
         
         #endregion
         
@@ -56,28 +57,36 @@ namespace MiniBonk.Enemy
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            lastManagerUpdateTime = Time.time;
             StartEnemySpawning();
         }
 
         // Update is called once per frame
         void Update()
         {
-            #region Debugs
-
-            if (!_validSpawn)
+            // Only update manager at intervals to reduce CPU load
+            if (Time.time >= lastManagerUpdateTime + MANAGER_UPDATE_INTERVAL)
             {
-                Debug.LogWarning($"Enemies are being prevented from spawning {_lastSpawnPos}");
-            }
+                #region Debugs
 
-            #endregion
+                if (!_validSpawn)
+                {
+                    Debug.LogWarning($"Enemies are being prevented from spawning {_lastSpawnPos}");
+                }
 
-            if (_enemiesInScene.Count >= _maxEnemiesInScene)
-            {
-                HandleMaxEnemy();
-            }
-            else
-            {
-                _maxReached = false;
+                #endregion
+
+                if (_enemiesInScene.Count >= _maxEnemiesInScene)
+                {
+                    HandleMaxEnemy();
+                }
+                else
+                {
+                    _maxReached = false;
+                }
+                
+                lastManagerUpdateTime = Time.time;
             }
         }
         #endregion
@@ -88,15 +97,36 @@ namespace MiniBonk.Enemy
         {
             _spawnDelay = Mathf.Clamp(_spawnDelay - GameManager.Instance.ChaosMultiplier(), 3, _spawnDelay);
             _maxEnemiesInScene += Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier());
+            _enemiesToSpawnPerBatch = Mathf.Clamp( _enemiesToSpawnPerBatch + Mathf.RoundToInt(GameManager.Instance.ChaosMultiplier()), 3, 20);
         }
+        private Coroutine _spawnCoroutine;
+        private float _nextSpawnTime;
+        
         private void StartEnemySpawning()
         {
             if (GameManager.Instance.sceneIsPlayable)
             {
                 _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-                StartCoroutine(HandleEnemySpawning());
+                _nextSpawnTime = Time.time + _spawnDelay - GameManager.Instance.ChaosMultiplier();
+                _spawnCoroutine = StartCoroutine(HandleEnemySpawning());
             }
         }
+        
+        // Handles the enemy spawn rate (Seconds)
+        private IEnumerator HandleEnemySpawning()
+        {
+            while (GameManager.Instance.sceneIsPlayable)
+            {
+                yield return new WaitForSeconds(0.1f); // Check every 100ms instead of creating new coroutines
+                
+                if (Time.time >= _nextSpawnTime && !_maxReached)
+                {
+                    SpawnEnemy();
+                    _nextSpawnTime = Time.time + _spawnDelay - GameManager.Instance.ChaosMultiplier();
+                }
+            }
+        }
+        
         // Gets a random position in a sphere around the player
         private Vector3 SpawnPosition()
         {
@@ -115,24 +145,6 @@ namespace MiniBonk.Enemy
             _lastSpawnPos = spawnPos;
             
             return spawnPos;
-        }
-
-        // Handles the enemy spawn rate (Seconds)
-        private IEnumerator HandleEnemySpawning()
-        {
-            yield return new WaitForSeconds(_spawnDelay - GameManager.Instance.ChaosMultiplier());
-            
-
-
-            if (!_maxReached)
-            {
-                SpawnEnemy();
-            }
-            
-            if (!GameManager.Instance.sceneIsPlayable)
-                yield break;
-            
-            StartCoroutine(HandleEnemySpawning());
         }
         
         /// <summary>
