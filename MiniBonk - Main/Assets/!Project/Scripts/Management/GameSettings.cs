@@ -54,7 +54,7 @@ public class GameSettings : ScriptableObject
 
     private float LinearToDecibel(float linearValue)
     {
-        return (linearValue - 1) * 80;
+        return Mathf.Log10(linearValue) * 20;
     }
     
     public void ApplySettings()
