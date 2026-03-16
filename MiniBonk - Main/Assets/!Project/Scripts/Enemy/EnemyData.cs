@@ -34,6 +34,8 @@ namespace MiniBonk.Enemy
         public float predictionTime = 0.5f; // Time in seconds to predict player's future position for aiming
         public float seperationAmount = 1.5f; // How much enemey avoids others
         public float seperationRadius = 2f; // Distance to keep
+        public float reactionDelay = 0.2f; // Delay before reacting to player's movement changes
+        public float predictionIntensity = 0.5f; //(0 = trail player , 1 = full prediction) 
         
 
         [Header("Visuals")] public GameObject model;
