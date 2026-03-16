@@ -16,19 +16,19 @@ MonoBehaviour:
   projectileLifetime: 5
   projectileSpeed: 20
   speed: 8
-  speedVariance: 0.5
+  speedVariance: 1
   acceleration: 10000
   stoppingDistance: 1.8
   health: 100
   damage: 5
-  attackRange: 1
-  attackCooldown: 0.6
+  attackRange: 2.6
+  attackCooldown: 0.2
   xpValue: 10
   healthDrop: {fileID: 7119216674329871604, guid: aad919e6ff9e27f4fa07433752c164d0, type: 3}
   chanceOfDroppingHealth: 10
   spawnChance: 75
   predictionTime: 5
-  seperationAmount: 1.5
+  seperationAmount: 3
   seperationRadius: 2
   reactionDelay: 0.2
   predictionIntensity: 0.6

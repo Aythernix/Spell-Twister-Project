@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6032548742318806126, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8156979629364841691, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7597566
@@ -6342,9 +6346,17 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 522926705318873135, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: _enemyTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 522926705318873135, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       propertyPath: _enemiesToSpawnPerBatch
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 522926705318873135, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: '_enemyTypes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7521692644132424675, guid: 144e17f00799a1f42b8eccd501a1ad73, type: 3}
     - target: {fileID: 2999597936145933788, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       propertyPath: <levelAmbience>k__BackingField
       value: 
