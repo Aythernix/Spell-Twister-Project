@@ -68,8 +68,11 @@ public class SpellController : MonoBehaviour
         spellColor.a = 1f; // Ensure full opacity
         _name.color = spellColor;
         _description.text = _spellDescription;
-        _price.text = $"{_spellCost} Trace Points";
-        
+        if (_price != null)
+        {
+            _price.text = $"{_spellCost} Trace Points";
+        }
+
         _damageText.text = $"Damage: {_damage}";
         _coolDownText.text = $"Cast Time: {_coolDown} Secs";
         _castsText.text = $"Casts: {_casts}";
