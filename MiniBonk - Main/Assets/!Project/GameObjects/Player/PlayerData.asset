@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   variableMaxHealth: 100
-  variableMaxStamina: 106
-  currentHealth: 94.5
-  currentStamina: 106
-  currentMoney: 0
-  currentTracePoints: 3
-  level: 3
-  xp: 194
+  variableMaxStamina: 100
+  currentHealth: 100
+  currentStamina: 100
+  currentMoney: 8900
+  currentTracePoints: 8850
+  level: 1
+  xp: 0
