@@ -14,7 +14,6 @@ public class WeaponSlotController : MonoBehaviour
     [SerializeField] private float _KeybindScaleAmount = 1.3f;
     [SerializeField] private float _KeybindScaleSpeed = 5f;
     [SerializeField] private float _SpriteScaleAmount = 1.1f;
-    [SerializeField] private float _SpriteScaleSpeed = 5f;
     [SerializeField] private SpellTypes _spellTypes;
 
     [Header("References")]

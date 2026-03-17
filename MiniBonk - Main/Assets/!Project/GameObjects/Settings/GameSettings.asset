@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9b1a8d847e9d54392ee4576ef43c61, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  showTutorial: 1
+  showTutorial: 0
   masterVolume: 1
   gameplayVolume: 1
   enemyVolume: 1
   playerVolume: 1
   musicVolume: 1
   audioMixer: {fileID: 24100000, guid: e93f2c9ebc0679d47b0de9a104caa21b, type: 2}
-  pixelisation: 0.333
+  pixelisation: 1
   renderTexture: {fileID: 8400000, guid: b4d514366149e7445af77466e66fb061, type: 2}
   _defaultMasterVolume: 1
   _defaultGameplayVolume: 1
