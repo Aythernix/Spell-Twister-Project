@@ -19,7 +19,7 @@ MonoBehaviour:
   speedVariance: 1
   acceleration: 10000
   stoppingDistance: 1.8
-  health: 100
+  health: 1000
   damage: 5
   attackRange: 2.6
   attackCooldown: 0.2
