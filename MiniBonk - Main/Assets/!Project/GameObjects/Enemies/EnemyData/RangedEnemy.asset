@@ -15,12 +15,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3892404503479868754, guid: ef7188c74779f944c856e5d379fe9bad, type: 3}
   projectileLifetime: 5
   projectileSpeed: 15
-  speed: 7
+  speed: 4
   speedVariance: 0.5
   acceleration: 8
   stoppingDistance: 5
   health: 100
-  damage: 15
+  damage: 4
   attackRange: 20
   attackCooldown: 1.5
   xpValue: 25
@@ -30,5 +30,7 @@ MonoBehaviour:
   predictionTime: 2
   seperationAmount: 0.5
   seperationRadius: 1
+  reactionDelay: 0.2
+  predictionIntensity: 0.5
   model: {fileID: 0}
   debugColor: {r: 1, g: 0, b: 0, a: 1}

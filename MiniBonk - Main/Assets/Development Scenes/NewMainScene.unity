@@ -6779,6 +6779,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 522926705318873135, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
+      propertyPath: _maxEnemiesInScene
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 522926705318873135, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       propertyPath: _enemyTypes.Array.size
       value: 2
       objectReference: {fileID: 0}

@@ -1,33 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Minibonk.Enemy;
-using Minibonk.Management;
 
 namespace Minibonk.Management
 {
-    /// <summary>
-    /// Centralized enemy processor that handles all enemy logic in batches
-    /// Instead of hundreds of individual Update() calls, this processes all enemies efficiently
-    /// </summary>
     public class EnemyProcessor : MonoBehaviour
     {
         #region Variables
-        [Header("Processing Settings")]
-        [SerializeField] private float _updateInterval = 0.1f; // Process 10 times per second
-        [SerializeField] private int _maxEnemiesPerFrame = 50; // Process in batches
+        [Header("Optimization Settings")]
+        [SerializeField] private int _pathfindingProcessedPerFrame = 20;
+        [SerializeField] private int _animationsProcessedPerFrame = 15;
+        
+        [Header("Physics Settings")]
+        [SerializeField] private LayerMask _enemyLayer; 
+
+        public static EnemyProcessor Instance { get; private set; }
         
         private List<MiniBonk.Enemy.Enemy> _activeEnemies = new List<MiniBonk.Enemy.Enemy>();
         private List<EnemyAnimations> _enemyAnimations = new List<EnemyAnimations>();
-        private float _lastProcessTime;
-        private int _currentProcessIndex;
         
-        // Separation optimization - single array for all enemies
-        private Collider[] _hitColliders = new Collider[50];
+        private int _currentPathIndex = 0;
+        private int _currentAnimIndex = 0;
         
-        // Animation processing optimization
-        private int _currentAnimationIndex;
+        private Collider[] _hitColliders = new Collider[15];
         
-        // Cached references
         private Transform _playerTransform;
         private Vector3 _lastPlayerPosition;
         #endregion
@@ -35,185 +31,161 @@ namespace Minibonk.Management
         #region Unity Methods
         private void Awake()
         {
-            _playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
-            _lastPlayerPosition = _playerTransform?.position ?? Vector3.zero;
-            _lastProcessTime = Time.time;
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+
+            var playerGo = GameObject.FindGameObjectWithTag("Player");
+            _playerTransform = playerGo != null ? playerGo.transform : null;
+            _lastPlayerPosition = _playerTransform != null ? _playerTransform.position : Vector3.zero;
         }
         
         private void Update()
         {
-            // Process in smaller chunks every frame instead of large batches every 0.1s
-            ProcessEnemyChunk();
+            if (_activeEnemies.Count == 0 || _playerTransform == null) return;
+
+            bool playerMoved = Vector3.Distance(_lastPlayerPosition, _playerTransform.position) > 1.0f;
+            if (playerMoved) _lastPlayerPosition = _playerTransform.position;
+
+            // 1. ALL ENEMIES: Distance, Attacks, and Separation (Cheap Math)
+            ProcessAllFastLogic();
+
+            // 2. CHUNKED ENEMIES: NavMesh Routing (Heavy Math)
+            ProcessPathfindingChunk(playerMoved);
+
+            // 3. CHUNKED ANIMATIONS
+            ProcessAnimationChunk();
         }
         #endregion
         
         #region Public Methods
-        /// <summary>
-        /// Register an enemy for centralized processing
-        /// </summary>
         public static void RegisterEnemy(MiniBonk.Enemy.Enemy enemy)
         {
-            var processor = FindFirstObjectByType<EnemyProcessor>();
-            if (processor != null && enemy != null && !processor._activeEnemies.Contains(enemy))
-            {
-                processor._activeEnemies.Add(enemy);
-                
-                // Also register animations if available
-                var animations = enemy.GetComponentInChildren<EnemyAnimations>();
-                if (animations != null && !processor._enemyAnimations.Contains(animations))
-                {
-                    processor._enemyAnimations.Add(animations);
-                }
-            }
+            if (Instance == null || enemy == null) return;
+            
+            Instance._activeEnemies.Add(enemy);
+            
+            var anim = enemy.GetComponentInChildren<EnemyAnimations>();
+            if (anim != null) Instance._enemyAnimations.Add(anim);
         }
         
-        /// <summary>
-        /// Unregister an enemy when destroyed
-        /// </summary>
         public static void UnregisterEnemy(MiniBonk.Enemy.Enemy enemy)
         {
-            var processor = FindFirstObjectByType<EnemyProcessor>();
-            if (processor != null && enemy != null)
-            {
-                processor._activeEnemies.Remove(enemy);
-                
-                var animations = enemy.GetComponentInChildren<EnemyAnimations>();
-                if (animations != null)
-                {
-                    processor._enemyAnimations.Remove(animations);
-                }
-            }
+            if (Instance == null || enemy == null) return;
+            
+            Instance._activeEnemies.Remove(enemy);
+            
+            var anim = enemy.GetComponentInChildren<EnemyAnimations>();
+            if (anim != null) Instance._enemyAnimations.Remove(anim);
         }
         #endregion
         
         #region Private Methods
-        private void ProcessEnemyChunk()
+        
+        private void ProcessAllFastLogic()
         {
-            if (_activeEnemies.Count == 0) return;
-            
-            int enemiesPerFrame = 5;
-            int processedCount = 0;
-            
-            bool playerMoved = _playerTransform != null && 
-                             Vector3.Distance(_lastPlayerPosition, _playerTransform.position) > 1.0f;
-            
-            if (playerMoved)
+            for (int i = 0; i < _activeEnemies.Count; i++)
             {
-                _lastPlayerPosition = _playerTransform.position;
-            }
-            
-            for (int i = 0; i < _activeEnemies.Count && processedCount < enemiesPerFrame; i++)
-            {
-                int index = (_currentProcessIndex + i) % _activeEnemies.Count;
-                var enemy = _activeEnemies[index];
+                var enemy = _activeEnemies[i];
+                if (enemy == null || !enemy.isAlive) continue;
+
+                // --- COMBAT (Runs for everyone so no one ignores the player) ---
+                float sqrDistance = (enemy.transform.position - _playerTransform.position).sqrMagnitude;
+                float sqrAttackRange = enemy.GetAttackRange() * enemy.GetAttackRange();
                 
-                if (enemy != null && enemy.isAlive)
+                if (sqrDistance <= sqrAttackRange)
                 {
-                    if (playerMoved || Time.time >= enemy.GetLastUpdateTime() + enemy.GetUpdateInterval())
+                    if (Time.time >= enemy.GetNextAttackTime())
                     {
-                        enemy.UpdatePathfinding(_playerTransform.position);
-                        enemy.SetLastUpdateTime(Time.time);
+                        enemy.Attack();
+                        
+                        var anim = enemy.GetComponentInChildren<EnemyAnimations>();
+                        if (anim != null) anim.CheckForAttacking();
+                        
+                        enemy.SetNextAttackTime(Time.time + enemy.GetAttackCooldown());
+                        enemy.StopMovement();
                     }
-                    
-                    if (Time.time % 0.2f < Time.deltaTime)
-                    {
-                        ProcessCombatLogic(enemy, index);
-                    }
-                    
-                    if (Time.time % 0.5f < Time.deltaTime)
-                    {
-                        ProcessSeparation(enemy);
-                    }
-                    
-                    processedCount++;
                 }
-                else if (enemy == null || !enemy.isAlive)
+                else
                 {
-                    _activeEnemies.RemoveAt(index);
-                    if (index < _enemyAnimations.Count)
+                    enemy.ResumeMovement();
+                }
+
+                // --- SEPARATION ---
+                if (enemy.data == null) continue;
+
+                int hitCount = Physics.OverlapSphereNonAlloc(
+                    enemy.transform.position, 
+                    enemy.data.seperationRadius, 
+                    _hitColliders, 
+                    _enemyLayer
+                );
+
+                for (int j = 0; j < hitCount; j++)
+                {
+                    var other = _hitColliders[j];
+                    if (other.gameObject != enemy.gameObject)
                     {
-                        _enemyAnimations.RemoveAt(index);
+                        Vector3 pushDirection = enemy.transform.position - other.transform.position;
+                        if (pushDirection.sqrMagnitude > 0.001f) 
+                        {
+                            enemy.transform.position += pushDirection.normalized * (enemy.data.seperationAmount * Time.deltaTime);
+                        }
                     }
-                    i--;
                 }
             }
-            
-            _currentProcessIndex = (_currentProcessIndex + processedCount) % _activeEnemies.Count;
-            
-            ProcessAnimationChunk();
         }
-        
-        private void ProcessCombatLogic(MiniBonk.Enemy.Enemy enemy, int index)
+
+        private void ProcessPathfindingChunk(bool playerMoved)
         {
-            float sqrDistance = (enemy.transform.position - _playerTransform.position).sqrMagnitude;
-            float sqrAttackRange = enemy.GetAttackRange() * enemy.GetAttackRange();
-            
-            if (sqrDistance <= sqrAttackRange)
+            int processed = 0;
+
+            while (processed < _pathfindingProcessedPerFrame && _activeEnemies.Count > 0)
             {
-                if (Time.time >= enemy.GetNextAttackTime())
+                if (_currentPathIndex >= _activeEnemies.Count) _currentPathIndex = 0;
+
+                var enemy = _activeEnemies[_currentPathIndex];
+
+                if (enemy == null || !enemy.isAlive)
                 {
-                    enemy.Attack();
-                    _enemyAnimations[index].CheckForAttacking();
-                    enemy.SetNextAttackTime(Time.time + enemy.GetAttackCooldown());
-                    enemy.StopMovement();
+                    _activeEnemies.RemoveAt(_currentPathIndex);
+                    continue; 
                 }
-            }
-            else
-            {
-                enemy.ResumeMovement();
+
+                // Only calculate the heavy NavMesh path for this chunk of enemies
+                if (playerMoved || Time.time >= enemy.GetLastUpdateTime() + enemy.GetUpdateInterval())
+                {
+                    enemy.UpdatePathfinding(_playerTransform.position);
+                    enemy.SetLastUpdateTime(Time.time);
+                }
+
+                processed++;
+                _currentPathIndex++; 
             }
         }
-        
+
         private void ProcessAnimationChunk()
         {
-            if (_enemyAnimations.Count == 0) return;
-            
-            int animationsPerFrame = 5;
             int processed = 0;
             
-            for (int i = 0; i < _enemyAnimations.Count && processed < animationsPerFrame; i++)
+            while (processed < _animationsProcessedPerFrame && _enemyAnimations.Count > 0)
             {
-                int index = (_currentAnimationIndex + i) % _enemyAnimations.Count;
-                var anim = _enemyAnimations[index];
+                if (_currentAnimIndex >= _enemyAnimations.Count) _currentAnimIndex = 0;
+
+                var anim = _enemyAnimations[_currentAnimIndex];
                 
                 if (anim != null && anim.enabled)
                 {
                     anim.ProcessAnimation();
-                    processed++;
+                    _currentAnimIndex++;
                 }
-                else if (anim == null)
+                else
                 {
-                    _enemyAnimations.RemoveAt(index);
-                    i--;
-                    if (index < _currentAnimationIndex)
-                        _currentAnimationIndex--;
+                    _enemyAnimations.RemoveAt(_currentAnimIndex);
                 }
-            }
-            
-            _currentAnimationIndex = (_currentAnimationIndex + processed) % _enemyAnimations.Count;
-        }
-        
-        private void ProcessSeparation(MiniBonk.Enemy.Enemy enemy)
-        {
-            if (enemy.data == null) return;
-            
-            int hitCount = UnityEngine.Physics.OverlapSphereNonAlloc(
-                enemy.transform.position, 
-                enemy.data.seperationRadius, 
-                _hitColliders
-            );
-
-            for (int i = 0; i < hitCount; i++)
-            {
-                var other = _hitColliders[i];
-                if (other.gameObject != enemy.gameObject && other.CompareTag("Enemy"))
-                {
-                    Vector3 pushDirection = enemy.transform.position - other.transform.position;
-                    enemy.transform.position += pushDirection.normalized * enemy.data.seperationAmount * Time.fixedDeltaTime;
-                }
+                
+                processed++;
             }
         }
-
         #endregion
     }
 }

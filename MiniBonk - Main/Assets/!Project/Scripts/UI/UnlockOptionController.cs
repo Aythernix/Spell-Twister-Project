@@ -40,7 +40,7 @@ namespace MiniBonk.UI
         
             if (_unlockableData != null)
             {
-                _reward = (int)(_unlockableData.reward * Mathf.Pow(_unlockableData.levelMultiplier, GameManager.Instance.currentLevelManager.playerHandler.playerData.level - 1));
+                _reward = (int)( _unlockableData.reward * GameManager.Instance.ChaosMultiplier(_unlockableData.levelMultiplier, 2));
                 _animator.runtimeAnimatorController = _unlockableData.animatorController;
                 _rewardHeading.text = _reward + " " + _unlockableData.currency;
                 _description.text = _unlockableData.description;

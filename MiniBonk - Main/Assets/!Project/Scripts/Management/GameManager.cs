@@ -144,22 +144,37 @@ namespace Minibonk.Management
 			return false;
 		}
 
+		public float ChaosMultiplier(float _growthRate, int lvlToSubtract = 1)
+		{
+			if (currentLevelManager?.playerHandler?.playerData == null)
+			{
+				Debug.LogWarning("ChaosMultiplier: Missing references, returning base 1f.");
+				return 1f; 
+			}
+
+			int currentLevel = currentLevelManager.playerHandler.playerData.level;
+
+			if (currentLevel <= 1)
+				return 1f;
+
+			float chaosMultiplier = 1f + (_growthRate * (currentLevel - lvlToSubtract));
+			return chaosMultiplier;
+		}
 		public float ChaosMultiplier()
 		{
-			try
+			if (currentLevelManager?.playerHandler?.playerData == null)
 			{
-				if (currentLevelManager.playerHandler.playerData.level == 1)
-					return 1f;
-				var chaosMultiplier = 1f + (growthRate * (currentLevelManager.playerHandler.playerData.level - 1));
-				Debug.Log($"Chaos Multiplier: {chaosMultiplier}");
-				return chaosMultiplier;
+				Debug.LogWarning("ChaosMultiplier: Missing references, returning base 1f.");
+				return 1f; 
 			}
-			catch (Exception e)
-			{
-				
-				Console.WriteLine(e);
-				return growthRate;
-			}
+
+			int currentLevel = currentLevelManager.playerHandler.playerData.level;
+
+			if (currentLevel <= 1)
+				return 1f;
+
+			float chaosMultiplier = 1f + (growthRate * (currentLevel - 1));
+			return chaosMultiplier;
 		}
 
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileLifetime: 5
   projectileSpeed: 20
-  speed: 8
+  speed: 7.5
   speedVariance: 1
   acceleration: 10000
   stoppingDistance: 1.8

@@ -1,49 +1,69 @@
 using System;
-using Minibonk.Enemy;
-using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.AI;
+using Minibonk.Management;
 
 namespace MiniBonk.Enemy
 {
     public abstract class Enemy : MonoBehaviour
     {
-        [Header ("Settings")]
-        public EnemyData data; // Scriptable Object containing the enemy settings
+        [Header("Settings")]
+        public EnemyData data; 
         public Transform player;
-        private NavMeshAgent navMeshAgent;
         public bool isAlive = true;
         
+        private NavMeshAgent navMeshAgent;
         protected int currentHealth;
         private float nextAttackTime;
         private Rigidbody playerRigidbody;
         private float lastUpdateTime;
-        private Vector3 lastPlayerPosition;
-        private const float UPDATE_INTERVAL = 0.1f; // Update 10 times per second instead of 60+
-        private Vector3 lazyTarget;
+        
+        private const float UPDATE_INTERVAL = 0.1f;
+        
+        // Cached variables for optimization
+        private float _normalSpeed;
+        private float _boostedSpeed;
+        private bool _isBoosted; 
+        private const float BOOST_DISTANCE_SQR = 15f * 15f; // 225f
 
-        // Update is called once per frame
+        private void OnEnable()
+        {
+            GameManager.Instance.EventHandler.OnPlayerLevelIncrease += ChaosMultiplier;
+        }
+        private void OnDisable()
+        {
+            GameManager.Instance.EventHandler.OnPlayerLevelIncrease -= ChaosMultiplier;
+        }
         protected virtual void Start()
         {
-            
             navMeshAgent = GetComponent<NavMeshAgent>();
-            if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform.root;
-            currentHealth = (int)(data.health * GameManager.Instance.ChaosMultiplier());
-            playerRigidbody = player.GetComponent<Rigidbody>();
-            ApplySettings();
-            lastUpdateTime = Time.time;
-            lastPlayerPosition = player.position;
             
-            // Register with centralized processor
+            if (player == null) 
+            {
+                var playerObj = GameObject.FindGameObjectWithTag("Player");
+                if (playerObj != null) player = playerObj.transform.root;
+            }
+            
+            if (player != null)
+            {
+                playerRigidbody = player.GetComponent<Rigidbody>();
+            }
+            
+            currentHealth = (int)(data.health * GameManager.Instance.ChaosMultiplier());
+            ApplySettings();
+            
+            lastUpdateTime = Time.time;
+            
             EnemyProcessor.RegisterEnemy(this);
         }
 
-        public virtual void TakeDamage( int amount, GameObject instigator = null)
+        public virtual void TakeDamage(int amount, GameObject instigator = null)
         {
-            currentHealth -= amount;
-            // Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}");
+            if (!isAlive) return; // Prevent taking damage after death
 
-            if (currentHealth <= 0 && isAlive)
+            currentHealth -= amount;
+
+            if (currentHealth <= 0)
             {
                 Die(instigator);
             }
@@ -53,12 +73,10 @@ namespace MiniBonk.Enemy
         {
             isAlive = false;
             
-            // Unregister from centralized processor
             EnemyProcessor.UnregisterEnemy(this);
             
             if (data != null)
             {
-                // Debug.Log($"{gameObject.name} has died. Worth {data.xpValue}");
                 GameManager.Instance.EventHandler.AddXp?.Invoke((int)(data.xpValue * GameManager.Instance.ChaosMultiplier()));
                 if (GameManager.Instance.Probability(data.chanceOfDroppingHealth * GameManager.Instance.ChaosMultiplier()))
                 {
@@ -67,27 +85,26 @@ namespace MiniBonk.Enemy
             }
             
             GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
-            
             Destroy(gameObject);
         }
         
         private void ApplySettings()
         {
-            float randomSpeed = data.speed + UnityEngine.Random.Range(-data.speedVariance, data.speedVariance);
+            _normalSpeed = data.speed + UnityEngine.Random.Range(-data.speedVariance, data.speedVariance);
+            _boostedSpeed = _normalSpeed * 1.5f; // Cache the math here once
             
-            navMeshAgent.speed = randomSpeed;
+            navMeshAgent.speed = _normalSpeed;
             navMeshAgent.acceleration = data.acceleration;
             navMeshAgent.stoppingDistance = data.stoppingDistance;
+            _isBoosted = false;
         }
 
-        protected virtual void Update()
+        private void ChaosMultiplier(int lvl)
         {
-            // Update method disabled - now handled by EnemyProcessor
-            
+            _normalSpeed *= GameManager.Instance.ChaosMultiplier();
+            _boostedSpeed *= GameManager.Instance.ChaosMultiplier();
         }
         
-
-        // Public methods for EnemyProcessor access
         public float GetLastUpdateTime() => lastUpdateTime;
         public void SetLastUpdateTime(float time) => lastUpdateTime = time;
         public float GetUpdateInterval() => UPDATE_INTERVAL;
@@ -98,37 +115,42 @@ namespace MiniBonk.Enemy
         
         public void UpdatePathfinding(Vector3 realPlayerPosition)
         {
-            if (!isAlive) return;
+            if (!isAlive || !navMeshAgent.isOnNavMesh) return;
             
-            float distance = Vector3.Distance(transform.position, realPlayerPosition);
+            // 1. Calculate Squared Distance (Extremely fast)
+            Vector3 toPlayer = realPlayerPosition - transform.position;
+            float sqrDistance = toPlayer.sqrMagnitude;
             
             Vector3 finalTarget = realPlayerPosition;
 
+            // 2. Prediction Logic
             if (playerRigidbody != null && data.predictionTime > 0)
             {
                 Vector3 lead = playerRigidbody.linearVelocity * (data.predictionTime * data.predictionIntensity);
 
-                if (lead.magnitude > distance * 0.9f)
+                // We only do the heavy Sqrt calculation if prediction is actually active
+                float distance = Mathf.Sqrt(sqrDistance);
+                float maxLead = distance * 0.9f;
+
+                if (lead.sqrMagnitude > maxLead * maxLead)
                 {
-                    lead = lead.normalized * (distance * 0.9f);
+                    lead = lead.normalized * maxLead;
                 }
                 finalTarget += lead;
             }
+            
             navMeshAgent.SetDestination(finalTarget);
             
-            
-            navMeshAgent.speed = (distance > 15f) ? data.speed * 1.5f : data.speed;
+            bool shouldBoost = sqrDistance > BOOST_DISTANCE_SQR;
+            if (shouldBoost != _isBoosted)
+            {
+                _isBoosted = shouldBoost;
+                navMeshAgent.speed = _isBoosted ? _boostedSpeed : _normalSpeed;
+            }
         }
-   
-        
-        private Collider[] hitColliders = new Collider[10];
         
         public void StopMovement() => navMeshAgent.isStopped = true;
         public void ResumeMovement() => navMeshAgent.isStopped = false;
-        protected virtual void FixedUpdate()
-        {
-            // Separation logic moved to EnemyProcessor for better performance
-        }
 
         public abstract void Attack();
     }
