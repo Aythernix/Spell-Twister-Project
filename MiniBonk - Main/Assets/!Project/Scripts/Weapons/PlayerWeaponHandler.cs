@@ -58,16 +58,12 @@ namespace Minibonk.Player
             {
                 case SpellTypes.FireballSpell:
                     return hasFireballSpell;
-                    break;
                 case SpellTypes.WindSpell:
                     return hasWindSpell;
-                    break;
                 case SpellTypes.WaterSpell:
                     return hasWaterSpell;
-                    break;
                 case SpellTypes.IceSpell:
                     return hasIceSpell;
-                    break;
                 default:
                     return false;
             }
