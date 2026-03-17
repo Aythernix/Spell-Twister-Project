@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Minibonk.Management;
@@ -11,6 +12,16 @@ namespace MiniBonk.Enemy
         public EnemyData data; 
         public Transform player;
         public bool isAlive = true;
+        
+        [Header("Hit Visuals")]
+        [SerializeField] protected SpriteRenderer overheadIcon;
+        [SerializeField] protected Renderer[] model;
+        [SerializeField] protected float hitEffectDuration = 0.2f;
+
+        private MaterialPropertyBlock propBlock;
+        private Coroutine hitEffectCoroutine;
+        private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
+        
         
         private NavMeshAgent navMeshAgent;
         protected int currentHealth;
@@ -63,9 +74,41 @@ namespace MiniBonk.Enemy
 
             currentHealth -= amount;
 
+            
             if (currentHealth <= 0)
             {
                 Die(instigator);
+                return;
+            }
+            
+            TriggerHitFeedback();
+        }
+                     
+        
+        private void TriggerHitFeedback()
+        {
+            if (hitEffectCoroutine != null) StopCoroutine(hitEffectCoroutine);
+            hitEffectCoroutine = StartCoroutine(hitEffectSequence());
+        }
+
+        private IEnumerator hitEffectSequence()
+        {
+            if (propBlock == null) propBlock = new MaterialPropertyBlock();
+            if (overheadIcon != null) overheadIcon.enabled = true;
+
+            propBlock.SetColor(ColorProperty, Color.red);
+            foreach (var rend in model)
+            {
+                rend.SetPropertyBlock(propBlock);
+            }
+            yield return new WaitForSeconds(hitEffectDuration);
+            
+            if (overheadIcon != null) overheadIcon.enabled = false;
+            
+            propBlock.Clear();
+            foreach (var rend in model)
+            {
+                rend.SetPropertyBlock(propBlock);
             }
         }
 
