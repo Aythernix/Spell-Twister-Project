@@ -561,17 +561,7 @@ MonoBehaviour:
   <sceneName>k__BackingField: 
   <playerHandler>k__BackingField: {fileID: 0}
   <postProcessVolume>k__BackingField: {fileID: 0}
---- !u!114 &1781298887 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 810977017981777516, guid: 1931246c114e74541bc0f24eea265561, type: 3}
-  m_PrefabInstance: {fileID: 3082276493109745780}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32918c1f9287cff418a3b69dd678a96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  <levelAmbience>k__BackingField: {fileID: 0}
 --- !u!1001 &3082276493109745780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,17 +642,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3943849836265940185, guid: 1931246c114e74541bc0f24eea265561, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943849836265940185, guid: 1931246c114e74541bc0f24eea265561, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943849836265940185, guid: 1931246c114e74541bc0f24eea265561, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943849836265940185, guid: 1931246c114e74541bc0f24eea265561, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4295978119433987269, guid: 1931246c114e74541bc0f24eea265561, type: 3}
       propertyPath: m_Name
       value: MainMenu Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 7674719455303171935, guid: 1931246c114e74541bc0f24eea265561, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1781298887}
-    - target: {fileID: 7674719455303171935, guid: 1931246c114e74541bc0f24eea265561, type: 3}
+    - target: {fileID: 5617017539724093539, guid: 1931246c114e74541bc0f24eea265561, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnSettingsClicked
+      value: OnCreditsClicked
       objectReference: {fileID: 0}
     - target: {fileID: 8380132249103518259, guid: 1931246c114e74541bc0f24eea265561, type: 3}
       propertyPath: m_AnchorMax.y

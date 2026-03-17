@@ -18,6 +18,7 @@ namespace Minibonk.UI
 		Shop,
 		Spells,
 		Settings,
+		Credits,
 	}
 	public class UIManager : MonoBehaviour
 	{
