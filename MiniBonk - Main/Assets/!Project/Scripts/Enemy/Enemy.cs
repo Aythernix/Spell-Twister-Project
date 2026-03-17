@@ -74,13 +74,16 @@ namespace MiniBonk.Enemy
 
             currentHealth -= amount;
 
-            TriggerHitFeedback();
             
             if (currentHealth <= 0)
             {
                 Die(instigator);
+                return;
             }
+            
+            TriggerHitFeedback();
         }
+                     
         
         private void TriggerHitFeedback()
         {
