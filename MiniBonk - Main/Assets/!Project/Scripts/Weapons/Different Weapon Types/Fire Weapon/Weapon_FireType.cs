@@ -96,6 +96,10 @@ public class Weapon_FireType : MonoBehaviour
 
     void createFireBall()
     {
+        // Call Sound effect
+
+        GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Fireball, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+
         // Allows for weapon to communicate to GameManager
 
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.FireballSpell);

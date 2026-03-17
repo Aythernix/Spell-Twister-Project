@@ -75,6 +75,10 @@ public class Weapon_WindType : MonoBehaviour
 
     void CreateWindProjectile()
     {
+        // Call Sound effect
+
+        GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+
         lastProjectile = 0; // Resets last projectile timer to 0
         if (windProjectilePrefab == null || projectileSpawner == null) return; // safety line that makes sure the prefab and spawner actually exist
 
@@ -83,9 +87,7 @@ public class Weapon_WindType : MonoBehaviour
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.WindSpell);
 
         // creates and makes a set vector 3 to be used on the newely made projectile
-        var newWindProjectile = Instantiate(windProjectilePrefab, projectileSpawner.transform.position, projectileSpawner.transform.rotation, gameObject.transform);
         Vector3 windProjectileDirection = projectileSpawner.transform.forward;
-
         Transform enemyTarget = enemyAreaDetector.CheckForClosestEnemy();
 
         if (enemyTarget != null)
@@ -99,6 +101,13 @@ public class Weapon_WindType : MonoBehaviour
                 windProjectileDirection = projectileSpawner.transform.forward;
             }
         }
+
+        Quaternion spawnRotation = Quaternion.LookRotation(windProjectileDirection);
+
+        var newWindProjectile = Instantiate(windProjectilePrefab, projectileSpawner.transform.position, spawnRotation);
+        
+        newWindProjectile.transform.parent = null;
+        
 
         // sets the new projectile to a rigid body
         Rigidbody rb = newWindProjectile.GetComponent<Rigidbody>();

@@ -73,6 +73,10 @@ public class Weapon_IceType : MonoBehaviour
 
     private void CreateIceProjectile()
     {
+        // Call Sound effect
+
+        GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Ice, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+
         lastProjectile = 0;
 
         if (iceBallPrefab == null || projectileSpawner == null) return;
