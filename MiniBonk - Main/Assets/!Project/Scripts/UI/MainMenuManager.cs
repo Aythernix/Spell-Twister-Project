@@ -34,6 +34,11 @@ namespace Minibonk.UI
 		{
 			GameManager.Instance.uiManager.UIEvents.OnInstantiateUIScene?.Invoke(UISceneNames.Settings, false);
 		}
+		
+		public void OnCreditsClicked()
+		{
+			GameManager.Instance.uiManager.UIEvents.OnInstantiateUIScene?.Invoke(UISceneNames.Credits, false);
+		}
 
 		public void OnQuitClicked()
 		{
