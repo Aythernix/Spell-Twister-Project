@@ -35794,7 +35794,7 @@ MonoBehaviour:
   spawners:
   - {fileID: 1113008696}
   - {fileID: 959179027}
-  player: {fileID: 536447343}
+  player: {fileID: 0}
 --- !u!135 &703629730
 SphereCollider:
   m_ObjectHideFlags: 0
