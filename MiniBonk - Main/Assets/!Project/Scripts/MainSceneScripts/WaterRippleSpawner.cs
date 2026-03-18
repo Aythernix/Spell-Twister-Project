@@ -21,7 +21,7 @@ public class WaterRippleSpawner : MonoBehaviour
         RaycastHit hit;
 
         // Check if that ray hits the water
-        if (Physics.Raycast(ray, out hit, 2.0f))
+        if (Physics.Raycast(ray, out hit, 1.85f))
         {
             Vector3 spawnPos = hit.point + new Vector3(0, 0.01f, 0);
 
