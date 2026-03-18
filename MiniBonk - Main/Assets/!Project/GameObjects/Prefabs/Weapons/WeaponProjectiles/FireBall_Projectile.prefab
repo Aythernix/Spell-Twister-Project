@@ -4992,6 +4992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16aaa67888135cd4c9c21a56164c7cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 30
+  turnSpeed: 1000
   weaponDamageStats: {fileID: 11400000, guid: ce91cf37366a45142bf2ffd6aae73eb4, type: 2}
 --- !u!1001 &6326103956917326312
 PrefabInstance:

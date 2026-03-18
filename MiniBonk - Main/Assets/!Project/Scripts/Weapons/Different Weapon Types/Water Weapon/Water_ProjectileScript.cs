@@ -49,8 +49,6 @@ public class Water_ProjectileScript : MonoBehaviour
                 justHit.TakeDamage(weaponDamageStats.waterBallProjectileDMG, transform.root.gameObject); 
             }
 
-            // kills off projectile
-            Destroy(gameObject);
         }
         else if (other.CompareTag("Environment")) // Checks if projectile is colliding with an object with tag 'Environment'
         {

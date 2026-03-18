@@ -30,8 +30,8 @@ public class WeaponManager : MonoBehaviour
     private float _originalWalkSpeed;
     private float _originalJumpForce;
 
-    private float _walkSpeedToAdd = 8f;
-    private float _jumpForceToAdd = 4f;
+    private float _walkSpeedToAdd = 5f;
+    private float _jumpForceToAdd = 3f;
 
     private bool _isWindBuffActive = false;
 
