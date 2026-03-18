@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDamageStats
   m_EditorClassIdentifier: 
   fireBallProjectileDMG: 125
-  waterBallProjectileDMG: 150
+  waterBallProjectileDMG: 200
   windBallProjectileDMG: 100
   iceBallProjectileDMG: 20
-  frostBiteDOT: 5
+  frostBiteDOT: 8
