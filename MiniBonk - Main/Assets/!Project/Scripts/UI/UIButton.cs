@@ -1,4 +1,5 @@
 
+using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,10 +12,7 @@ namespace Minibonk.UI
 
 		private bool _isHovered = false;
 		private bool _isSelected = false;
-
-		protected AudioClip _UIHoverSound;
-		protected AudioClip _UISelectSound;
-		protected AudioClip _UIClickSound;
+		
 
 		#endregion
 		
@@ -22,14 +20,11 @@ namespace Minibonk.UI
 		void Update()
 		{	
 			// Detects is element is being selected
-			if (EventSystem.current.currentSelectedGameObject == gameObject && !_isHovered)
+			if (EventSystem.current.currentSelectedGameObject == gameObject && !_isHovered && !_isSelected)
 			{
 				OnUISelect(true);
 				_isSelected = true;
-				if (_UISelectSound != null)
-				{
-					//TODO Call UI Play Sound Event
-				}
+				GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.UIHover, null);
 			}
 			
 			// Detects if element has been unselected after being previously selected
@@ -51,10 +46,7 @@ namespace Minibonk.UI
 
 			OnUIHover(true, eventData);
 
-			if (_UIHoverSound != null)
-			{
-				//TODO Call UI Play Sound Event
-			}
+			GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.UIHover, null);
 		}
 		
 		// Detects Mouse Exits
@@ -70,10 +62,7 @@ namespace Minibonk.UI
 		{
 			OnUIClick("Mouse",eventData);
 
-			if (_UIClickSound != null)
-			{
-				//TODO Call UI Play Sound Event
-			}
+			GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.UIConfirm, null);
 		}
 		
 		// Controller Inputs
@@ -81,10 +70,7 @@ namespace Minibonk.UI
 		{
 			OnUIClick("Controller",eventData);
 			
-			if (_UIClickSound != null)
-			{
-				//TODO Call UI Play Sound Event
-			}
+			GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.UIConfirm, null);
 		}
 
 		#endregion

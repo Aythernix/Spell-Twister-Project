@@ -24,8 +24,12 @@ namespace Minibonk.Management
             Ice,
             IceImpact,
             // Enemy Sounds
+                // Orc Sounds
+            OrcGroans,
             MeleeFootSteps,
             MeleeAttacks,
+                // Skeleton Sounds
+            SkeletonGroans,
             RangedFootSteps,
             RangedAttacks,
             RangedImpact,

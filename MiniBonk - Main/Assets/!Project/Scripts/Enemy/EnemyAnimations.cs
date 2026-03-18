@@ -1,3 +1,4 @@
+using Minibonk.Management;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ namespace Minibonk.Enemy
         private bool wasMoving;
         private const float UPDATE_INTERVAL = 0.1f; // Check 10 times per second
         private float lastUpdateTime;
+        [SerializeField] private float _sfxTime = 3f;
+        private float _lastSfxTime;
+        private AudioSource _enemyAudioSource;
 
         #endregion
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,9 +25,11 @@ namespace Minibonk.Enemy
         {
             _navMeshAgent = GetComponentInParent<NavMeshAgent>();
             _animator = GetComponentInChildren<Animator>();
+            _enemyAudioSource = GetComponentInParent<AudioSource>();
             lastVelocity = _navMeshAgent.velocity;
             wasMoving = false;
             lastUpdateTime = Time.time;
+            _lastSfxTime = Time.time;
         }
 
         private void Update()
@@ -37,6 +43,12 @@ namespace Minibonk.Enemy
         public void ProcessAnimation()
         {
             CheckForMovement();
+
+            if (Time.time >= _lastSfxTime + _sfxTime)
+            {
+                PlaySFX();
+                _lastSfxTime = Time.time;
+            }
         }
 
         public void CheckForMovement()
@@ -65,6 +77,11 @@ namespace Minibonk.Enemy
                 // Debug.Log($"!!!Attack Triggered!!!");
             }
                
+        }
+        
+        public void PlaySFX()
+        {
+            GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.OrcGroans, _enemyAudioSource);
         }
     }
 }

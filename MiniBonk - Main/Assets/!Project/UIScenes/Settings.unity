@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 361185532}
   - component: {fileID: 361185531}
   - component: {fileID: 361185530}
+  - component: {fileID: 361185534}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -291,6 +292,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361185528}
   m_CullTransparentMesh: 1
+--- !u!114 &361185534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361185528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f08095e18903624d9518c809ef083dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &395066793 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3146249802597010819, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
@@ -356,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 177.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -535,7 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -613,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 106.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1072,7 +1085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 124.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1202,6 +1215,7 @@ GameObject:
   - component: {fileID: 808647964}
   - component: {fileID: 808647963}
   - component: {fileID: 808647962}
+  - component: {fileID: 808647966}
   m_Layer: 0
   m_Name: Close Button
   m_TagString: Untagged
@@ -1345,6 +1359,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808647960}
   m_CullTransparentMesh: 1
+--- !u!114 &808647966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808647960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f08095e18903624d9518c809ef083dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &869597171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 116.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2357,7 +2383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 199.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2512,7 +2538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4478702413998162444, guid: 7239a3be407aa654fa228a8260987c80, type: 3}
       propertyPath: m_AnchoredPosition.x

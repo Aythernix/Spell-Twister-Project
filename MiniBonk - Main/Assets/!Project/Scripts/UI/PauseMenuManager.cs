@@ -77,6 +77,8 @@ public class PauseMenuManager : MonoBehaviour
     public void MainMenu()
     {
         GameManager.Instance.uiManager.UIEvents.SwapActiveUIScene?.Invoke(UISceneNames.MainMenu);
+        GameManager.Instance.UnPauseGame();
+        GameManager.Instance.uiManager.UIEvents.ClearCloseableSceneStack?.Invoke();
     }
     
 

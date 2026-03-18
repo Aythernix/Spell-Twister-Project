@@ -1,3 +1,4 @@
+using Minibonk.Management;
 using UnityEngine;
 using Minibonk.Player;
 namespace MiniBonk.Enemy
@@ -6,6 +7,7 @@ namespace MiniBonk.Enemy
     {
         [Header("Ranged Setup")] [SerializeField]
         private Transform _firePoint;
+        
         
 
         public override void Attack()
@@ -35,6 +37,7 @@ namespace MiniBonk.Enemy
                 // Pulls data from scriptable object
                 projectile.Setup(data.damage, data.projectileSpeed, data.projectileLifetime);
             }
+            GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.RangedAttacks, _enemyAudioSource);
         }
     }
 }

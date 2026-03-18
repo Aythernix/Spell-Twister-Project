@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 3406408783657514089}
   serializedVersion: 2
   m_LocalRotation: {x: 0.110414475, y: 2.4797057e-14, z: -2.7547978e-15, w: 0.99388564}
-  m_LocalPosition: {x: 87.3, y: 46.944588, z: -71.99916}
+  m_LocalPosition: {x: 276, y: 44.744587, z: -298.69916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -311,6 +311,7 @@ MonoBehaviour:
   <sceneName>k__BackingField: 
   <playerHandler>k__BackingField: {fileID: 0}
   <postProcessVolume>k__BackingField: {fileID: 0}
+  <levelAmbience>k__BackingField: {fileID: 8300000, guid: 22fbeb14e4807e449a28c83aff2c7cfa, type: 3}
 --- !u!1 &5800087929607467336
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +374,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b5966403742e18b42bd18c215ac3d745, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 609e14e06e398604aa48b7a1bc1b287b, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5840242994393144505
 GameObject:
@@ -1007,7 +1008,7 @@ MonoBehaviour:
   _maxDistanceToPlayer: 30
   _enemiesToSpawnPerBatch: 3
   _spawnRadius: 100
-  _maxEnemiesInScene: 400
+  _maxEnemiesInScene: 300
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1023,8 +1024,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af55f8b27b4806846aa0b2289e07de3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updateInterval: 0.1
-  _maxEnemiesPerFrame: 100
+  _pathfindingProcessedPerFrame: 20
+  _animationsProcessedPerFrame: 15
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8078268995034469422
 GameObject:
   m_ObjectHideFlags: 0
