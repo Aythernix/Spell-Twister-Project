@@ -110,33 +110,17 @@ public class Weapon_FireType : MonoBehaviour
         if (fireBallPrefab == null || projectileSpawner == null) return;
 
         // Sets 'bullet' spawn at 'bullet spawners' position
-        var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation, gameObject.transform);
+        var bullet = Instantiate(fireBallPrefab, projectileSpawner.transform.position, projectileSpawner.transform.transform.rotation);
+        bullet.transform.parent = null;
 
-        // creates a new unnasigned vector 3 for the fireBalls move direction
-        Vector3 bulletDirection = projectileSpawner.transform.forward;
+        // Grabs the script on new fireball to allow homing
+        Fire_ProjectileScript script = bullet.GetComponent<Fire_ProjectileScript>();
 
-        // creates a new vector with the 'closestEnemy' variable from the range detector script
-        Transform enemyTarget = enemyDetector.CheckForClosestEnemy();
-
-        if (enemyTarget != null)
+        if (script != null)
         {
-            try
-            {
-                bulletDirection = (enemyTarget.position - projectileSpawner.transform.position).normalized;
-            }
-            catch (MissingReferenceException)
-            {
-                bulletDirection = projectileSpawner.transform.forward;
-            }
+            script.target = enemyDetector.CheckForClosestEnemy();
+            script.speed = fireBallSpeed;
         }
-
-
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = bulletDirection * fireBallSpeed;
-        }
-
 
         // removes a bullet each time the function is called
         fireBalls -= 1;

@@ -6,17 +6,43 @@ using System.Runtime.CompilerServices;
 public class Fire_ProjectileScript : MonoBehaviour
 {
     // ------------- Script that handles only Fireball Projectile spawning ---------------//
-     
-    // Bullet parameters
 
+    // Constant homing parameters
+    [HideInInspector] public Transform target;
+    public float speed = 30f;
+    public float turnSpeed = 500f;
+
+    // Bullet parameters
+    [Header("Bullet")]
     float bulletLife = 2.5f;
     private bool hasHit = false;
     public WeaponDamageStats weaponDamageStats;
+
     private Collider projectileCollider; // Cached collider
+    private Rigidbody rb;
 
     private void Awake()
     {
         projectileCollider = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (hasHit) return;
+
+        if (target != null)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, turnSpeed * Time.fixedDeltaTime);
+            } 
+        }
+
+        rb.linearVelocity = transform.forward * speed;
     }
 
     // ------------------------ Projectile Lifetime Timer ---------------------------//
