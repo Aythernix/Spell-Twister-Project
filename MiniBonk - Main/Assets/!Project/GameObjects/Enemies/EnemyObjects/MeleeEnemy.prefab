@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5508262004003210702}
   - component: {fileID: 7909646066669575920}
   - component: {fileID: -7106996447482635448}
+  - component: {fileID: 7925365291797080149}
   m_Layer: 10
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -222,6 +223,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7925365291797080149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521692644132424675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d627880a543796743b1ac58faaf08c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ripplePrefab: {fileID: 2123095700723724467, guid: dd99d8bbd8e720344a679d9f4082728d, type: 3}
+  _spawnRate: 1
 --- !u!1 &9117404917993581212
 GameObject:
   m_ObjectHideFlags: 0
