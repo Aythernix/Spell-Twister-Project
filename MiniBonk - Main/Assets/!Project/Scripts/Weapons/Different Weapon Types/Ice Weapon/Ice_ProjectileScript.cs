@@ -1,5 +1,6 @@
-using UnityEngine;
+using Minibonk.Management;
 using MiniBonk.Enemy;
+using UnityEngine;
 
 public class Ice_ProjectileScript : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class Ice_ProjectileScript : MonoBehaviour
             if (justHit != null)
             {
                 var frostBiteZone = Instantiate(iceDOTZone, justHit.transform.position, Quaternion.identity);
+
+                // Call Sound effect
+                GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.IceImpact, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+
                 justHit.TakeDamage(weaponDamageStats.iceBallProjectileDMG, transform.root.gameObject);
                 
                 //var frostBiteZone = Instantiate(iceDOTZone, justHit.transform.position, Quaternion.identity);

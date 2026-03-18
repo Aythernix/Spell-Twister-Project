@@ -76,7 +76,6 @@ public class Weapon_WindType : MonoBehaviour
     void CreateWindProjectile()
     {
         // Call Sound effect
-
         GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
 
         lastProjectile = 0; // Resets last projectile timer to 0

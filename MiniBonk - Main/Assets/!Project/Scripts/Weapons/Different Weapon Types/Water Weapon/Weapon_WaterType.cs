@@ -84,7 +84,6 @@ public class Weapon_WaterType : MonoBehaviour
     private void CreateWaterPulse()
     {
         // Call Sound effect
-
         GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
 
         lastwaterPulse = 0;
