@@ -59,11 +59,70 @@ public class WeaponManager : MonoBehaviour
 
     private void OnEnable()
     {
+        // Debug the chain to find where null occurs
+        Debug.Log("=== WeaponManager OnEnable Debug ===");
+        
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is null!");
+            return;
+        }
+        Debug.Log("GameManager.Instance found");
+        
+        if (GameManager.Instance.currentLevelManager == null)
+        {
+            Debug.LogError("GameManager.Instance.currentLevelManager is null!");
+            return;
+        }
+        Debug.Log("currentLevelManager found");
+        
+        if (GameManager.Instance.currentLevelManager.playerHandler == null)
+        {
+            Debug.LogError("GameManager.Instance.currentLevelManager.playerHandler is null!");
+            return;
+        }
+        Debug.Log("playerHandler found");
+        
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents == null)
+        {
+            Debug.LogError("GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents is null!");
+            return;
+        }
+        Debug.Log("PlayerEvents found - subscribing to IsSpellEquipped");
+        
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellEquipped += GetCurrentWeapon;
     }
 
     private void OnDisable()
     {
+        // Debug the chain to find where null occurs
+        Debug.Log("=== WeaponManager OnDisable Debug ===");
+        
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is null!");
+            return;
+        }
+        
+        if (GameManager.Instance.currentLevelManager == null)
+        {
+            Debug.LogError("GameManager.Instance.currentLevelManager is null!");
+            return;
+        }
+        
+        if (GameManager.Instance.currentLevelManager.playerHandler == null)
+        {
+            Debug.LogError("GameManager.Instance.currentLevelManager.playerHandler is null!");
+            return;
+        }
+        
+        if (GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents == null)
+        {
+            Debug.LogError("GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents is null!");
+            return;
+        }
+        
+        Debug.Log("Unsubscribing from IsSpellEquipped");
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.IsSpellEquipped -= GetCurrentWeapon;
     }
 
@@ -128,6 +187,9 @@ public class WeaponManager : MonoBehaviour
 
     private bool GetCurrentWeapon(SpellTypes spellType)
     {
-        return (int)spellType + 1 == currentWeapon;
+        Debug.Log($"GetCurrentWeapon called with spellType: {spellType}, currentWeapon: {currentWeapon}");
+        bool result = (int)spellType + 1 == currentWeapon;
+        Debug.Log($"GetCurrentWeapon returning: {result}");
+        return result;
     }
 }

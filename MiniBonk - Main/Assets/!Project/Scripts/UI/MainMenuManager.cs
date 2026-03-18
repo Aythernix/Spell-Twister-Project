@@ -14,6 +14,8 @@ namespace Minibonk.UI
 		{
 			_sceneController = GameManager.Instance.sceneController;
 			GameManager.Instance.currentGameState = GameManager.GameState.NotStarted;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 		}
 
 		// Update is called once per frame

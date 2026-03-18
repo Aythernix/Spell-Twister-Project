@@ -127,81 +127,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 145479080661928234, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 145479080661928234, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 145479080661928234, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 145479080661928234, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 306518687061368661, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 306518687061368661, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 306518687061368661, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 306518687061368661, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1097319742512316857, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
       propertyPath: m_Name
       value: Shop Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2636788954104565208, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2636788954104565208, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2636788954104565208, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2636788954104565208, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3065878764991775446, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3065878764991775446, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3065878764991775446, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3065878764991775446, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168574122418191135, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931847267118386594, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6550779658807073622, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
       propertyPath: m_Pivot.x
@@ -281,18 +209,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6550779658807073622, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7101014599500463082, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_text
-      value: Buy Sprint
-      objectReference: {fileID: 0}
-    - target: {fileID: 7101014599500463082, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_fontSize
-      value: 25.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7367174263212058335, guid: 5761ce6b15e8d254e8833f9f74fc399d, type: 3}
-      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

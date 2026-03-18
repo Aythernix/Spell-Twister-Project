@@ -134,54 +134,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc9304f3f666a04cb555321c86d7e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalAudioSource: {fileID: 0}
   Sounds:
   - name: PlayerFootsteps
     clips:
-    - {fileID: 8300000, guid: 0ee07d619990c8347ab9c05a6514df56, type: 3}
-    - {fileID: 8300000, guid: 422dc960b2b80474bbb4d07a1c13eb5a, type: 3}
-    - {fileID: 8300000, guid: 9c8178b5ade8c4f489662c522b5dd232, type: 3}
-    - {fileID: 8300000, guid: 53b7693cb24c7d540a869259f5d4a707, type: 3}
-    - {fileID: 8300000, guid: db69eb3536da1034395bdf105ff63ad0, type: 3}
-    volume: 0.1
+    - {fileID: 8300000, guid: 60a23ef4054b19340a8bdc92bb699db7, type: 3}
+    - {fileID: 8300000, guid: 501f64ac93ab1dd47b6ced59d9d1036c, type: 3}
+    - {fileID: 8300000, guid: 588579b87d437ed418ffd5af820b4040, type: 3}
+    - {fileID: 8300000, guid: 59d65ba75f7f70445a8954d4f604f4c2, type: 3}
+    - {fileID: 8300000, guid: f405651143ff86b4cb5763ffdddc4b38, type: 3}
+    - {fileID: 8300000, guid: dc620e9188126404f8269064d8f4def7, type: 3}
+    - {fileID: 8300000, guid: 313317f7d18d3f342a55fd830740523d, type: 3}
+    - {fileID: 8300000, guid: 43c7f765e0707324796bd216fda77dcb, type: 3}
+    - {fileID: 8300000, guid: 3d8d0d323a390f44ea2f304f6c6a2f8e, type: 3}
+    - {fileID: 8300000, guid: 6caae0bb5eb52d242bf64133d9907c49, type: 3}
+    - {fileID: 8300000, guid: d3779d2e1cff2364aad2fd2482d42ca2, type: 3}
+    - {fileID: 8300000, guid: d2fa590f1760fcb4c87f56483b35addf, type: 3}
+    - {fileID: 8300000, guid: 6bf7774c795f0fc4fb965b97ebe26030, type: 3}
+    - {fileID: 8300000, guid: c13854e72afab10469c14400b10c5655, type: 3}
+    - {fileID: 8300000, guid: 94d00c93d12c3e84192c70a3263c2cd0, type: 3}
+    - {fileID: 8300000, guid: 9c56703095786c64bb05f49a1adf2367, type: 3}
+    - {fileID: 8300000, guid: f9a928dd10faa5f418646ea29c62b785, type: 3}
+    - {fileID: 8300000, guid: 4d185afcc03c06249a0516c237a58a65, type: 3}
+    - {fileID: 8300000, guid: 420c6a37cae2caf4faa1cc0a091287c9, type: 3}
+    - {fileID: 8300000, guid: 52415fed0fbf455449320c2c46e781b8, type: 3}
+    volume: 1
+  - name: PlayerSprint
+    clips:
+    - {fileID: 8300000, guid: 334bdc740bb529e4d94be53f71819ea9, type: 3}
+    - {fileID: 8300000, guid: 64a72ab6db9ddc54cb4f6b8acdf882ac, type: 3}
+    - {fileID: 8300000, guid: b864f132faf6b2c4eb25ed0d7142a0fb, type: 3}
+    - {fileID: 8300000, guid: bbaa9e41f41129143b12244a3acaf107, type: 3}
+    volume: 1
   - name: PlayerJump
     clips: []
     volume: 0
   - name: Fireball
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 1ca577b9ac6d1ec41b161201dd802f14, type: 3}
+    volume: 1
   - name: Wave
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 3867cf9e3f27e134d8ad4a7d4ae6a759, type: 3}
+    volume: 1
   - name: Wind
     clips: []
     volume: 0
   - name: Ice
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 8921d5f9055fbba4ba32affea505183e, type: 3}
+    volume: 1
   - name: IceImpact
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: b0040e1e179b02d4c83215e0af561c31, type: 3}
+    volume: 1
+  - name: OrcGroans
+    clips:
+    - {fileID: 8300000, guid: fd7333a1598408543ac8e6411e75cba3, type: 3}
+    - {fileID: 8300000, guid: fa742e9ace67dd54cb1de2bc82ac65a6, type: 3}
+    - {fileID: 8300000, guid: f4f3ecf1943a82f44849e0c1446658d5, type: 3}
+    volume: 1
   - name: MeleeFootSteps
     clips: []
     volume: 0
   - name: MeleeAttacks
     clips: []
     volume: 0
+  - name: SkeletonGroans
+    clips: []
+    volume: 0
   - name: RangedFootSteps
     clips: []
     volume: 0
   - name: RangedAttacks
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 2a1b63caa95a36a4c8f45f1dc7994578, type: 3}
+    - {fileID: 8300000, guid: 566dd10c8b9435b46959944549b9a906, type: 3}
+    volume: 1
   - name: RangedImpact
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: f96137271ac738042a179aea875dcd30, type: 3}
+    volume: 1
   - name: UIHover
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 0ff45f9deb6774a4a94aad3adaf4dec5, type: 3}
+    volume: 0.5
   - name: UIConfirm
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 34febdc0e73bafc4b84aee113b976107, type: 3}
+    volume: 0.5
 --- !u!82 &3798102829265536809
 AudioSource:
   m_ObjectHideFlags: 0
@@ -483,6 +524,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5aa831b7-0c81-4dbf-9aca-e328b0935526
     m_ActionName: 'Player/EquipIce[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 61c99c29-5a11-49d5-8979-255d08e5d548
+    m_ActionName: 'Player/Ability3[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

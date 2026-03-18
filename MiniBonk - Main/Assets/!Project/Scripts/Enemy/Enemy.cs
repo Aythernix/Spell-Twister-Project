@@ -22,6 +22,7 @@ namespace MiniBonk.Enemy
         private Coroutine hitEffectCoroutine;
         private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
         
+        protected AudioSource _enemyAudioSource;
         
         private NavMeshAgent navMeshAgent;
         protected int currentHealth;
@@ -48,6 +49,7 @@ namespace MiniBonk.Enemy
         protected virtual void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            _enemyAudioSource = GetComponent<AudioSource>();
             
             if (player == null) 
             {

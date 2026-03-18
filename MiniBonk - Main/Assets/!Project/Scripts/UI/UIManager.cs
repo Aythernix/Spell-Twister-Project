@@ -43,6 +43,7 @@ namespace Minibonk.UI
 			UIEvents.OnCloseUIScene += CloseUIScene;
 			UIEvents.SwapActiveUIScene += SwapUIScene;
 			UIEvents.UpdateUI += UpdateUI;
+			UIEvents.ClearCloseableSceneStack += ClearCloseableSceneStack;
 		}
 
 		private void OnDisable()
@@ -53,6 +54,7 @@ namespace Minibonk.UI
 			UIEvents.OnCloseUIScene -= CloseUIScene;
 			UIEvents.SwapActiveUIScene -= SwapUIScene;
 			UIEvents.UpdateUI -= UpdateUI;
+			UIEvents.ClearCloseableSceneStack -= ClearCloseableSceneStack;
 		}
 
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -151,6 +153,11 @@ namespace Minibonk.UI
 			}
 		}
 		
+		public void ClearCloseableSceneStack()
+		{
+			_closeableSceneStack.Clear();
+		}
+		
         
 
 		/// <summary>
@@ -232,5 +239,7 @@ namespace Minibonk.UI
 		public Action<UISceneNames> SwapActiveUIScene;
 
 		public Action UpdateUI;
+
+		public Action ClearCloseableSceneStack;
 	}
 }
