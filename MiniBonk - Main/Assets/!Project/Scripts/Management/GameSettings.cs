@@ -46,6 +46,7 @@ public class GameSettings : ScriptableObject
         pixelisation = _defaultPixelisation;
         audioMixer = _defaultAudioMixer;
         renderTexture = _defaultRenderTexture;
+        showTutorial = true;
         
         ApplySettings();
         
