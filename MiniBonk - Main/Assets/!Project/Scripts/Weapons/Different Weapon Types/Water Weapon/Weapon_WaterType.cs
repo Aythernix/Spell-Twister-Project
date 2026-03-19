@@ -32,7 +32,8 @@ public class Weapon_WaterType : MonoBehaviour
 
     // ------------- Sound -----------//
 
-    private float _soundTimer = 1f;
+    private float _soundTimer = 10f;
+    public float timeToWaitForSound;
 
     #endregion 
 
@@ -66,6 +67,7 @@ public class Weapon_WaterType : MonoBehaviour
         // ------------------ Fire Rate Logic ---------------------//
 
         lastwaterPulse += Time.deltaTime;
+        _soundTimer += Time.deltaTime;
 
         // ------------------ Spawning the water Pulse -----------------------//
 
@@ -91,14 +93,12 @@ public class Weapon_WaterType : MonoBehaviour
 
         // Timer for sounds to be called
 
-        if (_soundTimer > 0.5f)
+        if (_soundTimer > timeToWaitForSound)
         {
             // Call Sound effect
             GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
             _soundTimer = 0;
         }
-        else
-            _soundTimer += Time.time;
 
         #endregion
 
