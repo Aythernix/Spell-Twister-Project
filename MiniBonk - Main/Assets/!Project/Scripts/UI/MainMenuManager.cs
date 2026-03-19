@@ -29,7 +29,7 @@ namespace Minibonk.UI
 		// Called when the player clicks start
 		public void OnStartClick()
 		{
-			_sceneController.ChangeScene(SceneNames.ComponentTesting);
+			_sceneController.ChangeScene(SceneNames.MainLevel);
 		}
 
 		public void OnSettingsClicked()
@@ -44,7 +44,11 @@ namespace Minibonk.UI
 
 		public void OnQuitClicked()
 		{
+			Application.Quit();
 			
+			#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+			#endif
 		}
 
 		#endregion

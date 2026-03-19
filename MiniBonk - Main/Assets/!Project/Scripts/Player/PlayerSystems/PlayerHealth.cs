@@ -85,7 +85,7 @@ namespace Minibonk.Player
 		// Called upon death
 		private void OnHealthEmpty()
 		{
-			Debug.Break();
+			GameManager.Instance.uiManager.UIEvents.SwapActiveUIScene?.Invoke(UISceneNames.DeathScreen);
 		}
 
 		private void IncreaseMaxHealth(int amount)

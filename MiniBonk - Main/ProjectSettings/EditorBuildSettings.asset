@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/!Project/UIScenes/MainMenu.unity
+    guid: 9fb4b2df3d02b634784e11bdfb4bfd8e
+  - enabled: 1
     path: Assets/!Project/Levels/MainLevel.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 169645fd44d19624c8d88eea3c21d72a
   - enabled: 1
     path: Assets/!Project/UIScenes/GameplayHud.unity
     guid: 071eb7ca60d10dd4ca2dd9ab28672825
@@ -24,17 +27,20 @@ EditorBuildSettings:
     path: Assets/!Project/UIScenes/Spells.unity
     guid: fef34bf7d8df740449d31faf188c35c0
   - enabled: 1
-    path: Assets/Development Scenes/ComponentTesting.unity
-    guid: 396925345861ba442b605dec18b07ebb
-  - enabled: 1
     path: Assets/!Project/UIScenes/Settings.unity
     guid: 511ab4ed1224a9142983c68867bf44d0
   - enabled: 1
     path: Assets/!Project/UIScenes/Credits.unity
     guid: 931f6102a2f0ff04d8c76b6d3d2db487
   - enabled: 1
-    path: Assets/!Project/UIScenes/MainMenu.unity
-    guid: 9fb4b2df3d02b634784e11bdfb4bfd8e
+    path: Assets/!Project/UIScenes/DeathScreen.unity
+    guid: 23fce6c7dee20e3469644b5f7fd92a57
+  - enabled: 1
+    path: Assets/Development Scenes/ComponentTesting.unity
+    guid: 396925345861ba442b605dec18b07ebb
+  - enabled: 1
+    path: Assets/Development Scenes/ExMainLevel.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

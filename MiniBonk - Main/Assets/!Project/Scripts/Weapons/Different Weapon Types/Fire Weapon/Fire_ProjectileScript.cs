@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using MiniBonk.Enemy;
 using System.Runtime.CompilerServices;
+using Minibonk.Management;
 
 public class Fire_ProjectileScript : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class Fire_ProjectileScript : MonoBehaviour
             if (justHit != null) // tests if the enemy that was hit still exists
             {
                 // adds damage accordingly
-                justHit.TakeDamage(weaponDamageStats.fireBallProjectileDMG, transform.root.gameObject);
+                justHit.TakeDamage(weaponDamageStats.fireBallProjectileDMG, GameManager.Instance.currentLevelManager.playerHandler.gameObject);
             }
 
             // kills off projectile

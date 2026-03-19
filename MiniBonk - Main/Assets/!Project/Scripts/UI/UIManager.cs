@@ -19,6 +19,7 @@ namespace Minibonk.UI
 		Spells,
 		Settings,
 		Credits,
+		DeathScreen
 	}
 	public class UIManager : MonoBehaviour
 	{
