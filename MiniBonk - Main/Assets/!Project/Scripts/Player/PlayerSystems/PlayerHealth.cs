@@ -143,6 +143,12 @@ namespace Minibonk.Player
 				OnHealthEmpty();
 			}
 			
+			if (_takeDamageCoroutine != null)
+			{
+				StopCoroutine(_takeDamageCoroutine);
+			}
+			_takeDamageCoroutine = StartCoroutine(AllowDamageTimer());
+			
 			_uiManager.UIEvents.OnUpdatePlayerHealthUI?.Invoke(_playerHandler.playerData.currentHealth,  _playerHandler.playerData.variableMaxHealth);
 
 			if (_playerHandler.playerData.currentHealth <= _lowHealthThreshold && !_isLowHealth)
@@ -154,12 +160,6 @@ namespace Minibonk.Player
 				}
 				_vignetteTransitionCoroutine = StartCoroutine(SmoothVignetteTransition(Color.black, _lowHealthColor));
 			}
-			
-			if (_takeDamageCoroutine != null)
-			{
-				StopCoroutine(_takeDamageCoroutine);
-			}
-			_takeDamageCoroutine = StartCoroutine(AllowDamageTimer());
 			
 		}
 

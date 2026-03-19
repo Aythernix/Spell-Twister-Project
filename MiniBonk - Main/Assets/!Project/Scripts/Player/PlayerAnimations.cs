@@ -123,19 +123,12 @@ namespace Minibonk.Player
 
         public void PlayFootSteps()
         {
-            if (_playerHandler.GetComponent<PlayerMovement>().isGrounded)
-            {
-                GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
-            }
-            
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
         }
         
         public void PlaySprint()
         {
-            if (_playerHandler.GetComponent<PlayerMovement>().isGrounded)
-            {
-                GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerSprint, _playerHandler.playerAudioSource);
-            }
-        }   
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerSprint, _playerHandler.playerAudioSource);
+        }
     }
 }

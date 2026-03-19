@@ -56,7 +56,6 @@ public class SpellsMenuManager : MonoBehaviour
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnDecreaseTracePoints?.Invoke(cost);
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnUnlockSpell?.Invoke(spellType);
         spellController.CheckIfLearnt();
-        GameManager.Instance.uiManager.UIEvents.UpdateUI?.Invoke();
         
     }
     

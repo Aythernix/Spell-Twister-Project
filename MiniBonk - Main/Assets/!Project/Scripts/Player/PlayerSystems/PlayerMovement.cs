@@ -13,8 +13,6 @@ namespace Minibonk.Player
 	{
 
 		#region Variables
-		
-		public bool isGrounded { get; private set; }
 
 		[Header("Movement Settings")]
 		
@@ -189,8 +187,6 @@ namespace Minibonk.Player
 				_isJumping = false;
 				_playerHandler.PlayerEvents.OnJumpLanded?.Invoke();
 			}
-			
-			isGrounded = grounded;
 
 			return grounded;
 		}

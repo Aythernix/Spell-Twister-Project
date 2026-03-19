@@ -24,8 +24,6 @@ namespace Minibonk.Management
 		[field: SerializeField] public PlayerHandler playerHandler {get; private set;}
 		[field: SerializeField] public Volume postProcessVolume {get; private set;}
 		
-		[field: SerializeField] public AudioClip levelAmbience {get; private set;}
-		
 		#endregion
 
 		#region Unity Methods
@@ -41,7 +39,7 @@ namespace Minibonk.Management
 
 		private void Start()
 		{
-			GameManager.Instance.EventHandler.StartLoopingAudio?.Invoke(levelAmbience, null);
+			
 		}
 
 		#endregion
