@@ -15,11 +15,13 @@ namespace MiniBonk.Enemy
         
         [Header("Hit Visuals")]
         [SerializeField] protected SpriteRenderer overheadIcon;
-        [SerializeField] protected Renderer[] model;
+        [SerializeField] protected Renderer[] model; //What is allowed to be changed by propBlock
+        [SerializeField] protected ParticleSystem blood;
+        [SerializeField] protected ParticleSystem deathBurst;
         [SerializeField] protected float hitEffectDuration = 0.2f;
 
-        private MaterialPropertyBlock propBlock;
-        private Coroutine hitEffectCoroutine;
+        private MaterialPropertyBlock propBlock; //Used  to change color of enemy
+        private Coroutine hitEffectCoroutine; // Used to display Particles
         private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
         
         protected AudioSource _enemyAudioSource;
@@ -89,6 +91,11 @@ namespace MiniBonk.Enemy
         
         private void TriggerHitFeedback()
         {
+            if (blood != null)
+            {
+                Debug.Log($"Playing particles for {name}");
+                blood.Play();
+            }
             if (hitEffectCoroutine != null) StopCoroutine(hitEffectCoroutine);
             hitEffectCoroutine = StartCoroutine(hitEffectSequence());
         }
@@ -117,9 +124,24 @@ namespace MiniBonk.Enemy
         protected virtual void Die(GameObject instigator)
         {
             isAlive = false;
+
+            if (hitEffectCoroutine != null) //Safeguard to prevent glitching with the Death effect
+            {
+                StopCoroutine(hitEffectCoroutine);
+            }
+
+            if (deathBurst != null)
+            {
+                deathBurst.transform.SetParent(null);
+                deathBurst.Play();
+            }
             
+            //Unregister AI
             EnemyProcessor.UnregisterEnemy(this);
+            if (navMeshAgent != null) navMeshAgent.enabled = false;
+            if (TryGetComponent<Collider>(out var collider)) collider.enabled = false;
             
+            //Handles XP and drops
             if (data != null)
             {
                 GameManager.Instance.EventHandler.AddXp?.Invoke((int)(data.xpValue * GameManager.Instance.ChaosMultiplier()));
@@ -130,6 +152,30 @@ namespace MiniBonk.Enemy
             }
             
             GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
+            StartCoroutine(DeathTransition());
+        }
+
+        private IEnumerator DeathTransition()
+        {
+            if (propBlock == null) propBlock = new MaterialPropertyBlock();
+            propBlock.SetColor(ColorProperty, Color.red);
+            foreach (var rend in model)
+            {
+                rend.SetPropertyBlock(propBlock);
+            }
+
+            float duration = 0.5f;
+            float elapsed = 0f;
+            Vector3 startScale = transform.localScale;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                transform.localScale = Vector3.Lerp(startScale, Vector3.zero, t);
+                transform.position += Vector3.down *(Time.deltaTime * 0.5f);
+                yield return null;
+            }
             Destroy(gameObject);
         }
         

@@ -13,6 +13,8 @@ namespace Minibonk.Player
 
         private Rigidbody _rb;
         private Animator _animator;
+        
+        [SerializeField] private ParticleSystem grassFootsteps; 
 
         //Animation Variables
         public bool isMoving;
@@ -124,11 +126,21 @@ namespace Minibonk.Player
         public void PlayFootSteps()
         {
             GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerFootsteps, _playerHandler.playerAudioSource);
+            if (grassFootsteps != null)
+            {
+                grassFootsteps.Play();
+            }
         }
         
         public void PlaySprint()
         {
             GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerSprint, _playerHandler.playerAudioSource);
+            if (grassFootsteps != null)
+            {
+                var main = grassFootsteps.main; // Access the main module of the particle system
+                main.simulationSpeed = 2f; // Set the simulation speed to 2x for sprinting
+                grassFootsteps.Play();
+            }
         }
     }
 }
