@@ -114,7 +114,7 @@ namespace MiniBonk.Enemy
             }
         }
 
-        protected virtual void Die(GameObject instigator)
+        public virtual void Die(GameObject instigator)
         {
             isAlive = false;
             
@@ -122,14 +122,19 @@ namespace MiniBonk.Enemy
             
             if (data != null)
             {
-                GameManager.Instance.EventHandler.AddXp?.Invoke((int)(data.xpValue * GameManager.Instance.ChaosMultiplier()));
-                if (GameManager.Instance.Probability(data.chanceOfDroppingHealth * GameManager.Instance.ChaosMultiplier()))
+                if (instigator != null)
                 {
-                    Instantiate(data.healthDrop, transform.position, Quaternion.identity);
+                    GameManager.Instance.EventHandler.AddXp?.Invoke((int)(data.xpValue * GameManager.Instance.ChaosMultiplier()));
+                    if (GameManager.Instance.Probability(data.chanceOfDroppingHealth * GameManager.Instance.ChaosMultiplier()))
+                    {
+                        Instantiate(data.healthDrop, transform.position, Quaternion.identity);
+                        
+                        GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
+                    }
                 }
             }
             
-            GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
+            
             Destroy(gameObject);
         }
         

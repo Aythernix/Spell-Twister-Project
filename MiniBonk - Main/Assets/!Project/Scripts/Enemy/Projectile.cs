@@ -30,6 +30,9 @@ public class Projectile : MonoBehaviour
                 handler.PlayerEvents.OnPlayerDamaged?.Invoke(_damage * GameManager.Instance.ChaosMultiplier());
                 GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.RangedImpact, _audioSource);
             }
+        }
+        if (other.CompareTag("Environment"))
+        {
             Destroy(gameObject);
         }
     }
