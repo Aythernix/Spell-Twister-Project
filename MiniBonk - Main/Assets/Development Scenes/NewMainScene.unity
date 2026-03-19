@@ -84498,6 +84498,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b2d26dba8055c64d827e8bd3957b25c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 565154886}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b2d26dba8055c64d827e8bd3957b25c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 565154889}
   m_SourcePrefab: {fileID: 100100000, guid: 3b2d26dba8055c64d827e8bd3957b25c, type: 3}
 --- !u!4 &565154881 stripped
 Transform:
@@ -84551,6 +84554,18 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &565154889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565154882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51270780d4961a44be79d8c9c055d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &567085867
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131433,6 +131448,59 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &887447753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887447754}
+  - component: {fileID: 887447755}
+  m_Layer: 0
+  m_Name: LakesideInvisWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &887447754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887447753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -71, z: -123.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 978596792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &887447755
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887447753}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1453.453, y: 240.33018, z: 89.2576}
+  m_Center: {x: 403.06635, y: 119.66509, z: -17.027786}
 --- !u!1001 &890020335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141914,6 +141982,38 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &978596791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978596792}
+  m_Layer: 0
+  m_Name: InvisibleWalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978596792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978596791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.143757, y: 17.35474, z: -306.55557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 887447754}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &978767708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -202339,6 +202439,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b2d26dba8055c64d827e8bd3957b25c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1411987518}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b2d26dba8055c64d827e8bd3957b25c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1411987521}
   m_SourcePrefab: {fileID: 100100000, guid: 3b2d26dba8055c64d827e8bd3957b25c, type: 3}
 --- !u!4 &1411987513 stripped
 Transform:
@@ -202392,6 +202495,18 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &1411987521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411987514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51270780d4961a44be79d8c9c055d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1412815992
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -307857,3 +307972,4 @@ SceneRoots:
   - {fileID: 243786054}
   - {fileID: 424797270}
   - {fileID: 587476591}
+  - {fileID: 978596792}
