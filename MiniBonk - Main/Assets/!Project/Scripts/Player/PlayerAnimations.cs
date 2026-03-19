@@ -1,7 +1,5 @@
-using System;
+
 using Minibonk.Management;
-using Minibonk.Player;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Minibonk.Player

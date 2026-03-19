@@ -1,6 +1,4 @@
-using System;
 using Minibonk.Management;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PopUpUnlockable", menuName = "Scriptable Objects/PopUpUnlockable")]
@@ -9,7 +7,7 @@ public class PopUpUnlockable : ScriptableObject
     #region Variables
 
     [Header("Description")]
-    public AnimatorController animatorController;
+    public RuntimeAnimatorController animatorController;
     public string description;
     public string currency;
 
