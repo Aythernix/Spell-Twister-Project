@@ -1,4 +1,6 @@
 using UnityEngine;
+using Minibonk.Enemy;
+using MiniBonk.Enemy;
 
 public class EnemyDestroyer : MonoBehaviour
 {
@@ -6,7 +8,7 @@ public class EnemyDestroyer : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            other.GetComponent<Enemy>().Die(null);
         }
     }
 }
