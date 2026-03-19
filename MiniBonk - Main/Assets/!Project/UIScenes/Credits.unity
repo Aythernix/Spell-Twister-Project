@@ -2324,9 +2324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203624773745298874, guid: a57c0db08d611414d884aaa7d7d9764f, type: 3}
       propertyPath: m_text
-      value: 'Matthew Foulds
-
-'
+      value: Charlie Ranger
       objectReference: {fileID: 0}
     - target: {fileID: 5795132376678479242, guid: a57c0db08d611414d884aaa7d7d9764f, type: 3}
       propertyPath: m_Pivot.x
