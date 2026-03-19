@@ -54,10 +54,6 @@ public class Ice_ProjectileScript : MonoBehaviour
             }
 
             Destroy(gameObject);
-            // ----------------- Adds FrostBite DOT Effect ---------------//
-
-
-
         }
 
         if (other.CompareTag("Environment"))

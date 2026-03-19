@@ -30,6 +30,10 @@ public class Weapon_WaterType : MonoBehaviour
 
     float waterballDiv;
 
+    // ------------- Sound -----------//
+
+    private float _soundTimer = 1f;
+
     #endregion 
 
     // -------------------- Main logic -------------------//
@@ -83,8 +87,20 @@ public class Weapon_WaterType : MonoBehaviour
 
     private void CreateWaterPulse()
     {
-        // Call Sound effect
-        GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+        #region 
+
+        // Timer for sounds to be called
+
+        if (_soundTimer > 0.5f)
+        {
+            // Call Sound effect
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+            _soundTimer = 0;
+        }
+        else
+            _soundTimer += Time.time;
+
+        #endregion
 
         lastwaterPulse = 0;
 

@@ -22,6 +22,10 @@ public class Weapon_IceType : MonoBehaviour
 
     public float lastProjectile = 0;
 
+    // ----- Sound -----//
+
+    private float _soundTimer = 1f;
+
     // ------------------------- Core Logic ---------------------------//
     private void Start()
     {
@@ -73,8 +77,20 @@ public class Weapon_IceType : MonoBehaviour
 
     private void CreateIceProjectile()
     {
-        // Call Sound effect
-        GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Ice, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+        #region 
+
+        // Timer for sounds to be called
+
+        if (_soundTimer > 0.5f)
+        {
+            // Call Sound effect
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Ice, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+            _soundTimer = 0;
+        }
+        else
+            _soundTimer += Time.time;
+
+        #endregion
 
         lastProjectile = 0;
 

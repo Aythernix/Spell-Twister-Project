@@ -35,6 +35,10 @@ public class Weapon_FireType : MonoBehaviour
     // Get the enemy Range detector script
     public EnemyRangeDetector enemyDetector;
 
+    // ------------------------------ Timer for sounds ------------------------------------//
+
+    private float _soundTimer = 1f;
+
     private void Awake()
     {
         // assigns variables to match on awake
@@ -91,16 +95,29 @@ public class Weapon_FireType : MonoBehaviour
     
     private void ApplyChaosMultiplier(int lvl)
     {
-     fireRate = Mathf.Clamp(fireRate / GameManager.Instance.ChaosMultiplier(), 0.1f, fireRate);   
+            fireRate = Mathf.Clamp(fireRate / GameManager.Instance.ChaosMultiplier(), 0.1f, fireRate);   
     }
 
     void createFireBall()
     {
-        // Call Sound effect
-        GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Fireball, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
 
-        // Allows for weapon to communicate to GameManager
-        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.FireballSpell);
+        #region 
+
+        // Timer for sounds to be called
+
+        if (_soundTimer > 0.5f)
+        {
+            // Call Sound effect
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Fireball, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+            _soundTimer = 0;
+        }
+        else
+            _soundTimer += Time.time;
+
+       #endregion
+
+            // Allows for weapon to communicate to GameManager
+            GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.FireballSpell);
 
         // resets the timer for when the last bullet was shot
         lastFireBall = 0;
