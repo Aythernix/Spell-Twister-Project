@@ -129,9 +129,10 @@ namespace MiniBonk.Enemy
                     {
                         Instantiate(data.healthDrop, transform.position, Quaternion.identity);
                         
-                        GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
+                        
                     }
                 }
+                GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
             }
             
             
