@@ -20,8 +20,6 @@ namespace Minibonk.Player
 		[SerializeField] private float flashDuration = 0.2f;
 		//Camera Shake
 		[SerializeField] private Transform cameraTransform;
-		[SerializeField] private float shakeDuration = 0.1f;
-		[SerializeField] private float shakeMagnitude = 0.2f;
 		private CinemachineImpulseSource impulseSource;
 			
 		[SerializeField] private float _allowDamageTimer = 0.5f;

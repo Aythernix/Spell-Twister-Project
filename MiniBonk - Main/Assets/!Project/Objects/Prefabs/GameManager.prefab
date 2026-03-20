@@ -167,8 +167,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: bbaa9e41f41129143b12244a3acaf107, type: 3}
     volume: 1
   - name: PlayerJump
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 14d9adb7c712e8241ad58e7286e11baa, type: 3}
+    volume: 1
   - name: Fireball
     clips:
     - {fileID: 8300000, guid: 1ca577b9ac6d1ec41b161201dd802f14, type: 3}
@@ -179,7 +180,7 @@ MonoBehaviour:
     volume: 0.3
   - name: Wind
     clips:
-    - {fileID: 8300000, guid: c6d947fe110420940afd49e345f9f111, type: 3}
+    - {fileID: 8300000, guid: 5c593e766589cc649969fcaba9c078ae, type: 3}
     volume: 0.5
   - name: Ice
     clips:

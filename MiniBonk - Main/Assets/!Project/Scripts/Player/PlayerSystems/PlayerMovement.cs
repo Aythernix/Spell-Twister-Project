@@ -219,7 +219,7 @@ namespace Minibonk.Player
         private void PerformJump()
         {
             _isJumping = true;
-            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerJump, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+            
 
             // Reset Y velocity before jump for consistent height
             //_rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
@@ -231,6 +231,7 @@ namespace Minibonk.Player
             _coyoteTimeCounter = 0;
             
             _playerHandler.PlayerEvents.OnJumpSucceeded?.Invoke();
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.PlayerJump, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
         }
         #endregion
     }
