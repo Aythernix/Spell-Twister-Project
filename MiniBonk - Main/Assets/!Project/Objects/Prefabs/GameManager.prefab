@@ -172,22 +172,23 @@ MonoBehaviour:
   - name: Fireball
     clips:
     - {fileID: 8300000, guid: 1ca577b9ac6d1ec41b161201dd802f14, type: 3}
-    volume: 1
+    volume: 0.5
   - name: Wave
     clips:
     - {fileID: 8300000, guid: 3867cf9e3f27e134d8ad4a7d4ae6a759, type: 3}
-    volume: 1
+    volume: 0.3
   - name: Wind
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: c6d947fe110420940afd49e345f9f111, type: 3}
+    volume: 0.5
   - name: Ice
     clips:
     - {fileID: 8300000, guid: 8921d5f9055fbba4ba32affea505183e, type: 3}
-    volume: 1
+    volume: 0.6
   - name: IceImpact
     clips:
     - {fileID: 8300000, guid: b0040e1e179b02d4c83215e0af561c31, type: 3}
-    volume: 1
+    volume: 0.6
   - name: OrcGroans
     clips:
     - {fileID: 8300000, guid: fd7333a1598408543ac8e6411e75cba3, type: 3}
@@ -375,6 +376,7 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: 7e60863968b3ca34cb51004d289d0059, type: 2}
   currentGameState: 0
   growthRate: 0.05
+  killCount: 0
 --- !u!114 &5288521850801605740
 MonoBehaviour:
   m_ObjectHideFlags: 0

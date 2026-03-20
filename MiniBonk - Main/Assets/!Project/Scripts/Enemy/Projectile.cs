@@ -31,9 +31,6 @@ public class Projectile : MonoBehaviour
                 GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.RangedImpact, _audioSource);
             }
         }
-        if (other.CompareTag("Environment"))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

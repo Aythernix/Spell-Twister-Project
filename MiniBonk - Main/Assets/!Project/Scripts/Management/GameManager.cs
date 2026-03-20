@@ -43,6 +43,8 @@ namespace Minibonk.Management
 
 		public float growthRate = 1.2f;
 
+		public int killCount;
+
 		#endregion
 
 		#region SubManagers
@@ -68,6 +70,8 @@ namespace Minibonk.Management
 			}
 
 			DontDestroyOnLoad(gameObject);
+
+			EventHandler.OnEnemyKilled += IncreaseKillCount;
 		}
 		
 		#endregion
@@ -174,6 +178,13 @@ namespace Minibonk.Management
 
 			float chaosMultiplier = 1f + (growthRate * (currentLevel - 1));
 			return chaosMultiplier;
+		}
+
+		private void IncreaseKillCount(GameObject killer, GameObject victim)
+		{
+			Debug.Log(killer);
+			if(killer != currentLevelManager.playerHandler.gameObject) return;
+			killCount++;
 		}
 
 

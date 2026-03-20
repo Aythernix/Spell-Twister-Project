@@ -154,7 +154,7 @@ namespace MiniBonk.Enemy
                         
                     }
                 }
-                GameManager.Instance.EventHandler.OnEnemyKilled(instigator, gameObject);
+                GameManager.Instance.EventHandler.OnEnemyKilled?.Invoke(instigator, gameObject);
                 
             }
             

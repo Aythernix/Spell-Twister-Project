@@ -48,7 +48,7 @@ public class Ice_ProjectileScript : MonoBehaviour
                 // Call Sound effect
                 GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.IceImpact, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
 
-                justHit.TakeDamage(weaponDamageStats.iceBallProjectileDMG, transform.root.gameObject);
+                justHit.TakeDamage(weaponDamageStats.iceBallProjectileDMG, GameManager.Instance.currentLevelManager.playerHandler.gameObject);
                 
                 //var frostBiteZone = Instantiate(iceDOTZone, justHit.transform.position, Quaternion.identity);
             }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using MiniBonk.Enemy;
+using Minibonk.Management;
 
 public class Water_ProjectileScript : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class Water_ProjectileScript : MonoBehaviour
             if (justHit != null) // tests if the enemy that was hit still exists
             {
                 // adds damage accordingly
-                justHit.TakeDamage(weaponDamageStats.waterBallProjectileDMG, transform.root.gameObject); 
+                justHit.TakeDamage(weaponDamageStats.waterBallProjectileDMG, GameManager.Instance.currentLevelManager.playerHandler.gameObject); 
             }
 
         }

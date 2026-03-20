@@ -195,10 +195,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1414819852682757455, guid: cdab3a4c36cff234c940e9babb1b7127, type: 3}
-      propertyPath: m_fontSize
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1414819852682757455, guid: cdab3a4c36cff234c940e9babb1b7127, type: 3}
       propertyPath: m_fontSizeBase
       value: 18
       objectReference: {fileID: 0}
@@ -303,8 +299,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2679628158376465708, guid: cdab3a4c36cff234c940e9babb1b7127, type: 3}
-      propertyPath: m_fontSize
+      propertyPath: m_text
+      value: 10000 TP
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679628158376465708, guid: cdab3a4c36cff234c940e9babb1b7127, type: 3}
+      propertyPath: m_fontSizeMax
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679628158376465708, guid: cdab3a4c36cff234c940e9babb1b7127, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 13.2
       objectReference: {fileID: 0}
     - target: {fileID: 2679628158376465708, guid: cdab3a4c36cff234c940e9babb1b7127, type: 3}
       propertyPath: m_fontSizeBase

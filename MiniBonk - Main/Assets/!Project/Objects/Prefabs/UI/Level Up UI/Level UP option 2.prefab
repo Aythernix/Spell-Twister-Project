@@ -97,10 +97,6 @@ PrefabInstance:
       value: 5 Trace Points
       objectReference: {fileID: 0}
     - target: {fileID: 837639572825136934, guid: 0133a22344b32094db8459e2b164c245, type: 3}
-      propertyPath: m_fontSize
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 837639572825136934, guid: 0133a22344b32094db8459e2b164c245, type: 3}
       propertyPath: m_margin.x
       value: -0.03149414
       objectReference: {fileID: 0}
@@ -114,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908050983639430829, guid: 0133a22344b32094db8459e2b164c245, type: 3}
       propertyPath: m_Name
-      value: Level UP option 1 (1) Variant
+      value: Level UP option 2
       objectReference: {fileID: 0}
     - target: {fileID: 5860270854852135138, guid: 0133a22344b32094db8459e2b164c245, type: 3}
       propertyPath: m_text

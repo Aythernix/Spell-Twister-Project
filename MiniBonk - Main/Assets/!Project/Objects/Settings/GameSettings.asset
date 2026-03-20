@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   showTutorial: 0
-  masterVolume: 1
-  gameplayVolume: 1
-  enemyVolume: 1
-  playerVolume: 1
-  musicVolume: 1
+  masterVolume: 0.744921
+  gameplayVolume: 0.30750015
+  enemyVolume: 0.7279158
+  playerVolume: 0.14123432
+  musicVolume: 0.4298431
   audioMixer: {fileID: 24100000, guid: e93f2c9ebc0679d47b0de9a104caa21b, type: 2}
-  pixelisation: 1
+  pixelisation: 0.8574365
   renderTexture: {fileID: 8400000, guid: b4d514366149e7445af77466e66fb061, type: 2}
   _defaultMasterVolume: 1
   _defaultGameplayVolume: 1

@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using MiniBonk.Enemy;
+using Minibonk.Management;
 
 public class FrostBiteDOT : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class FrostBiteDOT : MonoBehaviour
         if (lastDOTTick >= 0.5f)
         {
             lastDOTTick = 0;
-            targetEnemy.TakeDamage(weaponDamageStats.frostBiteDOT);
+            targetEnemy.TakeDamage(weaponDamageStats.frostBiteDOT, GameManager.Instance.currentLevelManager.playerHandler.gameObject);
         }
 
         if (zoneDOT_effectTimer <= 0)
