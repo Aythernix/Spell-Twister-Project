@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9b1a8d847e9d54392ee4576ef43c61, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  showTutorial: 0
+  showTutorial: 1
   masterVolume: 0.744921
   gameplayVolume: 0.30750015
   enemyVolume: 0.7279158
