@@ -33,6 +33,7 @@ public class PopUpUnlockable : ScriptableObject
     public void IncreaseMaxHealth(int _reward)
     {
         GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnIncreaseMaxHealth?.Invoke(_reward);
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnPlayerHeal?.Invoke(_reward);
     }
 
     public void IncreaseMoney(int _reward)
