@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.CompareTag("Player"))
         {
             if (other.transform.root.TryGetComponent<PlayerHandler>(out var handler))
@@ -30,7 +31,9 @@ public class Projectile : MonoBehaviour
                 handler.PlayerEvents.OnPlayerDamaged?.Invoke(_damage * GameManager.Instance.ChaosMultiplier());
                 GameManager.Instance.EventHandler.PlayAudio(AudioManager.AudioClips.RangedImpact, _audioSource);
             }
+            Destroy(gameObject);
+            return;
         }
-        Destroy(gameObject);
+        
     }
 }
