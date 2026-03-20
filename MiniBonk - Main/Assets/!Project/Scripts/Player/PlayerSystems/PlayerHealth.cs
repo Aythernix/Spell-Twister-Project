@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using Minibonk.Management;
+using System.Collections.Generic;
 using Minibonk.UI;
-using UnityEditor;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -12,20 +13,32 @@ namespace Minibonk.Player
 	{
 		#region Variables
 
+		//Polish / Hit Feedback
+		[SerializeField] private Renderer[] playerRender;
+		[SerializeField] private ParticleSystem hitParticles;
+		[SerializeField] private float hitStopDuration = 0.1f;
+		[SerializeField] private float flashDuration = 0.2f;
+		//Camera Shake
+		[SerializeField] private Transform cameraTransform;
+		[SerializeField] private float shakeDuration = 0.1f;
+		[SerializeField] private float shakeMagnitude = 0.2f;
+		private CinemachineImpulseSource impulseSource;
+			
 		[SerializeField] private float _allowDamageTimer = 0.5f;
 		[SerializeField] private float _lowHealthThreshold = 20f;
 		[SerializeField] private Color _lowHealthColor = Color.red;
 		[SerializeField] private float _vignetteTransitionDuration = 1f;
 		private bool _isLowHealth = false;
-		
+
 		private UIManager _uiManager;
-		
+
 		private bool _allowDamage = true;
 		private Coroutine _takeDamageCoroutine;
 		private Coroutine _vignetteTransitionCoroutine;
-		
+
 		private Vignette _vignette;
-		
+		private Dictionary<Renderer, Color> originalColors = new Dictionary<Renderer, Color>();
+
 		#endregion
 
 		#region Unity Functions
@@ -37,7 +50,7 @@ namespace Minibonk.Player
 			_playerHandler.PlayerEvents.OnPlayerHeal += Heal;
 			_playerHandler.PlayerEvents.OnIncreaseMaxHealth += IncreaseMaxHealth;
 		}
-		
+
 
 		private void OnDisable()
 		{
@@ -50,6 +63,12 @@ namespace Minibonk.Player
 		// Start is called once before the first execution of Update after the MonoBehaviour is created
 		void Start()
 		{
+			impulseSource = GetComponent<CinemachineImpulseSource>();
+			foreach (var renderer in playerRender)
+			{
+				if (renderer != null) originalColors[renderer] = renderer.material.color;
+			}
+
 			SetHealthToMax();
 
 			_uiManager = GameManager.Instance.uiManager;
@@ -68,12 +87,35 @@ namespace Minibonk.Player
 			{
 				TakeDamage(10f);
 			}
-			
+
 			//Debug.Log(_playerHandler.playerData.currentHealth);
 		}
 
 		#endregion
 
+		#region Hit Feedback
+		
+		
+		/// Triggers hit feedback effects being a slight timestop and flashing the player red
+		private IEnumerator DoHitFeedback()
+		{
+			if(hitParticles != null) hitParticles.Play();
+			
+			foreach (var renderer in playerRender)
+			{
+				if (renderer != null) renderer.material.color = Color.red;
+			}
+			
+			yield return new WaitForSecondsRealtime(flashDuration);
+			
+			foreach (var renderer in playerRender)
+			{
+				if (renderer != null && originalColors.ContainsKey(renderer)) renderer.material.color = originalColors[renderer];
+			}
+		}
+
+	#endregion
+		
 		#region Private Functions
 		
 		// Checks if health is empty
@@ -137,6 +179,11 @@ namespace Minibonk.Player
 			if (!_allowDamage) return;
 			
 			_allowDamage = false;
+			if (impulseSource != null) impulseSource.GenerateImpulse();
+			//Hit Feedback Coroutine
+			StartCoroutine(DoHitFeedback());
+			
+			
 			_playerHandler.playerData.currentHealth = Mathf.Clamp(_playerHandler.playerData.currentHealth -= damage, 0, _playerHandler.playerData.variableMaxHealth);
 			if (HealthEmpty())
 			{

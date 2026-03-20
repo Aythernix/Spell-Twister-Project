@@ -86,6 +86,7 @@ namespace Minibonk.Management
 				GameManager.Instance.currentGameState = GameManager.GameState.Playing;
 				postProcessVolume = FindAnyObjectByType<Volume>();
 				GameManager.Instance.killCount = 0;
+				Time.timeScale = 1f;
 			}
 		}
 		

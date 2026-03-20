@@ -15,12 +15,12 @@ namespace MiniBonk.Enemy
         
         [Header("Hit Visuals")]
         [SerializeField] protected SpriteRenderer overheadIcon;
-        [SerializeField] protected Renderer[] model; //What is allowed to be changed by propBlock
+        [SerializeField] public Renderer[] model; //What is allowed to be changed by propBlock, turned public for frost effect
         [SerializeField] protected ParticleSystem blood;
         [SerializeField] protected ParticleSystem deathBurst;
         [SerializeField] protected float hitEffectDuration = 0.2f;
 
-        private MaterialPropertyBlock propBlock; //Used  to change color of enemy
+        public MaterialPropertyBlock propBlock; //Used  to change color of enemy
         private Coroutine hitEffectCoroutine; // Used to display Particles
         private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
         

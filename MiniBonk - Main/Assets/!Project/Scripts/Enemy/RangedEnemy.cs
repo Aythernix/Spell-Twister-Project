@@ -30,6 +30,7 @@ namespace MiniBonk.Enemy
             transform.rotation = Quaternion.LookRotation(bodyLookDir);
             //Insantiates the projectile 
             GameObject projectileGO = Instantiate(data.projectilePrefab, _firePoint.position, Quaternion.LookRotation(fireDirection));
+            Debug.Log("Firing projectile towards " + targetCenter);
             
              
             if (projectileGO.TryGetComponent<Projectile>(out var projectile))
