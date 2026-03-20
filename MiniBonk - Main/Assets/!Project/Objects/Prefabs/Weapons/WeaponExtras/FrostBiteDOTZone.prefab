@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2911916902793566206}
   - component: {fileID: 6265399000043126282}
   - component: {fileID: -5459995616776429558}
+  - component: {fileID: -5005407262308604905}
   m_Layer: 0
   m_Name: FrostBiteDOTZone
   m_TagString: FrostBiteDOTZone
@@ -97,6 +98,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneLifeTime: 10
   weaponDamageStats: {fileID: 11400000, guid: ce91cf37366a45142bf2ffd6aae73eb4, type: 2}
+--- !u!114 &-5005407262308604905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054887575144625891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4ea196bca31cd46ab287a39db132bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {x: 0, y: 10, z: 0}
 --- !u!1 &4427540351876594118
 GameObject:
   m_ObjectHideFlags: 0
