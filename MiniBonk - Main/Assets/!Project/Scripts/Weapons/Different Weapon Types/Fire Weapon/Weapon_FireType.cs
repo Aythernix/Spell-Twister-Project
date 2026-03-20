@@ -37,7 +37,8 @@ public class Weapon_FireType : MonoBehaviour
 
     // ------------------------------ Timer for sounds ------------------------------------//
 
-    private float _soundTimer = 1f;
+    private float _soundTimer = 10f;
+    public float timeToWaitForSound;
 
     private void Awake()
     {
@@ -70,6 +71,7 @@ public class Weapon_FireType : MonoBehaviour
         // ------------------------- FIRE RATE TIMER LOGIC ---------------------------------//
 
         lastFireBall += Time.deltaTime;
+        _soundTimer += Time.deltaTime;
 
         // ------------------------- SPAWNING FIREBALL LOGIC -------------------------------//
 
@@ -104,20 +106,19 @@ public class Weapon_FireType : MonoBehaviour
         #region 
 
         // Timer for sounds to be called
+        
 
-        if (_soundTimer > 0.5f)
+        if (_soundTimer > timeToWaitForSound)
         {
             // Call Sound effect
             GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Fireball, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
             _soundTimer = 0;
         }
-        else
-            _soundTimer += Time.time;
+    
+        #endregion
 
-       #endregion
-
-            // Allows for weapon to communicate to GameManager
-            GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.FireballSpell);
+        // Allows for weapon to communicate to GameManager
+        GameManager.Instance.currentLevelManager.playerHandler.PlayerEvents.OnSpellFired?.Invoke(SpellTypes.FireballSpell);
 
         // resets the timer for when the last bullet was shot
         lastFireBall = 0;

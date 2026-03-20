@@ -27,7 +27,8 @@ public class Weapon_WindType : MonoBehaviour
 
     // ----------- Sound ------------//
 
-    private float _soundTimer = 1f;
+    private float _soundTimer = 10f;
+    public float timeToWaitForSound;
 
     // -------------------- Core Logic ---------------------------//
 
@@ -58,6 +59,7 @@ public class Weapon_WindType : MonoBehaviour
         // -------------------------- Last Projectile Timer ------------------------//
 
         lastProjectile += Time.deltaTime; // constantly sets the last projectile timer to count up
+        _soundTimer += Time.deltaTime;
 
         // -------------------- Manual and Automatic firing Logic ----------------------//
 
@@ -83,14 +85,12 @@ public class Weapon_WindType : MonoBehaviour
 
         // Timer for sounds to be called
 
-        if (_soundTimer > 0.5f)
+        if (_soundTimer > timeToWaitForSound)
         {
             // Call Sound effect
-            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wave, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
+            GameManager.Instance.EventHandler.PlayAudio?.Invoke(AudioManager.AudioClips.Wind, GameManager.Instance.currentLevelManager.playerHandler.playerAudioSource);
             _soundTimer = 0;
         }
-        else
-            _soundTimer += Time.time;
 
         #endregion
 
