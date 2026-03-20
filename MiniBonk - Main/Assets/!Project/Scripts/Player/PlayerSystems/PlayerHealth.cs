@@ -99,19 +99,12 @@ namespace Minibonk.Player
 		/// Triggers hit feedback effects being a slight timestop and flashing the player red
 		private IEnumerator DoHitFeedback()
 		{
-			float  originalTimeScale = Time.timeScale;
-			Time.timeScale = 0;
-			
 			if(hitParticles != null) hitParticles.Play();
 			
 			foreach (var renderer in playerRender)
 			{
 				if (renderer != null) renderer.material.color = Color.red;
 			}
-			
-			yield return new WaitForSecondsRealtime(hitStopDuration); //Using realtime to ignore time scale
-			
-			Time.timeScale = originalTimeScale;
 			
 			yield return new WaitForSecondsRealtime(flashDuration);
 			
