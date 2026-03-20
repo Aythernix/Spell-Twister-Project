@@ -15,8 +15,8 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: 8dd6677b9710f7f40b895f9236de2a3c, type: 2}
   description: Trace points (TP) are spent to learn new spell types. This can be
     accessed by pausing and clicking the 'Spells' tab!
-  currency: Trace Points
-  reward: 10000
+  currency: TP
+  reward: 7
   levelMultiplier: 1.5
   moneyIncrease: 0
   traceIncrease: 1

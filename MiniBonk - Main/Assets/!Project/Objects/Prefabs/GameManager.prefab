@@ -176,10 +176,11 @@ MonoBehaviour:
   - name: Wave
     clips:
     - {fileID: 8300000, guid: 3867cf9e3f27e134d8ad4a7d4ae6a759, type: 3}
-    volume: 1
+    volume: 0.3
   - name: Wind
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: c6d947fe110420940afd49e345f9f111, type: 3}
+    volume: 1
   - name: Ice
     clips:
     - {fileID: 8300000, guid: 8921d5f9055fbba4ba32affea505183e, type: 3}
@@ -375,6 +376,7 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: 7e60863968b3ca34cb51004d289d0059, type: 2}
   currentGameState: 0
   growthRate: 0.05
+  killCount: 0
 --- !u!114 &5288521850801605740
 MonoBehaviour:
   m_ObjectHideFlags: 0

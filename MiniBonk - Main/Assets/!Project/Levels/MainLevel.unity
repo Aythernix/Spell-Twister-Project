@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _walkSpeed
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5709388933868557942, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -83115,18 +83119,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5466852125231986779, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
-      propertyPath: Sounds.Array.data[5].clips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466852125231986779, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
-      propertyPath: 'Sounds.Array.data[5].clips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: c6d947fe110420940afd49e345f9f111, type: 3}
-    - target: {fileID: 5466852125231986779, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
-      propertyPath: 'Sounds.Array.data[5].clips.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: ef7ac3ab267603743a50117138a32376, type: 3}
     - target: {fileID: 8756504969819064480, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -115441,7 +115433,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2962138928873141344, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6697857919881360194, guid: 1e35d4bd9d0776a458602a7a6b07dbbd, type: 3}
       insertIndex: -1
@@ -311156,9 +311149,9 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1926270560}
-  - {fileID: 1398849899}
+  - {fileID: 563697602}
   - {fileID: 774343443}
   - {fileID: 819284556}
   - {fileID: 3725319}
-  - {fileID: 563697602}
+  - {fileID: 1926270560}
+  - {fileID: 1398849899}
