@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Minibonk.Management;
@@ -40,9 +41,15 @@ namespace Minibonk.MovementAbilities
             BuildDictionaries();
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
-            if(defaultAbility == null) return;
+            
+            yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.EventHandler != null);
+            
+            yield return new WaitForSeconds(0.1f);
+
+            if(defaultAbility == null) yield break;
+    
             UnlockAbility(defaultAbility.abilityID, false);
             EquipAbility(defaultAbility.abilityID, 2);
         }
