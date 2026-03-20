@@ -1,3 +1,4 @@
+using System;
 using Minibonk.Management;
 using Minibonk.MovementAbilities;
 using UnityEngine;
@@ -16,6 +17,12 @@ namespace Minibonk.UI
         {
             GameManager.Instance.EventHandler.OnAbilityEquipped += OnAbilityEquipped;
             GameManager.Instance.EventHandler.OnAbilitySlotTriggered += TriggerAbility;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.Instance.EventHandler.OnAbilityEquipped -= OnAbilityEquipped;
+            GameManager.Instance.EventHandler.OnAbilitySlotTriggered -= TriggerAbility;
         }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
