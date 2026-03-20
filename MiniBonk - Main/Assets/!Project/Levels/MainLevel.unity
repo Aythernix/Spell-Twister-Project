@@ -646,18 +646,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 501838805896592358, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 501838805896592358, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 501838805896592358, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 754207162792449394, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_LocalPosition.x
       value: 276
@@ -698,73 +686,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 779879692055315744, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: timeToWaitForSound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2318963656376098866, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2477524301507462662, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012902616732291797, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3049792119362494083, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3151815216152561767, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3948916796859352725, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: timeToWaitForSound
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583349956588138820, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: timeToWaitForSound
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323530357719695731, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: _walkSpeed
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5709388933868557942, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316486999067946203, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920954721471107944, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: timeToWaitForSound
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091742036164707011, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9156074081871298123, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

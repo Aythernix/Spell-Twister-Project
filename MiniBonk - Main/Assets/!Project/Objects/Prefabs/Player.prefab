@@ -5115,7 +5115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0166c30a624643ae8be113cb22662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 8
+  _walkSpeed: 9
   _jumpForce: 7
   _jumpBuffer: 0.5
   _coyoteTime: 0.5
@@ -5168,7 +5168,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &3151815216152561767
@@ -6633,6 +6633,10 @@ PrefabInstance:
       propertyPath: waterBallSpawner
       value: 
       objectReference: {fileID: 7590123431509154388}
+    - target: {fileID: 1885152437500011605, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: timeToWaitForSound
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: projectileSpawner
       value: 
@@ -6641,6 +6645,10 @@ PrefabInstance:
       propertyPath: enemyRangeDetector
       value: 
       objectReference: {fileID: 6277265390125921958}
+    - target: {fileID: 4686229173457088936, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: timeToWaitForSound
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5214850597624710777, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: enemyDetector
       value: 
@@ -6649,6 +6657,10 @@ PrefabInstance:
       propertyPath: projectileSpawner
       value: 
       objectReference: {fileID: 7590123431509154388}
+    - target: {fileID: 5214850597624710777, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: timeToWaitForSound
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6032548742318806126, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_Name
       value: WeaponManager
@@ -6659,15 +6671,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156979629364841691, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -278.75977
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8156979629364841691, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.572742
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8156979629364841691, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 307.76303
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8156979629364841691, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6705,6 +6717,10 @@ PrefabInstance:
       propertyPath: projectileSpawner
       value: 
       objectReference: {fileID: 7590123431509154388}
+    - target: {fileID: 9013737019127689757, guid: 026081037db60b6429c31d61b25a0953, type: 3}
+      propertyPath: timeToWaitForSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9013737019127689757, guid: 026081037db60b6429c31d61b25a0953, type: 3}
       propertyPath: windProjectileBurstMax
       value: 15
