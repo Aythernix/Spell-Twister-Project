@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Coins are spent in the item shop to gain movement abilites, this can
     be accessed by pausing and clicking the 'Shop' Tab!
   currency: Coins
-  reward: 25
+  reward: 35
   levelMultiplier: 1.5
   moneyIncrease: 1
   traceIncrease: 0

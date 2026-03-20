@@ -206,8 +206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.110414475, y: 2.4797057e-14, z: -2.7547978e-15, w: 0.99388564}
-  m_LocalPosition: {x: 1.64, y: 4.4845877, z: -3.05916}
+  m_LocalRotation: {x: 0.1894586, y: 0.76799536, z: -0.26353508, w: 0.5521212}
+  m_LocalPosition: {x: -2.954753, y: 6.8606186, z: 4.684017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -465,11 +465,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3998475179930164844, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3937352027428624044, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1735448160}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
+--- !u!4 &586052862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3937352027428624044, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
+  m_PrefabInstance: {fileID: 586052861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &712624568
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,11 +700,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 712624569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &921179622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3998475179930164844, guid: e55cc5e65bff8f14ab385f87924e31d8, type: 3}
-  m_PrefabInstance: {fileID: 586052861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1495403553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,6 +752,10 @@ PrefabInstance:
       propertyPath: Lens.FieldOfView
       value: 60.00328
       objectReference: {fileID: 0}
+    - target: {fileID: 5449639576651530879, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
+      propertyPath: _walkSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7356950065991098005, guid: 2409d66ba6c05114685a5d83b5910908, type: 3}
       propertyPath: m_Name
       value: Player
@@ -791,7 +795,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 921179622}
+  m_Father: {fileID: 586052862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1735448161
 MonoBehaviour:
@@ -807,7 +811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyTypes:
   - {fileID: 7521692644132424675, guid: 68047ff2c1e8a444aa5f159ed9ffa8c3, type: 3}
-  _spawnRate: 1
+  _enemiesInScene: []
+  _spawnDelay: 5
+  _maxDistanceToPlayer: 10
   _enemiesToSpawnPerBatch: 5
   _spawnRadius: 30
   _maxEnemiesInScene: 50
