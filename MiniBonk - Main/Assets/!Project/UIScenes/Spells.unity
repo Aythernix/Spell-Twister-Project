@@ -172,8 +172,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 850352253876918135, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _damage
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 850352253876918135, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: _spellCost
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 850352253876918135, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _spellDescription
+      value: Slow spell that pulses waves out from the holder. Pierces enemies and
+        has a long lifetime.
       objectReference: {fileID: 0}
     - target: {fileID: 868729154168465730, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_text
@@ -229,8 +238,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1946028541490590011, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _casts
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946028541490590011, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: _price
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946028541490590011, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _damage
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946028541490590011, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _coolDown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946028541490590011, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _spellDescription
+      value: Default spell that deals high damage. Fire rate grows with your level.
+        Fireballs home in on enemies.
       objectReference: {fileID: 0}
     - target: {fileID: 1970619672875850632, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
@@ -331,8 +357,25 @@ PrefabInstance:
       value: 'Casts: 150'
       objectReference: {fileID: 0}
     - target: {fileID: 3913848380287279709, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _casts
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913848380287279709, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913848380287279709, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _coolDown
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913848380287279709, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: _spellCost
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913848380287279709, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _spellDescription
+      value: Very fast spell that shoots 15 blades in quick succession. Lower damage
+        but increases move speed.
       objectReference: {fileID: 0}
     - target: {fileID: 4186864655812804795, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
@@ -548,8 +591,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972274783153328857, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972274783153328857, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: _spellCost
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972274783153328857, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: _spellDescription
+      value: Slow spell that creates an ice zone dealing 8 'frostbite' tick damage
+        to anything caught within every 0.5 secs.
       objectReference: {fileID: 0}
     - target: {fileID: 6369802426427328281, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
