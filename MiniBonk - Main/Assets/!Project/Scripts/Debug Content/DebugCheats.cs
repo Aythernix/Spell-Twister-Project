@@ -20,6 +20,7 @@ public class DebugCheats : MonoBehaviour
         {
             Debug.Log("Forcing Level up..");
             GameManager.Instance.EventHandler.OnPlayerLevelIncrease?.Invoke(1);
+            GameManager.Instance.uiManager.UIEvents.UpdateUI?.Invoke();
            
         }
         
