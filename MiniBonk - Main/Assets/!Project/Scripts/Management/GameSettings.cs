@@ -16,7 +16,7 @@ public class GameSettings : ScriptableObject
     public AudioMixer audioMixer;
     
     [Header("Visual Settings")]
-    [Range(0f, 1f)] public float pixelisation = 0f;
+    [Range(0f, 1f)] public float pixelisation = 1;
     public RenderTexture renderTexture;
     
     [Header("Default Values")]
@@ -30,10 +30,23 @@ public class GameSettings : ScriptableObject
     [SerializeField] private int _defaultPixelHeight = 144;
     [SerializeField] private AudioMixer _defaultAudioMixer;
     [SerializeField] private RenderTexture _defaultRenderTexture;
-    
+
     private void OnEnable()
     {
-        ResetToDefaults();
+        // AssignValues();
+    }
+
+    private void AssignValues()
+    {
+        masterVolume = _defaultMasterVolume;
+        gameplayVolume = _defaultGameplayVolume;
+        enemyVolume = _defaultEnemyVolume;
+        playerVolume = _defaultPlayerVolume;
+        musicVolume = _defaultMusicVolume;
+        pixelisation = _defaultPixelisation;
+        audioMixer = _defaultAudioMixer;
+        renderTexture = _defaultRenderTexture;
+        ApplySettings();
     }
     
     public void ResetToDefaults()
@@ -46,6 +59,7 @@ public class GameSettings : ScriptableObject
         pixelisation = _defaultPixelisation;
         audioMixer = _defaultAudioMixer;
         renderTexture = _defaultRenderTexture;
+        showTutorial = true;
         
         ApplySettings();
         
