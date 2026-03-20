@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b8e1d681834d349822627cbcdfb62d, type: 3}
   m_Name: WeaponDamageStats
   m_EditorClassIdentifier: 
-  fireBallProjectileDMG: 125
-  waterBallProjectileDMG: 200
+  fireBallProjectileDMG: 200
+  waterBallProjectileDMG: 125
   windBallProjectileDMG: 100
   iceBallProjectileDMG: 20
   frostBiteDOT: 8

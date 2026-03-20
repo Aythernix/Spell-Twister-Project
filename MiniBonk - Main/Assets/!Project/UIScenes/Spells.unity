@@ -155,9 +155,30 @@ PrefabInstance:
       propertyPath: m_text
       value: 800 Trace Points
       objectReference: {fileID: 0}
+    - target: {fileID: 638920371156045975, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Cast Time: Grows'
+      objectReference: {fileID: 0}
+    - target: {fileID: 638920371156045975, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 638920371156045975, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 638920371156045975, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 850352253876918135, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: _spellCost
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 868729154168465730, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: Default spell that deals high damage. Fire rate grows with your level
+        and homes onto targets.
       objectReference: {fileID: 0}
     - target: {fileID: 1665272035329431139, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
@@ -235,6 +256,28 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2021797090327657364, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Casts: 15'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072492468223643406, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: Slower spell that pulses waves out from the holder. Waves pierce tagets
+        until their lifetime runs out.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404709343672875556, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: Very fast spell that shoots blades of wind in quick succession. Lower
+        damage but increases move speed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705678527886771185, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Cast Time: 0.1 Secs'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995348859986502960, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Damage: 20   Tick: 8'
+      objectReference: {fileID: 0}
     - target: {fileID: 3063004738535056201, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -282,6 +325,10 @@ PrefabInstance:
     - target: {fileID: 3086684572612847351, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557768137979357426, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Casts: 150'
       objectReference: {fileID: 0}
     - target: {fileID: 3913848380287279709, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: _spellCost
@@ -439,6 +486,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5039033684176226976, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: Slow spell that creates an ice zone dealing 'frostbite' tick damage
+        to anything caught within.
+      objectReference: {fileID: 0}
     - target: {fileID: 5236197583269355861, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -462,6 +514,10 @@ PrefabInstance:
     - target: {fileID: 5236197583269355861, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557615608603841972, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Damage: 100'
       objectReference: {fileID: 0}
     - target: {fileID: 5884535744779790149, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_text
@@ -523,6 +579,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spells Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6949611725703087826, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Damage: 40000'
+      objectReference: {fileID: 0}
     - target: {fileID: 7348699273884922419, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -550,6 +610,10 @@ PrefabInstance:
     - target: {fileID: 7797935021032706671, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_text
       value: 250 Trace Points
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123749840605946014, guid: f331738df13a49147b3c51c7b2889656, type: 3}
+      propertyPath: m_text
+      value: 'Damage: 125'
       objectReference: {fileID: 0}
     - target: {fileID: 8335384522687358695, guid: f331738df13a49147b3c51c7b2889656, type: 3}
       propertyPath: m_AnchorMax.y
