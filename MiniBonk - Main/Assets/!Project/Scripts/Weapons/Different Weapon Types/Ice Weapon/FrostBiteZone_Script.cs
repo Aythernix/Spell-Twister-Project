@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using MiniBonk.Enemy;
-using Unity.VisualScripting;
 using System.Collections.Generic;
 
 public class FrostBiteZone_Script : MonoBehaviour
@@ -34,15 +33,7 @@ public class FrostBiteZone_Script : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            foreach (var rend in enemy.model)
-            {
-                if (rend==null) continue;
-                
-                rend.GetPropertyBlock(propBlock);
-                enemy.propBlock.SetColor(Color, frostColor);
-                rend.SetPropertyBlock(enemy.propBlock);
-            }
-            
+            ApplyFrostEffect(enemy);
             if (other == null) return;
 
             if (other.TryGetComponent<FrostBiteDOT>(out FrostBiteDOT existingDOT))
@@ -56,18 +47,32 @@ public class FrostBiteZone_Script : MonoBehaviour
             }
         }
     }
+    private void ApplyFrostEffect(Enemy enemy)
+    {
+        foreach (var rend in enemy.model)
+        {
+            if (rend == null) continue;
 
+            rend.GetPropertyBlock(propBlock);
+            propBlock.SetColor(Color, frostColor);
+            rend.SetPropertyBlock(propBlock);
+        }
+    }
+    private void RemoveFrostEffect(Enemy enemy)
+    {
+        foreach (var rend in enemy.model)
+        {
+            if (rend == null) continue;
+
+            rend.GetPropertyBlock(propBlock);
+            propBlock.Clear();
+            rend.SetPropertyBlock(propBlock);
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Enemy") && other.TryGetComponent<Enemy>(out Enemy enemy))
-            foreach (var rend in enemy.model)
-            {
-                if (rend==null) continue;
-                
-                rend.GetPropertyBlock(propBlock);
-                enemy.propBlock.Clear();
-                rend.SetPropertyBlock(enemy.propBlock);
-             }
+            RemoveFrostEffect(enemy);
         {
             if (other == null) return;
 
