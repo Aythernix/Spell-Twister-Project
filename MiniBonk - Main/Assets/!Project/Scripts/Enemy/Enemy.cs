@@ -53,6 +53,8 @@ namespace MiniBonk.Enemy
             navMeshAgent = GetComponent<NavMeshAgent>();
             _enemyAudioSource = GetComponent<AudioSource>();
             
+            reactionDelay = data.reactionDelay + UnityEngine.Random.Range(0.1f, 0.3f);
+            
             if (player == null) 
             {
                 var playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -210,34 +212,44 @@ namespace MiniBonk.Enemy
         public float GetNextAttackTime() => nextAttackTime;
         public void SetNextAttackTime(float time) => nextAttackTime = time;
         public float GetAttackCooldown() => data.attackCooldown;
+
+        [SerializeField] float reactionDelay = 0.2f;
+        private float lastReactionTime;
         
         public void UpdatePathfinding(Vector3 realPlayerPosition)
         {
-            if (!isAlive || !navMeshAgent.isOnNavMesh) return;
-            
-            // 1. Calculate Squared Distance (Extremely fast)
             Vector3 toPlayer = realPlayerPosition - transform.position;
             float sqrDistance = toPlayer.sqrMagnitude;
-            
-            Vector3 finalTarget = realPlayerPosition;
+            if (!isAlive || !navMeshAgent.isOnNavMesh) return;
 
-            // 2. Prediction Logic
-            if (playerRigidbody != null && data.predictionTime > 0)
+            if (Time.time >= lastReactionTime + reactionDelay)
             {
-                Vector3 lead = playerRigidbody.linearVelocity * (data.predictionTime * data.predictionIntensity);
+                lastReactionTime = Time.time;
 
-                // We only do the heavy Sqrt calculation if prediction is actually active
-                float distance = Mathf.Sqrt(sqrDistance);
-                float maxLead = distance * 0.9f;
+                Vector3 randomOffset = new Vector3(
+                    UnityEngine.Random.Range(-1f, 1f),
+                    0,
+                    UnityEngine.Random.Range(-1f, 1f)
+                ) * 0.5f;
 
-                if (lead.sqrMagnitude > maxLead * maxLead)
+                Vector3 finalTarget = realPlayerPosition + randomOffset;
+
+                if (playerRigidbody != null && data.predictionTime > 0)
                 {
-                    lead = lead.normalized * maxLead;
+                    Vector3 lead = playerRigidbody.linearVelocity * (data.predictionTime * data.predictionIntensity);
+                    Vector3 error = new Vector3(UnityEngine.Random.Range(-1f,1f), 0, UnityEngine.Random.Range(-1f,1f));
+                    float distance = Mathf.Sqrt(sqrDistance);
+                    float maxLead = distance * 0.9f;
+
+                    if (lead.sqrMagnitude > maxLead * maxLead)
+                    {
+                        lead = lead.normalized * maxLead;
+                    }
+                    finalTarget += lead + error;
                 }
-                finalTarget += lead;
+
+                navMeshAgent.SetDestination(finalTarget);
             }
-            
-            navMeshAgent.SetDestination(finalTarget);
             
             bool shouldBoost = sqrDistance > BOOST_DISTANCE_SQR;
             if (shouldBoost != _isBoosted)
