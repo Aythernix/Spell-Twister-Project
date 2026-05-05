@@ -30,7 +30,7 @@ MonoBehaviour:
   predictionTime: 2
   seperationAmount: 0.5
   seperationRadius: 1
-  reactionDelay: 0.2
+  reactionDelay: 0.4
   predictionIntensity: 0.5
   model: {fileID: 0}
   debugColor: {r: 1, g: 0, b: 0, a: 1}
