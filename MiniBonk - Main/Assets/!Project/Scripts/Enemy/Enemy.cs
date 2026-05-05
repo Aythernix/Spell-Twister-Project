@@ -78,6 +78,7 @@ namespace MiniBonk.Enemy
 
             currentHealth -= amount;
 
+            GameManager.Instance.EventHandler.OnEnemyDamaged?.Invoke(amount, gameObject);
             
             if (currentHealth <= 0)
             {

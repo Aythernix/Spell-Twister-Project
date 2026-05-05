@@ -208,6 +208,8 @@ namespace Minibonk.Management
 
 		public EnemyKilledHandler OnEnemyKilled;
 
+		public Action<float, GameObject> OnEnemyDamaged;
+
 		#endregion
 
 		#region Leveling Events
